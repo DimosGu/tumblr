@@ -1,0 +1,68 @@
+#header {
+	height: 70px;
+	margin: 0 auto 0 auto;
+	max-width: 1620px;
+	min-width: 750px;
+	overflow: hidden;
+}
+
+#h_logo {
+	float: left;
+	height: 55px;
+	margin-top: -3px;
+	outline: 0;
+}
+
+#form_wrapper {
+	margin: 18px 0 0 68px;
+	overflow: hidden;
+
+	form {
+		background-size: 18px 18px;
+	}
+
+	input {
+		background: transparent;
+		border: none;
+		color: #fff;
+		font-size: 15px;
+		outline: 0;
+		padding: 0 10px 0 27px;
+		width: 100%;
+	}
+}
+	
+#search_input::-webkit-input-placeholder {
+	opacity: .7;
+}
+#search_input:-ms-input-placeholder {
+	opacity: .4;
+}
+#search_input::-moz-placeholder {
+	opacity: .4;
+}
+#search_input:-moz-placeholder {
+	opacity: .4;
+}	
+
+.input_nofocus {
+	background: url("../images/gray_search.png") no-repeat;
+}
+
+.input_focus {
+	background: url("../images/white_search.png") no-repeat;
+}
+
+#header_right {
+	float: right;
+	margin: 10px 0 0 0;
+	overflow: hidden;
+	padding: 0 19px 0 0;
+	width: 169px;
+	
+	a {
+		font-size: 13px;
+		padding: 7px 0 0 13px;
+		text-decoration: none;
+	}
+}
