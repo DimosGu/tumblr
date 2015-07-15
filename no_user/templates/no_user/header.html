@@ -1,0 +1,15 @@
+{% load staticfiles %}
+<div id="header" class="invisible">
+	<a id="h_logo" a href="/" tabindex="-1">
+		<img src="{% static 'images/tumblr_logo.png' %}" alt="logo">
+	</a>
+	<div id="header_right">
+		<a id="login" href="{% url 'login' %}">Log in</a>
+		<a id="sign_up" href="{% url 'register' %}">Sign up</a>
+	</div>
+	<div id="form_wrapper">
+		<form id="search" class="input_nofocus">
+			<input id="search_input" type="text" placeholder="Search Tumblr" tabindex="4" name="search">
+		</form>
+	</div>
+</div>
