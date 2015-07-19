@@ -109,3 +109,5 @@ STATICFILES_DIRS = (
 )
 
 AUTH_USER_MODEL = 'user_accounts.User'
+
+LOGIN_URL = '/login'

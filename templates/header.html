@@ -1,11 +1,44 @@
 {% load staticfiles %}
 <div id="header">
-	<a id="h_logo" a href="{% url 'dashboard' %}" tabindex="-1">
+	<a id="h_logo" href="{% url 'dashboard' %}" tabindex="-1">
 		<img src="{% static 'images/tumblr_logo.png' %}" alt="logo">
 	</a>
 	<div id="header_right">
-		<a href="/">home</a>
-		<a href="/">something</a>
+		<div id="header_links">
+			<a href="/" id="dashboard"></a>
+			<a href="/" id="explore"></a>
+			<a href="/" id="inbox"></a>
+			<a href="/" id="activity"></a>
+			<div id="account">
+				<a id="account_a" href="/"></a>
+				<div id="account_details" class="account_fade hidden display_none">
+					<ul id="account_list">
+						<li id="oneli"><p>Account</p><a href="{% url 'log_out' %}">Log Out</a></li>
+					</ul>
+				</div>
+			</div>
+			<a href="/" id="post"></a>
+			<div id="post_options" class="post_fade post_hidden display_none">
+				<div id="post_type">	
+					<div id="text" class="type_anim type_hidden"></div>
+					<div id="photo" class="type_anim type_hidden"></div>
+					<div id="quote" class="type_anim type_hidden"></div>
+					<div id="link" class="type_anim type_hidden"></div>
+					<div id="chat" class="type_anim type_hidden"></div>
+					<div id="audio" class="type_anim type_hidden"></div>
+					<div id="video" class="type_anim type_hidden"></div>
+				</div>						
+				<div id="post_titles">
+					<p class="p_fade p_hidden">Text</p>
+					<p class="p_fade p_hidden">Photo</p>
+					<p class="p_fade p_hidden">Quote</p>
+					<p class="p_fade p_hidden">Link</p>
+					<p class="p_fade p_hidden">Chat</p>
+					<p class="p_fade p_hidden">Audio</p>
+					<p class="p_fade p_hidden">Video</p>
+				</div>
+			</div>
+		</div>
 	</div>
 	<div id="form_wrapper">
 		<form id="search" class="input_nofocus">
@@ -13,3 +46,4 @@
 		</form>
 	</div>
 </div>
+	

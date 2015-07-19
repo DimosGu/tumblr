@@ -48,7 +48,10 @@ def check_fields(request):
 
 def user_login(request):
 
-	if request.method == 'POST':
+	if request.user.is_authenticated():
+		return HttpResponseRedirect('/dashboard')
+
+	elif request.method == 'POST':
 		form = LoginForm(request.POST)
 		
 		if form.is_valid():

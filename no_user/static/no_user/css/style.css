@@ -293,6 +293,7 @@ h2 {
     color: #fff;
     font-size: 14px;
     margin-left: 11px;
+    pointer-events: none;
     text-decoration: none; }
 
 #footer_right {

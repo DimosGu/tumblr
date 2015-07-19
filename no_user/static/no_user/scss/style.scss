@@ -160,7 +160,7 @@ h2 {
 	transition-property: max-height opacity;
 	transition-duration: .5s;
 	transition-timing: ease;
-	transition-delay: .5s;	
+	transition-delay: .5s;
 }
 
 .error_visible {
@@ -224,6 +224,7 @@ h2 {
 		color: #fff;
 		font-size: 14px;
 		margin-left: 11px;
+		pointer-events: none;
 		text-decoration: none;
 	}
 }
