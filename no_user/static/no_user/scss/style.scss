@@ -1,3 +1,4 @@
+@import 'bourbon/bourbon';
 @import 'reset';
 @import 'header';
 
@@ -31,12 +32,8 @@ body {
 	opacity: 1;
 }
 
-.fade_in {
-	-webkit-transition: opacity .7s ease-in;
-	-moz-transition: opacity .7s ease-in;
-	-ms-transition: opacity .7s ease-in;
-	-o-transition: opacity .7s ease-in;
-	transition: opacity .7s ease-in;
+.fade-in {
+	@include transition( opacity .7s ease-in );
 }
 
 #center {
@@ -48,12 +45,12 @@ body {
 	width: 315px;
 }
 
-.center_slide {
-	animation-duration: .5s;
-	animation-name: slideup;
+.center-slide {
+	@include animation-duration( .5s );
+	@include animation-name( slideup );
 }
 
-@keyframes slideup {
+@include keyframes( slideup ) {
 	from {
 		margin-top: -180px;
 	}
@@ -70,7 +67,7 @@ h1 {
 	z-index: 2;
 }
 
-.center_padding {
+.center-padding {
 	margin-top: 51px;
 	margin-bottom: -2px;
 }
@@ -85,7 +82,7 @@ h2 {
 	z-index: 2;
 }
 
-#account_form {
+#account-form {
 	margin: 16px 0 0 6px;
 	width: 300px;
 
@@ -98,8 +95,8 @@ h2 {
 		width: 300px;
 	}
 	
-	#id_email,
-	#email_inp {
+	#email-signup,
+	#email-login {
 		border-bottom: 1px solid #e3e3e3;
 		border-right: 1px solid #fff;
 		border-radius: 2px 2px 0 0;
@@ -107,13 +104,17 @@ h2 {
 		padding: 0 0 0 13px;
 	}
 
-	#id_password,
-	#password_inp {
+	#password-signup,
+	#password-login {
 		padding: 0 0 0 13px;
 		height: 44px;
 	}
 
-	#id_username {
+	#password-login {
+		border-radius: 0 0 2px 2px;
+	}
+
+	#username-signup {
 		border-radius: 0 0 2px 2px;
 		border-right: 1px solid #fff;
 		border-top: 1px solid #e3e3e3;
@@ -121,7 +122,7 @@ h2 {
 	}
 }
 
-#form_errors {
+#form-errors {
 	background-color: rgba(0,0,0,0.33);
 	border-radius: 2px 2px 2px 2px;
 	overflow: hidden;
@@ -140,41 +141,25 @@ h2 {
 	}
 }
 
-.error_slide {
-	-webkit-transition-property: max-height opacity;
-	-webkit-transition-duration: .5s;
-	-webkit-transition-timing: ease;
-	-webkit-transition-delay: .5s;
-	-moz-transition-property: max-height opacity;
-	-moz-transition-duration: .5s;
-	-moz-transition-timing: ease;
-	-moz-transition-delay: .5s;
-	-ms-transition-property: max-height opacity;
-	-ms-transition-duration: .5s;
-	-ms-transition-timing: ease;
-	-ms-transition-delay: .5s;
-	-o-transition-property: max-height opacity;
-	-o-transition-duration: .5s;
-	-o-transition-timing: ease;
-	-o-transition-delay: .5s;
-	transition-property: max-height opacity;
-	transition-duration: .5s;
-	transition-timing: ease;
-	transition-delay: .5s;
+.error-slide {
+	@include transition-property( max-height opacity );
+	@include transition-duration( .5s );
+	@include transition-timing-function( ease );
+	@include transition-delay( .5s );
 }
 
-.error_visible {
+.error-visible {
 	max-height: 60px;
 	margin: 15px 0 3px 0;
 	opacity: 1;
 }
 
-.error_invisible {
+.error-invisible {
 	max-height: 0;
 	opacity: 0;
 }
 
-#submit_button {
+#submit-button {
 	background: #529ecc;
 	border: none;
 	border-radius: 2px;
@@ -197,13 +182,14 @@ h2 {
 	width: 120px;
 }
 
-#forgot_password {
+#forgot-password {
 	color: #fff;
 	display: block;
 	font-size: 14px;
 	margin: 23px auto 0 auto;
+	text-align: center;
 	text-decoration: none;
-	width: 146px;
+	width: 150px;
 }
 
 #footer {
@@ -215,7 +201,7 @@ h2 {
 	width: 100%;
 }
 
-#footer_links {
+#footer-links {
 	float: left;
 	margin: 0 0 0 10px;
 	width: 270px;
@@ -229,7 +215,7 @@ h2 {
 	}
 }
 
-#footer_right {
+#footer-right {
 	color: #fff;
 	float: right;
 	font-size: 14px;

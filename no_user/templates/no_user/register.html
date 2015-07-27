@@ -6,7 +6,7 @@
 	<link rel="icon" href="{% static 'images/icon.ico' %}" />
 	<link rel="stylesheet" type="text/css" href="{% static 'no_user/css/style.css' %}"	/>
 </head>
-<body>
+<body id="register-body">
 	<div id="wrapper" class="invisible" style="background-image: url({% static 'no_user/images/elfgirls.jpg' %});">
 		{% include "no_user/header.html" %}
 		<div id="center" class="invisible">
@@ -16,27 +16,27 @@
 				<br>
 				Share the things you love.
 			</h2>
-			<form id="account_form" action="/" method="POST" novalidate>
+			<form id="account-form" action="/" method="POST" novalidate>
 				{% csrf_token %}
 				{{ form.email }}
 				{{ form.password }}
 				{{ form.username }}
-				<div id="form_errors" class="error_slide error_invisible">
-					<div id="form_bg">
+				<div id="form-errors" class="error-slide error-invisible">
+					<div id="form-bg">
 					</div>
 				</div>
-				<button id="submit_button" type="submit" value="register">Sign up</button>
+				<button id="submit-button" type="submit" value="register">Sign up</button>
 			</form>
 			<a id="explore" href="explore.html">Explore Tumblr</a>
 		</div>
 		<div id="footer">
-			<div id="footer_links">
+			<div id="footer-links">
 				<a href="">Terms</a>
 				<a href="">Privacy</a>
 				<a href="">Jobs</a>
 				<a href="">Support</a>
 			</div>
-			<div id="footer_right">
+			<div id="footer-right">
 				<p>Posted by <span>Brian</span></p>
 			</div>
 		</div>

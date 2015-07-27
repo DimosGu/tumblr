@@ -6,16 +6,16 @@
 	<link rel="icon" href="{% static 'images/icon.ico' %}" />
 	<link rel="stylesheet" type="text/css" href="{% static 'no_user/css/style.css' %}">
 </head>
-<body>
+<body id="login-body">
 	<div id="wrapper" class="invisible" style="background-image: url({% static 'no_user/images/elfgirls.jpg' %});">
 		{% include "no_user/header.html" %}
 		<div id="center" class="invisible">
-			<h1 class="center_padding"><img src="{% static 'no_user/images/logo_large.png' %}" alt="tumblr" /></h1>
-			<form id="account_form" action="login" method="POST" novalidate>
+			<h1 class="center-padding"><img src="{% static 'no_user/images/logo_large.png' %}" alt="tumblr" /></h1>
+			<form id="account-form" action="login" method="POST" novalidate>
 				{% csrf_token %}
 				{{ form.email }}
 				{{ form.password }}
-				<div id="form_errors" class="error_slide error_invisible">
+				<div id="form-errors" class="error-slide error-invisible">
 					{% if form.non_field_errors %}
 						{{ form.non_field_errors }}
 					{% elif form.errors.email %}
@@ -24,18 +24,18 @@
 						{{ form.errors.password }}
 					{% endif %}
 				</div>
-				<button id="submit_button" form="account_form" type="submit" value="login">Log in</button>
+				<button id="submit-button" form="account-form" type="submit" value="login">Log in</button>
 			</form>
-			<a id="forgot_password" href="recover-password.html">Forgot your password?</a>
+			<a id="forgot-password" href="recover-password.html">Forgot your password?</a>
 		</div>
 		<div id="footer">
-			<div id="footer_links">
+			<div id="footer-links">
 				<a href="">Terms</a>
 				<a href="">Privacy</a>
 				<a href="">Jobs</a>
 				<a href="">Support</a>
 			</div>
-			<div id="footer_right">
+			<div id="footer-right">
 				<p>Posted by <span>Brian</span></p>
 			</div>
 		</div>

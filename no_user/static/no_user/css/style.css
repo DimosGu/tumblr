@@ -39,18 +39,18 @@ img {
   min-width: 750px;
   overflow: hidden; }
 
-#h_logo {
+#h-logo {
   float: left;
   height: 55px;
   margin-top: -3px;
   outline: 0; }
 
-#form_wrapper {
+#form-wrapper {
   margin: 18px 0 0 68px;
   overflow: hidden; }
-  #form_wrapper form {
+  #form-wrapper form {
     background-size: 18px 18px; }
-  #form_wrapper input {
+  #form-wrapper input {
     background: transparent;
     border: none;
     color: #fff;
@@ -58,32 +58,28 @@ img {
     outline: 0;
     padding: 0 10px 0 27px;
     width: 100%; }
+    #form-wrapper input::-webkit-input-placeholder {
+      opacity: .5; }
+    #form-wrapper input::-moz-placeholder {
+      opacity: .5; }
+    #form-wrapper input:-moz-placeholder {
+      opacity: .5; }
+    #form-wrapper input:-ms-input-placeholder {
+      opacity: .5; }
 
-#search_input::-webkit-input-placeholder {
-  opacity: .7; }
-
-#search_input:-ms-input-placeholder {
-  opacity: .4; }
-
-#search_input::-moz-placeholder {
-  opacity: .4; }
-
-#search_input:-o-placeholder {
-  opacity: .4; }
-
-.input_nofocus {
+.input-nofocus {
   background: url("/static/images/gray_search.png") no-repeat; }
 
-.input_focus {
+.input-focus {
   background: url("/static/images/white_search.png") no-repeat; }
 
-#header_right {
+#header-right {
   float: right;
   margin: 10px 0 0 0;
   overflow: hidden;
   padding: 0 19px 0 0;
   width: 169px; }
-  #header_right a {
+  #header-right a {
     font-size: 13px;
     padding: 7px 0 0 13px;
     text-decoration: none; }
@@ -98,7 +94,7 @@ img {
   padding-bottom: 5px;
   width: 65px; }
 
-#sign_up {
+#sign-up {
   background: #fff;
   border-radius: 2px;
   color: #444;
@@ -133,12 +129,10 @@ body {
 .visible {
   opacity: 1; }
 
-.fade_in {
-  -webkit-transition: opacity .7s ease-in;
-  -moz-transition: opacity .7s ease-in;
-  -ms-transition: opacity .7s ease-in;
-  -o-transition: opacity .7s ease-in;
-  transition: opacity .7s ease-in; }
+.fade-in {
+  -webkit-transition: opacity 0.7s ease-in;
+  -moz-transition: opacity 0.7s ease-in;
+  transition: opacity 0.7s ease-in; }
 
 #center {
   height: 350px;
@@ -148,10 +142,24 @@ body {
   top: 50%;
   width: 315px; }
 
-.center_slide {
-  animation-duration: .5s;
+.center-slide {
+  -webkit-animation-duration: 0.5s;
+  -moz-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-name: slideup;
+  -moz-animation-name: slideup;
   animation-name: slideup; }
 
+@-webkit-keyframes slideup {
+  from {
+    margin-top: -180px; }
+  to {
+    margin-top: -221px; } }
+@-moz-keyframes slideup {
+  from {
+    margin-top: -180px; }
+  to {
+    margin-top: -221px; } }
 @keyframes slideup {
   from {
     margin-top: -180px; }
@@ -163,7 +171,7 @@ h1 {
   width: 232px;
   z-index: 2; }
 
-.center_padding {
+.center-padding {
   margin-top: 51px;
   margin-bottom: -2px; }
 
@@ -176,79 +184,73 @@ h2 {
   text-align: center;
   z-index: 2; }
 
-#account_form {
+#account-form {
   margin: 16px 0 0 6px;
   width: 300px; }
-  #account_form input {
+  #account-form input {
     border: none;
     color: #000;
     font-size: 16px;
     height: 45px;
     outline: none;
     width: 300px; }
-  #account_form #id_email,
-  #account_form #email_inp {
+  #account-form #email-signup,
+  #account-form #email-login {
     border-bottom: 1px solid #e3e3e3;
     border-right: 1px solid #fff;
     border-radius: 2px 2px 0 0;
     height: 45px;
     padding: 0 0 0 13px; }
-  #account_form #id_password,
-  #account_form #password_inp {
+  #account-form #password-signup,
+  #account-form #password-login {
     padding: 0 0 0 13px;
     height: 44px; }
-  #account_form #id_username {
+  #account-form #password-login {
+    border-radius: 0 0 2px 2px; }
+  #account-form #username-signup {
     border-radius: 0 0 2px 2px;
     border-right: 1px solid #fff;
     border-top: 1px solid #e3e3e3;
     padding: 2px 0 2px 13px; }
 
-#form_errors {
+#form-errors {
   background-color: rgba(0, 0, 0, 0.33);
   border-radius: 2px 2px 2px 2px;
   overflow: hidden;
   width: 300px; }
-  #form_errors ul {
+  #form-errors ul {
     list-style: none; }
-  #form_errors p, #form_errors li {
+  #form-errors p, #form-errors li {
     color: #ffffff;
     font-size: 14px;
     padding: 14px 15px;
     position: relative;
     text-align: center; }
 
-.error_slide {
+.error-slide {
   -webkit-transition-property: max-height opacity;
-  -webkit-transition-duration: .5s;
-  -webkit-transition-timing: ease;
-  -webkit-transition-delay: .5s;
   -moz-transition-property: max-height opacity;
-  -moz-transition-duration: .5s;
-  -moz-transition-timing: ease;
-  -moz-transition-delay: .5s;
-  -ms-transition-property: max-height opacity;
-  -ms-transition-duration: .5s;
-  -ms-transition-timing: ease;
-  -ms-transition-delay: .5s;
-  -o-transition-property: max-height opacity;
-  -o-transition-duration: .5s;
-  -o-transition-timing: ease;
-  -o-transition-delay: .5s;
   transition-property: max-height opacity;
-  transition-duration: .5s;
-  transition-timing: ease;
-  transition-delay: .5s; }
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-timing-function: ease;
+  -moz-transition-timing-function: ease;
+  transition-timing-function: ease;
+  -webkit-transition-delay: 0.5s;
+  -moz-transition-delay: 0.5s;
+  transition-delay: 0.5s; }
 
-.error_visible {
+.error-visible {
   max-height: 60px;
   margin: 15px 0 3px 0;
   opacity: 1; }
 
-.error_invisible {
+.error-invisible {
   max-height: 0;
   opacity: 0; }
 
-#submit_button {
+#submit-button {
   background: #529ecc;
   border: none;
   border-radius: 2px;
@@ -269,13 +271,14 @@ h2 {
   text-decoration: none;
   width: 120px; }
 
-#forgot_password {
+#forgot-password {
   color: #fff;
   display: block;
   font-size: 14px;
   margin: 23px auto 0 auto;
+  text-align: center;
   text-decoration: none;
-  width: 146px; }
+  width: 150px; }
 
 #footer {
   bottom: 0;
@@ -285,23 +288,23 @@ h2 {
   position: absolute;
   width: 100%; }
 
-#footer_links {
+#footer-links {
   float: left;
   margin: 0 0 0 10px;
   width: 270px; }
-  #footer_links a {
+  #footer-links a {
     color: #fff;
     font-size: 14px;
     margin-left: 11px;
     pointer-events: none;
     text-decoration: none; }
 
-#footer_right {
+#footer-right {
   color: #fff;
   float: right;
   font-size: 14px;
   width: 130px; }
-  #footer_right span {
+  #footer-right span {
     font-weight: bold; }
 
 /*# sourceMappingURL=style.css.map */

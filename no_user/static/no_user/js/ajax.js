@@ -1,13 +1,13 @@
 var form_errors;
 
-form_error_id = $('#form_errors');
+form_error_id = $('#form-errors');
 
 function check_field() {
 	var email_val, password_val, username_val;
 
-	email_val = $('#id_email').val();
-	password_val = $('#id_password').val();
-	username_val = $('#id_username').val();
+	email_val = $('#email-signup').val();
+	password_val = $('#password-signup').val();
+	username_val = $('#username-signup').val();
 
 	$.ajax({
 		url: "/check_fields",
@@ -21,20 +21,20 @@ function check_field() {
 		success: function(error) {
 			if(error.email == "That's not a valid email address. Please try again.") {
 				(form_error_id.html("<p>" + error.email + "</p>")
-				.removeClass('error_invisible').addClass('error_visible'));
+				.removeClass('error-invisible').addClass('error-visible'));
 			}
 			else if(error.password != undefined && password_val != "") {
 				(form_error_id.html("<p>" + error.password + "</p>")
-				.removeClass('error_invisible').addClass('error_visible'));
+				.removeClass('error-invisible').addClass('error-visible'));
 			}
 			else if(error.username != undefined && username_val != "" &&
 				error.username != 'Someone has already claimed the username') {
 					(form_error_id.html("<p>" + error.username + "</p>")
-					.removeClass('error_invisible').addClass('error_visible'));
+					.removeClass('error-invisible').addClass('error-visible'));
 			}
 			else if(error.username == 'Someone has already claimed the username') {
 				(form_error_id.html('<p>' + error.username + ' "' + username_val + '".</p>')
-				.removeClass('error_invisible').addClass('error_visible'));
+				.removeClass('error-invisible').addClass('error-visible'));
 			}
 			else if((error.email === undefined && password_val === "" && username_val === "") ||
 				(error.password === undefined && email_val === "" && username_val === "") ||
@@ -45,10 +45,7 @@ function check_field() {
 				(error.email === undefined && error.password === undefined && 
 					error.username === undefined) ||
 				(email_val === "" && password_val === "" && username_val === "")) {
-					form_error_id.removeClass('error_visible').addClass('error_invisible');
-			}
-			else {
-				return false;
+					form_error_id.removeClass('error-visible').addClass('error-invisible');
 			}
 		},
 
@@ -58,16 +55,16 @@ function check_field() {
 	});
 };
 
-$('#id_email, #id_password, #is_username').blur(function() {	
+$('#email-signup, #password-signup, #username-signup').blur(function() {	
 	check_field();
 });
 
 function submit_form() {
 	var email_val, password_val, username_val;
 
-	email_val = $('#id_email').val();
-	password_val = $('#id_password').val();
-	username_val = $('#id_username').val();
+	email_val = $('#email-signup').val();
+	password_val = $('#password-signup').val();
+	username_val = $('#username-signup').val();
 
 	$.ajax({
 		url: "/",
@@ -84,20 +81,20 @@ function submit_form() {
 			}
 			else if(json.email != undefined) {
 				(form_error_id.html("<p>" + json.email + "</p>")
-				.removeClass('error_invisible').addClass('error_visible'));
+				.removeClass('error-invisible').addClass('error-visible'));
 			}
 			else if(json.password != undefined) {
 				(form_error_id.html("<p>" + json.password + "</p>")
-				.removeClass('error_invisible').addClass('error_visible'));
+				.removeClass('error-invisible').addClass('error-visible'));
 			}
 			else if(json.username != undefined && 
 				json.username != 'Someone has already claimed the username') {
 					(form_error_id.html("<p>" + json.username + "</p>")
-					.removeClass('error_invisible').addClass('error_visible'));
+					.removeClass('error-invisible').addClass('error-visible'));
 			}
 			else if(json.username == 'Someone has already claimed the username') {
 				(form_error_id.html('<p>' + json.username + ' "' + username_val + '".</p>')
-				.removeClass('error_invisible').addClass('error_visible'));
+				.removeClass('error-invisible').addClass('error-visible'));
 			}
 			else {
 				return false;
@@ -110,7 +107,7 @@ function submit_form() {
 	});
 };
 
-$('#account_form').on('submit', function(event) {
+$('#account-form').on('submit', function(event) {
 	event.preventDefault();
 	submit_form();
 });

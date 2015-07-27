@@ -1,12 +1,13 @@
 from django.shortcuts import render
-from django.contrib.auth import logout
-from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from posts.forms import PostTextForm
 
 @login_required
 def dashboard(request):
-	return render(request, 'dashboard/dashboard.html')
+	if request.method == 'POST':
+		form = PostTextForm(request.POST)
 
-def log_out(request):
-	logout(request)
-	return HttpResponseRedirect('/login')
+	else:
+		form = PostTextForm()
+
+	return render(request, 'dashboard/dashboard.html', {'form': form})

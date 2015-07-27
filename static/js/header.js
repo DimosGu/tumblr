@@ -1,19 +1,41 @@
 var search_img, search_form, search_input,
-		activity, account_a, account_details, account_list, account_list_li, 
-		account_list_p, post,
-		post_titles, title, text, photo, quote, link,
-		chat, audio, video;
+		dashboard_body, explore_body, messages_body, dashboard, explore, messages,
+		activity, account_a, account_details, account_list, account_list_li, account_list_p, 
+		post, post_options, post_type, post_types, post_titles, title, 
+		text, photo, quote, link, chat, audio, video,
+		post_text, post_photo, post_quote, post_link, post_chat, post_audio, post_video,
+		close_post, post_selection, title_field;
 
 search_img = new Image();
 search_img.onload = function() {
 }
 search_img.src = '/static/images/white_search.png';
 
+dashboard_body = document.getElementById("dashboard-body");
+dashboard = document.getElementById("dashboard");
+explore_body = document.getElementById("explore-body");
+explore = document.getElementById("explore");
+messages_body = document.getElementById("messages-body");
+messages = document.getElementById("messages");
+
+window.onload = function() {
+
+	if (dashboard_body) {
+		dashboard.style.backgroundImage = "url('/static/images/home_active.png')";
+	}
+	else if (explore_body) {
+		explore.style.backgroundImage = "url('/static/images/explore_active.png')";
+	}
+	else if (messages_body) {
+		messages.style.backgroundImage = "url('/static/images/messages_active.png)";
+	}
+}
+
 search_form = document.getElementById("search");
-search_input = document.getElementById("search_input");
+search_input = document.getElementById("search-input");
 
 search_input.onfocus = function() {	
-	search_form.className = "input_focus";
+	search_form.className = "input-focus";
 
 	if (search_input.value) {
 		search_input.className = "visible";
@@ -21,7 +43,7 @@ search_input.onfocus = function() {
 }
 
 search_input.onblur = function() {
-	search_form.className = "input_nofocus";
+	search_form.className = "input-nofocus";
 	
 	if (search_input.value) {
 		search_input.className = "fade";
@@ -29,17 +51,18 @@ search_input.onblur = function() {
 }	
 
 activity = document.getElementById("activity");
-post = document.getElementById("post");
-post_options = document.getElementById("post_options");
-post_type = document.getElementById("post_type");
 
-account_a = document.getElementById('account_a');
-account_details = document.getElementById("account_details");
-account_list = document.getElementById("account_list");
+account_a = document.getElementById('account-a');
+account_details = document.getElementById("account-details");
+account_list = document.getElementById("account-list");
 account_list_li = account_list.querySelector("li");
 account_list_p = account_list.querySelector("p");
 
-post_titles = document.getElementById("post_titles");
+post = document.getElementById("post");
+post_options = document.getElementById("post-options");
+post_type = document.getElementById("post-type");
+post_types = post_type.querySelectorAll("div");
+post_titles = document.getElementById("post-titles");
 title = post_titles.querySelectorAll("p");
 
 text = document.getElementById("text");
@@ -50,186 +73,201 @@ chat = document.getElementById("chat");
 audio = document.getElementById("audio");
 video = document.getElementById("video");
 
-activity.onclick = function() {
-	event.preventDefault();
+activity.onclick = function(e) {
+	e.preventDefault();
 }
 
-account_a.onclick = function() {
-	event.preventDefault();
+account_a.onclick = function(e) {
+	e.preventDefault();
 
-	if (account_details.className === "account_fade hidden display_none") {
-		account_details.className = "account_fade hidden display_block";
+	if (account_details.className === "account-fade account-hidden display-none") {
+		account_details.className = "account-fade account-hidden";
+		account_a.style.backgroundImage = "url('/static/images/account_active.png')";
 
 		setTimeout (function() {
-			account_details.className = "account_fade visible display_block";
-		}, 1)
+			account_details.className = "account-fade account-visible";
+		}, 20)
 	}
 }
 
-post.onclick = function() {
-	event.preventDefault();
+var post_type_wrapper = document.getElementById("post-type-wrapper");
 
-	if (post_options.className === "post_fade post_hidden display_none") {
-		post_options.className = "post_fade post_hidden display_block";
+post.onclick = function(e) {
+	e.preventDefault();
+
+	/*post option appear animation(s)*/
+	if (post_options.className === "post-fade post-hidden display-none") {
+		post_type_wrapper.className = "";
+		post_options.className = "post-fade post-hidden";
 
 		setTimeout (function() {
-			post_options.className = "post_fade post_visible display_block";
+			post_options.className = "post-fade visible";
 		}, 1)
 
 		setTimeout (function() {
-			text.className = "type_anim type_visible";
-			title[0].className = "p_fade p_visible";
+			text.className = "type-anim type-visible";
+			title[0].className = "p-fade p-visible";
 		}, 10)
 
 		setTimeout (function() {
-			photo.className = "type_anim type_visible";
-			title[1].className = "p_fade p_visible";
+			photo.className = "type-anim type-visible";
+			title[1].className = "p-fade p-visible";
 		}, 60)
 
 		setTimeout (function() {
-			quote.className = "type_anim type_visible";
-			title[2].className = "p_fade p_visible";
+			quote.className = "type-anim type-visible";
+			title[2].className = "p-fade p-visible";
 		}, 110)
 
 		setTimeout (function() {
-			link.className = "type_anim type_visible";
-			title[3].className = "p_fade p_visible";
+			link.className = "type-anim type-visible";
+			title[3].className = "p-fade p-visible";
 		}, 160)
 
 		setTimeout (function() {
-			chat.className = "type_anim type_visible";
-			title[4].className = "p_fade p_visible";
+			chat.className = "type-anim type-visible";
+			title[4].className = "p-fade p-visible";
 		}, 180)
 
 		setTimeout (function() {
-			audio.className = "type_anim type_visible";
-			title[5].className = "p_fade p_visible";
+			audio.className = "type-anim type-visible";
+			title[5].className = "p-fade p-visible";
 		}, 230)
 
 		setTimeout (function() {
-			video.className = "type_anim type_visible";
-			title[6].className = "p_fade p_visible";
+			video.className = "type-anim type-visible";
+			title[6].className = "p-fade p-visible";
 		}, 280)
 	}
 }
 
+
 document.onclick = function(e) {
 
-	if (account_details.className === "account_fade visible display_block") {
+	if (account_details.className === "account-fade account-visible") {
 
 		if (e.target === account_details || e.target === account_list ||
 			e.target === account_list_li || e.target === account_list_p) {
 				return false;
 		}
 		else {
-			account_details.className = "account_fade hidden display_block";
+			account_details.className = "account-fade account-hidden";
+			account_a.style.backgroundImage = null;
 
 			setTimeout (function() {
-				account_details.className = "account_fade hidden display_none";
+				account_details.className = "account-fade account-hidden display-none";
 			}, 100)
 		}
 	}
+	else if (post_options.className === "post-fade visible") {
 
-	else if (post_options.className === "post_fade post_visible display_block") {
-		if (e.target === post_options) {
-			link.className = "slide_up margin_top";
-			title[3].className = "slide_up margin_top";
+		/*post options disappear animation(s)*/
+		if (e.target === post_type_wrapper) {
+			link.className = "slide-up margin-top";
+			title[3].className = "slide-up margin-top";
 
 			setTimeout (function() {
-				quote.className = "slide_up margin_top";
-				chat.className = "slide_up margin_top";
-				title[2].className = "slide_up margin_top";
-				title[4].className = "slide_up margin_top";
+				quote.className = "slide-up margin-top";
+				chat.className = "slide-up margin-top";
+				title[2].className = "slide-up margin-top";
+				title[4].className = "slide-up margin-top";
+			}, 50)
+
+			setTimeout (function() {
+				photo.className = "slide-up margin-top";
+				audio.className = "slide-up margin-top";
+				title[1].className = "slide-up margin-top";
+				title[5].className = "slide-up margin-top";
 			}, 100)
 
 			setTimeout (function() {
-				photo.className = "slide_up margin_top";
-				audio.className = "slide_up margin_top";
-				title[1].className = "slide_up margin_top";
-				title[5].className = "slide_up margin_top";
-			}, 200)
+				text.className = "slide-up margin-top";
+				video.className = "slide-up margin-top";
+				title[0].className = "slide-up margin-top";
+				title[6].className = "slide-up margin-top";
+			}, 150)
 
 			setTimeout (function() {
-				text.className = "slide_up margin_top";
-				video.className = "slide_up margin_top";
-				title[0].className = "slide_up margin_top";
-				title[6].className = "slide_up margin_top";
+				post_options.className = "post-fade post-hidden display-none";
+			}, 250)
+
+			/*This resets the divs and their corresponding p tags' classes
+			to prepare them for the beginning animation cycle.*/
+			setTimeout (function() {
+				for (var i = 0; i < 7; i++) {
+					post_types[i].className = "type-anim type-hidden";
+					title[i].className = "p-fade p-hidden";
+				}
 			}, 300)
-
-			setTimeout (function() {
-				post_options.className = "post_fade post_hidden display_none";
-			}, 400)
-
-			setTimeout (function() {
-				text.className = "type_anim type_hidden";
-				photo.className = "type_anim type_hidden";
-				quote.className = "type_anim type_hidden";
-				link.className = "type_anim type_hidden";
-				chat.className = "type_anim type_hidden";
-				audio.className = "type_anim type_hidden";
-				video.className = "type_anim type_hidden";
-				title[0].className = "p_fade p_hidden";
-				title[1].className = "p_fade p_hidden";
-				title[2].className = "p_fade p_hidden";
-				title[3].className = "p_fade p_hidden";
-				title[4].className = "p_fade p_hidden";
-				title[5].className = "p_fade p_hidden";
-				title[6].className = "p_fade p_hidden";
-			}, 500)
 		}
-		else {
-			return false;
-		}
+	}
+	// else if ()
+}
+
+close_post = document.querySelectorAll('.close-post');
+submit_input = document.querySelectorAll('.submit-input');
+post_submit_button = document.querySelectorAll('.submit-button');
+post_selection = document.querySelectorAll(".post-selection");
+title_field = document.querySelectorAll(".title-field");
+
+function check_textarea() {
+	for (var i = 0; i < title_field.length; i++) {
+		title_field[i].style.height = 46 + 'px';
+		var title_height = title_field[i].scrollHeight;
+		title_field[i].style.height = title_height + 'px'; 
 	}
 }
 
-title[0].onmouseover = function() {
-	text.className = "type_anim hover";
-}
-title[0].onmouseout = function() {
-	text.className = "type_anim";
+for (var i = 0; i < title_field.length; i++) {
+	title_field[i].addEventListener("keyup", check_textarea);
+	title_field[i].addEventListener("keydown", check_textarea);
 }
 
-title[1].onmouseover = function() {
-	photo.className = "type_anim hover";
-}
-title[1].onmouseout = function() {
-	photo.className = "type_anim";
-}
+for (var i = 0; i < 7; i++) {
 
-title[2].onmouseover = function() {
-	quote.className = "type_anim hover";
-}
-title[2].onmouseout = function() {
-	quote.className = "type_anim";
-}
+	(function() {
+		var j = i;
 
-title[3].onmouseover = function() {
-	link.className = "type_anim hover";
-}
-title[3].onmouseout = function() {
-	link.className = "type_anim";
-}
+		title[j].addEventListener("mouseover", function() {
+			post_types[j].className = "type-anim hover";
+		});
 
-title[4].onmouseover = function() {
-	chat.className = "type_anim hover";
-}
-title[4].onmouseout = function() {
-	chat.className = "type_anim";
-}
+		title[j].addEventListener("mouseout", function() {
+			post_types[j].className = "type-anim";
+		});
 
-title[5].onmouseover = function() {
-	audio.className = "type_anim hover";
-}
-title[5].onmouseout = function() {
-	audio.className = "type_anim";
-}
+		title[j].addEventListener("click", function() {
+			post_types[j].click();
+		});
 
-title[6].onmouseover = function() {
-	video.className = "type_anim hover";
-}
-title[6].onmouseout = function() {
-	video.className = "type_anim";
-}
+		post_types[j].addEventListener("click", function() {
+			post_type_wrapper.className = "display-none";
+			document.body.style.cssText = "overflow: hidden;";
+			post_selection[j].className = "post-selection display-table post-hidden";
 
+			setTimeout (function() {
+				post_selection[j].className = "post-selection display-table post-fade visible";
+			},100)
 
+			for (var i = 0; i < 7; i++) {
+				post_types[i].className = "type-anim type-hidden";
+				title[i].className = "p-fade p-hidden";
+			}
+		});
+
+		close_post[j].addEventListener("click", function() {
+			post_selection[j].className = "post-selection display-table post-fade post-hidden";
+
+			setTimeout (function() {
+				post_options.className = "post-fade post-hidden display-none";
+				document.body.style.cssText = "";
+				post_selection[j].className = "post-selection display-none";
+			}, 200)
+		});
+
+		post_submit_button[j].addEventListener("click", function() {
+			submit_input[j].click();
+		});
+
+	}())
+}

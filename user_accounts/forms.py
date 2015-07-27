@@ -9,6 +9,7 @@ class LoginForm(forms.Form):
 	email = forms.CharField(
 		required=True,
 		widget=forms.EmailInput(attrs = {
+			'id': 'email-login',
 			'placeholder': 'Email',
 			'tabindex': '1'
 		}),
@@ -21,6 +22,7 @@ class LoginForm(forms.Form):
 	password = forms.CharField(
 		required=True,
 		widget=forms.PasswordInput(attrs = {
+			'id': 'password-login',
 			'placeholder': 'Password',
 			'tabindex': '2'
 		}),
@@ -57,6 +59,7 @@ class RegistrationForm(forms.ModelForm):
 
 	email = forms.EmailField(
 		widget=forms.EmailInput(attrs = {
+			'id': 'email-signup',
 			'placeholder': 'Email',
 			'tabindex': '1'
 		}),
@@ -70,6 +73,7 @@ class RegistrationForm(forms.ModelForm):
 
 	password = forms.CharField(
 		widget=forms.PasswordInput(attrs = {
+			'id': 'password-signup',
 			'placeholder': 'Password',
 			'tabindex': '2'
 		}),
@@ -82,6 +86,7 @@ class RegistrationForm(forms.ModelForm):
 
 	username = forms.CharField(
 		widget=forms.TextInput(attrs = {
+			'id': 'username-signup',
 			'placeholder': 'Username',
 			'tabindex': '3',
 			'autocomplete': 'off'

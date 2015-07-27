@@ -12,34 +12,50 @@ wrapper = document.getElementById("wrapper");
 header = document.getElementById("header");
 center = document.getElementById("center");
 
-account_form = document.getElementById("account_form");
-email_input = document.getElementById("id_email");
+register_body = document.getElementById("register-body");
+login_body = document.getElementById("login-body");
+
+email_signup = document.getElementById("email-signup");
+email_login = document.getElementById("email-login");
+account_form = document.getElementById("account-form");
 
 //These 2 error variables are login page exclusive.
-form_errors = document.getElementById("form_errors");
+form_errors = document.getElementById("form-errors");
 li_error = form_errors.querySelector("li");
 
 window.onload = function() {
-	wrapper.className = "fade_in";
-	email_input.focus();
+	wrapper.className = "fade-in";
+
+	if (register_body) {
+		email_signup.focus();
+		sign_up_button.onclick = function() {
+			return false;
+		}
+	}
+	else if (login_body) {
+		email_login.focus();
+		login_button.onclick =function() {
+			return false;
+		}
+	}
 
 	setTimeout (function() {
 		header.className = "visible";
 	}, 300)
 
 	setTimeout (function() {
-		center.className = "fade_in center_slide";		
+		center.className = "fade-in center-slide";		
 	}, 900)
 
-	if(li_error != null) {
+	if (li_error != null) {
 		setTimeout (function() {
-			form_errors.className = "error_slide error_visible"
+			form_errors.className = "error-slide error-visible"
 		}, 1100)
 	}
 }
 
-h_logo = document.getElementById("h_logo");
-sign_up_button = document.getElementById("sign_up");
+h_logo = document.getElementById("h-logo");
+sign_up_button = document.getElementById("sign-up");
 login_button = document.getElementById("login");
 
 h_logo.onclick = function() {
@@ -47,20 +63,20 @@ h_logo.onclick = function() {
 }
 
 search_form = document.getElementById("search");
-search_input = document.getElementById("search_input");
+search_input = document.getElementById("search-input");
 
 search_input.onfocus = function() {	
-	search_form.className = "input_focus";
+	search_form.className = "input-focus";
 
-	if(search_input.value) {
+	if (search_input.value) {
 		search_input.className = "visible";
 	}
 }
 
 search_input.onblur = function() {
-	search_form.className = "input_nofocus";
+	search_form.className = "input-nofocus";
 	
-	if(search_input.value) {
+	if (search_input.value) {
 		search_input.className = "fade";
 	}
 }	

@@ -6,14 +6,14 @@
 	overflow: hidden;
 }
 
-#h_logo {
+#h-logo {
 	float: left;
 	height: 55px;
 	margin-top: -3px;
 	outline: 0;
 }
 
-#form_wrapper {
+#form-wrapper {
 	margin: 18px 0 0 68px;
 	overflow: hidden;
 
@@ -29,31 +29,22 @@
 		outline: 0;
 		padding: 0 10px 0 27px;
 		width: 100%;
+
+		@include placeholder {
+			opacity: .5;
+		}
 	}
 }
-	
-#search_input::-webkit-input-placeholder {
-	opacity: .7;
-}
-#search_input:-ms-input-placeholder {
-	opacity: .4;
-}
-#search_input::-moz-placeholder {
-	opacity: .4;
-}
-#search_input:-o-placeholder {
-	opacity: .4;
-}	
 
-.input_nofocus {
+.input-nofocus {
 	background: url("/static/images/gray_search.png") no-repeat;
 }
 
-.input_focus {
+.input-focus {
 	background: url("/static/images/white_search.png") no-repeat;
 }
 
-#header_right {
+#header-right {
 	float: right;
 	margin: 10px 0 0 0;
 	overflow: hidden;
@@ -78,7 +69,7 @@
 	width: 65px;
 }
 
-#sign_up {
+#sign-up {
 	background: #fff;
 	border-radius: 2px;
 	color: #444;

@@ -1,49 +1,205 @@
 {% load staticfiles %}
-<div id="header">
-	<a id="h_logo" href="{% url 'dashboard' %}" tabindex="-1">
-		<img src="{% static 'images/tumblr_logo.png' %}" alt="logo">
-	</a>
-	<div id="header_right">
-		<div id="header_links">
-			<a href="/" id="dashboard"></a>
-			<a href="/" id="explore"></a>
-			<a href="/" id="inbox"></a>
-			<a href="/" id="activity"></a>
-			<div id="account">
-				<a id="account_a" href="/"></a>
-				<div id="account_details" class="account_fade hidden display_none">
-					<ul id="account_list">
-						<li id="oneli"><p>Account</p><a href="{% url 'log_out' %}">Log Out</a></li>
-					</ul>
+<div id="header-wrapper">
+	<div id="header">
+		<a id="h-logo" href="{% url 'dashboard' %}" tabindex="-1">
+			<img src="{% static 'images/tumblr_logo.png' %}" alt="logo">
+		</a>
+		<div id="header-right">
+			<div id="header-links">
+				<a href="/" id="dashboard"></a>
+				<a href="/" id="explore"></a>
+				<a href="/" id="messages"></a>
+				<a href="/" id="activity"></a>
+				<div id="account">
+					<a id="account-a" href="/"></a>
+					<div id="account-details" class="account-fade account-hidden display-none">
+						<ul id="account-list">
+							<li id="oneli"><p>Account</p><a href="{% url 'log_out' %}">Log Out</a></li>
+						</ul>
+					</div>
 				</div>
+				<a href="/" id="post"></a>
 			</div>
-			<a href="/" id="post"></a>
-			<div id="post_options" class="post_fade post_hidden display_none">
-				<div id="post_type">	
-					<div id="text" class="type_anim type_hidden"></div>
-					<div id="photo" class="type_anim type_hidden"></div>
-					<div id="quote" class="type_anim type_hidden"></div>
-					<div id="link" class="type_anim type_hidden"></div>
-					<div id="chat" class="type_anim type_hidden"></div>
-					<div id="audio" class="type_anim type_hidden"></div>
-					<div id="video" class="type_anim type_hidden"></div>
-				</div>						
-				<div id="post_titles">
-					<p class="p_fade p_hidden">Text</p>
-					<p class="p_fade p_hidden">Photo</p>
-					<p class="p_fade p_hidden">Quote</p>
-					<p class="p_fade p_hidden">Link</p>
-					<p class="p_fade p_hidden">Chat</p>
-					<p class="p_fade p_hidden">Audio</p>
-					<p class="p_fade p_hidden">Video</p>
+		</div>
+	<div id="form-wrapper">
+		<form id="search" class="input-nofocus">
+			<input id="search-input" type="text" placeholder="Search Tumblr" tabindex="4" name="search">
+		</form>
+	</div>
+	</div>
+</div>	
+<div id="post-options" class="post-fade post-hidden display-none">
+	<div id="post-type-wrapper">
+		<div id="post-type">	
+			<div id="text" class="type-anim type-hidden"></div>
+			<div id="photo" class="type-anim type-hidden"></div>
+			<div id="quote" class="type-anim type-hidden"></div>
+			<div id="link" class="type-anim type-hidden"></div>
+			<div id="chat" class="type-anim type-hidden"></div>
+			<div id="audio" class="type-anim type-hidden"></div>
+			<div id="video" class="type-anim type-hidden"></div>
+		</div>						
+		<div id="post-titles">
+			<p class="p-fade p-hidden">Text</p>
+			<p class="p-fade p-hidden">Photo</p>
+			<p class="p-fade p-hidden">Quote</p>
+			<p class="p-fade p-hidden">Link</p>
+			<p class="p-fade p-hidden">Chat</p>
+			<p class="p-fade p-hidden">Audio</p>
+			<p class="p-fade p-hidden">Video</p>
+		</div>
+	</div>
+	<div class="post-selection display-none">
+		<div class="table-cell">
+			<div id="post-text">
+				<div class="post-header">
+					<p>{{ user.username }}</p>
+				</div>
+				<div class="post-content">
+					<form action="/" method="POST">
+						{% csrf_token %}
+						{{ form.title }}
+						{{ form.text }}
+						{{ form.tags }}
+						<input class="submit-input" type="submit">
+					</form>
+				</div>
+				<div class="post-footer">
+					<button class="close-post">Close</button>
+					<div class="post-submit">
+						<button class="submit-button">Post</button>
+						<div></div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div id="form_wrapper">
-		<form id="search" class="input_nofocus">
-			<input id="search_input" type="text" placeholder="Search Tumblr" tabindex="4" name="search">
-		</form>
+	<div class="post-selection display-none">
+		<div class="table-cell">
+			<div id="post-photo">
+				<div class="post-header">
+					<p>{{ user.username }}</p>
+				</div>
+				<div class="post-content">
+					<form action="posts/post_text" method="POST">
+						{% csrf_token %}
+						{{ form.title }}
+						<input class="submit-input" type="submit">
+					</form>
+				</div>
+				<div class="post-footer">
+					<button class="close-post">Close</button>
+					<div class="post-submit">
+						<button class="submit-button">Post</button>
+						<div></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="post-selection display-none">
+		<div class="table-cell">
+			<div id="post-quote">
+				<div class="post-header">
+					<p>{{ user.username }}</p>
+				</div>
+				<div class="post-content">
+					<form action="posts/post_text" method="POST">
+						<input class="submit-input" type="submit">
+					</form>
+				</div>
+				<div class="post-footer">
+					<button class="close-post">Close</button>
+					<div class="post-submit">
+						<button class="submit-button">Post</button>
+						<div></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="post-selection display-none">
+		<div class="table-cell">
+			<div id="post-link">
+				<div class="post-header">
+					<p>{{ user.username }}</p>
+				</div>
+				<div class="post-content">
+					<form action="posts/post_text" method="POST">
+						<input class="submit-input" type="submit">
+					</form>
+				</div>
+				<div class="post-footer">
+					<button class="close-post">Close</button>
+					<div class="post-submit">
+						<button class="submit-button">Post</button>
+						<div></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="post-selection display-none">
+		<div class="table-cell">
+			<div id="post-chat">
+				<div class="post-header">
+					<p>{{ user.username }}</p>
+				</div>
+				<div class="post-content">
+					<form action="posts/post_text" method="POST">
+						<input class="submit-input" type="submit">
+					</form>
+				</div>
+				<div class="post-footer">
+					<button class="close-post">Close</button>
+					<div class="post-submit">
+						<button class="submit-button">Post</button>
+						<div></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="post-selection display-none">
+		<div class="table-cell">
+			<div id="post-audio">
+				<div class="post-header">
+					<p>{{ user.username }}</p>
+				</div>
+				<div class="post-content">
+					<form action="posts/post_text" method="POST">
+						<input class="submit-input" type="submit">
+					</form>
+				</div>
+				<div class="post-footer">
+					<button class="close-post">Close</button>
+					<div class="post-submit">
+						<button class="submit-button">Post</button>
+						<div></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="post-selection display-none">
+		<div class="table-cell">
+			<div id="post-video">
+				<div class="post-header">
+					<p>{{ user.username }}</p>
+				</div>
+				<div class="post-content">
+					<form action="posts/post_text" method="POST">
+						<input class="submit-input" type="submit">
+					</form>
+				</div>
+				<div class="post-footer">
+					<button class="close-post">Close</button>
+					<div class="post-submit">
+						<button class="submit-button">Post</button>
+						<div></div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
-	
