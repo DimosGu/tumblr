@@ -1,0 +1,23 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tumblr</title>
+	<link rel="icon" href="{% static 'images/icon.ico' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'blogs/css/style.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}" />
+</head>
+<body id="blog-body">
+	<div id="wrapper">
+		{% include "header.html" %}
+		<div id="content">
+			{% for post in latest_posts %}
+				<p>{{ post.title }}</p>
+				<p>{{ post.text }}</p>
+			{% endfor %}
+		</div>
+	</div>
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="{% static 'js/header.js' %}"></script>
+</body>
+</html>

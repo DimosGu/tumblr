@@ -4,7 +4,7 @@ var search_img, search_form, search_input,
 		post, post_options, post_type, post_types, post_titles, title, 
 		text, photo, quote, link, chat, audio, video,
 		post_text, post_photo, post_quote, post_link, post_chat, post_audio, post_video,
-		close_post, post_selection, title_field;
+		close_post, post_selection, title_field, text_field, tags_field;
 
 search_img = new Image();
 search_img.onload = function() {
@@ -191,7 +191,7 @@ document.onclick = function(e) {
 				post_options.className = "post-fade post-hidden display-none";
 			}, 250)
 
-			/*This resets the divs and their corresponding p tags' classes
+			/*Resets the divs and their corresponding p tags' classes
 			to prepare them for the beginning animation cycle.*/
 			setTimeout (function() {
 				for (var i = 0; i < 7; i++) {
@@ -201,28 +201,15 @@ document.onclick = function(e) {
 			}, 300)
 		}
 	}
-	// else if ()
 }
+
 
 close_post = document.querySelectorAll('.close-post');
 submit_input = document.querySelectorAll('.submit-input');
 post_submit_button = document.querySelectorAll('.submit-button');
 post_selection = document.querySelectorAll(".post-selection");
-title_field = document.querySelectorAll(".title-field");
 
-function check_textarea() {
-	for (var i = 0; i < title_field.length; i++) {
-		title_field[i].style.height = 46 + 'px';
-		var title_height = title_field[i].scrollHeight;
-		title_field[i].style.height = title_height + 'px'; 
-	}
-}
-
-for (var i = 0; i < title_field.length; i++) {
-	title_field[i].addEventListener("keyup", check_textarea);
-	title_field[i].addEventListener("keydown", check_textarea);
-}
-
+//Event listener functions for the various posting divs/p/button tags.
 for (var i = 0; i < 7; i++) {
 
 	(function() {
@@ -247,7 +234,7 @@ for (var i = 0; i < 7; i++) {
 
 			setTimeout (function() {
 				post_selection[j].className = "post-selection display-table post-fade visible";
-			},100)
+			}, 100)
 
 			for (var i = 0; i < 7; i++) {
 				post_types[i].className = "type-anim type-hidden";
@@ -271,3 +258,151 @@ for (var i = 0; i < 7; i++) {
 
 	}())
 }
+
+title_field = document.querySelectorAll(".title-field");
+text_field = document.querySelectorAll(".text-field");
+tags_field = document.querySelectorAll(".tags-field");
+
+function check_title_field() {
+
+	if (title_field[0].value != "" || text_field[0].value != "") {
+		post_submit_button[0].className = "submit-button button-color";
+	}
+	else {
+		post_submit_button[0].className = "submit-button";
+	}
+
+	//This controls all title form field expansions in the header.
+	for (var i = 0; i < title_field.length; i++) {
+		//Resets height to original every query to accommodate potential size reduction.
+		title_field[i].style.height = 46 + 'px';
+		var title_height = title_field[i].scrollHeight;
+		title_field[i].style.height = title_height + 'px'; 
+	}
+}
+
+for (var i = 0; i < title_field.length; i++) {
+	title_field[i].addEventListener("keyup", check_title_field);
+	title_field[i].addEventListener("keydown", check_title_field);
+}
+
+function check_text_field() {
+
+	if (title_field[0].value != "" || text_field[0].value != "") {
+		post_submit_button[0].className = "submit-button button-color";
+	}
+	else {
+		post_submit_button[0].className = "submit-button";
+	}
+
+	//This controls all tag form field expansions in the header.
+	for (var i = 0; i < text_field.length; i++) {
+		//Resets height to original every query to accommodate potential size reduction.
+		text_field[i].style.height = 63 + 'px';
+		var text_height = text_field[i].scrollHeight;
+		text_field[i].style.height = text_height + 'px';
+	} 
+}
+
+for (var i = 0; i < text_field.length; i++) {
+	text_field[i].addEventListener("keyup", check_text_field);
+	text_field[i].addEventListener("keydown", check_text_field);
+}
+
+function check_tag_field() {
+	//This controls all tags form field expansions in the header.
+	for (var i = 0; i < tags_field.length; i++) {
+		//Resets height to original every query to accommodate potential 2size reduction.
+		tags_field[i].style.height = 19 + 'px';
+		var tags_height = tags_field[i].scrollHeight;
+		tags_field[i].style.height = tags_height + 'px';
+	}
+}
+
+for (var i = 0; i < tags_field.length; i++) {
+	tags_field[i].addEventListener("keyup", check_tag_field);
+	tags_field[i].addEventListener("keydown", check_tag_field);
+}
+
+function submit_text_post() {
+
+	$.ajax({
+		url: "/blog/post_text",
+		type: "POST",
+		data: {
+			title: title_field[0].value,
+			text: text_field[0].value,
+			tags: tags_field[0].value,
+		}
+	});
+}
+
+close_post[0].addEventListener('click', function() {
+
+	setTimeout (function() {
+		title_field[0].value = "";
+		text_field[0].value = "";
+		tags_field[0].value = "";
+	}, 200)
+});
+
+$('#post_text_form').on('submit', function(event) {
+
+	event.preventDefault();
+
+	if (title_field[0].value != "" || text_field[0].value != "") {
+		submit_text_post();
+		close_post[0].click();
+	}
+});
+
+// This function gets cookie with a given name
+function getCookie(name) {
+  var cookieValue = null;
+  if (document.cookie && document.cookie != '') {
+    var cookies = document.cookie.split(';');
+    for (var i = 0; i < cookies.length; i++) {
+      var cookie = jQuery.trim(cookies[i]);
+      // Does this cookie string begin with the name we want?
+      if (cookie.substring(0, name.length + 1) == (name + '=')) {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+      }
+  	}
+  }
+  return cookieValue;
+}
+var csrftoken = getCookie('csrftoken');
+ 
+/*
+The functions below will create a header with csrftoken
+*/
+ 
+function csrfSafeMethod(method) {
+  // these HTTP methods do not require CSRF protection
+  return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+function sameOrigin(url) {
+  // test that a given url is a same-origin URL
+  // url could be relative or scheme relative or absolute
+  var host = document.location.host; // host + port
+  var protocol = document.location.protocol;
+  var sr_origin = '//' + host;
+  var origin = protocol + sr_origin;
+  // Allow absolute or scheme relative URLs to same origin
+  return (url == origin || url.slice(0, origin.length + 1) == origin + '/') ||
+    (url == sr_origin || url.slice(0, sr_origin.length + 1) == sr_origin + '/') ||
+    // or any other URL that isn't scheme relative or absolute i.e relative.
+    !(/^(\/\/|http:|https:).*/.test(url));
+}
+
+$.ajaxSetup({
+  beforeSend: function(xhr, settings) {
+    if (!csrfSafeMethod(settings.type) && sameOrigin(settings.url)) {
+        // Send the token to same-origin, relative URLs only.
+        // Send the token only if the method warrants CSRF protection
+        // Using the CSRFToken value acquired earlier
+        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+    }
+  }
+});

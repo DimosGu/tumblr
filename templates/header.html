@@ -18,7 +18,7 @@
 						</ul>
 					</div>
 				</div>
-				<a href="/" id="post"></a>
+				<a href="" id="post"></a>
 			</div>
 		</div>
 	<div id="form-wrapper">
@@ -56,11 +56,11 @@
 					<p>{{ user.username }}</p>
 				</div>
 				<div class="post-content">
-					<form action="/" method="POST">
+					<form id="post_text_form" action="/" method="POST">
 						{% csrf_token %}
-						{{ form.title }}
-						{{ form.text }}
-						{{ form.tags }}
+						{{ text_form.title }}
+						{{ text_form.text }}
+						{{ text_form.tags }}
 						<input class="submit-input" type="submit">
 					</form>
 				</div>
@@ -81,9 +81,11 @@
 					<p>{{ user.username }}</p>
 				</div>
 				<div class="post-content">
-					<form action="posts/post_text" method="POST">
+					<form action="/" method="POST">
 						{% csrf_token %}
-						{{ form.title }}
+						{{ photo_form.title }}
+						{{ photo_form.text }}
+						{{ photo_form.tags }}
 						<input class="submit-input" type="submit">
 					</form>
 				</div>

@@ -40,7 +40,7 @@ INSTALLED_APPS = (
     'no_user',
     'user_accounts',
     'dashboard',
-    'posts',
+    'blogs',
 )
 
 MIDDLEWARE_CLASSES = (

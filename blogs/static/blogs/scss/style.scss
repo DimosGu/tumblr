@@ -1,0 +1,28 @@
+@import 'bourbon/bourbon';
+@import '../../../../static/scss/reset';
+
+html {
+	font-family: helvetica, arial;
+	height: 100%;
+}
+
+body {
+	background: #36465d;
+	height: 100%;
+}
+
+#wrapper {
+	height: 100%;
+	width: 100%;
+}
+
+#content {
+	height: 2000px;
+	margin: 54px 0 0 0;
+	width: 100%;
+
+	p {
+		color: #ffffff;
+	}
+}
+	

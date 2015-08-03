@@ -329,6 +329,7 @@
     background: #ffffff;
     border-radius: 2px;
     margin: 50px auto 50px auto;
+    padding-left: 2px;
     position: relative;
     width: 540px; }
   #post-options #post-text {
@@ -364,23 +365,30 @@
       font-family: helvetica, arial;
       outline: none;
       overflow: hidden;
+      position: relative;
       resize: none;
       width: 510px; }
     #post-options .post-content .title-field {
       font-size: 36px;
-      height: 46px; }
+      height: 46px;
+      min-height: 46px; }
     #post-options .post-content .text-field {
       font-size: 14px;
-      height: 80px; }
+      height: 63px;
+      margin-top: 2px;
+      min-height: 63px; }
     #post-options .post-content .tags-field {
       font-size: 13px;
-      height: 44px; }
+      height: 19px;
+      margin: 28px 0 12px 0;
+      min-height: 19px; }
     #post-options .post-content .submit-input {
       display: none; }
   #post-options .post-footer {
     bottom: 0;
-    height: 45px;
-    position: absolute;
+    height: 60px;
+    padding-top: 15px;
+    position: relative;
     width: 540px; }
     #post-options .post-footer .close-post {
       background-color: #9DA6AF;
@@ -392,16 +400,16 @@
       font-size: 13px;
       font-weight: bold;
       height: 30px;
-      margin: 0 0 0 20px;
+      margin: 0 0 0 18px;
       padding: 0 0 1px 0;
       position: absolute;
       width: 51px; }
     #post-options .post-footer .post-submit {
       float: right;
       height: 30px;
-      margin: 0 20px 0 0;
+      margin: 0 22px 0 0;
       overflow: auto;
-      width: 70px; }
+      width: 71px; }
       #post-options .post-footer .post-submit .submit-button {
         background: #529ECC;
         border: 1px solid #529ECC;
@@ -409,10 +417,13 @@
         color: rgba(255, 255, 255, 0.5);
         cursor: pointer;
         float: left;
+        font-size: 13px;
         font-weight: bold;
         height: 30px;
         padding: 0 0 2px 1px;
-        width: 45px; }
+        width: 44px; }
+      #post-options .post-footer .post-submit .button-color {
+        color: #fff; }
       #post-options .post-footer .post-submit div {
         background: #529ECC url("/static/images/arrow.png") no-repeat center;
         border: 1px solid #529ECC;
@@ -421,7 +432,8 @@
         cursor: pointer;
         float: right;
         height: 30px;
-        width: 25px; }
+        padding-right: 1px;
+        width: 27px; }
       #post-options .post-footer .post-submit div::before {
         border-left: 1px solid #85BBDB;
         content: "";

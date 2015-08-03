@@ -4,6 +4,7 @@ from django.core.context_processors import csrf
 from user_accounts.forms import RegistrationForm, LoginForm
 from django.contrib.auth import authenticate, login
 from django.core import validators
+from blogs.models import Blog
 
 def register(request):
 
@@ -23,10 +24,15 @@ def register(request):
 
 		elif form.is_valid():
 			form.save()
+			
 			user_info = authenticate(
 				email=form.cleaned_data['email'], 
 				password=form.cleaned_data['password'])
 			login(request, user_info)
+
+			blog = Blog(user=request.user)
+			blog.save()
+
 			redirect_url = {'url': 'dashboard'}
 			return JsonResponse(redirect_url)
 

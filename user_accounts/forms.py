@@ -3,6 +3,7 @@ from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from user_accounts.models import User
 from django.core import validators
 from django.contrib.auth import authenticate
+from blogs.models import Blog
 
 class LoginForm(forms.Form):
 
