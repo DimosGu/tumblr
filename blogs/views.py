@@ -7,15 +7,12 @@ from user_accounts.models import User
 
 @login_required
 def blog(request, username):
-	text_form = TextPostForm()
-	photo_form = PhotoPostForm()
+	user = User.objects.get(username=username)
+	blog = Blog.objects.get(user=user)
+	posts = Post.objects.all().filter(blog=blog)
+	latest_posts = posts.order_by('-pub_date')
 
-	u = User.objects.get(username=username)
-	blog = Blog.objects.get(user=u)
-	latest_posts = Post.objects.all().filter(blog=blog)
-	
-	return render(request, 'blogs/blog.html', {'latest_posts': latest_posts,
-		'text_form': text_form, 'photo_form': photo_form})
+	return render(request, 'blogs/blog.html', {'latest_posts': latest_posts})
 
 @login_required
 def post_text(request):

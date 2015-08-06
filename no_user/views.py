@@ -28,10 +28,8 @@ def register(request):
 			user_info = authenticate(
 				email=form.cleaned_data['email'], 
 				password=form.cleaned_data['password'])
+			
 			login(request, user_info)
-
-			blog = Blog(user=request.user)
-			blog.save()
 
 			redirect_url = {'url': 'dashboard'}
 			return JsonResponse(redirect_url)

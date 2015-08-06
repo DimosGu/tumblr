@@ -32,6 +32,7 @@ html {
 img {
   box-sizing: content-box; }
 
+/*@import '../../../../static/scss/header';*/
 html {
   font-family: helvetica, arial;
   height: 100%; }

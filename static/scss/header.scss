@@ -14,8 +14,8 @@
 
 .slide-up {
 	@include transition-property( margin );
-	@include transition-duration( .4s );
-	@include transition-timing-function( ease-in );
+	@include transition-duration( 3s );
+	@include transition-timing-function( linear );
 }
 
 .type-anim {
@@ -36,7 +36,7 @@
 }
 
 .account-visible {
-	margin-top: 15px;
+	margin-top: 14px;
 	opacity: 1;
 }
 
@@ -207,11 +207,11 @@
 
 			#account-details {
 				background: #f5f5f5;
-				border-radius: 2px;
+				border-radius: 3px;
 				height: 381px;
-				margin-left: -135px;
+				margin-left: -132px;
 				position: absolute;
-				width: 242px;
+				width: 240px;
 
 				ul {
 					list-style: none;
@@ -219,26 +219,71 @@
 
 				li {
 					overflow: auto;
+
+					strong {
+						color: #888;
+						cursor: default;
+						font-size: 11px;
+						font-weight: bold;
+						float: left;
+						margin: 7px 0 0 10px;
+					}
 				}	
-			}
-
-			#oneli {
-
-				p {
-				color: #888;
-				cursor: default;
-				font-size: 14px;
-				font-weight: bold;
-				float: left;
-				margin: 4px 0 0 6px;
-				}
 
 				a {
-				color: #7f7f7f;
-				float: right;
-				font-size: 12px;
-				margin: 6px 16px 0 0;
-				text-decoration: none; 
+					text-decoration: none;
+				}
+			}
+
+			.li-header {
+				background: #F5F5F5;
+				border-radius: 3px 3px 0 0;
+				padding-bottom: 5px;
+
+				a {
+					color: #7f7f7f;
+					float: right;
+					font-size: 12px;
+					margin: 6px 0 0 0;
+					padding-right: 20px;
+				}
+			}
+
+			.blog-details {
+				margin: 15px 0 0 0;
+				width: 100%;
+
+				a {
+					display: block;
+					height: 57px;
+					padding: 10px 0 0 15px;
+					width: 100%;
+				}
+
+				a:hover {
+					background: #E6EFF7;
+				}
+
+				img {
+					float: left;
+					height: 37px;
+					width: 37px;
+				}
+
+				.blog-info {
+					float: left;
+					margin-left: 10px;
+				}
+
+				.username {
+					color: #3e5266;
+					font-size: 15px;
+					font-weight: 700;
+				}
+
+				.blog-title {
+					color: #7f7f7f;
+					font-size: 13px;
 				}
 			}
 		}
@@ -282,8 +327,7 @@
 				width: 100px;
 			}
 
-			.hover,
-			div:hover {
+			.hover {
 				height: 110px;
 				margin: -5px 0 0 -5px;
 				width: 110px;

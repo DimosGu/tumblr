@@ -1,6 +1,6 @@
 var search_img, search_form, search_input,
 		dashboard_body, explore_body, messages_body, dashboard, explore, messages,
-		activity, account_a, account_details, account_list, account_list_li, account_list_p, 
+		activity, account_a, account_details, 
 		post, post_options, post_type, post_types, post_titles, title, 
 		text, photo, quote, link, chat, audio, video,
 		post_text, post_photo, post_quote, post_link, post_chat, post_audio, post_video,
@@ -51,12 +51,8 @@ search_input.onblur = function() {
 }	
 
 activity = document.getElementById("activity");
-
 account_a = document.getElementById('account-a');
 account_details = document.getElementById("account-details");
-account_list = document.getElementById("account-list");
-account_list_li = account_list.querySelector("li");
-account_list_p = account_list.querySelector("p");
 
 post = document.getElementById("post");
 post_options = document.getElementById("post-options");
@@ -146,9 +142,8 @@ document.onclick = function(e) {
 
 	if (account_details.className === "account-fade account-visible") {
 
-		if (e.target === account_details || e.target === account_list ||
-			e.target === account_list_li || e.target === account_list_p) {
-				return false;
+		if(e.target === account_details || $(e.target).parents("#account-details").length) {
+			return e.target
 		}
 		else {
 			account_details.className = "account-fade account-hidden";
@@ -210,37 +205,48 @@ post_submit_button = document.querySelectorAll('.submit-button');
 post_selection = document.querySelectorAll(".post-selection");
 
 //Event listener functions for the various posting divs/p/button tags.
+
 for (var i = 0; i < 7; i++) {
 
 	(function() {
 		var j = i;
 
-		title[j].addEventListener("mouseover", function() {
-			post_types[j].className = "type-anim hover";
-		});
-
-		title[j].addEventListener("mouseout", function() {
-			post_types[j].className = "type-anim";
-		});
-
-		title[j].addEventListener("click", function() {
-			post_types[j].click();
-		});
-
-		post_types[j].addEventListener("click", function() {
-			post_type_wrapper.className = "display-none";
-			document.body.style.cssText = "overflow: hidden;";
-			post_selection[j].className = "post-selection display-table post-hidden";
-
-			setTimeout (function() {
-				post_selection[j].className = "post-selection display-table post-fade visible";
-			}, 100)
-
-			for (var i = 0; i < 7; i++) {
-				post_types[i].className = "type-anim type-hidden";
-				title[i].className = "p-fade p-hidden";
+		function post_type_mouseover() {
+			if (post_types[j].className != "slide-up margin-top") {
+				post_types[j].className = "type-anim hover";
 			}
-		});
+		}
+
+		function post_type_mouseout() {
+			if (post_types[j].className != "slide-up margin-top") {
+				post_types[j].className = "type-anim";
+			}
+		}
+
+		function post_type_click() {
+			if (post_types[j].className != "slide-up margin-top") {	
+				post_type_wrapper.className = "display-none";
+				document.body.style.cssText = "overflow: hidden;";
+				post_selection[j].className = "post-selection display-table post-hidden";
+
+				setTimeout (function() {
+					post_selection[j].className = "post-selection display-table post-fade visible";
+				}, 100)
+
+				for (var i = 0; i < 7; i++) {
+					post_types[i].className = "type-anim type-hidden";
+					title[i].className = "p-fade p-hidden";
+				}
+			}
+		}
+
+		title[j].addEventListener("mouseover", post_type_mouseover)
+		title[j].addEventListener("mouseout", post_type_mouseout) 
+		title[j].addEventListener("click", post_type_click)
+
+		post_types[j].addEventListener("mouseover", post_type_mouseover)
+		post_types[j].addEventListener("mouseout", post_type_mouseout)
+		post_types[j].addEventListener("click", post_type_click)
 
 		close_post[j].addEventListener("click", function() {
 			post_selection[j].className = "post-selection display-table post-fade post-hidden";
