@@ -2,7 +2,7 @@ var search_img, search_form, search_input,
 		dashboard_body, explore_body, messages_body, dashboard, explore, messages,
 		activity, account_a, account_details, 
 		post, post_options, post_type, post_types, post_titles, title, 
-		text, photo, quote, link, chat, audio, video,
+		text, photo, quote, link, chat, audio, video, post_type_wrapper,
 		post_text, post_photo, post_quote, post_link, post_chat, post_audio, post_video,
 		close_post, post_selection, title_field, text_field, tags_field;
 
@@ -17,17 +17,30 @@ explore_body = document.getElementById("explore-body");
 explore = document.getElementById("explore");
 messages_body = document.getElementById("messages-body");
 messages = document.getElementById("messages");
+blog_body = document.getElementById("blog-body");
 
+var wrapper = document.getElementById("wrapper");
+
+// Timeouts to remove display-none class giving the page time to change 
+// the image before displaying content
 window.onload = function() {
 
 	if (dashboard_body) {
 		dashboard.style.backgroundImage = "url('/static/images/home_active.png')";
-	}
-	else if (explore_body) {
+
+		setTimeout (function () {
+			wrapper.className = "";
+		}, 1)
+	} else if (explore_body) {
 		explore.style.backgroundImage = "url('/static/images/explore_active.png')";
-	}
-	else if (messages_body) {
+	} else if (messages_body) {
 		messages.style.backgroundImage = "url('/static/images/messages_active.png)";
+	} else if (blog_body) {
+		account_a.style.backgroundImage = "url('/static/images/account_active.png')";
+		
+		setTimeout (function() {
+			wrapper.className = "";
+		}, 1)
 	}
 }
 
@@ -86,7 +99,7 @@ account_a.onclick = function(e) {
 	}
 }
 
-var post_type_wrapper = document.getElementById("post-type-wrapper");
+post_type_wrapper = document.getElementById("post-type-wrapper");
 
 post.onclick = function(e) {
 	e.preventDefault();
@@ -137,24 +150,24 @@ post.onclick = function(e) {
 	}
 }
 
-
 document.onclick = function(e) {
 
 	if (account_details.className === "account-fade account-visible") {
 
-		if(e.target === account_details || $(e.target).parents("#account-details").length) {
+		if (e.target === account_details || $(e.target).parents("#account-details").length) {
 			return e.target
-		}
-		else {
+		}	else {
 			account_details.className = "account-fade account-hidden";
-			account_a.style.backgroundImage = null;
+
+			if (blog_body === null) {
+				account_a.style.backgroundImage = "";
+			}
 
 			setTimeout (function() {
 				account_details.className = "account-fade account-hidden display-none";
 			}, 100)
 		}
-	}
-	else if (post_options.className === "post-fade visible") {
+	}	else if (post_options.className === "post-fade visible") {
 
 		/*post options disappear animation(s)*/
 		if (e.target === post_type_wrapper) {
@@ -204,8 +217,7 @@ submit_input = document.querySelectorAll('.submit-input');
 post_submit_button = document.querySelectorAll('.submit-button');
 post_selection = document.querySelectorAll(".post-selection");
 
-//Event listener functions for the various posting divs/p/button tags.
-
+//Event listeners/functions for the various posting divs/p/buttons.
 for (var i = 0; i < 7; i++) {
 
 	(function() {
@@ -233,10 +245,13 @@ for (var i = 0; i < 7; i++) {
 					post_selection[j].className = "post-selection display-table post-fade visible";
 				}, 100)
 
-				for (var i = 0; i < 7; i++) {
-					post_types[i].className = "type-anim type-hidden";
-					title[i].className = "p-fade p-hidden";
-				}
+				//Delay to resolve mouseout className change conflict
+				setTimeout (function() {
+					for (var i = 0; i < 7; i++) {
+						post_types[i].className = "type-anim type-hidden";
+						title[i].className = "p-fade p-hidden";	
+					}
+				}, 500)
 			}
 		}
 
@@ -270,17 +285,14 @@ text_field = document.querySelectorAll(".text-field");
 tags_field = document.querySelectorAll(".tags-field");
 
 function check_title_field() {
-
 	if (title_field[0].value != "" || text_field[0].value != "") {
 		post_submit_button[0].className = "submit-button button-color";
-	}
-	else {
+	} else {
 		post_submit_button[0].className = "submit-button";
 	}
 
 	//This controls all title form field expansions in the header.
 	for (var i = 0; i < title_field.length; i++) {
-		//Resets height to original every query to accommodate potential size reduction.
 		title_field[i].style.height = 46 + 'px';
 		var title_height = title_field[i].scrollHeight;
 		title_field[i].style.height = title_height + 'px'; 
@@ -293,17 +305,14 @@ for (var i = 0; i < title_field.length; i++) {
 }
 
 function check_text_field() {
-
 	if (title_field[0].value != "" || text_field[0].value != "") {
 		post_submit_button[0].className = "submit-button button-color";
-	}
-	else {
+	}	else {
 		post_submit_button[0].className = "submit-button";
 	}
 
 	//This controls all tag form field expansions in the header.
 	for (var i = 0; i < text_field.length; i++) {
-		//Resets height to original every query to accommodate potential size reduction.
 		text_field[i].style.height = 63 + 'px';
 		var text_height = text_field[i].scrollHeight;
 		text_field[i].style.height = text_height + 'px';
@@ -316,9 +325,9 @@ for (var i = 0; i < text_field.length; i++) {
 }
 
 function check_tag_field() {
+	
 	//This controls all tags form field expansions in the header.
 	for (var i = 0; i < tags_field.length; i++) {
-		//Resets height to original every query to accommodate potential 2size reduction.
 		tags_field[i].style.height = 19 + 'px';
 		var tags_height = tags_field[i].scrollHeight;
 		tags_field[i].style.height = tags_height + 'px';
@@ -330,8 +339,8 @@ for (var i = 0; i < tags_field.length; i++) {
 	tags_field[i].addEventListener("keydown", check_tag_field);
 }
 
+//Posting forms mixture of Jquery/pure JS.
 function submit_text_post() {
-
 	$.ajax({
 		url: "/blog/post_text",
 		type: "POST",
@@ -344,7 +353,6 @@ function submit_text_post() {
 }
 
 close_post[0].addEventListener('click', function() {
-
 	setTimeout (function() {
 		title_field[0].value = "";
 		text_field[0].value = "";
@@ -352,15 +360,71 @@ close_post[0].addEventListener('click', function() {
 	}, 200)
 });
 
-$('#post_text_form').on('submit', function(event) {
-
+$('#post-text-form').on('submit', function(event) {
 	event.preventDefault();
-
 	if (title_field[0].value != "" || text_field[0].value != "") {
 		submit_text_post();
 		close_post[0].click();
 	}
 });
+
+$('#upload-img').click(function() {
+	$('#photo-file').click();
+});
+
+function photo_img_preview(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    
+    reader.onload = function (e) {
+      $('#img-preview').attr('src', e.target.result);
+    }
+    
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+var photo_content = $('#post-photo').find(".post-content");
+
+$("#photo-file").change(function(){
+		$('#image-option').addClass("display-none");
+		photo_content.removeClass("display-none");
+    photo_img_preview(this);
+});
+
+var file_field = document.querySelectorAll(".file-field");
+
+function submit_photo_post() {
+	var data = new FormData($('#post-photo-form')[0]);
+
+	$.ajax({
+		url: "/blog/post_photo",
+		type: "POST",
+		data: data,
+		processData: false,
+		contentType: false
+	});
+}
+
+close_post[1].addEventListener('click', function() {
+	setTimeout (function() {
+		file_field[0].value = "";
+		text_field[1].value = "";
+		tags_field[1].value = "";
+		$('#img-preview').attr('src', '/');
+		$('#image-option').removeClass("display-none");
+		photo_content.addClass("display-none");
+	}, 200)
+});
+
+$('#post-photo-form').on('submit', function(event) {
+	event.preventDefault();
+	if (file_field[0].value != "") {
+		submit_photo_post();
+		close_post[1].click();
+	}
+});
+
 
 // This function gets cookie with a given name
 function getCookie(name) {

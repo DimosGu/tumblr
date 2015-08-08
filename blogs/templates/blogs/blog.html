@@ -8,13 +8,31 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}" />
 </head>
 <body id="blog-body">
-	<div id="wrapper">
+	<div id="wrapper" class="display-none">
 		{% include "header.html" %}
 		<div id="content">
-			{% for post in latest_posts %}
-				<p>{{ post.title }}</p>
-				<p>{{ post.text }}</p>
-			{% endfor %}
+			<div id="post-wrapper">
+				{% for post in latest_posts %}
+					<div class="post-header">
+						<a href="">{{ user.username }}</a>
+					</div>
+					<div class="post">
+						{% if post.file %}
+							<img src="{{ post.file.url }}">
+						{% endif %}
+						{% if post.title %}
+							<span>{{ post.title }}</span>
+						{% endif %}
+						{% if post.text %}
+							<p>{{ post.text }}</p>
+						{% endif %}
+					</div>
+					<div class="post-footer">
+						<div class="footer-options">
+						</div>
+					</div>
+				{% endfor %}
+			</div>
 		</div>
 	</div>
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>

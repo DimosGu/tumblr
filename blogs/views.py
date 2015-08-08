@@ -4,6 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from blogs.forms import TextPostForm, PhotoPostForm
 from blogs.models import Blog, Post
 from user_accounts.models import User
+from django.core.files import File
 
 @login_required
 def blog(request, username):
@@ -29,8 +30,9 @@ def post_text(request):
 
 @login_required
 def post_photo(request):
+
 	if request.method == 'POST':
-		photo_form = PhotoPostForm(request.POST)
+		photo_form = PhotoPostForm(request.POST, request.FILES)
 
 		if photo_form.is_valid():
 			photo_form.instance.blog = Blog.objects.get(user=request.user)

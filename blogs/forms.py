@@ -33,17 +33,17 @@ class TextPostForm(forms.ModelForm):
 
 class PhotoPostForm(forms.ModelForm):
 	
-	title = forms.CharField(required=False,
-		widget=forms.Textarea(attrs = {
-			'id': 'photo_title',
-			'class': 'title-field',
-			'placeholder': 'Title',
+	file = forms.FileField(
+		widget=forms.ClearableFileInput(attrs = {
+			'id': 'photo-file',
+			'class': 'file-field',
+			'accept': 'image/*',
 		}),
 	)
 
 	text = forms.CharField(required=False,
 		widget=forms.Textarea(attrs = {
-			'id': 'photo_text',
+			'id': 'photo-text',
 			'class': 'text-field',
 			'placeholder': 'Your text here',
 		}),
@@ -51,7 +51,7 @@ class PhotoPostForm(forms.ModelForm):
 
 	tags = forms.CharField(required=False,
 		widget=forms.Textarea(attrs = {
-			'id': 'photo_tags',
+			'id': 'photo-tags',
 			'class': 'tags-field',
 			'placeholder': '#tags',
 			'maxlength': '200',
@@ -60,4 +60,4 @@ class PhotoPostForm(forms.ModelForm):
 
 	class Meta:
 		model = Post
-		fields = ('title', 'text', 'tags')
+		fields = ('file', 'text', 'tags')

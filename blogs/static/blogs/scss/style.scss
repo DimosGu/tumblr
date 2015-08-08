@@ -21,9 +21,65 @@ body {
 	height: 2000px;
 	margin: 54px 0 0 0;
 	width: 100%;
+}
 
-	p {
-		color: #ffffff;
+#post-wrapper {
+	margin: 0 auto 0 auto;
+	padding-top: 38px;
+	width: 540px;
+}
+
+.post-header {
+	background: #ffffff;
+	border-radius: 2px 2px 0 0;
+	height: 42px;
+	padding: 10px 0 0 20px;
+	width: 100%;
+
+	a {
+		color: #444;
+		font-size: 13px;
+		font-weight: 700;
+		text-decoration: none;
 	}
 }
-	
+
+.post {
+	background: #ffffff;
+	color: #444;
+	width: 540px;
+
+	span {
+		font-size: 36px;
+		margin: 0 0 0 17px;
+	}
+
+	p {
+		color: #444;
+		font-size: 14px;
+		margin: 10px 0 0 18px;
+	}
+
+	img {
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.post-footer {
+	background: #ffffff;
+	border-radius: 0 0 2px 2px;
+	height: 42px;
+	margin: 0 0 20px 0;
+	overflow: auto;
+	width: 100%;
+
+	.footer-options {
+		background: url('/static/images/posted_options.png') no-repeat;
+		cursor: pointer;
+		float: right;
+		height: 25px;
+		margin: 12px 18px 0 0;
+		width: 25px;
+	}
+}

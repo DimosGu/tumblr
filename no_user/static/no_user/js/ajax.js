@@ -1,6 +1,4 @@
-var form_errors;
-
-form_error_id = $('#form-errors');
+var form_error_id = $('#form-errors');
 
 function check_field() {
 	var email_val, password_val, username_val;

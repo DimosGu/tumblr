@@ -358,13 +358,49 @@
     background: #ffffff;
     border-radius: 2px;
     margin: 50px auto 50px auto;
-    padding-left: 2px;
     position: relative;
     width: 540px; }
   #post-options #post-text {
     min-height: 287px; }
   #post-options #post-photo {
     min-height: 305px; }
+    #post-options #post-photo #image-option {
+      background: #F2F2F2;
+      border-top: 2px dashed #d4d4d4;
+      border-bottom: 2px dashed #d4d4d4;
+      height: 200px;
+      overflow: auto;
+      width: 540px; }
+      #post-options #post-photo #image-option .option-container {
+        margin: auto;
+        width: 270px; }
+      #post-options #post-photo #image-option p {
+        color: #9a9a9a;
+        font-size: 14px; }
+      #post-options #post-photo #image-option img {
+        margin: 65px 5px 10px 0; }
+      #post-options #post-photo #image-option #upload-img {
+        cursor: pointer;
+        float: left;
+        height: 196px;
+        text-align: center;
+        width: 270px; }
+      #post-options #post-photo #image-option #url-img {
+        cursor: pointer;
+        float: left;
+        height: 196px;
+        text-align: center;
+        width: 270px; }
+      #post-options #post-photo #image-option #url-img::before {
+        border-left: 1px solid #d4d4d4;
+        content: "";
+        display: block;
+        height: 150px;
+        margin: 25px 0 0 0;
+        position: absolute;
+        width: 1px; }
+    #post-options #post-photo #photo-file {
+      display: none; }
   #post-options #post-quote {
     min-height: 300px; }
   #post-options #post-link {
@@ -383,10 +419,10 @@
       color: #a2a2a2;
       font-size: 13px;
       font-weight: 700;
-      margin: 0 0 0 18px; }
+      margin: 0 0 0 20px; }
   #post-options .post-content {
     background: #ffffff;
-    margin: 0 0 0 15px; }
+    margin: 0 0 0 17px; }
     #post-options .post-content .title-field,
     #post-options .post-content .text-field,
     #post-options .post-content .tags-field {
@@ -414,10 +450,8 @@
     #post-options .post-content .submit-input {
       display: none; }
   #post-options .post-footer {
-    bottom: 0;
     height: 60px;
     padding-top: 15px;
-    position: relative;
     width: 540px; }
     #post-options .post-footer .close-post {
       background-color: #9DA6AF;
@@ -429,7 +463,7 @@
       font-size: 13px;
       font-weight: bold;
       height: 30px;
-      margin: 0 0 0 18px;
+      margin: 0 0 0 20px;
       padding: 0 0 1px 0;
       position: absolute;
       width: 51px; }

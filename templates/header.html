@@ -68,7 +68,7 @@
 					<p>{{ user.username }}</p>
 				</div>
 				<div class="post-content">
-					<form id="post_text_form" action="/" method="POST">
+					<form id="post-text-form" action="/" method="POST">
 						{% csrf_token %}
 						{{ text_form.title }}
 						{{ text_form.text }}
@@ -92,10 +92,25 @@
 				<div class="post-header">
 					<p>{{ user.username }}</p>
 				</div>
-				<div class="post-content">
-					<form action="/" method="POST">
+				<div id="image-option">
+					<div id="upload-img">
+						<div class="option-container">
+							<img src="{% static 'images/upload_photo.png' %}">
+							<p>Upload photos</p>
+						</div>
+					</div>
+					<div id="url-img">
+						<div class="option-container">
+							<img src="{% static 'images/url_photo.png' %}">
+							<p>Add photo from web</p>
+						</div>
+					</div>
+				</div>
+				<div class="post-content display-none">
+					<form enctype="multipart/form-data" id="post-photo-form" action="/" method="POST">
 						{% csrf_token %}
-						{{ photo_form.title }}
+						{{ photo_form.file }}
+						<img id="img-preview" src="/">
 						{{ photo_form.text }}
 						{{ photo_form.tags }}
 						<input class="submit-input" type="submit">

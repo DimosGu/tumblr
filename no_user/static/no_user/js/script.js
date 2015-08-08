@@ -31,8 +31,7 @@ window.onload = function() {
 		sign_up_button.onclick = function() {
 			return false;
 		}
-	}
-	else if (login_body) {
+	} else if (login_body) {
 		email_login.focus();
 		login_button.onclick =function() {
 			return false;
