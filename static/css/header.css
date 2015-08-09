@@ -401,6 +401,9 @@
         width: 1px; }
     #post-options #post-photo #photo-file {
       display: none; }
+    #post-options #post-photo #img-preview {
+      margin: 0 0 10px 0;
+      max-width: 100%; }
   #post-options #post-quote {
     min-height: 300px; }
   #post-options #post-link {
@@ -421,13 +424,13 @@
       font-weight: 700;
       margin: 0 0 0 20px; }
   #post-options .post-content {
-    background: #ffffff;
-    margin: 0 0 0 17px; }
+    background: #ffffff; }
     #post-options .post-content .title-field,
     #post-options .post-content .text-field,
     #post-options .post-content .tags-field {
       border: none;
       font-family: helvetica, arial;
+      margin-left: 17px;
       outline: none;
       overflow: hidden;
       position: relative;
@@ -445,7 +448,8 @@
     #post-options .post-content .tags-field {
       font-size: 13px;
       height: 19px;
-      margin: 28px 0 12px 0;
+      margin-top: 28px;
+      margin-bottom: 12px;
       min-height: 19px; }
     #post-options .post-content .submit-input {
       display: none; }

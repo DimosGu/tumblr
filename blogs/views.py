@@ -10,7 +10,7 @@ from django.core.files import File
 def blog(request, username):
 	user = User.objects.get(username=username)
 	blog = Blog.objects.get(user=user)
-	posts = Post.objects.all().filter(blog=blog)
+	posts = Post.objects.filter(blog=blog)
 	latest_posts = posts.order_by('-pub_date')
 
 	return render(request, 'blogs/blog.html', {'latest_posts': latest_posts})

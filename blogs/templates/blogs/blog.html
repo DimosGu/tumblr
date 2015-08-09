@@ -10,15 +10,20 @@
 <body id="blog-body">
 	<div id="wrapper" class="display-none">
 		{% include "header.html" %}
-		<div id="content">
-			<div id="post-wrapper">
+		<div id="blog-content">
+			<div id="blog-post-wrapper">
 				{% for post in latest_posts %}
-					<div class="post-header">
-						<a href="">{{ user.username }}</a>
+					<div class="blog-post-header">
+						<a class="user-blog-link" href="/">
+							<img src="{{ blog.img.url }}">
+						</a>
+						<a class="user-link" href="">{{ user.username }}</a>
 					</div>
-					<div class="post">
+					<div class="blog-post">
 						{% if post.file %}
-							<img src="{{ post.file.url }}">
+							<a href="{{ post.file.url }}">
+								<img class="blog-post-img" src="{{ post.file.url }}">
+							</a>
 						{% endif %}
 						{% if post.title %}
 							<span>{{ post.title }}</span>
@@ -27,8 +32,12 @@
 							<p>{{ post.text }}</p>
 						{% endif %}
 					</div>
-					<div class="post-footer">
-						<div class="footer-options">
+					<div class="blog-post-footer">
+						<div class="blog-footer-options">
+							<div class="options-popup display-none">
+								<div class="option-edit">Edit</div>
+								<div class="option-delete">Delete</div>
+							</div>
 						</div>
 					</div>
 				{% endfor %}

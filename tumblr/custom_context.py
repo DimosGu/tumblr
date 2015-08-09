@@ -17,5 +17,10 @@ def blog(request):
 def header_forms(request):
 	text_form = TextPostForm()
 	photo_form = PhotoPostForm()
+
+	post_forms = {
+		'text_form': text_form,
+		'photo_form': photo_form
+	}
 	
-	return {'text_form': text_form, 'photo_form': photo_form}
+	return post_forms

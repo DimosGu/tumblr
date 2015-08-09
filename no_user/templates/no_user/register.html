@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'no_user/css/style.css' %}" />
 </head>
 <body id="register-body">
-	<div id="wrapper" class="invisible" style="background-image: url({% static 'no_user/images/elfgirls.jpg' %});">
+	<div id="wrapper" class="invisible" style="background-image: url({{ recent_img_post.file.url }});">
 		{% include "no_user/header.html" %}
 		<div id="center" class="invisible">
 			<h1><img src="{% static 'no_user/images/logo_large.png' %}" alt="tumblr" /></h1>

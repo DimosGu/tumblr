@@ -24,24 +24,26 @@ var wrapper = document.getElementById("wrapper");
 // Timeouts to remove display-none class giving the page time to change 
 // the image before displaying content
 window.onload = function() {
-
 	if (dashboard_body) {
 		dashboard.style.backgroundImage = "url('/static/images/home_active.png')";
-
-		setTimeout (function () {
-			wrapper.className = "";
-		}, 1)
 	} else if (explore_body) {
 		explore.style.backgroundImage = "url('/static/images/explore_active.png')";
 	} else if (messages_body) {
 		messages.style.backgroundImage = "url('/static/images/messages_active.png)";
 	} else if (blog_body) {
+		blog_post_img = document.querySelectorAll('.blog-post-img');
 		account_a.style.backgroundImage = "url('/static/images/account_active.png')";
-		
-		setTimeout (function() {
-			wrapper.className = "";
-		}, 1)
+
+		for (var i = 0; i < blog_post_img.length; i++) {
+			if (blog_post_img[i].width <= 522) {
+				blog_post_img[i].style.marginLeft = '18px';
+			}
+		}
 	}
+
+	setTimeout (function() {
+		wrapper.className = "";
+	}, 1)
 }
 
 search_form = document.getElementById("search");
@@ -49,7 +51,6 @@ search_input = document.getElementById("search-input");
 
 search_input.onfocus = function() {	
 	search_form.className = "input-focus";
-
 	if (search_input.value) {
 		search_input.className = "visible";
 	}
@@ -57,7 +58,6 @@ search_input.onfocus = function() {
 
 search_input.onblur = function() {
 	search_form.className = "input-nofocus";
-	
 	if (search_input.value) {
 		search_input.className = "fade";
 	}
@@ -339,7 +339,7 @@ for (var i = 0; i < tags_field.length; i++) {
 	tags_field[i].addEventListener("keydown", check_tag_field);
 }
 
-//Posting forms mixture of Jquery/pure JS.
+//Posting forms
 function submit_text_post() {
 	$.ajax({
 		url: "/blog/post_text",
@@ -373,11 +373,15 @@ $('#upload-img').click(function() {
 });
 
 function photo_img_preview(input) {
+	var img_preview = $("#img-preview");
+
   if (input.files && input.files[0]) {
     var reader = new FileReader();
     
     reader.onload = function (e) {
-      $('#img-preview').attr('src', e.target.result);
+      img_preview.attr('src', e.target.result);
+      img_preview.removeClass("display-none");
+      post_submit_button[1].className = "submit-button button-color";
     }
     
     reader.readAsDataURL(input.files[0]);
@@ -414,6 +418,7 @@ close_post[1].addEventListener('click', function() {
 		$('#img-preview').attr('src', '/');
 		$('#image-option').removeClass("display-none");
 		photo_content.addClass("display-none");
+		post_submit_button[1].className = "submit-button";
 	}, 200)
 });
 
@@ -425,6 +430,32 @@ $('#post-photo-form').on('submit', function(event) {
 	}
 });
 
+//---------------Blog page js-----------------//
+var footer_options, options_popup;
+
+footer_options = document.querySelectorAll('.blog-footer-options');
+options_popup = document.querySelectorAll('.options-popup');
+
+for (var i = 0; i < footer_options.length; i++) {
+
+	(function() {
+		var j = i;
+
+		footer_options[j].addEventListener('click', function() {
+			if (options_popup[j].className === 'options-popup display-none') {
+				setTimeout (function() {
+					options_popup[j].className = 'options-popup';
+				}, 1)
+			}
+		});
+
+		document.addEventListener('click', function(e) {
+			if (options_popup[j].className === 'options-popup') {
+				options_popup[j].className = 'options-popup display-none';
+			}
+		})
+	}());
+}
 
 // This function gets cookie with a given name
 function getCookie(name) {
