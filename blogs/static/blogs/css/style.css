@@ -41,18 +41,30 @@ body {
   background: #36465d;
   height: 100%; }
 
+.blog-post-fade {
+  -webkit-transition-property: opacity;
+  -moz-transition-property: opacity;
+  transition-property: opacity;
+  -webkit-transition-duration: 0.6s;
+  -moz-transition-duration: 0.6s;
+  transition-duration: 0.6s;
+  -webkit-transition-timing-function: ease-out;
+  -moz-transition-timing-function: ease-out;
+  transition-timing-function: ease-out; }
+
 #wrapper {
-  height: 100%;
   width: 100%; }
 
 #blog-content {
-  height: 2000px;
-  margin: 54px 0 0 0;
+  padding: 93px 0 0 0;
   width: 100%; }
-  #blog-content #blog-post-wrapper {
+  #blog-content #blog-posts-wrapper {
     margin: 0 auto 0 auto;
-    padding-top: 38px;
     width: 540px; }
+  #blog-content .post-wrapper {
+    width: 540px; }
+  #blog-content .post-id {
+    display: none; }
   #blog-content .blog-post-header {
     background: #ffffff;
     border-radius: 2px 2px 0 0;
@@ -104,15 +116,19 @@ body {
       margin: 12px 18px 0 0;
       position: relative;
       width: 25px; }
+      #blog-content .blog-post-footer .blog-footer-options .popup-high {
+        top: -80px; }
+      #blog-content .blog-post-footer .blog-footer-options .popup-low {
+        top: 20px; }
       #blog-content .blog-post-footer .blog-footer-options .options-popup {
         background: #ffffff;
         border: 1px solid rgba(0, 0, 0, 0.1);
         border-radius: 2px;
         box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+        cursor: default;
         height: 76px;
         width: 130px;
         left: -60px;
-        top: 20px;
         position: absolute;
         padding: 5px 0 0 0;
         z-index: 2; }
@@ -120,9 +136,11 @@ body {
         #blog-content .blog-post-footer .blog-footer-options .options-popup .option-delete {
           background: #ffffff;
           color: #444;
+          display: block;
           font-size: 15px;
           height: 32px;
           padding: 6px 0 0 12px;
+          text-decoration: none;
           width: 100%; }
         #blog-content .blog-post-footer .blog-footer-options .options-popup .option-edit:hover,
         #blog-content .blog-post-footer .blog-footer-options .options-popup .option-delete:hover {

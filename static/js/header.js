@@ -43,7 +43,7 @@ window.onload = function() {
 
 	setTimeout (function() {
 		wrapper.className = "";
-	}, 1)
+	}, 1);
 }
 
 search_form = document.getElementById("search");
@@ -95,7 +95,7 @@ account_a.onclick = function(e) {
 
 		setTimeout (function() {
 			account_details.className = "account-fade account-visible";
-		}, 20)
+		}, 20);
 	}
 }
 
@@ -111,42 +111,42 @@ post.onclick = function(e) {
 
 		setTimeout (function() {
 			post_options.className = "post-fade visible";
-		}, 1)
+		}, 1);
 
 		setTimeout (function() {
 			text.className = "type-anim type-visible";
 			title[0].className = "p-fade p-visible";
-		}, 10)
+		}, 10);
 
 		setTimeout (function() {
 			photo.className = "type-anim type-visible";
 			title[1].className = "p-fade p-visible";
-		}, 60)
+		}, 60);
 
 		setTimeout (function() {
 			quote.className = "type-anim type-visible";
 			title[2].className = "p-fade p-visible";
-		}, 110)
+		}, 110);
 
 		setTimeout (function() {
 			link.className = "type-anim type-visible";
 			title[3].className = "p-fade p-visible";
-		}, 160)
+		}, 160);
 
 		setTimeout (function() {
 			chat.className = "type-anim type-visible";
 			title[4].className = "p-fade p-visible";
-		}, 180)
+		}, 180);
 
 		setTimeout (function() {
 			audio.className = "type-anim type-visible";
 			title[5].className = "p-fade p-visible";
-		}, 230)
+		}, 230);
 
 		setTimeout (function() {
 			video.className = "type-anim type-visible";
 			title[6].className = "p-fade p-visible";
-		}, 280)
+		}, 280);
 	}
 }
 
@@ -165,7 +165,7 @@ document.onclick = function(e) {
 
 			setTimeout (function() {
 				account_details.className = "account-fade account-hidden display-none";
-			}, 100)
+			}, 100);
 		}
 	}	else if (post_options.className === "post-fade visible") {
 
@@ -179,25 +179,25 @@ document.onclick = function(e) {
 				chat.className = "slide-up margin-top";
 				title[2].className = "slide-up margin-top";
 				title[4].className = "slide-up margin-top";
-			}, 50)
+			}, 50);
 
 			setTimeout (function() {
 				photo.className = "slide-up margin-top";
 				audio.className = "slide-up margin-top";
 				title[1].className = "slide-up margin-top";
 				title[5].className = "slide-up margin-top";
-			}, 100)
+			}, 100);
 
 			setTimeout (function() {
 				text.className = "slide-up margin-top";
 				video.className = "slide-up margin-top";
 				title[0].className = "slide-up margin-top";
 				title[6].className = "slide-up margin-top";
-			}, 150)
+			}, 150);
 
 			setTimeout (function() {
 				post_options.className = "post-fade post-hidden display-none";
-			}, 250)
+			}, 250);
 
 			/*Resets the divs and their corresponding p tags' classes
 			to prepare them for the beginning animation cycle.*/
@@ -206,7 +206,7 @@ document.onclick = function(e) {
 					post_types[i].className = "type-anim type-hidden";
 					title[i].className = "p-fade p-hidden";
 				}
-			}, 300)
+			}, 300);
 		}
 	}
 }
@@ -243,7 +243,7 @@ for (var i = 0; i < 7; i++) {
 
 				setTimeout (function() {
 					post_selection[j].className = "post-selection display-table post-fade visible";
-				}, 100)
+				}, 100);
 
 				//Delay to resolve mouseout className change conflict
 				setTimeout (function() {
@@ -251,7 +251,7 @@ for (var i = 0; i < 7; i++) {
 						post_types[i].className = "type-anim type-hidden";
 						title[i].className = "p-fade p-hidden";	
 					}
-				}, 500)
+				}, 500);
 			}
 		}
 
@@ -270,7 +270,7 @@ for (var i = 0; i < 7; i++) {
 				post_options.className = "post-fade post-hidden display-none";
 				document.body.style.cssText = "";
 				post_selection[j].className = "post-selection display-none";
-			}, 200)
+			}, 200);
 		});
 
 		post_submit_button[j].addEventListener("click", function() {
@@ -357,14 +357,22 @@ close_post[0].addEventListener('click', function() {
 		title_field[0].value = "";
 		text_field[0].value = "";
 		tags_field[0].value = "";
-	}, 200)
+	}, 200);
 });
 
 $('#post-text-form').on('submit', function(event) {
 	event.preventDefault();
+
 	if (title_field[0].value != "" || text_field[0].value != "") {
 		submit_text_post();
 		close_post[0].click();
+
+		if (blog_body) {
+
+			setTimeout (function() {
+				$('#blog-posts-wrapper').load(document.URL + ' #blog-posts-wrapper');
+			}, 1000);
+		}
 	}
 });
 
@@ -419,43 +427,23 @@ close_post[1].addEventListener('click', function() {
 		$('#image-option').removeClass("display-none");
 		photo_content.addClass("display-none");
 		post_submit_button[1].className = "submit-button";
-	}, 200)
+	}, 200);
 });
 
 $('#post-photo-form').on('submit', function(event) {
 	event.preventDefault();
+
 	if (file_field[0].value != "") {
 		submit_photo_post();
 		close_post[1].click();
+
+		if (blog_body) {
+			setTimeout (function() {
+				$('#blog-content').load(document.URL + ' #blog-posts-wrapper');
+			}, 1000);
+		}
 	}
 });
-
-//---------------Blog page js-----------------//
-var footer_options, options_popup;
-
-footer_options = document.querySelectorAll('.blog-footer-options');
-options_popup = document.querySelectorAll('.options-popup');
-
-for (var i = 0; i < footer_options.length; i++) {
-
-	(function() {
-		var j = i;
-
-		footer_options[j].addEventListener('click', function() {
-			if (options_popup[j].className === 'options-popup display-none') {
-				setTimeout (function() {
-					options_popup[j].className = 'options-popup';
-				}, 1)
-			}
-		});
-
-		document.addEventListener('click', function(e) {
-			if (options_popup[j].className === 'options-popup') {
-				options_popup[j].className = 'options-popup display-none';
-			}
-		})
-	}());
-}
 
 // This function gets cookie with a given name
 function getCookie(name) {

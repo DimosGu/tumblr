@@ -45,7 +45,7 @@ class PhotoPostForm(forms.ModelForm):
 		widget=forms.Textarea(attrs = {
 			'id': 'photo-text',
 			'class': 'text-field',
-			'placeholder': 'Your text here',
+			'placeholder': 'Add a caption, if you like',
 		}),
 	)
 

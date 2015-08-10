@@ -12,20 +12,31 @@ body {
 	height: 100%;
 }
 
+.blog-post-fade {
+	@include transition-property( opacity );
+	@include transition-duration( .6s );
+	@include transition-timing-function( ease-out );
+}
+
 #wrapper {
-	height: 100%;
 	width: 100%;
 }
 
 #blog-content {
-	height: 2000px;
-	margin: 54px 0 0 0;
+	padding: 93px 0 0 0;
 	width: 100%;
 
-	#blog-post-wrapper {
+	#blog-posts-wrapper {
 		margin: 0 auto 0 auto;
-		padding-top: 38px;
 		width: 540px;
+	}
+
+	.post-wrapper {
+		width: 540px;
+	}
+
+	.post-id {
+		display: none;
 	}
 
 	.blog-post-header {
@@ -97,15 +108,23 @@ body {
 			position: relative;
 			width: 25px;
 			
+			.popup-high {
+				top: -80px;
+			}
+
+			.popup-low {
+				top: 20px;
+			}
+
 			.options-popup {
 				background: #ffffff;
 				border: 1px solid rgba(0,0,0,.1);
 				border-radius: 2px;
 				box-shadow: 0 5px 10px 0 rgba(0,0,0,.1);
+				cursor: default;
 				height: 76px;
 				width: 130px;
 				left: -60px;
-				top: 20px;
 				position: absolute;
 				padding: 5px 0 0 0;
 				z-index: 2;
@@ -114,9 +133,11 @@ body {
 				.option-delete {
 					background: #ffffff;
 					color: #444;
+					display: block;
 					font-size: 15px;
 					height: 32px;
 					padding: 6px 0 0 12px;
+					text-decoration: none;
 					width: 100%;
 				}
 

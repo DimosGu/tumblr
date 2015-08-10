@@ -2,8 +2,8 @@ from django.db import models
 from django.conf import settings
 from django.utils import timezone
 
-def upload_path(instance):
-	return 'post_media/%s/' % instance.username
+def upload_path(instance, filename):
+	return 'user_media/%s/%s' % (instance.user.username, filename)
 
 class Blog(models.Model):
 	user = models.ForeignKey(settings.AUTH_USER_MODEL)
@@ -14,12 +14,13 @@ class Blog(models.Model):
 		return self.title
 
 class Post(models.Model):
+	user = models.ForeignKey(settings.AUTH_USER_MODEL)
 	blog = models.ForeignKey(Blog)
 	pub_date = models.DateTimeField('date published', default=timezone.now)
 	title = models.TextField(blank=True)
 	text = models.TextField(blank=True)
 	tags = models.TextField(blank=True)
-	file = models.FileField(upload_to='post_media', blank=True)
+	file = models.FileField(upload_to=upload_path, blank=True)
 
 	def __str__(self):
 		if self.title != "":
