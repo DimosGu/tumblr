@@ -104,50 +104,48 @@ post_type_wrapper = document.getElementById("post-type-wrapper");
 post.onclick = function(e) {
 	e.preventDefault();
 
-	/*post option appear animation(s)*/
-	if (post_options.className === "post-fade post-hidden display-none") {
-		post_type_wrapper.className = "";
-		post_options.className = "post-fade post-hidden";
+/*post option appear animation(s)*/
+	post_type_wrapper.className = "";
+	post_options.className = "post-fade post-hidden";
 
-		setTimeout (function() {
-			post_options.className = "post-fade visible";
-		}, 1);
+	setTimeout (function() {
+		post_options.className = "post-fade visible";
+	}, 1);
 
-		setTimeout (function() {
-			text.className = "type-anim type-visible";
-			title[0].className = "p-fade p-visible";
-		}, 10);
+	setTimeout (function() {
+		text.className = "type-anim type-visible";
+		title[0].className = "p-fade p-visible";
+	}, 10);
 
-		setTimeout (function() {
-			photo.className = "type-anim type-visible";
-			title[1].className = "p-fade p-visible";
-		}, 60);
+	setTimeout (function() {
+		photo.className = "type-anim type-visible";
+		title[1].className = "p-fade p-visible";
+	}, 60);
 
-		setTimeout (function() {
-			quote.className = "type-anim type-visible";
-			title[2].className = "p-fade p-visible";
-		}, 110);
+	setTimeout (function() {
+		quote.className = "type-anim type-visible";
+		title[2].className = "p-fade p-visible";
+	}, 110);
 
-		setTimeout (function() {
-			link.className = "type-anim type-visible";
-			title[3].className = "p-fade p-visible";
-		}, 160);
+	setTimeout (function() {
+		link.className = "type-anim type-visible";
+		title[3].className = "p-fade p-visible";
+	}, 160);
 
-		setTimeout (function() {
-			chat.className = "type-anim type-visible";
-			title[4].className = "p-fade p-visible";
-		}, 180);
+	setTimeout (function() {
+		chat.className = "type-anim type-visible";
+		title[4].className = "p-fade p-visible";
+	}, 180);
 
-		setTimeout (function() {
-			audio.className = "type-anim type-visible";
-			title[5].className = "p-fade p-visible";
-		}, 230);
+	setTimeout (function() {
+		audio.className = "type-anim type-visible";
+		title[5].className = "p-fade p-visible";
+	}, 230);
 
-		setTimeout (function() {
-			video.className = "type-anim type-visible";
-			title[6].className = "p-fade p-visible";
-		}, 280);
-	}
+	setTimeout (function() {
+		video.className = "type-anim type-visible";
+		title[6].className = "p-fade p-visible";
+	}, 280);
 }
 
 document.onclick = function(e) {
@@ -291,7 +289,6 @@ function check_title_field() {
 		post_submit_button[0].className = "submit-button";
 	}
 
-	//This controls all title form field expansions in the header.
 	for (var i = 0; i < title_field.length; i++) {
 		title_field[i].style.height = 46 + 'px';
 		var title_height = title_field[i].scrollHeight;
@@ -311,7 +308,6 @@ function check_text_field() {
 		post_submit_button[0].className = "submit-button";
 	}
 
-	//This controls all tag form field expansions in the header.
 	for (var i = 0; i < text_field.length; i++) {
 		text_field[i].style.height = 63 + 'px';
 		var text_height = text_field[i].scrollHeight;
@@ -326,7 +322,6 @@ for (var i = 0; i < text_field.length; i++) {
 
 function check_tag_field() {
 	
-	//This controls all tags form field expansions in the header.
 	for (var i = 0; i < tags_field.length; i++) {
 		tags_field[i].style.height = 19 + 'px';
 		var tags_height = tags_field[i].scrollHeight;
@@ -340,23 +335,37 @@ for (var i = 0; i < tags_field.length; i++) {
 }
 
 //Posting forms
-function submit_text_post() {
+function submit_text_post(id) {
+	var data = {
+		title: title_field[0].value,
+		text: text_field[0].value,
+		tags: tags_field[0].value,
+	}
+	
+	if (id != null) {
+		data.post_edit_id = id;
+	}
+
 	$.ajax({
 		url: "/blog/post_text",
 		type: "POST",
-		data: {
-			title: title_field[0].value,
-			text: text_field[0].value,
-			tags: tags_field[0].value,
+		data: data,
+
+		success: function() {
+			if (blog_body) {
+				$('#blog-content').load(document.URL + ' #blog-posts-wrapper');
+			}
 		}
 	});
 }
 
 close_post[0].addEventListener('click', function() {
 	setTimeout (function() {
+		post_edit_id = null;
 		title_field[0].value = "";
 		text_field[0].value = "";
 		tags_field[0].value = "";
+		post_submit_button[0].innerHTML = "Post";
 	}, 200);
 });
 
@@ -364,15 +373,8 @@ $('#post-text-form').on('submit', function(event) {
 	event.preventDefault();
 
 	if (title_field[0].value != "" || text_field[0].value != "") {
-		submit_text_post();
+		submit_text_post(post_edit_id);
 		close_post[0].click();
-
-		if (blog_body) {
-
-			setTimeout (function() {
-				$('#blog-posts-wrapper').load(document.URL + ' #blog-posts-wrapper');
-			}, 1000);
-		}
 	}
 });
 
@@ -396,23 +398,60 @@ function photo_img_preview(input) {
   }
 }
 
+var timer;
+
+$('#img-preview, #erase-img').hover(
+	function() {
+		$('#erase-img').removeClass('display-none');
+
+		if (timer) {
+			clearTimeout(timer);
+			timer = null;
+		}
+	},
+	function() {
+		timer = setTimeout (function() {
+			$('#erase-img').addClass('display-none');
+		}, 700);
+	}
+);
+
+$('#erase-img').click(function() {
+	$('#image-option').removeClass('display-none');
+	$(this).addClass('display-none');
+	file_field[0].value = "";
+	$('#img-preview').attr('src', '').addClass('display-none');
+	post_submit_button[1].className = "submit-button";
+});
+
 var photo_content = $('#post-photo').find(".post-content");
 
 $("#photo-file").change(function(){
-		$('#image-option').addClass("display-none");
-		photo_content.removeClass("display-none");
-    photo_img_preview(this);
+	$('#image-option').addClass("display-none");
+	photo_content.removeClass("display-none");
+  photo_img_preview(this);
 });
 
 var file_field = document.querySelectorAll(".file-field");
 
-function submit_photo_post() {
+function submit_photo_post(id) {
 	var data = new FormData($('#post-photo-form')[0]);
+
+	if (id != null) {
+		data.append('post_edit_id', id);
+	}
 
 	$.ajax({
 		url: "/blog/post_photo",
 		type: "POST",
 		data: data,
+
+		success: function() {
+			if (blog_body) {
+				$('#blog-content').load(document.URL + ' #blog-posts-wrapper');
+			}
+		},
+
 		processData: false,
 		contentType: false
 	});
@@ -423,25 +462,21 @@ close_post[1].addEventListener('click', function() {
 		file_field[0].value = "";
 		text_field[1].value = "";
 		tags_field[1].value = "";
-		$('#img-preview').attr('src', '/');
+		post_edit_id = null;
+		$('#img-preview').attr('src', '');
 		$('#image-option').removeClass("display-none");
 		photo_content.addClass("display-none");
 		post_submit_button[1].className = "submit-button";
+		post_submit_button[1].innerHTML = "Post";
 	}, 200);
 });
 
 $('#post-photo-form').on('submit', function(event) {
 	event.preventDefault();
-
-	if (file_field[0].value != "") {
-		submit_photo_post();
+	
+	if (file_field[0].value != "" || $('#img-preview').attr('src') != '') {
+		submit_photo_post(post_edit_id)
 		close_post[1].click();
-
-		if (blog_body) {
-			setTimeout (function() {
-				$('#blog-content').load(document.URL + ' #blog-posts-wrapper');
-			}, 1000);
-		}
 	}
 });
 

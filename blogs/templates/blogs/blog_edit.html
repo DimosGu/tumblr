@@ -28,10 +28,13 @@
 								</a>
 							{% endif %}
 							{% if post.title %}
-								<span>{{ post.title }}</span>
+								<span class="blog-post-title">{{ post.title }}</span>
 							{% endif %}
 							{% if post.text %}
-								<p>{{ post.text }}</p>
+								<p class="blog-post-text">{{ post.text }}</p>
+							{% endif %}
+							{% if post.tags %}
+								<span class="blog-post-tags">{{ post.tags }}</span>
 							{% endif %}
 						</div>
 						<div class="blog-post-footer">

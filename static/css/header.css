@@ -148,9 +148,9 @@
 #header-right {
   float: right; }
   #header-right #header-links {
-    height: 100%;
     margin: 11px 20px 0 0;
     overflow: visible;
+    height: 100%;
     width: 100%; }
     #header-right #header-links #dashboard,
     #header-right #header-links #explore,
@@ -165,42 +165,42 @@
       margin-left: 32px; }
     #header-right #header-links #dashboard {
       background: url("/static/images/home.png") no-repeat;
-      height: 20px;
       margin-top: 5px;
+      height: 20px;
       width: 20px; }
     #header-right #header-links #explore {
       background: url("/static/images/explore.png") no-repeat;
-      height: 22px;
       margin-top: 4px;
+      height: 22px;
       width: 22px; }
     #header-right #header-links #messages {
       background: url("/static/images/messages.png") no-repeat;
-      height: 17px;
       margin-top: 7px;
+      height: 17px;
       width: 23px; }
     #header-right #header-links #activity {
       background: url("/static/images/activity.png") no-repeat;
-      height: 20px;
       margin-top: 5px;
+      height: 20px;
       width: 14px; }
     #header-right #header-links #account {
       float: left;
-      height: 19px;
       margin: 0 5px 0 30px;
-      width: 15px;
-      overflow: visible; }
+      overflow: visible;
+      height: 19px;
+      width: 15px; }
       #header-right #header-links #account #account-a {
         background: url("/static/images/account.png") no-repeat;
         float: none;
-        height: 19px;
         margin: 6px 0 0 0;
+        height: 19px;
         width: 15px; }
       #header-right #header-links #account #account-details {
         background: #f5f5f5;
         border-radius: 3px;
-        height: 381px;
         margin-left: -132px;
         position: absolute;
+        height: 381px;
         width: 240px; }
         #header-right #header-links #account #account-details ul {
           list-style: none; }
@@ -230,8 +230,8 @@
         width: 100%; }
         #header-right #header-links #account .blog-details a {
           display: block;
-          height: 57px;
           padding: 10px 0 0 15px;
+          height: 57px;
           width: 100%; }
         #header-right #header-links #account .blog-details a:hover {
           background: #E6EFF7; }
@@ -258,9 +258,10 @@
   left: 0;
   top: 0;
   background: rgba(54, 70, 93, 0.95);
-  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
   position: fixed;
-  overflow: auto;
+  height: 100%;
   width: 100%;
   z-index: 100; }
   #post-options #post-type-wrapper {
@@ -269,20 +270,20 @@
     #post-options #post-type-wrapper #post-type {
       top: 50%;
       left: 50%;
-      height: 100px;
       margin: -115px 0 0 -440px;
       position: absolute;
+      height: 100px;
       width: 880px; }
       #post-options #post-type-wrapper #post-type div {
         top: 1px;
         border-radius: 50%;
         cursor: pointer;
-        height: 100px;
         position: absolute;
+        height: 100px;
         width: 100px; }
       #post-options #post-type-wrapper #post-type .hover {
-        height: 110px;
         margin: -5px 0 0 -5px;
+        height: 110px;
         width: 110px; }
       #post-options #post-type-wrapper #post-type #text {
         background: #fff url("/static/images/post_icons/text.png") no-repeat center;
@@ -315,9 +316,9 @@
     #post-options #post-type-wrapper #post-titles {
       top: 50%;
       left: 50%;
-      height: 22px;
       margin: 0 0 0 -440px;
       position: absolute;
+      height: 22px;
       width: 900px; }
       #post-options #post-type-wrapper #post-titles :nth-child(1) {
         left: 0; }
@@ -362,61 +363,66 @@
     width: 540px; }
   #post-options #post-text {
     min-height: 287px; }
-  #post-options #post-photo {
-    min-height: 305px; }
-    #post-options #post-photo #image-option {
-      background: #F2F2F2;
-      border-top: 2px dashed #d4d4d4;
-      border-bottom: 2px dashed #d4d4d4;
-      height: 200px;
-      overflow: auto;
-      width: 540px; }
-      #post-options #post-photo #image-option .option-container {
-        margin: auto;
-        width: 270px; }
-      #post-options #post-photo #image-option p {
-        color: #9a9a9a;
-        font-size: 14px; }
-      #post-options #post-photo #image-option img {
-        margin: 65px 5px 10px 0; }
-      #post-options #post-photo #image-option #upload-img {
-        cursor: pointer;
-        float: left;
-        height: 196px;
-        text-align: center;
-        width: 270px; }
-      #post-options #post-photo #image-option #url-img {
-        cursor: pointer;
-        float: left;
-        height: 196px;
-        text-align: center;
-        width: 270px; }
-      #post-options #post-photo #image-option #url-img::before {
-        border-left: 1px solid #d4d4d4;
-        content: "";
-        display: block;
-        height: 150px;
-        margin: 25px 0 0 0;
-        position: absolute;
-        width: 1px; }
-    #post-options #post-photo #photo-file {
-      display: none; }
-    #post-options #post-photo #img-preview {
-      margin: 0 0 10px 0;
-      max-width: 100%; }
-  #post-options #post-quote {
-    min-height: 300px; }
-  #post-options #post-link {
-    min-height: 231px; }
-  #post-options #post-chat {
-    min-height: 362px; }
-  #post-options #post-audio {
-    min-height: 156px; }
-  #post-options #post-video {
-    min-height: 305px; }
+  #post-options #post-photo #image-option {
+    background: #F2F2F2;
+    border-top: 2px dashed #d4d4d4;
+    border-bottom: 2px dashed #d4d4d4;
+    overflow: auto;
+    height: 200px;
+    width: 540px; }
+    #post-options #post-photo #image-option .option-container {
+      margin: auto;
+      width: 270px; }
+    #post-options #post-photo #image-option p {
+      color: #9a9a9a;
+      font-size: 14px; }
+    #post-options #post-photo #image-option img {
+      margin: 65px 5px 10px 0; }
+    #post-options #post-photo #image-option #upload-img {
+      cursor: pointer;
+      float: left;
+      text-align: center;
+      height: 196px;
+      width: 270px; }
+    #post-options #post-photo #image-option #url-img {
+      cursor: pointer;
+      float: left;
+      text-align: center;
+      height: 196px;
+      width: 270px; }
+    #post-options #post-photo #image-option #url-img::before {
+      border-left: 1px solid #d4d4d4;
+      content: "";
+      display: block;
+      margin: 25px 0 0 0;
+      position: absolute;
+      height: 150px;
+      width: 1px; }
+  #post-options #post-photo #photo-file {
+    display: none; }
+  #post-options #post-photo #img-container {
+    margin: 0 0 10px 0;
+    width: 100%;
+    position: relative; }
+    #post-options #post-photo #img-container #img-preview {
+      width: 100%; }
+    #post-options #post-photo #img-container #erase-img {
+      background: #D95E40;
+      border-radius: 50%;
+      color: #fff;
+      cursor: pointer;
+      color: #fff;
+      font-size: 14px;
+      font-weight: bold;
+      height: 21px;
+      width: 21px;
+      padding: 1px 0 0 6.5px;
+      position: absolute;
+      right: -7px;
+      top: -7px; }
   #post-options .post-header {
-    height: 45px;
     padding-top: 15px;
+    height: 45px;
     width: 540px; }
     #post-options .post-header p {
       color: #a2a2a2;
@@ -442,20 +448,20 @@
       min-height: 46px; }
     #post-options .post-content .text-field {
       font-size: 14px;
-      height: 63px;
       margin-top: 2px;
+      height: 63px;
       min-height: 63px; }
     #post-options .post-content .tags-field {
       font-size: 13px;
-      height: 19px;
       margin-top: 28px;
       margin-bottom: 12px;
+      height: 19px;
       min-height: 19px; }
     #post-options .post-content .submit-input {
       display: none; }
   #post-options .post-footer {
-    height: 60px;
     padding-top: 15px;
+    height: 60px;
     width: 540px; }
     #post-options .post-footer .close-post {
       background-color: #9DA6AF;
@@ -466,16 +472,16 @@
       float: left;
       font-size: 13px;
       font-weight: bold;
-      height: 30px;
       margin: 0 0 0 20px;
       padding: 0 0 1px 0;
       position: absolute;
+      height: 30px;
       width: 51px; }
     #post-options .post-footer .post-submit {
       float: right;
-      height: 30px;
       margin: 0 22px 0 0;
       overflow: auto;
+      height: 30px;
       width: 71px; }
       #post-options .post-footer .post-submit .submit-button {
         background: #529ECC;
@@ -486,8 +492,8 @@
         float: left;
         font-size: 13px;
         font-weight: bold;
-        height: 30px;
         padding: 0 0 2px 1px;
+        height: 30px;
         width: 44px; }
       #post-options .post-footer .post-submit .button-color {
         color: #fff; }
@@ -498,15 +504,15 @@
         color: #fff;
         cursor: pointer;
         float: right;
-        height: 30px;
         padding-right: 1px;
+        height: 30px;
         width: 27px; }
       #post-options .post-footer .post-submit div::before {
         border-left: 1px solid #85BBDB;
         content: "";
-        height: 12px;
         margin-top: 8px;
         position: absolute;
+        height: 12px;
         width: 1px; }
 
 /*# sourceMappingURL=header.css.map */

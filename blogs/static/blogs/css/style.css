@@ -68,21 +68,21 @@ body {
   #blog-content .blog-post-header {
     background: #ffffff;
     border-radius: 2px 2px 0 0;
-    height: 42px;
     padding: 10px 0 0 20px;
     position: relative;
+    height: 42px;
     width: 100%; }
     #blog-content .blog-post-header .user-blog-link {
       background: #ffffff;
       border-radius: 2px;
-      height: 64px;
       left: -85px;
       top: 0;
       position: absolute;
+      height: 64px;
       width: 64px; }
       #blog-content .blog-post-header .user-blog-link img {
-        height: 62px;
         margin: 1px 0 0 1px;
+        height: 62px;
         width: 62px; }
     #blog-content .blog-post-header .user-link {
       color: #444;
@@ -93,28 +93,33 @@ body {
     background: #ffffff;
     color: #444;
     width: 540px; }
-    #blog-content .blog-post span {
+    #blog-content .blog-post .blog-post-title {
       font-size: 36px;
       margin: 0 0 0 17px; }
-    #blog-content .blog-post p {
+    #blog-content .blog-post .blog-post-text {
       color: #444;
       font-size: 14px;
       margin: 10px 0 0 18px; }
+    #blog-content .blog-post .blog-post-tags {
+      color: #a1a1a1;
+      display: block;
+      font-size: 13px;
+      margin: 20px 0 0 18px; }
     #blog-content .blog-post img {
       max-width: 100%; }
   #blog-content .blog-post-footer {
     background: #ffffff;
     border-radius: 0 0 2px 2px;
-    height: 42px;
     margin: 0 0 20px 0;
+    height: 42px;
     width: 100%; }
     #blog-content .blog-post-footer .blog-footer-options {
       background: url("/static/images/posted_options.png") no-repeat;
       cursor: pointer;
       float: right;
-      height: 25px;
       margin: 12px 18px 0 0;
       position: relative;
+      height: 25px;
       width: 25px; }
       #blog-content .blog-post-footer .blog-footer-options .popup-high {
         top: -80px; }
@@ -126,11 +131,11 @@ body {
         border-radius: 2px;
         box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
         cursor: default;
-        height: 76px;
-        width: 130px;
         left: -60px;
         position: absolute;
         padding: 5px 0 0 0;
+        height: 76px;
+        width: 130px;
         z-index: 2; }
         #blog-content .blog-post-footer .blog-footer-options .options-popup .option-edit,
         #blog-content .blog-post-footer .blog-footer-options .options-popup .option-delete {
@@ -138,9 +143,9 @@ body {
           color: #444;
           display: block;
           font-size: 15px;
-          height: 32px;
           padding: 6px 0 0 12px;
           text-decoration: none;
+          height: 32px;
           width: 100%; }
         #blog-content .blog-post-footer .blog-footer-options .options-popup .option-edit:hover,
         #blog-content .blog-post-footer .blog-footer-options .options-popup .option-delete:hover {
