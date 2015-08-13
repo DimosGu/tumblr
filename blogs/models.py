@@ -22,12 +22,5 @@ class Post(models.Model):
 	tags = models.TextField(blank=True)
 	file = models.FileField(upload_to=upload_path, blank=True)
 
-	def __str__(self):
-		if self.title != "":
-			self.title
-		elif self.file != "":
-			self.title = 'File'
-		else:
-			self.title = 'Untitled'
-		
+	def __str__(self):		
 		return self.title

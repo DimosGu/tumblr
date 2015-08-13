@@ -20,7 +20,7 @@ messages = document.getElementById("messages");
 blog_body = document.getElementById("blog-body");
 
 var wrapper = document.getElementById("wrapper");
-
+post_edit_id = null;
 // Timeouts to remove display-none class giving the page time to change 
 // the image before displaying content
 window.onload = function() {
@@ -31,14 +31,8 @@ window.onload = function() {
 	} else if (messages_body) {
 		messages.style.backgroundImage = "url('/static/images/messages_active.png)";
 	} else if (blog_body) {
-		blog_post_img = document.querySelectorAll('.blog-post-img');
 		account_a.style.backgroundImage = "url('/static/images/account_active.png')";
-
-		for (var i = 0; i < blog_post_img.length; i++) {
-			if (blog_post_img[i].width <= 522) {
-				blog_post_img[i].style.marginLeft = '18px';
-			}
-		}
+		blog_onload();
 	}
 
 	setTimeout (function() {
@@ -201,8 +195,8 @@ document.onclick = function(e) {
 			to prepare them for the beginning animation cycle.*/
 			setTimeout (function() {
 				for (var i = 0; i < 7; i++) {
-					post_types[i].className = "type-anim type-hidden";
-					title[i].className = "p-fade p-hidden";
+					post_types[i].className = "type-hidden";
+					title[i].className = "p-hidden";
 				}
 			}, 300);
 		}
@@ -336,17 +330,15 @@ for (var i = 0; i < tags_field.length; i++) {
 
 //Posting forms
 function submit_text_post(id) {
-	var data = {
+	var data, ajax_params;
+
+	data = {
 		title: title_field[0].value,
 		text: text_field[0].value,
 		tags: tags_field[0].value,
 	}
-	
-	if (id != null) {
-		data.post_edit_id = id;
-	}
 
-	$.ajax({
+	ajax_params = {
 		url: "/blog/post_text",
 		type: "POST",
 		data: data,
@@ -356,7 +348,14 @@ function submit_text_post(id) {
 				$('#blog-content').load(document.URL + ' #blog-posts-wrapper');
 			}
 		}
-	});
+	}
+	
+	if (id != null) {
+		data.post_edit_id = id;
+		ajax_params.url = '/blog/edit_post';
+	}
+
+	$.ajax(ajax_params);
 }
 
 close_post[0].addEventListener('click', function() {
@@ -435,26 +434,30 @@ $("#photo-file").change(function(){
 var file_field = document.querySelectorAll(".file-field");
 
 function submit_photo_post(id) {
-	var data = new FormData($('#post-photo-form')[0]);
+	var data, ajax_params;
 
-	if (id != null) {
-		data.append('post_edit_id', id);
-	}
+	data = new FormData($('#post-photo-form')[0]);
 
-	$.ajax({
+	ajax_params = {
 		url: "/blog/post_photo",
 		type: "POST",
 		data: data,
+		processData: false,
+		contentType: false,
 
 		success: function() {
 			if (blog_body) {
 				$('#blog-content').load(document.URL + ' #blog-posts-wrapper');
 			}
 		},
+	};
 
-		processData: false,
-		contentType: false
-	});
+	if (id != null) {
+		data.append('post_edit_id', id);
+		ajax_params.url = "/blog/edit_post";
+	}
+
+	$.ajax(ajax_params);
 }
 
 close_post[1].addEventListener('click', function() {
@@ -474,20 +477,22 @@ close_post[1].addEventListener('click', function() {
 $('#post-photo-form').on('submit', function(event) {
 	event.preventDefault();
 	
-	if (file_field[0].value != "" || $('#img-preview').attr('src') != '') {
-		submit_photo_post(post_edit_id)
+	if ($('#img-preview').attr('src') != '') {
+		submit_photo_post(post_edit_id);
 		close_post[1].click();
+
+		if (blog_body) {
+			$('#blog-content').load(document.URL + ' #blog-posts-wrapper');
+		}
 	}
 });
 
-// This function gets cookie with a given name
 function getCookie(name) {
   var cookieValue = null;
   if (document.cookie && document.cookie != '') {
     var cookies = document.cookie.split(';');
     for (var i = 0; i < cookies.length; i++) {
       var cookie = jQuery.trim(cookies[i]);
-      // Does this cookie string begin with the name we want?
       if (cookie.substring(0, name.length + 1) == (name + '=')) {
         cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
         break;
@@ -496,37 +501,17 @@ function getCookie(name) {
   }
   return cookieValue;
 }
+
 var csrftoken = getCookie('csrftoken');
  
-/*
-The functions below will create a header with csrftoken
-*/
- 
 function csrfSafeMethod(method) {
-  // these HTTP methods do not require CSRF protection
   return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-}
-function sameOrigin(url) {
-  // test that a given url is a same-origin URL
-  // url could be relative or scheme relative or absolute
-  var host = document.location.host; // host + port
-  var protocol = document.location.protocol;
-  var sr_origin = '//' + host;
-  var origin = protocol + sr_origin;
-  // Allow absolute or scheme relative URLs to same origin
-  return (url == origin || url.slice(0, origin.length + 1) == origin + '/') ||
-    (url == sr_origin || url.slice(0, sr_origin.length + 1) == sr_origin + '/') ||
-    // or any other URL that isn't scheme relative or absolute i.e relative.
-    !(/^(\/\/|http:|https:).*/.test(url));
 }
 
 $.ajaxSetup({
   beforeSend: function(xhr, settings) {
-    if (!csrfSafeMethod(settings.type) && sameOrigin(settings.url)) {
-        // Send the token to same-origin, relative URLs only.
-        // Send the token only if the method warrants CSRF protection
-        // Using the CSRFToken value acquired earlier
-        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+    if (!csrfSafeMethod(settings.type)) {
+       xhr.setRequestHeader("X-CSRFToken", csrftoken);
     }
   }
 });

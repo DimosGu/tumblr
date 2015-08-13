@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from blogs.forms import TextPostForm, PhotoPostForm
+from django.template.loader import render_to_string
 from blogs.models import Blog, Post
 from user_accounts.models import User
 from django.core.files import File
@@ -19,45 +20,46 @@ def delete_post(request):
 	
 	if request.method == 'POST':
 		post = Post.objects.get(user=request.user, pk=request.POST.get('post_id')).delete()
-		return HttpResponse('')
+
+		return HttpResponse('success')
+
+def edit_post(request):
+
+	if request.method == 'POST':
+		post_edit = Post.objects.get(user=request.user, pk=request.POST.get('post_edit_id'))
+		post_edit.text = request.POST.get('text')
+		post_edit.tags = request.POST.get('tags')
+
+		if request.POST.get('title'):
+			post_edit.title = request.POST.get('title')
+
+		if request.FILES:
+			post_edit.file = request.FILES.get('file')
+
+		post_edit.save()
+
+		return HttpResponse('success')
 
 def post_text(request):
 
 	if request.method == 'POST':
 		text_form = TextPostForm(request.POST)
 
-		if request.POST.get('post_edit_id'):
-			post_edit = Post.objects.get(user=request.user, pk=request.POST.get('post_edit_id'))
-			post_edit.title = request.POST.get('title')
-			post_edit.text = request.POST.get('text')
-			post_edit.tags = request.POST.get('tags')
-			post_edit.save()
-
-		elif text_form.is_valid():
+		if text_form.is_valid():
 			text_form.instance.user = request.user
 			text_form.instance.blog = Blog.objects.get(user=request.user)
 			text_form.save()
 
-	return HttpResponse('')
+		return HttpResponse('success')
 
 def post_photo(request):
 
 	if request.method == 'POST':
 		photo_form = PhotoPostForm(request.POST, request.FILES)
 
-		if request.POST.get('post_edit_id'):
-			post_edit = Post.objects.get(user=request.user, pk=request.POST.get('post_edit_id'))
-			post_edit.text = request.POST.get('text')
-			post_edit.tags = request.POST.get('tags')
-
-			if request.FILES:
-				post_edit.file = request.FILES.get('file')
-
-			post_edit.save()
-
-		elif photo_form.is_valid():
+		if photo_form.is_valid():
 			photo_form.instance.user = request.user
 			photo_form.instance.blog = Blog.objects.get(user=request.user)
-			photo_form.save()
+			form_instance = photo_form.save()
 
-	return HttpResponse('')
+		return HttpResponse('success')

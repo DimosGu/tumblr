@@ -8,10 +8,6 @@ from blogs.models import Blog, Post
 from random import randint
 
 def register(request):
-	try:
-		recent_img_post = Post.objects.exclude(file='').order_by('pub_date').reverse()[randint(0,4)]
-	except:
-		recent_img_post = None
 
 	if request.user.is_authenticated():
 		return HttpResponseRedirect('/dashboard')
@@ -44,6 +40,11 @@ def register(request):
 	else:
 		form = RegistrationForm()
 
+	try:
+		recent_img_post = Post.objects.exclude(file='').order_by('pub_date').reverse()[randint(0,4)]
+	except:
+		recent_img_post = None
+
 	context = {
 		'form': form,
 		'recent_img_post': recent_img_post
@@ -59,10 +60,6 @@ def check_fields(request):
 		return JsonResponse(error)
 
 def user_login(request):
-	try:
-		recent_img_post = Post.objects.exclude(file='').order_by('pub_date').reverse()[randint(0,4)]
-	except: 
-		recent_img_post = None
 		
 	if request.user.is_authenticated():
 		return HttpResponseRedirect('/dashboard')
@@ -79,6 +76,11 @@ def user_login(request):
 
 	else:
 		form = LoginForm()
+		
+	try:
+		recent_img_post = Post.objects.exclude(file='').order_by('pub_date').reverse()[randint(0,4)]
+	except: 
+		recent_img_post = None
 
 	context = {
 		'form': form,

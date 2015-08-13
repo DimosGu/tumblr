@@ -68,7 +68,7 @@
 					<p>{{ user.username }}</p>
 				</div>
 				<div class="post-content">
-					<form id="post-text-form" action="/" method="POST">
+					<form id="post-text-form" action="" method="POST">
 						{% csrf_token %}
 						{{ text_form.title }}
 						{{ text_form.text }}
@@ -107,7 +107,7 @@
 					</div>
 				</div>
 				<div class="post-content display-none">
-					<form enctype="multipart/form-data" id="post-photo-form" action="/" method="POST">
+					<form id="post-photo-form" action="" method="POST" enctype="multipart/form-data">
 						{% csrf_token %}
 						{{ photo_form.file }}
 						<div id="img-container">

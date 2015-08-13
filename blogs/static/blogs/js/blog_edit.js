@@ -1,3 +1,12 @@
+function blog_onload() {
+	var blog_post_img = document.querySelectorAll('.blog-post-img');
+	for (var i = 0; i < blog_post_img.length; i++) {
+		if (blog_post_img[i].width <= 522) {
+			blog_post_img[i].style.marginLeft = '18px';
+		}
+	}
+}
+
 $('body').on('click', '.blog-footer-options', function() {
 	var footer_options = $(this).find('.options-popup');
 
@@ -20,7 +29,7 @@ $(document).click(function() {
 	$('.options-popup').addClass('display-none').removeClass('popup-high popup-low');
 });
 
-$('body').on('click', '.options-popup', function(e) {
+$('body').on('click', '.options-popup', function (e) {
 	e.stopPropagation();
 })
 
@@ -98,7 +107,7 @@ function prepare_header_photo_form(target) {
 
 var post_edit_id = null;
 
-$('body').on('click', '.option-edit', function(e) {
+$('body').on('click', '.option-edit', function (e) {
 	var post_wrapper, post_photo, post_id;
 
 	e.preventDefault();
@@ -121,7 +130,7 @@ $('body').on('click', '.option-edit', function(e) {
 });
 
 
-$('body').on('click', '.option-delete', function(e) {
+$('body').on('click', '.option-delete', function (e) {
 	var post_wrapper, post_id;
 
 	e.preventDefault();
