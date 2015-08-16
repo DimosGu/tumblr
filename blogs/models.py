@@ -23,4 +23,11 @@ class Post(models.Model):
 	file = models.FileField(upload_to=upload_path, blank=True)
 
 	def __str__(self):		
+		if self.title != "":
+			pass
+		elif self.file != "":
+			self.title = 'File'
+		else:
+			self.title = 'Untitled'
+		
 		return self.title

@@ -25,7 +25,7 @@
 }
 
 .p-fade {
-	@include transition-property( opacity margin );
+	@include transition-property( margin opacity);
 	@include transition-duration( .2s );
 	@include transition-timing-function( linear );
 }
@@ -72,12 +72,16 @@
 	margin: -9999px 0 0 0;
 }
 
-.post-hidden {
-	opacity: 0;
+.margin-none {
+	margin: 0 0 0 0;
 }
 
 .fade {
 	opacity: .4;
+}
+
+.invisible {
+	opacity: 0;
 }
 
 .visible {

@@ -4,7 +4,8 @@ var search_img, search_form, search_input,
 		post, post_options, post_type, post_types, post_titles, title, 
 		text, photo, quote, link, chat, audio, video, post_type_wrapper,
 		post_text, post_photo, post_quote, post_link, post_chat, post_audio, post_video,
-		close_post, post_selection, title_field, text_field, tags_field;
+		close_post, post_selection, title_field, text_field, tags_field,
+		img_hover_timer, $photo_content, file_field;
 
 search_img = new Image();
 search_img.onload = function() {
@@ -100,7 +101,7 @@ post.onclick = function(e) {
 
 /*post option appear animation(s)*/
 	post_type_wrapper.className = "";
-	post_options.className = "post-fade post-hidden";
+	post_options.className = "post-fade invisible";
 
 	setTimeout (function() {
 		post_options.className = "post-fade visible";
@@ -142,7 +143,7 @@ post.onclick = function(e) {
 	}, 280);
 }
 
-document.onclick = function(e) {
+$(document).on('click', function (e) {
 
 	if (account_details.className === "account-fade account-visible") {
 
@@ -188,7 +189,7 @@ document.onclick = function(e) {
 			}, 150);
 
 			setTimeout (function() {
-				post_options.className = "post-fade post-hidden display-none";
+				post_options.className = "post-fade invisible display-none";
 			}, 250);
 
 			/*Resets the divs and their corresponding p tags' classes
@@ -201,8 +202,7 @@ document.onclick = function(e) {
 			}, 300);
 		}
 	}
-}
-
+})
 
 close_post = document.querySelectorAll('.close-post');
 submit_input = document.querySelectorAll('.submit-input');
@@ -231,7 +231,7 @@ for (var i = 0; i < 7; i++) {
 			if (post_types[j].className != "slide-up margin-top") {	
 				post_type_wrapper.className = "display-none";
 				document.body.style.cssText = "overflow: hidden;";
-				post_selection[j].className = "post-selection display-table post-hidden";
+				post_selection[j].className = "post-selection display-table invisible";
 
 				setTimeout (function() {
 					post_selection[j].className = "post-selection display-table post-fade visible";
@@ -256,10 +256,10 @@ for (var i = 0; i < 7; i++) {
 		post_types[j].addEventListener("click", post_type_click)
 
 		close_post[j].addEventListener("click", function() {
-			post_selection[j].className = "post-selection display-table post-fade post-hidden";
+			post_selection[j].className = "post-selection display-table post-fade invisible";
 
 			setTimeout (function() {
-				post_options.className = "post-fade post-hidden display-none";
+				post_options.className = "post-fade invisible display-none";
 				document.body.style.cssText = "";
 				post_selection[j].className = "post-selection display-none";
 			}, 200);
@@ -315,7 +315,6 @@ for (var i = 0; i < text_field.length; i++) {
 }
 
 function check_tag_field() {
-	
 	for (var i = 0; i < tags_field.length; i++) {
 		tags_field[i].style.height = 19 + 'px';
 		var tags_height = tags_field[i].scrollHeight;
@@ -328,35 +327,154 @@ for (var i = 0; i < tags_field.length; i++) {
 	tags_field[i].addEventListener("keydown", check_tag_field);
 }
 
-//Posting forms
-function submit_text_post(id) {
-	var data, ajax_params;
+//-------Posting Functions-------// 
 
-	data = {
-		title: title_field[0].value,
-		text: text_field[0].value,
-		tags: tags_field[0].value,
+function edit_post(type, id) {
+	var $photo_data, text_data, data; 
+
+	$photo_data = new FormData($('#post-photo-form')[0]);
+	$text_data = new FormData($('#post-text-form')[0]);
+	
+	if (type === 'photo') {
+		$photo_data.append('post_edit_id', id);
+		data = $photo_data;
+	} else if (type === 'text') {
+		$text_data.append('post_edit_id', id);
+		data = $text_data;
 	}
 
-	ajax_params = {
-		url: "/blog/post_text",
+	$.ajax({
+		url: "/blog/edit_post",
 		type: "POST",
 		data: data,
+		processData: false,
+		contentType: false,
 
-		success: function() {
+		success: function(json) {
+			var $update_this, $edit_post, $edit_title, $edit_text, $edit_tags, $edit_post_a, $edit_post_img,
+					title_html, text_html, tags_html;
+
 			if (blog_body) {
-				$('#blog-content').load(document.URL + ' #blog-posts-wrapper');
-			}
-		}
-	}
-	
-	if (id != null) {
-		data.post_edit_id = id;
-		ajax_params.url = '/blog/edit_post';
-	}
+				$update_this = $('#blog-posts-wrapper').children().find('.post-id:contains("' + json.id_data + '")');
+				$edit_post = $update_this.siblings('.blog-post');
 
-	$.ajax(ajax_params);
-}
+				$edit_title = $edit_post.children('.blog-post-title');
+				$edit_text = $edit_post.children('.blog-post-text');
+				$edit_tags = $edit_post.children('.blog-post-tags');
+
+				title_html = '<span class="blog-post-title">' + json.title_data + '</span>';
+				text_html = '<p class="blog-post-text">' + json.text_data + '</p>';
+				tags_html = '<span class="blog-post-tags">' + json.tags_data + '</span>';
+
+				if (json.title_data) {
+					if (json.title_data && $edit_title.length) {
+						$edit_title.html(json.title_data);
+					} else if (json.title_data && $edit_title.length == 0) {
+						$edit_post.prepend(title_html);
+					}
+				} else if ($edit_title.length) {
+					$edit_title.remove();
+
+					//redefined for potential json.text_data if condition 
+					$edit_title = $edit_post.children('.blog-post-tags');
+				}
+
+				$edit_post_a = $edit_post.children('a');
+				$edit_post_img = $edit_post_a.children('img');
+
+				if (json.file_data != $edit_post_img.attr('src')) {
+					$edit_post_img.addClass('invisible');
+					$edit_post_a.attr('href', json.file_data);
+					$edit_post_img.attr('src', json.file_data);
+
+					setTimeout (function() {
+						if ($edit_post_img.width() <= 522) {
+							$edit_post_img.css("margin-left", "18px");
+						} else {
+							$edit_post_img.css("margin-left", "0");
+						}
+						$edit_post_img.removeClass('invisible')
+					}, 100);
+				}
+
+				if (json.text_data) {
+					if (json.text_data && $edit_text.length) {
+						$edit_text.html(json.text_data);
+					} else if (json.text_data && json.file_data && $edit_text.length == 0) {
+						$edit_post_a.after(text_html);
+					} else if (json.text_data && json.file_data === undefined && $edit_text.length == 0 && $edit_title.length == 0) {
+						$edit_post.prepend(text_html);
+					} else if (json.text_data && $edit_text.length == 0 && $edit_title.length) {
+						$edit_title.after(text_html);
+					}
+				} else if ($edit_text.length) {
+					$edit_text.remove();
+				}
+
+				if (json.tags_data) {
+					if (json.tags_data && $edit_tags.length) {
+						$edit_tags.html(json.tags_data);
+					} else if (json.tags_data && $edit_tags.length == 0) {
+						$edit_post.append(tags_html);
+					}
+				} else if ($edit_tags.length) {
+					$edit_tags.remove();
+				}
+			}
+		},
+	});
+};
+
+function new_text_post() {
+
+	$.ajax({
+		url: "/blog/post_text",
+		type: "POST",
+		data: {
+			title: title_field[0].value,
+			text: text_field[0].value,
+			tags: tags_field[0].value,
+		},
+
+		success: function(json) {
+			var $post_wrapper, base_html, text_html, tags_html, base2_html,
+					html_array, joined_html;
+
+			$post_wrapper = $('#blog-posts-wrapper');
+
+			if (blog_body) {
+				base_html = '<div class="post-wrapper blog-post-fade"><span class="post-id">' + json.id_data + '</span>' +
+					'<div class="blog-post-header"><a class="user-blog-link" href="/">' +
+					'<img src="' + json.blog_img + '"></a><a class="user-link" href="">' + json.username + '</a>' +
+					'</div><div class="blog-post">';
+				title_html = '<span class="blog-post-title">' + json.title_data + '</span>';
+				text_html = '<p class="blog-post-text">' + json.text_data + '</p>';
+				tags_html = '<span class="blog-post-tags">' + json.tags_data + '</span>';
+				base2_html = '</div><div class="blog-post-footer"><div class="blog-footer-options">' +
+					'<div class="options-popup display-none"><a href="" class="option-edit">Edit</a>' +
+					'<a href="" class="option-delete">Delete</a></div></div></div></div>';
+				
+				html_array = []
+
+				html_array.push(base_html);
+				if (json.title_data) {
+					html_array.push(title_html);
+				}
+				if (json.text_data) {
+					html_array.push(text_html);
+				}
+				if (json.tags_data) {
+					html_array.push(tags_html);
+				}
+				html_array.push(base2_html);
+
+				joined_html = html_array.join('');
+				$post_wrapper.prepend(joined_html);
+			}
+
+		},
+	});
+};
 
 close_post[0].addEventListener('click', function() {
 	setTimeout (function() {
@@ -364,6 +482,7 @@ close_post[0].addEventListener('click', function() {
 		title_field[0].value = "";
 		text_field[0].value = "";
 		tags_field[0].value = "";
+		post_submit_button[0].className = 'submit-button';
 		post_submit_button[0].innerHTML = "Post";
 	}, 200);
 });
@@ -372,7 +491,11 @@ $('#post-text-form').on('submit', function(event) {
 	event.preventDefault();
 
 	if (title_field[0].value != "" || text_field[0].value != "") {
-		submit_text_post(post_edit_id);
+		if (post_edit_id != null) {
+			edit_post('text', post_edit_id);
+		} else {
+			new_text_post();
+		}
 		close_post[0].click();
 	}
 });
@@ -397,23 +520,25 @@ function photo_img_preview(input) {
   }
 }
 
-var timer;
+img_hover_timer;
 
 $('#img-preview, #erase-img').hover(
 	function() {
 		$('#erase-img').removeClass('display-none');
 
-		if (timer) {
-			clearTimeout(timer);
-			timer = null;
+		if (img_hover_timer) {
+			clearTimeout(img_hover_timer);
+			img_hover_timer = null;
 		}
 	},
 	function() {
-		timer = setTimeout (function() {
+		img_hover_timer = setTimeout (function() {
 			$('#erase-img').addClass('display-none');
 		}, 700);
 	}
 );
+
+file_field = document.querySelectorAll(".file-field");
 
 $('#erase-img').click(function() {
 	$('#image-option').removeClass('display-none');
@@ -423,42 +548,59 @@ $('#erase-img').click(function() {
 	post_submit_button[1].className = "submit-button";
 });
 
-var photo_content = $('#post-photo').find(".post-content");
+$photo_content = $('#post-photo').find(".post-content");
 
 $("#photo-file").change(function(){
 	$('#image-option').addClass("display-none");
-	photo_content.removeClass("display-none");
+	$photo_content.removeClass("display-none");
   photo_img_preview(this);
 });
 
-var file_field = document.querySelectorAll(".file-field");
 
-function submit_photo_post(id) {
-	var data, ajax_params;
+function new_photo_post() {
+	var $data = new FormData($('#post-photo-form')[0]);
 
-	data = new FormData($('#post-photo-form')[0]);
-
-	ajax_params = {
+	$.ajax({
 		url: "/blog/post_photo",
 		type: "POST",
-		data: data,
+		data: $data,
 		processData: false,
 		contentType: false,
 
-		success: function() {
+		success: function(json) {
+			var $post_wrapper, base_html, text_html, tags_html, base2_html;
+
+			$post_wrapper = $('#blog-posts-wrapper');
+
 			if (blog_body) {
-				$('#blog-content').load(document.URL + ' #blog-posts-wrapper');
+				base_html = '<div class="post-wrapper blog-post-fade"><span class="post-id">' + json.id_data + '</span>' +
+					'<div class="blog-post-header"><a class="user-blog-link" href="/">' +
+					'<img src="' + json.blog_img + '"></a><a class="user-link" href="">' + json.username + '</a>' +
+					'</div><div class="blog-post"><a href="' + json.file_data + '">' +
+					'<img class="blog-post-img" src="' + json.file_data + '"></a>';
+				text_html = '<p class="blog-post-text">' + json.text_data + '</p>';
+				tags_html = '<span class="blog-post-tags">' + json.tags_data + '</span>';
+				base2_html = '</div><div class="blog-post-footer"><div class="blog-footer-options">' +
+					'<div class="options-popup display-none"><a href="" class="option-edit">Edit</a>' +
+					'<a href="" class="option-delete">Delete</a></div></div></div></div>';
+
+				html_array = []
+
+				html_array.push(base_html);
+				if (json.text_data) {
+					html_array.push(text_html);
+				}
+				if (json.tags_data) {
+					html_array.push(tags_html);
+				}
+				html_array.push(base2_html);
+
+				joined_html = html_array.join('');
+				$post_wrapper.prepend(joined_html);
 			}
 		},
-	};
-
-	if (id != null) {
-		data.append('post_edit_id', id);
-		ajax_params.url = "/blog/edit_post";
-	}
-
-	$.ajax(ajax_params);
-}
+	});
+};
 
 close_post[1].addEventListener('click', function() {
 	setTimeout (function() {
@@ -468,7 +610,7 @@ close_post[1].addEventListener('click', function() {
 		post_edit_id = null;
 		$('#img-preview').attr('src', '');
 		$('#image-option').removeClass("display-none");
-		photo_content.addClass("display-none");
+		$photo_content.addClass("display-none");
 		post_submit_button[1].className = "submit-button";
 		post_submit_button[1].innerHTML = "Post";
 	}, 200);
@@ -478,12 +620,12 @@ $('#post-photo-form').on('submit', function(event) {
 	event.preventDefault();
 	
 	if ($('#img-preview').attr('src') != '') {
-		submit_photo_post(post_edit_id);
-		close_post[1].click();
-
-		if (blog_body) {
-			$('#blog-content').load(document.URL + ' #blog-posts-wrapper');
+		if (post_edit_id != null) {
+			edit_post('photo', post_edit_id);
+		} else {
+			new_photo_post();
 		}
+		close_post[1].click();
 	}
 });
 

@@ -99,7 +99,8 @@ body {
     #blog-content .blog-post .blog-post-text {
       color: #444;
       font-size: 14px;
-      margin: 10px 0 0 18px; }
+      margin: 0 0 0 18px;
+      padding-top: 10px; }
     #blog-content .blog-post .blog-post-tags {
       color: #a1a1a1;
       display: block;

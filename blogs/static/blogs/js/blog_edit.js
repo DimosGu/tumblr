@@ -1,25 +1,110 @@
+var $posts, visible_posts, get_post_verify, post_edit_id;
+
+$posts = $('.post-wrapper');
+visible_posts = 10;
+get_post_verify = true;
+
 function blog_onload() {
 	var blog_post_img = document.querySelectorAll('.blog-post-img');
+	console.log($(document).height());
+	console.log($(window).height());
 	for (var i = 0; i < blog_post_img.length; i++) {
 		if (blog_post_img[i].width <= 522) {
 			blog_post_img[i].style.marginLeft = '18px';
 		}
 	}
+
+	//actual tumblr site bug fix. loads more posts if there is no scroll bar.
+	if ($(document).height() == $(window).height()) {
+		get_ten_posts(visible_posts);		
+		get_post_verify = false;
+		visible_posts += 10;
+	}
 }
 
-$('body').on('click', '.blog-footer-options', function() {
-	var footer_options = $(this).find('.options-popup');
+function get_ten_posts(post_count) {
+	$.ajax({
+		url: "/blog/get_more_posts",
+		type: "GET",
+		data: {
+			'post_count': post_count
+		},
 
-	if (footer_options.hasClass('display-none')) {
+		success: function(json) {
+			var json_array, base_html, file_html, title_html, text_html, tags_html, base2_html,
+					$post_wrapper;
+
+			$post_wrapper = $('#blog-posts-wrapper');
+			json_array = [json.post_0, json.post_1, json.post_2, json.post_3, json.post_4, 
+										json.post_5,	json.post_6, json.post_7, json.post_8, json.post_9];
+
+			for (var i = 0; i < json_array.length; i++) {
+				if (json_array[i].id_data) {
+					base_html = '<div class="post-wrapper blog-post-fade"><span class="post-id">' + json_array[i].id_data + 
+						'</span><div class="blog-post-header"><a class="user-blog-link" href="/">' +
+						'<img src="' + json_array[i].blog_img + '"></a><a class="user-link" href="">' + 
+						json_array[i].username + '</a></div><div class="blog-post">';
+					file_html = '<a href="' + json_array[i].file_data + '"><img class="blog-post-img" src="' + 
+						json_array[i].file_data + '"></a>';
+					title_html = '<span class="blog-post-title">' + json_array[i].title_data + '</span>';
+					text_html = '<p class="blog-post-text">' + json_array[i].text_data + '</p>';
+					tags_html = '<span class="blog-post-tags">' + json_array[i].tags_data + '</span>';
+					base2_html = '</div><div class="blog-post-footer"><div class="blog-footer-options">' +
+						'<div class="options-popup display-none"><a href="" class="option-edit">Edit</a>' +
+						'<a href="" class="option-delete">Delete</a></div></div></div></div>';
+
+					html_array = []
+
+					html_array.push(base_html);
+					if (json_array[i].title_data) {
+						html_array.push(title_html);
+					}
+					if (json_array[i].file_data) {
+						html_array.push(file_html);
+					}
+					if (json_array[i].text_data) {
+						html_array.push(text_html);
+					}
+					if (json_array[i].tags_data) {
+						html_array.push(tags_html);
+					}
+					html_array.push(base2_html);
+
+					joined_html = html_array.join('');
+					$post_wrapper.append(joined_html);
+
+					get_post_verify = true;
+				}
+			}
+		},
+	});
+};
+
+$(window).on('scroll', function() {
+	if ($(window).scrollTop() + $(window).height() > $(document).height() / 1.75) {
+
+		if (get_post_verify) {
+			get_ten_posts(visible_posts);		
+			get_post_verify = false;
+			visible_posts += 10;
+		}
+
+	}
+});
+
+$('body').on('click', '.blog-footer-options', function() {
+	var $footer_options = $(this).find('.options-popup');
+
+	if ($footer_options.hasClass('display-none')) {
 
 		setTimeout (function() {
-			footer_options.removeClass('display-none');		
+			$footer_options.removeClass('display-none');		
 
-			if(footer_options.offset().top - $(window).scrollTop() >= 
-				window.innerHeight - footer_options.height() - 22) {
-				footer_options.addClass('popup-high');
+			if($footer_options.offset().top - $(window).scrollTop() >= 
+				window.innerHeight - $footer_options.height() - 22) {
+				$footer_options.addClass('popup-high');
 			} else {
-				footer_options.addClass('popup-low');
+				$footer_options.addClass('popup-low');
 			}
 		}, 1);
 	}
@@ -34,95 +119,92 @@ $('body').on('click', '.options-popup', function (e) {
 })
 
 function prepare_header_text_form(target) {
-	var post_wrapper, blog_title, blog_text, blog_tags;
+	var $post_wrapper, $blog_title, $blog_text, $blog_tags;
 
 	post_types[0].click();
 	
-	post_wrapper = target.parents('.post-wrapper');
+	$post_wrapper = target.parents('.post-wrapper');
 
 	post_options.className = "post-fade visible";
 	post_submit_button[0].className = "submit-button button-color";
 	post_submit_button[0].innerHTML = "Save";
 
-	blog_title = post_wrapper.find('.blog-post-title').html();
+	$blog_title = $post_wrapper.find('.blog-post-title').html();
 
-	if (blog_title === undefined) {
+	if ($blog_title === undefined) {
 		title_field[0].value = "";
 	} else {
-		title_field[0].value = blog_title;
+		title_field[0].value = $blog_title;
 	}
 
-	blog_text = post_wrapper.find('.blog-post-text').html();
+	$blog_text = $post_wrapper.find('.blog-post-text').html();
 
-	if (blog_text === undefined) {
+	if ($blog_text === undefined) {
 		text_field[0].value = "";
 	} else {
-		text_field[0].value = blog_text;
+		text_field[0].value = $blog_text;
 	}
 
-	blog_tags = post_wrapper.find('.blog-post-tags').html();
+	$blog_tags = $post_wrapper.find('.blog-post-tags').html();
 
-	if (blog_tags === undefined) {
+	if ($blog_tags === undefined) {
 		tags_field[0].value = "";
 	} else {
-		tags_field[0].value = blog_tags;
+		tags_field[0].value = $blog_tags;
 	}
 }
 
 function prepare_header_photo_form(target) {
-	var img_preview, post_wrapper, post_photo, blog_text, blog_tags;
+	var $img_preview, $post_wrapper, $post_photo, $blog_text, $blog_tags;
 	
 	post_types[1].click();
 
-	img_preview = $("#img-preview");
-	post_wrapper = target.parents('.post-wrapper');
-	post_photo = post_wrapper.find('.blog-post-img');
+	$img_preview = $("#img-preview");
+	$post_wrapper = target.parents('.post-wrapper');
+	$post_photo = $post_wrapper.find('.blog-post-img');
 
 	$('#image-option').addClass("display-none");
-	photo_content.removeClass("display-none");
-  img_preview.removeClass("display-none");
-	img_preview.attr('src', post_photo.attr('src'));
+	$photo_content.removeClass("display-none");
+  $img_preview.removeClass("display-none");
+	$img_preview.attr('src', $post_photo.attr('src'));
 	post_options.className = "post-fade visible";
 	post_submit_button[1].className = "submit-button button-color";
 	post_submit_button[1].innerHTML = "Save";
 
 	file_field[0].value = "";
 
-	blog_text = post_wrapper.find('.blog-post-text').html()
+	$blog_text = $post_wrapper.find('.blog-post-text').html()
 
-	if (blog_text === undefined) {
+	if ($blog_text === undefined) {
 		text_field[1].value = "";
 	} else {
-		text_field[1].value = blog_text;
+		text_field[1].value = $blog_text;
 	}
 
-	blog_tags = post_wrapper.find('.blog-post-tags').html();
+	$blog_tags = $post_wrapper.find('.blog-post-tags').html();
 
-	if (blog_tags === undefined) {
+	if ($blog_tags === undefined) {
 		tags_field[1].value = "";
 	} else {
-		tags_field[1].value = blog_tags;
+		tags_field[1].value = $blog_tags;
 	}
 }
 
-var post_edit_id = null;
+post_edit_id = null;
 
 $('body').on('click', '.option-edit', function (e) {
-	var post_wrapper, post_photo, post_id;
+	var $post_wrapper, $post_photo, post_id;
 
 	e.preventDefault();
 	$(this).parent().addClass('display-none');
 
-	post_wrapper = $(this).parents('.post-wrapper');
-	post_photo = post_wrapper.find('.blog-post-img');
-	post_id = {
-		post_id: post_wrapper.find('.post-id').html()
-	}
+	$post_wrapper = $(this).parents('.post-wrapper');
+	$post_photo = $post_wrapper.find('.blog-post-img');
 
 	//This sets the id of the post instance to be carried to the ajax request
-	post_edit_id = post_wrapper.find('.post-id').html();
+	post_edit_id = $post_wrapper.find('.post-id').html();
 
-	if (post_photo.length) {
+	if ($post_photo.length) {
 		prepare_header_photo_form($(this));
 	} else {
 		prepare_header_text_form($(this));
@@ -131,26 +213,26 @@ $('body').on('click', '.option-edit', function (e) {
 
 
 $('body').on('click', '.option-delete', function (e) {
-	var post_wrapper, post_id;
+	var $post_wrapper, $post_id;
 
 	e.preventDefault();
 
-	post_wrapper = $(this).parents('.post-wrapper');
-	post_id = {
-		post_id: post_wrapper.find('.post-id').html()
-	}
+	$post_wrapper = $(this).parents('.post-wrapper');
+	$post_id = $post_wrapper.find('.post-id').html()
 
 	$(this).parent().addClass('display-none');
-	post_wrapper.addClass('post-hidden');
+	$post_wrapper.addClass('post-hidden');
 
 	setTimeout (function() {
-		post_wrapper.remove();
+		$post_wrapper.remove();
 
 		(function delete_post_db() {
 			$.ajax({
 				url: "/blog/delete_post",
 				type: "POST",
-				data: post_id,
+				data: {
+					'post_id': $post_id
+				},
 			});
 		}());
 	}, 700);
