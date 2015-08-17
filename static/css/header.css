@@ -53,6 +53,26 @@
   -moz-transition-timing-function: linear;
   transition-timing-function: linear; }
 
+.img-overlay {
+  left: 0;
+  top: 0;
+  background: rgba(17, 17, 17, 0.92157);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 100; }
+  .img-overlay img {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: fixed;
+    margin: auto auto;
+    max-width: 70%; }
+
+.overflow-hidden {
+  overflow: hidden; }
+
 .account-hidden {
   opacity: 0;
   margin-top: -10px; }
@@ -424,14 +444,26 @@
       right: -7px;
       top: -7px; }
   #post-options .post-header {
-    padding-top: 15px;
     height: 45px;
-    width: 540px; }
+    width: 540px;
+    position: relative; }
+    #post-options .post-header a {
+      background: #ffffff;
+      border-radius: 2px;
+      height: 64px;
+      width: 64px;
+      position: absolute;
+      left: -84px; }
+    #post-options .post-header img {
+      height: 62px;
+      width: 62px;
+      margin: 1px 0 0 1px; }
     #post-options .post-header p {
-      color: #a2a2a2;
+      color: #444;
       font-size: 13px;
       font-weight: 700;
-      margin: 0 0 0 20px; }
+      margin: 15px 0 0 20px;
+      position: absolute; }
   #post-options .post-content {
     background: #ffffff; }
     #post-options .post-content .title-field,

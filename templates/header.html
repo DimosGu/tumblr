@@ -6,8 +6,8 @@
 		</a>
 		<div id="header-right">
 			<div id="header-links">
-				<a href="/" id="dashboard"></a>
-				<a href="/" id="explore"></a>
+				<a href="{% url 'dashboard' %}" id="dashboard"></a>
+				<a href="" id="explore"></a>
 				<a href="/" id="messages"></a>
 				<a href="/" id="activity"></a>
 				<div id="account">
@@ -65,6 +65,9 @@
 		<div class="table-cell">
 			<div id="post-text">
 				<div class="post-header">
+					<a href="/">
+						<img src="{{ blog.img.url }}">
+					</a>
 					<p>{{ user.username }}</p>
 				</div>
 				<div class="post-content">
@@ -90,6 +93,9 @@
 		<div class="table-cell">
 			<div id="post-photo">
 				<div class="post-header">
+					<a href="/">
+						<img src="{{ blog.img.url }}">
+					</a>
 					<p>{{ user.username }}</p>
 				</div>
 				<div id="image-option">
@@ -133,6 +139,9 @@
 		<div class="table-cell">
 			<div id="post-quote">
 				<div class="post-header">
+					<a href="/">
+						<img src="{{ blog.img.url }}">
+					</a>
 					<p>{{ user.username }}</p>
 				</div>
 				<div class="post-content">
@@ -154,6 +163,9 @@
 		<div class="table-cell">
 			<div id="post-link">
 				<div class="post-header">
+					<a href="/">
+						<img src="{{ blog.img.url }}">
+					</a>
 					<p>{{ user.username }}</p>
 				</div>
 				<div class="post-content">
@@ -175,6 +187,9 @@
 		<div class="table-cell">
 			<div id="post-chat">
 				<div class="post-header">
+					<a href="/">
+						<img src="{{ blog.img.url }}">
+					</a>
 					<p>{{ user.username }}</p>
 				</div>
 				<div class="post-content">
@@ -196,6 +211,9 @@
 		<div class="table-cell">
 			<div id="post-audio">
 				<div class="post-header">
+					<a href="/">
+						<img src="{{ blog.img.url }}">
+					</a>
 					<p>{{ user.username }}</p>
 				</div>
 				<div class="post-content">
@@ -217,6 +235,9 @@
 		<div class="table-cell">
 			<div id="post-video">
 				<div class="post-header">
+					<a href="/">
+						<img src="{{ blog.img.url }}">
+					</a>
 					<p>{{ user.username }}</p>
 				</div>
 				<div class="post-content">

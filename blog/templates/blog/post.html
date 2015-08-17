@@ -1,0 +1,33 @@
+<div class="post-wrapper blog-post-fade">
+	<span class="post-id">{{ post.id }}</span>
+	<div class="blog-post-header">
+		<a class="user-blog-link" href="/">
+			<img src="{{ blog.img.url }}">
+		</a>
+		<a class="user-link" href="">{{ user.username }}</a>
+	</div>
+	<div class="blog-post">
+		{% if post.file %}
+			<a class="blog-click-img" href="{{ post.file.url }}">
+				<img class="blog-post-img" src="{{ post.file.url }}">
+			</a>
+		{% endif %}
+		{% if post.title %}
+			<span class="blog-post-title">{{ post.title }}</span>
+		{% endif %}
+		{% if post.text %}
+			<p class="blog-post-text">{{ post.text }}</p>
+		{% endif %}
+		{% if post.tags %}
+			<span class="blog-post-tags">{{ post.tags }}</span>
+		{% endif %}
+	</div>
+	<div class="blog-post-footer">
+		<div class="blog-footer-options">
+			<div class="options-popup display-none">
+				<a href="" class="option-edit">Edit</a>
+				<a href="" class="option-delete">Delete</a>
+			</div>
+		</div>
+	</div>
+</div>

@@ -6,8 +6,7 @@ get_post_verify = true;
 
 function blog_onload() {
 	var blog_post_img = document.querySelectorAll('.blog-post-img');
-	console.log($(document).height());
-	console.log($(window).height());
+	
 	for (var i = 0; i < blog_post_img.length; i++) {
 		if (blog_post_img[i].width <= 522) {
 			blog_post_img[i].style.marginLeft = '18px';
@@ -15,11 +14,13 @@ function blog_onload() {
 	}
 
 	//actual tumblr site bug fix. loads more posts if there is no scroll bar.
-	if ($(document).height() == $(window).height()) {
-		get_ten_posts(visible_posts);		
-		get_post_verify = false;
-		visible_posts += 10;
-	}
+	setTimeout (function() {
+		if ($(document).height() === $(window).height()) {
+			get_ten_posts(visible_posts);		
+			get_post_verify = false;
+			visible_posts += 10;
+		}
+	}, 1000)
 }
 
 function get_ten_posts(post_count) {
@@ -31,64 +32,23 @@ function get_ten_posts(post_count) {
 		},
 
 		success: function(json) {
-			var json_array, base_html, file_html, title_html, text_html, tags_html, base2_html,
-					$post_wrapper;
+			var $post_wrapper = $('#blog-posts-wrapper');
 
-			$post_wrapper = $('#blog-posts-wrapper');
-			json_array = [json.post_0, json.post_1, json.post_2, json.post_3, json.post_4, 
-										json.post_5,	json.post_6, json.post_7, json.post_8, json.post_9];
-
-			for (var i = 0; i < json_array.length; i++) {
-				if (json_array[i].id_data) {
-					base_html = '<div class="post-wrapper blog-post-fade"><span class="post-id">' + json_array[i].id_data + 
-						'</span><div class="blog-post-header"><a class="user-blog-link" href="/">' +
-						'<img src="' + json_array[i].blog_img + '"></a><a class="user-link" href="">' + 
-						json_array[i].username + '</a></div><div class="blog-post">';
-					file_html = '<a href="' + json_array[i].file_data + '"><img class="blog-post-img" src="' + 
-						json_array[i].file_data + '"></a>';
-					title_html = '<span class="blog-post-title">' + json_array[i].title_data + '</span>';
-					text_html = '<p class="blog-post-text">' + json_array[i].text_data + '</p>';
-					tags_html = '<span class="blog-post-tags">' + json_array[i].tags_data + '</span>';
-					base2_html = '</div><div class="blog-post-footer"><div class="blog-footer-options">' +
-						'<div class="options-popup display-none"><a href="" class="option-edit">Edit</a>' +
-						'<a href="" class="option-delete">Delete</a></div></div></div></div>';
-
-					html_array = []
-
-					html_array.push(base_html);
-					if (json_array[i].title_data) {
-						html_array.push(title_html);
-					}
-					if (json_array[i].file_data) {
-						html_array.push(file_html);
-					}
-					if (json_array[i].text_data) {
-						html_array.push(text_html);
-					}
-					if (json_array[i].tags_data) {
-						html_array.push(tags_html);
-					}
-					html_array.push(base2_html);
-
-					joined_html = html_array.join('');
-					$post_wrapper.append(joined_html);
-
-					get_post_verify = true;
-				}
+			$post_wrapper.append(json.html);
+			if (json.html.length) {
+				get_post_verify = true;
 			}
 		},
 	});
 };
 
 $(window).on('scroll', function() {
-	if ($(window).scrollTop() + $(window).height() > $(document).height() / 1.75) {
-
+	if ($(window).scrollTop() + $(window).height() > $(document).height() / 1.25) {
 		if (get_post_verify) {
 			get_ten_posts(visible_posts);		
 			get_post_verify = false;
 			visible_posts += 10;
 		}
-
 	}
 });
 
@@ -221,10 +181,11 @@ $('body').on('click', '.option-delete', function (e) {
 	$post_id = $post_wrapper.find('.post-id').html()
 
 	$(this).parent().addClass('display-none');
-	$post_wrapper.addClass('post-hidden');
+	$post_wrapper.addClass('invisible');
 
 	setTimeout (function() {
 		$post_wrapper.remove();
+		visible_posts -= 1;
 
 		(function delete_post_db() {
 			$.ajax({

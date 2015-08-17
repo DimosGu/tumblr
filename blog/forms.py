@@ -1,5 +1,5 @@
 from django import forms
-from blogs.models import Post
+from .models import Post
 
 class TextPostForm(forms.ModelForm):
 

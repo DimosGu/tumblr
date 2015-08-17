@@ -1,6 +1,6 @@
-from blogs.forms import TextPostForm, PhotoPostForm
+from blog.forms import TextPostForm, PhotoPostForm
+from blog.models import Blog, Post
 from user_accounts.models import User
-from blogs.models import Blog, Post
 
 def blog(request):
 	try:

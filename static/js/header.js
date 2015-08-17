@@ -437,41 +437,12 @@ function new_text_post() {
 		},
 
 		success: function(json) {
-			var $post_wrapper, base_html, text_html, tags_html, base2_html,
-					html_array, joined_html;
-
-			$post_wrapper = $('#blog-posts-wrapper');
-
+			var	$post_wrapper = $('#blog-posts-wrapper');
+			
 			if (blog_body) {
-				base_html = '<div class="post-wrapper blog-post-fade"><span class="post-id">' + json.id_data + '</span>' +
-					'<div class="blog-post-header"><a class="user-blog-link" href="/">' +
-					'<img src="' + json.blog_img + '"></a><a class="user-link" href="">' + json.username + '</a>' +
-					'</div><div class="blog-post">';
-				title_html = '<span class="blog-post-title">' + json.title_data + '</span>';
-				text_html = '<p class="blog-post-text">' + json.text_data + '</p>';
-				tags_html = '<span class="blog-post-tags">' + json.tags_data + '</span>';
-				base2_html = '</div><div class="blog-post-footer"><div class="blog-footer-options">' +
-					'<div class="options-popup display-none"><a href="" class="option-edit">Edit</a>' +
-					'<a href="" class="option-delete">Delete</a></div></div></div></div>';
-				
-				html_array = []
-
-				html_array.push(base_html);
-				if (json.title_data) {
-					html_array.push(title_html);
-				}
-				if (json.text_data) {
-					html_array.push(text_html);
-				}
-				if (json.tags_data) {
-					html_array.push(tags_html);
-				}
-				html_array.push(base2_html);
-
-				joined_html = html_array.join('');
-				$post_wrapper.prepend(joined_html);
+				$post_wrapper.prepend(json.html);
+				visible_posts += 1;
 			}
-
 		},
 	});
 };
@@ -568,35 +539,11 @@ function new_photo_post() {
 		contentType: false,
 
 		success: function(json) {
-			var $post_wrapper, base_html, text_html, tags_html, base2_html;
-
-			$post_wrapper = $('#blog-posts-wrapper');
-
+			var	$post_wrapper = $('#blog-posts-wrapper');
+			
 			if (blog_body) {
-				base_html = '<div class="post-wrapper blog-post-fade"><span class="post-id">' + json.id_data + '</span>' +
-					'<div class="blog-post-header"><a class="user-blog-link" href="/">' +
-					'<img src="' + json.blog_img + '"></a><a class="user-link" href="">' + json.username + '</a>' +
-					'</div><div class="blog-post"><a href="' + json.file_data + '">' +
-					'<img class="blog-post-img" src="' + json.file_data + '"></a>';
-				text_html = '<p class="blog-post-text">' + json.text_data + '</p>';
-				tags_html = '<span class="blog-post-tags">' + json.tags_data + '</span>';
-				base2_html = '</div><div class="blog-post-footer"><div class="blog-footer-options">' +
-					'<div class="options-popup display-none"><a href="" class="option-edit">Edit</a>' +
-					'<a href="" class="option-delete">Delete</a></div></div></div></div>';
-
-				html_array = []
-
-				html_array.push(base_html);
-				if (json.text_data) {
-					html_array.push(text_html);
-				}
-				if (json.tags_data) {
-					html_array.push(tags_html);
-				}
-				html_array.push(base2_html);
-
-				joined_html = html_array.join('');
-				$post_wrapper.prepend(joined_html);
+				$post_wrapper.prepend(json.html);
+				visible_posts += 1;
 			}
 		},
 	});

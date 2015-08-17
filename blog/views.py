@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
-from blogs.forms import TextPostForm, PhotoPostForm
+from django.http import HttpResponse, JsonResponse
 from django.template.loader import render_to_string
-from blogs.models import Blog, Post
 from user_accounts.models import User
 from django.core.files import File
+from .models import Blog, Post
+from .forms import TextPostForm, PhotoPostForm
 
 @login_required
 def blog_edit(request, username):
@@ -17,46 +17,29 @@ def blog_edit(request, username):
 		'latest_posts': latest_posts
 	}
 
-	return render(request, 'blogs/blog_edit.html', context)
+	return render(request, 'blog/blog_edit.html', context)
 
 def get_more_posts(request):
 	post_count = int(request.GET.get('post_count'))
+	end_count = post_count + 10
 	blog = Blog.objects.get(user=request.user)
-	posts = Post.objects.filter(blog=blog).order_by('-pub_date')
+	posts = Post.objects.filter(blog=blog).order_by('-pub_date')[post_count:end_count]
 
-	posts_to_json = {
-		'post_0' : {},
-		'post_1' : {},
-		'post_2' : {},
-		'post_3' : {},
-		'post_4' : {},
-		'post_5' : {},
-		'post_6' : {},
-		'post_7' : {},
-		'post_8' : {},
-		'post_9' : {}
-	} 
+	response = {
+		'html': [],
+	}
 
-	for x in range(0, 10):
+	for post in posts:
+		response['html'].append(render_to_string(
+			'blog/post.html',
+			{
+				'post': post,
+				'user': request.user,
+				'blog': blog,
+			}
+		))
 
-		try:
-
-			if posts[post_count].file:
-				posts_to_json['post_%s' % x]['file_data'] = posts[post_count].file.url
-
-			posts_to_json['post_%s' % x]['blog_img'] = blog.img.url
-			posts_to_json['post_%s' % x]['username'] = request.user.username
-			posts_to_json['post_%s' % x]['id_data'] = posts[post_count].pk
-			posts_to_json['post_%s' % x]['title_data'] = posts[post_count].title
-			posts_to_json['post_%s' % x]['text_data'] = posts[post_count].text
-			posts_to_json['post_%s' % x]['tags_data'] = posts[post_count].tags
-
-			post_count += 1
-			
-		except: 
-			pass
-					
-	return JsonResponse(posts_to_json)
+	return JsonResponse(response)
 
 
 def delete_post(request):
@@ -64,7 +47,7 @@ def delete_post(request):
 	if request.method == 'POST':
 		post = Post.objects.get(user=request.user, pk=request.POST.get('post_id')).delete()
 
-		return HttpResponse('success')
+		return HttpResponse('delete success')
 
 def edit_post(request):
 
@@ -111,16 +94,20 @@ def post_text(request):
 			post = Post.objects.get(user=request.user, pk=form_instance.pk)
 			blog = Blog.objects.get(user=request.user)
 
-			json_data = {
-				'blog_img': blog.img.url,
-				'username': request.user.username,
-				'id_data': post.id,
-				'title_data': post.title,
-				'text_data': post.text,
-				'tags_data': post.tags
+			response = {
+				'html': [],
 			}
 
-		return JsonResponse(json_data)
+			response['html'].append(render_to_string(
+				'blog/post.html',
+				{
+					'post': post,
+					'user': request.user,
+					'blog': blog,
+				}
+			))
+
+		return JsonResponse(response)
 
 def post_photo(request):
 
@@ -135,13 +122,17 @@ def post_photo(request):
 			post = Post.objects.get(user=request.user, pk=form_instance.pk)
 			blog = Blog.objects.get(user=request.user)
 			
-			json_data = {
-				'blog_img': blog.img.url,
-				'username': request.user.username,
-				'id_data': post.id,
-				'file_data': post.file.url,
-				'text_data': post.text,
-				'tags_data': post.tags
+			response = {
+				'html': [],
 			}
 
-			return JsonResponse(json_data)
+			response['html'].append(render_to_string(
+				'blog/post.html',
+				{
+					'post': post,
+					'user': request.user,
+					'blog': blog,
+				}
+			))
+
+			return JsonResponse(response)

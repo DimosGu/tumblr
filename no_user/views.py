@@ -4,7 +4,7 @@ from django.core.context_processors import csrf
 from user_accounts.forms import RegistrationForm, LoginForm
 from django.contrib.auth import authenticate, login
 from django.core import validators
-from blogs.models import Blog, Post
+from blog.models import Blog, Post
 from random import randint
 
 def register(request):
@@ -13,7 +13,6 @@ def register(request):
 		return HttpResponseRedirect('/dashboard')
 	elif request.method == 'POST':
 		form = RegistrationForm(request.POST)
-		
 		user_info = authenticate(
 			email=request.POST['email'].lower(),
 			password=request.POST['password']
@@ -25,12 +24,10 @@ def register(request):
 			return JsonResponse(redirect_url)
 		elif form.is_valid():
 			form.save()
-			
 			user_info = authenticate(
 				email=form.cleaned_data['email'], 
 				password=form.cleaned_data['password'])
 			login(request, user_info)
-
 			redirect_url = {'url': 'dashboard'}
 			return JsonResponse(redirect_url)
 		else:
