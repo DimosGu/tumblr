@@ -1,6 +1,6 @@
 @import 'bourbon/bourbon';
 @import '../../../../static/scss/reset';
-/*@import '../../../../static/scss/header';*/
+@import '../../../../static/scss/header';
 
 html {
 	font-family: helvetica, arial;
@@ -33,10 +33,6 @@ body {
 
 	.post-wrapper {
 		width: 540px;
-	}
-
-	.post-id {
-		display: none;
 	}
 
 	.blog-post-header {

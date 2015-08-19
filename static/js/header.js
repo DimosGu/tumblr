@@ -1,6 +1,6 @@
 var search_img, search_form, search_input,
 		dashboard_body, explore_body, messages_body, dashboard, explore, messages,
-		activity, account_a, account_details, 
+		$wrappepr, activity, account_a, account_details, 
 		post, post_options, post_type, post_types, post_titles, title, 
 		text, photo, quote, link, chat, audio, video, post_type_wrapper,
 		post_text, post_photo, post_quote, post_link, post_chat, post_audio, post_video,
@@ -20,10 +20,9 @@ messages_body = document.getElementById("messages-body");
 messages = document.getElementById("messages");
 blog_body = document.getElementById("blog-body");
 
-var wrapper = document.getElementById("wrapper");
+$wrapper = $('#wrapper');
 post_edit_id = null;
-// Timeouts to remove display-none class giving the page time to change 
-// the image before displaying content
+
 window.onload = function() {
 	if (dashboard_body) {
 		dashboard.style.backgroundImage = "url('/static/images/home_active.png')";
@@ -37,7 +36,7 @@ window.onload = function() {
 	}
 
 	setTimeout (function() {
-		wrapper.className = "";
+		$wrapper.removeClass('display-none');		
 	}, 1);
 }
 

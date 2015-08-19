@@ -2,5 +2,6 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-	url(r'trending^$', views.trending, name='trending'),
+	url(r'^$', views.explore, name='explore'),
+	url(r'^trending$', views.trending, name='trending'),
 ]

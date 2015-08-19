@@ -1,0 +1,30 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tumblr</title>
+	<link rel="icon" href="{% static 'images/icon.ico' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'explore/css/style.css' %}" />
+</head>
+<body id="explore-body">
+	<div id="full-screen-img" class="display-none">
+		<img src="">
+	</div>
+	<div id="wrapper" class="display-none invisible">
+		{% include 'explore/explore_header.html' %}
+		<div id="outer-wrapper">
+			<div id="post-content">
+				{% for post, following in latest_posts %}
+					{% include 'explore/post.html' %}
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.1/masonry.pkgd.min.js"></script>
+	<script type="text/javascript" src="{% static 'js/header.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/post_img.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/follow.js' %}"></script>
+	<script type="text/javascript" src="{% static 'explore/js/explore.js' %}"></script>
+</body>
+</html>

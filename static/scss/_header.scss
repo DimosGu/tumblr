@@ -1,5 +1,3 @@
-@import "bourbon/bourbon";
-
 .account-fade {
 	@include transition-property( margin opacity );
 	@include transition-duration( .1s );
@@ -103,7 +101,7 @@
 .fade {
 	opacity: .4;
 }
-
+ 
 .invisible {
 	opacity: 0;
 }

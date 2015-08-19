@@ -1,5 +1,5 @@
 from blog.forms import TextPostForm, PhotoPostForm
-from blog.models import Blog, Post
+from blog.models import Blog, Follow, Post
 from user_accounts.models import User
 
 def blog(request):

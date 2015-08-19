@@ -4,13 +4,13 @@ from django.http import HttpResponse, JsonResponse
 from django.template.loader import render_to_string
 from user_accounts.models import User
 from django.core.files import File
-from .models import Blog, Post
+from .models import Blog, Post, Follow
 from .forms import TextPostForm, PhotoPostForm
 
 @login_required
 def blog_edit(request, username):
 	blog = Blog.objects.get(user=request.user)
-	posts = Post.objects.filter(blog=blog)	
+	posts = Post.objects.filter(blog=blog)
 	latest_posts = posts.order_by('-pub_date')[:10]
 
 	context = {
@@ -18,6 +18,38 @@ def blog_edit(request, username):
 	}
 
 	return render(request, 'blog/blog_edit.html', context)
+
+def follow_blog(request):
+
+	if request.method == 'POST':
+		username = request.POST.get('username') 
+		user_to_follow = User.objects.get(username=username)
+		blog = Blog.objects.get(user=user_to_follow)
+		follow = Follow(user=request.user, blog=blog)
+
+		follow.save()
+
+		response = {
+			'username': username,
+		}
+
+		return JsonResponse(response)
+
+def unfollow_blog(request):
+
+	if request.method == 'POST':
+		username = request.POST.get('username') 
+		user_to_unfollow = User.objects.get(username=username)
+		blog = Blog.objects.get(user=user_to_unfollow)
+		unfollow = Follow.objects.get(blog=blog)
+
+		unfollow.delete()
+
+		response = {
+			'username': username,
+		}
+
+		return JsonResponse(response)
 
 def get_more_posts(request):
 	post_count = int(request.GET.get('post_count'))

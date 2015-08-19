@@ -24,10 +24,16 @@ class Post(models.Model):
 
 	def __str__(self):		
 		if self.title != "":
-			pass
+			return self.title
 		elif self.file != "":
-			self.title = 'File'
+			return 'File'
 		else:
-			self.title = 'Untitled'
+			return 'Untitled'
 		
-		return self.title
+class Follow(models.Model):
+	user = models.ForeignKey(settings.AUTH_USER_MODEL)
+	blog = models.ForeignKey(Blog)
+	following_since = models.DateTimeField('following since', default=timezone.now)
+
+	def __str__(self):
+		return self.blog

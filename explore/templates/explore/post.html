@@ -1,0 +1,37 @@
+<div class="post-wrapper">
+	<span class="post-blog-username display-none"></span>
+	<span class="post-id display-none">{{ post.id }}</span>
+	<span class="following display-none">{{ following }}</span>
+	<div class="post-header">
+		<a class="blog-link" title="{{ post.user.username }}"href="/">
+			<img src="{{ post.blog.img.url }}">
+		</a>
+		<a class="user-link" title="{{ post.user.username }}" href="">{{ post.user.username }}</a>
+		<a class="follow-link" href="">
+			<div class="follow">Follow</div>
+			<div class="unfollow display-none">Unfollow</div>
+		</a>
+	</div>
+	<div class="post">
+		{% if post.file %}
+			<a class="blog-click-img" href="{{ post.file.url }}">
+				<img class="blog-post-img" src="{{ post.file.url }}">
+			</a>
+		{% endif %}
+		<div class="words-wrapper">
+			{% if post.title %}
+				<span class="post-title">{{ post.title }}</span>
+			{% endif %}
+			{% if post.text %}
+				<p class="post-text">{{ post.text }}</p>
+			{% endif %}
+			{% if post.tags %}
+				<span class="post-tags">{{ post.tags }}</span>
+			{% endif %}
+		</div>
+	</div>
+	<div class="post-footer">
+		<div class="footer-options">
+		</div>
+	</div>
+</div>
