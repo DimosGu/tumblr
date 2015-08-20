@@ -7,13 +7,18 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'dashboard/css/style.css' %}" />
 </head>
 <body id="dashboard-body">
+	<div id="full-screen-img" class="display-none">
+		<img src="">
+	</div>
 	<div id="wrapper" class="display-none">
 		{% include "header.html" %}
-		<div id="content">
-			<p>{{ user.username }}</p>
+		<div id="posts-wrapper">
+		{% for post in latest_posts %}
+			{% include 'dashboard/dashboard_post.html' %}
+		{% endfor %}
 		</div>
 	</div>
-	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-	<script type="text/javascript" src="{% static 'js/header.js' %}"></script>
+	{% include "js_modules.html" %}
+	<script type="text/javascript" src="{% static 'dashboard/js/dashboard.js'%}"></script>
 </body>
 </html>

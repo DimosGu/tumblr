@@ -19,7 +19,7 @@ def blog_edit(request, username):
 
 	return render(request, 'blog/blog_edit.html', context)
 
-def follow_blog(request):
+def follow(request):
 
 	if request.method == 'POST':
 		username = request.POST.get('username') 
@@ -35,7 +35,7 @@ def follow_blog(request):
 
 		return JsonResponse(response)
 
-def unfollow_blog(request):
+def unfollow(request):
 
 	if request.method == 'POST':
 		username = request.POST.get('username') 
@@ -63,7 +63,7 @@ def get_more_posts(request):
 
 	for post in posts:
 		response['html'].append(render_to_string(
-			'blog/post.html',
+			'blog/blog_post.html',
 			{
 				'post': post,
 				'user': request.user,
@@ -131,7 +131,7 @@ def post_text(request):
 			}
 
 			response['html'].append(render_to_string(
-				'blog/post.html',
+				'blog/blog_post.html',
 				{
 					'post': post,
 					'user': request.user,
@@ -159,7 +159,7 @@ def post_photo(request):
 			}
 
 			response['html'].append(render_to_string(
-				'blog/post.html',
+				'blog/blog_post.html',
 				{
 					'post': post,
 					'user': request.user,

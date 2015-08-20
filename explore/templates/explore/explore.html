@@ -15,16 +15,14 @@
 		<div id="outer-wrapper">
 			<div id="post-content">
 				{% for post, following in latest_posts %}
-					{% include 'explore/post.html' %}
+					{% include 'explore/explore_post.html' %}
 				{% endfor %}
 			</div>
 		</div>
 	</div>
-	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	{% include "js_modules.html" %}
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.1/masonry.pkgd.min.js"></script>
-	<script type="text/javascript" src="{% static 'js/header.js' %}"></script>
-	<script type="text/javascript" src="{% static 'js/post_img.js' %}"></script>
-	<script type="text/javascript" src="{% static 'js/follow.js' %}"></script>
 	<script type="text/javascript" src="{% static 'explore/js/explore.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/follow.js' %}"></script>
 </body>
 </html>

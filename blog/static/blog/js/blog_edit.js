@@ -1,19 +1,17 @@
-var $posts, visible_posts, get_post_verify, post_edit_id;
+var visible_posts, get_post_verify, post_edit_id;
 
-$posts = $('.post-wrapper');
 visible_posts = 10;
 get_post_verify = true;
 
 function blog_onload() {
-	var blog_post_img = document.querySelectorAll('.blog-post-img');
+	var post_img = document.querySelectorAll('.post-img');
 	
-	for (var i = 0; i < blog_post_img.length; i++) {
-		if (blog_post_img[i].width <= 522) {
-			blog_post_img[i].style.marginLeft = '18px';
+	for (var i = 0; i < post_img.length; i++) {
+		if (post_img[i].width <= 522) {
+			post_img[i].style.marginLeft = '18px';
 		}
 	}
 
-	//actual tumblr site bug fix. loads more posts if there is no scroll bar.
 	setTimeout (function() {
 		if ($(document).height() === $(window).height()) {
 			get_ten_posts(visible_posts);		
@@ -38,7 +36,7 @@ function get_ten_posts(post_count) {
 			if (json.html.length) {
 				get_post_verify = true;
 			}
-		},
+		}
 	});
 };
 
@@ -89,7 +87,7 @@ function prepare_header_text_form(target) {
 	post_submit_button[0].className = "submit-button button-color";
 	post_submit_button[0].innerHTML = "Save";
 
-	$blog_title = $post_wrapper.find('.blog-post-title').html();
+	$blog_title = $post_wrapper.find('.post-title').html();
 
 	if ($blog_title === undefined) {
 		title_field[0].value = "";
@@ -97,7 +95,7 @@ function prepare_header_text_form(target) {
 		title_field[0].value = $blog_title;
 	}
 
-	$blog_text = $post_wrapper.find('.blog-post-text').html();
+	$blog_text = $post_wrapper.find('.post-text').html();
 
 	if ($blog_text === undefined) {
 		text_field[0].value = "";
@@ -105,7 +103,7 @@ function prepare_header_text_form(target) {
 		text_field[0].value = $blog_text;
 	}
 
-	$blog_tags = $post_wrapper.find('.blog-post-tags').html();
+	$blog_tags = $post_wrapper.find('.post-tags').html();
 
 	if ($blog_tags === undefined) {
 		tags_field[0].value = "";
@@ -133,7 +131,7 @@ function prepare_header_photo_form(target) {
 
 	file_field[0].value = "";
 
-	$blog_text = $post_wrapper.find('.blog-post-text').html()
+	$blog_text = $post_wrapper.find('.post-text').html()
 
 	if ($blog_text === undefined) {
 		text_field[1].value = "";
@@ -141,7 +139,7 @@ function prepare_header_photo_form(target) {
 		text_field[1].value = $blog_text;
 	}
 
-	$blog_tags = $post_wrapper.find('.blog-post-tags').html();
+	$blog_tags = $post_wrapper.find('.post-tags').html();
 
 	if ($blog_tags === undefined) {
 		tags_field[1].value = "";

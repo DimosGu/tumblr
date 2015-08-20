@@ -1,6 +1,6 @@
 var $img_zoom = $('#full-screen-img');
 
-$('body').on('click', '.blog-click-img', function (e) {
+$('body').on('click', '.post-click-img', function (e) {
 	e.preventDefault();
 	var $img_url = $(this).attr('href');
 	$('body').addClass('overflow-hidden');

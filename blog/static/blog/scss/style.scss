@@ -35,7 +35,7 @@ body {
 		width: 540px;
 	}
 
-	.blog-post-header {
+	.post-header {
 		background: #ffffff;
 		border-radius: 2px 2px 0 0;
 		padding: 10px 0 0 20px;
@@ -43,7 +43,7 @@ body {
 		height: 42px;
 		width: 100%;
 
-		.user-blog-link {
+		.blog-link {
 			background: #ffffff;
 			border-radius: 2px;
 			left: -85px;
@@ -67,44 +67,53 @@ body {
 		}
 	}
 
-	.blog-post {
+	.post {
 		background: #ffffff;
-		color: #444;
 		width: 540px;
-
-	 	.blog-post-title {
-			font-size: 36px;
-			margin: 0 0 0 17px;
-		}
-
-		.blog-post-text {
-			color: #444;
-			font-size: 14px;
-			margin: 0 0 0 18px;
-			padding-top: 10px;
-		}
-
-		.blog-post-tags {
-			color: #a1a1a1;
-			display: block;
-			font-size: 13px;
-			margin: 20px 0 0 18px;
-		}
 
 		img {
 			max-width: 100%;
 		}
+
+		.words-wrapper {
+			color: #444;
+			padding: 0 10px 0 10px;
+
+			.post-title,
+			.post-text,
+			.post-tags {
+				word-wrap: break-word;
+			} 
+
+		 	.post-title {
+				font-size: 36px;
+				margin: 0 0 0 7px;
+			}
+
+			.post-text {
+				font-size: 14px;
+				margin: 0 0 0 8px;
+				padding-top: 10px;
+			}
+
+			.post-tags {
+				color: #a1a1a1;
+				display: block;
+				font-size: 13px;
+				margin: 20px 0 0 8px;
+			}
+		}
 	}
 	
 
-	.blog-post-footer {
+	.post-footer {
 		background: #ffffff;
 		border-radius: 0 0 2px 2px;
 		margin: 0 0 20px 0;
 		height: 42px;
 		width: 100%;
 
-		.blog-footer-options {
+		.footer-options {
 			background: url('/static/images/posted_options.png') no-repeat;
 			cursor: pointer;
 			float: right;

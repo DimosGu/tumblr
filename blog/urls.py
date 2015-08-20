@@ -7,7 +7,7 @@ urlpatterns = [
 	url(r'^edit_post$', views.edit_post, name='edit_post'),
 	url(r'^delete_post$', views.delete_post, name='delete_post'),
 	url(r'^get_more_posts$', views.get_more_posts, name='get_more_posts'),
-	url(r'^unfollow_blog$', views.unfollow_blog, name='unfollow_blog'),
-	url(r'^follow_blog$', views.follow_blog, name='follow_blog'),
+	url(r'^unfollow$', views.unfollow, name='unfollow'),
+	url(r'^follow$', views.follow, name='follow'),
 	url(r'^(?P<username>\w+)$', views.blog_edit, name='blog_edit'),
 ]

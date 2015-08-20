@@ -54,7 +54,7 @@ body {
 .post-wrapper {
 	background: #fff;
 	border-radius: 3px;
-	margin: 0 20px 20px 0;
+	margin: 0 0 20px 0;
 	width: 300px;
 
 	.post-header {
@@ -104,34 +104,34 @@ body {
 	.post {
 		width: 100%;
 
-		.blog-click-img {
+		img {
 			width: 100%;
-
-			img {
-				width: 100%;
-			}
 		}
 
 		.words-wrapper {
 			padding: 0 13px 0 13px;
 			width: 100%;
+			color: #444;
 
-			.post-title {
-				color: #444;
-				font-size: 36px;
-				line-height: 50px;
+			.post-title,
+			.post-text,
+			.post-tags {
 				word-wrap: break-word;
 			}
 
+			.post-title {
+				font-size: 36px;
+				line-height: 50px;
+			}
+
 			.post-text {
-				color: #444;
 				font-size: 14px;
 				margin: 15px 0 0 0;
 			}
 
 			.post-tags {
-				display: block;
 				color: #a1a1a1;
+				display: block;
 				font-size: 13px;
 				margin: 20px 0 0 1px;
 			}

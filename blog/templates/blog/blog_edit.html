@@ -15,14 +15,12 @@
 		<div id="blog-content">
 			<div id="blog-posts-wrapper">
 				{% for post in latest_posts %}
-					{% include "blog/post.html" %}
+					{% include "blog/blog_post.html" %}
 				{% endfor %}
 			</div>
 		</div>
 	</div>
-	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-	<script type="text/javascript" src="{% static 'js/header.js' %}"></script>
+	{% include "js_modules.html" %}
 	<script type="text/javascript" src="{% static 'blog/js/blog_edit.js' %}"></script>
-	<script type="text/javascript" src="{% static 'js/post_img.js' %}"></script>
 </body>
 </html>

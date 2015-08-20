@@ -1,13 +1,13 @@
 {% load staticfiles %}
 <div id="header-wrapper">
 	<div id="header">
-		<a id="h-logo" href="{% url 'dashboard' %}" tabindex="-1">
+		<a id="h-logo" href="{% url 'dashboard:dashboard' %}" tabindex="-1">
 			<img src="{% static 'images/tumblr_logo.png' %}" alt="logo">
 		</a>
 		<div id="header-right">
 			<div id="header-links">
-				<a id="dashboard" title="Dashboard" href="{% url 'dashboard' %}"></a>
-				<a id="explore" title="Explore" href="{% url 'explore:trending' %}"></a>
+				<a id="dashboard" title="Dashboard" href="{% url 'dashboard:dashboard' %}"></a>
+				<a id="explore" title="Explore" href="{% url 'explore:recent' %}"></a>
 				<a id="messages" title="Inbox" href="/"></a>
 				<a id="activity" title="Activity" href="/"></a>
 				<div id="account" title="Account">
@@ -39,7 +39,7 @@
 			</form>
 		</div>
 	</div>
-	{% block content %}{% endblock content %}
+	{% block sub_header %}{% endblock sub_header %}
 </div>	
 <div id="post-options" class="post-fade post-hidden display-none">
 	<div id="post-type-wrapper">

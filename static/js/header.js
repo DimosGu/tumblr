@@ -26,8 +26,10 @@ post_edit_id = null;
 window.onload = function() {
 	if (dashboard_body) {
 		dashboard.style.backgroundImage = "url('/static/images/home_active.png')";
+		dashboard_onload();
 	} else if (explore_body) {
 		explore.style.backgroundImage = "url('/static/images/explore_active.png')";
+		explore_onload();
 	} else if (messages_body) {
 		messages.style.backgroundImage = "url('/static/images/messages_active.png)";
 	} else if (blog_body) {
@@ -357,13 +359,13 @@ function edit_post(type, id) {
 				$update_this = $('#blog-posts-wrapper').children().find('.post-id:contains("' + json.id_data + '")');
 				$edit_post = $update_this.siblings('.blog-post');
 
-				$edit_title = $edit_post.children('.blog-post-title');
-				$edit_text = $edit_post.children('.blog-post-text');
-				$edit_tags = $edit_post.children('.blog-post-tags');
+				$edit_title = $edit_post.children('.post-title');
+				$edit_text = $edit_post.children('.post-text');
+				$edit_tags = $edit_post.children('.post-tags');
 
-				title_html = '<span class="blog-post-title">' + json.title_data + '</span>';
-				text_html = '<p class="blog-post-text">' + json.text_data + '</p>';
-				tags_html = '<span class="blog-post-tags">' + json.tags_data + '</span>';
+				title_html = '<span class="post-title">' + json.title_data + '</span>';
+				text_html = '<p class="post-text">' + json.text_data + '</p>';
+				tags_html = '<span class="post-tags">' + json.tags_data + '</span>';
 
 				if (json.title_data) {
 					if (json.title_data && $edit_title.length) {
@@ -375,7 +377,7 @@ function edit_post(type, id) {
 					$edit_title.remove();
 
 					//redefined for potential json.text_data if condition 
-					$edit_title = $edit_post.children('.blog-post-tags');
+					$edit_title = $edit_post.children('.post-tags');
 				}
 
 				$edit_post_a = $edit_post.children('a');

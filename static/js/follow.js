@@ -1,6 +1,6 @@
-function follow_blog(username) {
+function follow(username) {
 	$.ajax({
-		url: '/blog/follow_blog',
+		url: '/blog/follow',
 		type: 'POST',
 		data: {
 			'username': username
@@ -8,9 +8,9 @@ function follow_blog(username) {
 	});
 };
 
-function unfollow_blog(username) {
+function unfollow(username) {
 	$.ajax({
-		url: '/blog/unfollow_blog',
+		url: '/blog/unfollow',
 		type: 'POST',
 		data: {
 			'username': username
@@ -18,18 +18,14 @@ function unfollow_blog(username) {
 	});
 };
 
-$('.follow').on('click', function (e) {
+$('body').on('click', '.follow', function (e) {
 	var username = $(this).parents().siblings('.user-link').html();
 	e.preventDefault();
-	$(this).addClass('display-none');
-	$(this).siblings('.unfollow').removeClass('display-none');
-	follow_blog(username);
+	follow(username);
 });
 
-$('.unfollow').on('click', function(e) {
+$('body').on('click', '.unfollow', function (e) {
 	var username = $(this).parents().siblings('.user-link').html();
 	e.preventDefault();
-	$(this).addClass('display-none');
-	$(this).siblings('.follow').removeClass('display-none');
-	unfollow_blog(username);
+	unfollow(username);
 });

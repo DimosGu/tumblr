@@ -595,11 +595,59 @@ body {
 #wrapper {
   width: 100%; }
 
-#content {
-  height: 2000px;
-  margin: 54px 0 0 0;
+#posts-wrapper {
+  padding: 92px 0 0 0;
   width: 100%; }
-  #content p {
-    color: #ffffff; }
+
+.post-wrapper {
+  background: #ffffff;
+  border-radius: 3px;
+  width: 540px;
+  margin: 0 auto 20px auto; }
+  .post-wrapper .post-header {
+    height: 45px;
+    padding: 14px 0 0 20px;
+    position: relative; }
+    .post-wrapper .post-header .blog-link {
+      background: #ffffff;
+      border-radius: 2px;
+      height: 64px;
+      width: 64px;
+      position: absolute;
+      left: -85px;
+      top: 0; }
+      .post-wrapper .post-header .blog-link img {
+        height: 62px;
+        width: 62px;
+        margin: 1px 0 0 1px; }
+    .post-wrapper .post-header .user-link {
+      color: #444;
+      font-size: 14px;
+      font-weight: bold;
+      text-decoration: none; }
+  .post-wrapper .post img {
+    max-width: 100%; }
+  .post-wrapper .post .words-wrapper {
+    color: #444;
+    padding: 0 10px 0 10px; }
+    .post-wrapper .post .words-wrapper .post-title,
+    .post-wrapper .post .words-wrapper .post-text,
+    .post-wrapper .post .words-wrapper .post-tags {
+      word-wrap: break-word; }
+    .post-wrapper .post .words-wrapper .post-title {
+      font-size: 36px;
+      line-height: 47px;
+      margin: 0 0 0 7px; }
+    .post-wrapper .post .words-wrapper .post-text {
+      font-size: 14px;
+      margin: 0 0 0 8px;
+      padding-top: 10px; }
+    .post-wrapper .post .words-wrapper .post-tags {
+      color: #a1a1a1;
+      display: block;
+      font-size: 13px;
+      margin: 18px 0 0 8px; }
+  .post-wrapper .post-footer {
+    height: 45px; }
 
 /*# sourceMappingURL=style.css.map */

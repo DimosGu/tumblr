@@ -1,20 +1,21 @@
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
+from user_accounts.models import User
 
 def upload_path(instance, filename):
 	return 'user_media/%s/%s' % (instance.user.username, filename)
 
 class Blog(models.Model):
-	user = models.ForeignKey(settings.AUTH_USER_MODEL)
+	user = models.ForeignKey(User)
 	title = models.CharField(max_length=50, default="Untitled")
 	img = models.ImageField(upload_to=upload_path, default='/media/default_blog_img.png')
 
 	def __str__(self):
-		return self.title
+		return self.user.username
 
 class Post(models.Model):
-	user = models.ForeignKey(settings.AUTH_USER_MODEL)
+	user = models.ForeignKey(User)
 	blog = models.ForeignKey(Blog)
 	pub_date = models.DateTimeField('date published', default=timezone.now)
 	title = models.TextField(blank=True)
@@ -31,9 +32,9 @@ class Post(models.Model):
 			return 'Untitled'
 		
 class Follow(models.Model):
-	user = models.ForeignKey(settings.AUTH_USER_MODEL)
+	user = models.ForeignKey(User)
 	blog = models.ForeignKey(Blog)
 	following_since = models.DateTimeField('following since', default=timezone.now)
 
 	def __str__(self):
-		return self.blog
+		return self.blog.user.username

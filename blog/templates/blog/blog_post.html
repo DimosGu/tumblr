@@ -1,0 +1,18 @@
+<div class="post-wrapper blog-post-fade">
+	<span class="post-id display-none">{{ post.id }}</span>
+	<div class="post-header">
+		<a class="blog-link" href="/">
+			<img src="{{ blog.img.url }}">
+		</a>
+		<a class="user-link" href="">{{ user.username }}</a>
+	</div>
+	{% include 'post.html' %}
+	<div class="post-footer">
+		<div class="footer-options">
+			<div class="options-popup display-none">
+				<a href="" class="option-edit">Edit</a>
+				<a href="" class="option-delete">Delete</a>
+			</div>
+		</div>
+	</div>
+</div>
