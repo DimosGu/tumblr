@@ -1,5 +1,6 @@
 from blog.forms import TextPostForm, PhotoPostForm
 from blog.models import Blog, Follow, Post
+from sites.models import Site
 from user_accounts.models import User
 
 def blog(request):
@@ -13,6 +14,19 @@ def blog(request):
 		blog = None
 
 	return {'blog': blog}
+
+def site(request):
+
+	try:
+		site = Site.objects.get(user=request.user)
+	except Site.DoesNotExist:
+		create_site = Site(user=request.user, domain=request.user.username)
+		create_site.save()
+		site = Site.objects.get(user=request.user)
+	except:
+		site = None
+
+	return {'site': site}
 
 def header_forms(request):
 	text_form = TextPostForm()

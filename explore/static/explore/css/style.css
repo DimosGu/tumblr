@@ -660,7 +660,7 @@ body {
   .post-wrapper .post {
     width: 100%; }
     .post-wrapper .post img {
-      width: 100%; }
+      max-width: 100%; }
     .post-wrapper .post .words-wrapper {
       padding: 0 13px 0 13px;
       width: 100%;

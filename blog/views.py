@@ -1,14 +1,21 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.template.loader import render_to_string
 from user_accounts.models import User
 from django.core.files import File
 from .models import Blog, Post, Follow
 from .forms import TextPostForm, PhotoPostForm
+from django.contrib.sites.shortcuts import get_current_site
 
 @login_required
 def blog_edit(request, username):
+	current_site = get_current_site(request)
+	print(current_site)
+	
+	if username != request.user.username:
+		return HttpResponseRedirect(request.user.username)	
+
 	blog = Blog.objects.get(user=request.user)
 	posts = Post.objects.filter(blog=blog)
 	latest_posts = posts.order_by('-pub_date')[:10]

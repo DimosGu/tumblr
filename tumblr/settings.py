@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'dashboard',
     'blog',
     'explore',
+    'sites',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -53,6 +54,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'tumblr.subdomain_middleware.SubdomainMiddleware',
 )
 
 ROOT_URLCONF = 'tumblr.urls'
@@ -72,6 +74,7 @@ TEMPLATES = [
                 'django.core.context_processors.media',
                 'tumblr.custom_context.blog',
                 'tumblr.custom_context.header_forms',
+                'tumblr.custom_context.site',
             ],
         },
     },
@@ -107,6 +110,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
+SITE_ID = 1
 
 STATIC_URL = '/static/'
 
@@ -120,3 +124,5 @@ MEDIA_URL = '/media/'
 AUTH_USER_MODEL = 'user_accounts.User'
 
 LOGIN_URL = '/login'
+
+SESSION_COOKIE_DOMAIN = 'local.n-ws.org'

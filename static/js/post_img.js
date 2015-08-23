@@ -5,10 +5,11 @@ $('body').on('click', '.post-click-img', function (e) {
 	var $img_url = $(this).attr('href');
 	$('body').addClass('overflow-hidden');
 	$img_zoom.children('img').attr('src', $img_url);
-	$img_zoom.removeClass('display-none').addClass('img-overlay')
+	$img_zoom.removeClass('display-none').addClass('img-overlay');
 });
 
 $img_zoom.on('click', function(e) {
 	$('body').removeClass('overflow-hidden');
 	$img_zoom.removeClass('img-overlay').addClass('display-none');
+	$img_zoom.children('img').attr('src', '');
 })

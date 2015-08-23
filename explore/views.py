@@ -22,12 +22,9 @@ def recent(request):
 		
 		try:
 			follow = Follow.objects.get(blog=blog)
+			context['latest_posts'].append((post, 'true'))
 		except: 
 			follow = None
-
-		if follow:
-			context['latest_posts'].append((post, 'true'))
-		else:
 			context['latest_posts'].append((post, 'false'))
 
 	return render(request, 'explore/explore.html', context)
@@ -47,10 +44,6 @@ def get_ten_posts(request):
 		
 		try:
 			follow = Follow.objects.get(blog=blog)
-		except: 
-			follow = None
-
-		if follow:
 			response['html'].append(render_to_string(
 				'explore/explore_post.html',
 				{
@@ -58,8 +51,7 @@ def get_ten_posts(request):
 					'following': 'true'
 				}
 			))
-
-		else:
+		except: 
 			response['html'].append(render_to_string(
 				'explore/explore_post.html',
 				{

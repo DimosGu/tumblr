@@ -357,11 +357,12 @@ function edit_post(type, id) {
 
 			if (blog_body) {
 				$update_this = $('#blog-posts-wrapper').children().find('.post-id:contains("' + json.id_data + '")');
-				$edit_post = $update_this.siblings('.blog-post');
+				$edit_post = $update_this.siblings('.post');
+				$words_wrapper = $edit_post.find('.words-wrapper');
 
-				$edit_title = $edit_post.children('.post-title');
-				$edit_text = $edit_post.children('.post-text');
-				$edit_tags = $edit_post.children('.post-tags');
+				$edit_title = $edit_post.find('.post-title');
+				$edit_text = $edit_post.find('.post-text');
+				$edit_tags = $edit_post.find('.post-tags');
 
 				title_html = '<span class="post-title">' + json.title_data + '</span>';
 				text_html = '<p class="post-text">' + json.text_data + '</p>';
@@ -371,13 +372,13 @@ function edit_post(type, id) {
 					if (json.title_data && $edit_title.length) {
 						$edit_title.html(json.title_data);
 					} else if (json.title_data && $edit_title.length == 0) {
-						$edit_post.prepend(title_html);
+						$words_wrapper.prepend(title_html);
 					}
 				} else if ($edit_title.length) {
 					$edit_title.remove();
 
 					//redefined for potential json.text_data if condition 
-					$edit_title = $edit_post.children('.post-tags');
+					$edit_title = $words_wrapper.find('.post-tags');
 				}
 
 				$edit_post_a = $edit_post.children('a');
@@ -402,9 +403,10 @@ function edit_post(type, id) {
 					if (json.text_data && $edit_text.length) {
 						$edit_text.html(json.text_data);
 					} else if (json.text_data && json.file_data && $edit_text.length == 0) {
-						$edit_post_a.after(text_html);
+						$words_wrapper.prepend(text_html);
 					} else if (json.text_data && json.file_data === undefined && $edit_text.length == 0 && $edit_title.length == 0) {
-						$edit_post.prepend(text_html);
+						console.log($words_wrapper);
+						$words_wrapper.prepend(text_html);
 					} else if (json.text_data && $edit_text.length == 0 && $edit_title.length) {
 						$edit_title.after(text_html);
 					}
@@ -416,7 +418,7 @@ function edit_post(type, id) {
 					if (json.tags_data && $edit_tags.length) {
 						$edit_tags.html(json.tags_data);
 					} else if (json.tags_data && $edit_tags.length == 0) {
-						$edit_post.append(tags_html);
+						$words_wrapper.append(tags_html);
 					}
 				} else if ($edit_tags.length) {
 					$edit_tags.remove();

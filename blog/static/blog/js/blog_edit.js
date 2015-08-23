@@ -50,7 +50,7 @@ $(window).on('scroll', function() {
 	}
 });
 
-$('body').on('click', '.blog-footer-options', function() {
+$('body').on('click', '.footer-options', function() {
 	var $footer_options = $(this).find('.options-popup');
 
 	if ($footer_options.hasClass('display-none')) {
@@ -119,7 +119,7 @@ function prepare_header_photo_form(target) {
 
 	$img_preview = $("#img-preview");
 	$post_wrapper = target.parents('.post-wrapper');
-	$post_photo = $post_wrapper.find('.blog-post-img');
+	$post_photo = $post_wrapper.find('.post-img');
 
 	$('#image-option').addClass("display-none");
 	$photo_content.removeClass("display-none");
@@ -157,7 +157,7 @@ $('body').on('click', '.option-edit', function (e) {
 	$(this).parent().addClass('display-none');
 
 	$post_wrapper = $(this).parents('.post-wrapper');
-	$post_photo = $post_wrapper.find('.blog-post-img');
+	$post_photo = $post_wrapper.find('.post-img');
 
 	//This sets the id of the post instance to be carried to the ajax request
 	post_edit_id = $post_wrapper.find('.post-id').html();

@@ -11,7 +11,7 @@
 				<a id="messages" title="Inbox" href="/"></a>
 				<a id="activity" title="Activity" href="/"></a>
 				<div id="account" title="Account">
-					<a id="account-a" href="/"></a>
+					<a id="account-a" href=""></a>
 					<div id="account-details" class="account-fade account-hidden display-none">
 						<ul>
 							<li class="li-header"><strong>ACCOUNT</strong><a href="{% url 'log_out' %}">Log out</a></li>
@@ -66,7 +66,7 @@
 		<div class="table-cell">
 			<div id="post-text">
 				<div class="post-header">
-					<a href="/">
+					<a href="">
 						<img src="{{ blog.img.url }}">
 					</a>
 					<p>{{ user.username }}</p>
@@ -94,7 +94,7 @@
 		<div class="table-cell">
 			<div id="post-photo">
 				<div class="post-header">
-					<a href="/">
+					<a href="">
 						<img src="{{ blog.img.url }}">
 					</a>
 					<p>{{ user.username }}</p>
@@ -118,7 +118,7 @@
 						{% csrf_token %}
 						{{ photo_form.file }}
 						<div id="img-container">
-							<img id="img-preview" src="/" class="display-none">
+							<img id="img-preview" src="" class="display-none">
 							<span id="erase-img" class="display-none">x</span>
 						</div>
 						{{ photo_form.text }}
@@ -140,7 +140,7 @@
 		<div class="table-cell">
 			<div id="post-quote">
 				<div class="post-header">
-					<a href="/">
+					<a href="">
 						<img src="{{ blog.img.url }}">
 					</a>
 					<p>{{ user.username }}</p>
@@ -164,7 +164,7 @@
 		<div class="table-cell">
 			<div id="post-link">
 				<div class="post-header">
-					<a href="/">
+					<a href="">
 						<img src="{{ blog.img.url }}">
 					</a>
 					<p>{{ user.username }}</p>
@@ -188,7 +188,7 @@
 		<div class="table-cell">
 			<div id="post-chat">
 				<div class="post-header">
-					<a href="/">
+					<a href="">
 						<img src="{{ blog.img.url }}">
 					</a>
 					<p>{{ user.username }}</p>
@@ -212,7 +212,7 @@
 		<div class="table-cell">
 			<div id="post-audio">
 				<div class="post-header">
-					<a href="/">
+					<a href="">
 						<img src="{{ blog.img.url }}">
 					</a>
 					<p>{{ user.username }}</p>
@@ -236,7 +236,7 @@
 		<div class="table-cell">
 			<div id="post-video">
 				<div class="post-header">
-					<a href="/">
+					<a href="">
 						<img src="{{ blog.img.url }}">
 					</a>
 					<p>{{ user.username }}</p>
