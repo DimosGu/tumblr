@@ -87,71 +87,6 @@ img {
   -moz-transition-timing-function: linear;
   transition-timing-function: linear; }
 
-.img-overlay {
-  left: 0;
-  top: 0;
-  background: rgba(17, 17, 17, 0.92157);
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  z-index: 100; }
-  .img-overlay img {
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    position: fixed;
-    margin: auto auto;
-    max-width: 70%; }
-
-.overflow-hidden {
-  overflow: hidden; }
-
-.account-hidden {
-  opacity: 0;
-  margin-top: -10px; }
-
-.account-visible {
-  margin-top: 14px;
-  opacity: 1; }
-
-.display-none {
-  display: none; }
-
-.display-table {
-  display: table; }
-
-.type-hidden {
-  opacity: 0;
-  margin-top: 15px; }
-
-.type-visible {
-  opacity: 1;
-  margin-top: 0; }
-
-.p-hidden {
-  opacity: 0;
-  margin: -15px 0 0 0; }
-
-.p-visible {
-  opacity: 1;
-  margin: 0 0 0 0; }
-
-.margin-top {
-  margin: -9999px 0 0 0; }
-
-.margin-none {
-  margin: 0 0 0 0; }
-
-.fade {
-  opacity: .4; }
-
-.invisible {
-  opacity: 0; }
-
-.visible {
-  opacity: 1; }
-
 #header-wrapper {
   background: #36465d;
   border-bottom: 1px solid #505e72;
@@ -583,6 +518,72 @@ img {
         position: absolute;
         height: 12px;
         width: 1px; }
+
+.img-overlay {
+  left: 0;
+  top: 0;
+  background: rgba(17, 17, 17, 0.92157);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 100; }
+  .img-overlay img {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: fixed;
+    margin: auto auto;
+    max-height: 100%;
+    max-width: 70%; }
+
+.overflow-hidden {
+  overflow: hidden; }
+
+.account-hidden {
+  opacity: 0;
+  margin-top: -10px; }
+
+.account-visible {
+  margin-top: 14px;
+  opacity: 1; }
+
+.display-none {
+  display: none; }
+
+.display-table {
+  display: table; }
+
+.type-hidden {
+  opacity: 0;
+  margin-top: 15px; }
+
+.type-visible {
+  opacity: 1;
+  margin-top: 0; }
+
+.p-hidden {
+  opacity: 0;
+  margin: -15px 0 0 0; }
+
+.p-visible {
+  opacity: 1;
+  margin: 0 0 0 0; }
+
+.margin-top {
+  margin: -9999px 0 0 0; }
+
+.margin-none {
+  margin: 0 0 0 0; }
+
+.fade {
+  opacity: .4; }
+
+.invisible {
+  opacity: 0; }
+
+.visible {
+  opacity: 1; }
 
 html {
   font-family: helvetica, arial;

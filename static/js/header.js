@@ -26,15 +26,12 @@ post_edit_id = null;
 window.onload = function() {
 	if (dashboard_body) {
 		dashboard.style.backgroundImage = "url('/static/images/home_active.png')";
-		dashboard_onload();
 	} else if (explore_body) {
 		explore.style.backgroundImage = "url('/static/images/explore_active.png')";
-		explore_onload();
 	} else if (messages_body) {
 		messages.style.backgroundImage = "url('/static/images/messages_active.png)";
 	} else if (blog_body) {
 		account_a.style.backgroundImage = "url('/static/images/account_active.png')";
-		blog_onload();
 	}
 
 	setTimeout (function() {

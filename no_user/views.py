@@ -14,12 +14,17 @@ def site_or_register(request):
 		site = Site.objects.get(domain=request.subdomain)
 		user = User.objects.get(username=request.subdomain)
 		blog = Blog.objects.get(user=user)
+		posts = Post.objects.all()
+		latest_posts = posts.filter(blog=blog).order_by('-pub_date')[:10]
 
 		context = {
-			'site_user': user,
+			'current_site': user,
+			'current_blog': blog,
+			'latest_posts': latest_posts,
 		}
 
-		return render(request, 'sites/site.html', context)
+		return render(request, 'sites/site.html', context	)
+		
 	else:
 		if request.user.is_authenticated():
 			return HttpResponseRedirect('/dashboard')

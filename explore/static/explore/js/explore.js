@@ -3,7 +3,7 @@ var visible_posts, get_post_verify, $post_wrapper, $post_content;
 $post_wrapper = $('.post-wrapper');
 $post_content = $('#post-content');
 
-$(window).load( function() {
+$(document).ready(function() {
 
 	setTimeout (function() {
 		$post_content.masonry({

@@ -10,6 +10,7 @@ class Blog(models.Model):
 	user = models.ForeignKey(User)
 	title = models.CharField(max_length=50, default="Untitled")
 	img = models.ImageField(upload_to=upload_path, default='/media/default_blog_img.png')
+	bg_img = models.ImageField(upload_to=upload_path, default='/media/default_blog_bg.png')
 
 	def __str__(self):
 		return self.user.username

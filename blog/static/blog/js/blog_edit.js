@@ -3,14 +3,8 @@ var visible_posts, get_post_verify, post_edit_id;
 visible_posts = 10;
 get_post_verify = true;
 
-function blog_onload() {
+$(document).ready(function() {
 	var post_img = document.querySelectorAll('.post-img');
-	
-	for (var i = 0; i < post_img.length; i++) {
-		if (post_img[i].width <= 522) {
-			post_img[i].style.marginLeft = '18px';
-		}
-	}
 
 	setTimeout (function() {
 		if ($(document).height() === $(window).height()) {
@@ -19,7 +13,7 @@ function blog_onload() {
 			visible_posts += 10;
 		}
 	}, 1000)
-}
+})
 
 function get_ten_posts(post_count) {
 	$.ajax({

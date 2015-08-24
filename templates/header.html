@@ -1,9 +1,11 @@
 {% load staticfiles %}
 <div id="header-wrapper">
 	<div id="header">
-		<a id="h-logo" href="{% url 'dashboard:dashboard' %}" tabindex="-1">
-			<img src="{% static 'images/tumblr_logo.png' %}" alt="logo">
-		</a>
+		<h1>
+			<a id="h-logo" aria-label="Tumblr" href="{% url 'dashboard:dashboard' %}" tabindex="-1">
+				<img src="{% static 'images/tumblr_logo.png' %}" alt="logo">
+			</a>
+		</h1>
 		<div id="header-right">
 			<div id="header-links">
 				<a id="dashboard" title="Dashboard" href="{% url 'dashboard:dashboard' %}"></a>
