@@ -63,29 +63,3 @@ $(window).on('scroll', function() {
 		}
 	}
 });
-
-$('body').on('click', '.follow', function () {
-	var clicked_user = $(this).parents('.post-wrapper').find('.user-link').html();
-	var $post_wrapper = $('.post-wrapper');
-
-	for (var i = 0; i < $post_wrapper.length; i++) {
-		var same_user = $post_wrapper.eq(i).find('.user-link').html();
-		if (clicked_user === same_user) {
-			$post_wrapper.eq(i).find('.follow').addClass('display-none');
-			$post_wrapper.eq(i).find('.unfollow').removeClass('display-none');
-		}
-	}
-});
-
-$('body').on('click', '.unfollow', function () {
-	var clicked_user = $(this).parents('.post-wrapper').find('.user-link').html();
-	var $post_wrapper = $('.post-wrapper');
-
-	for (var i = 0; i < $post_wrapper.length; i++) {
-		var same_user = $post_wrapper.eq(i).find('.user-link').html();
-		if (clicked_user === same_user) {
-			$post_wrapper.eq(i).find('.unfollow').addClass('display-none');
-			$post_wrapper.eq(i).find('.follow').removeClass('display-none');
-		}
-	}
-});

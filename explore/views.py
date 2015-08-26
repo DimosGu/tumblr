@@ -21,7 +21,7 @@ def recent(request):
 		blog = Blog.objects.get(user=post.user)
 		
 		try:
-			follow = Follow.objects.get(blog=blog)
+			follow = Follow.objects.get(user=request.user, blog=blog)
 			context['latest_posts'].append((post, 'true'))
 		except: 
 			follow = None
@@ -43,21 +43,17 @@ def get_ten_posts(request):
 		blog = Blog.objects.get(user=post.user)
 		
 		try:
-			follow = Follow.objects.get(blog=blog)
-			response['html'].append(render_to_string(
-				'explore/explore_post.html',
-				{
-					'post': post,
-					'following': 'true'
-				}
-			))
+			follow = Follow.objects.get(user=request.user, blog=blog)
+			follow = 'true'
 		except: 
-			response['html'].append(render_to_string(
-				'explore/explore_post.html',
-				{
-					'post': post,
-					'following': 'false'
-				}
-			))
+			follow = 'false'
+
+		response['html'].append(render_to_string(
+			'explore/explore_post.html',
+			{
+				'post': post,
+				'following': follow,
+			}
+		))
 
 	return JsonResponse(response)

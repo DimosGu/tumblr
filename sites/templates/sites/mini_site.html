@@ -1,12 +1,15 @@
 <div id="mini-header-overlay">
+	<a id="mini-site-link" href="http://{{ viewing_user.username }}.{{ domain_url }}">
+		{{ viewing_user.username }}<span class="url-fade invisible">.{{ domain_url }}</span>
+	</a>
 	<div id="mini-link-wrapper" data-username="{{ viewing_user.username }}">
-		{% if user.is_authenticated and user != viewing_user %}
+		{% if logged_user != viewing_user %}
 			{% if follow == 'false' %}
-				<div class="follow">+ Follow</div>
-				<div class="unfollow display-none">- Unfollow</div>
+				<div id="mini-follow" class="follow">Follow</div>
+				<div id="mini-unfollow" class="unfollow display-none">Unfollow</div>
 			{% else %}
-				<div class="unfollow">- Unfollow</div>
-				<div class="follow display-none">+ Follow</div>
+				<div id="mini-unfollow" class="unfollow">Unfollow</div>
+				<div id="mini-follow" class="follow display-none">Follow</div>
 			{% endif %}
 		{% endif %}
 	</div>

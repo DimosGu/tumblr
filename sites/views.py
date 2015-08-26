@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.http import HttpResponse, JsonResponse
 from user_accounts.models import User
-from blog.models import Blog, Post
+from blog.models import Blog, Post, Follow
 
 def mini_site(request):
 	selected_user = request.GET['clicked_user']
@@ -19,13 +19,21 @@ def mini_site(request):
 
 	}
 
+	try:
+		Follow.objects.get(user=request.user, blog=blog)
+		follow = 'true'
+	except:
+		follow = 'false'
+
 	response['html'].append(render_to_string(
 		'sites/mini_site.html',
-		{
+		{	
+			'logged_user': request.user,
 			'viewing_user': user,
 			'viewing_blog': blog,
 			'site_posts': latest_posts,
 			'domain_url': domain_url,
+			'follow': follow,
 		}
 	))
 
@@ -52,12 +60,22 @@ def get_ten_posts(request):
 		'html': [],
 	}
 
-	for post in posts:
-		response['html'].append(render_to_string(
-			'sites/sites_post.html',
-			{
-				'post': post,
-			}
-		))
+	if request.GET['mini']:
+		for post in posts:
+			response['html'].append(render_to_string(
+				'sites/mini_post.html',
+				{
+					'post': post,
+				}
+			))
+
+	else:
+		for post in posts:
+			response['html'].append(render_to_string(
+				'sites/sites_post.html',
+				{
+					'post': post,
+				}
+			))
 
 	return JsonResponse(response)

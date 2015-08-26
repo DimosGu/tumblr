@@ -4,7 +4,7 @@
 			<img src="{{ post.blog.img.url }}">
 		</a>
 		<a class="user-link" title="{{ post.user.username }}" href="">{{ post.user.username }}</a>
-		<a class="follow-link" data-username="{{ post.user.username }}" href="">
+		<div class="follow-link" data-username="{{ post.user.username }}">
 			{% if following == "true" %}
 				<div class="follow display-none">Follow</div>
 				<div class="unfollow">Unfollow</div>
@@ -12,7 +12,7 @@
 				<div class="follow">Follow</div>
 				<div class="unfollow display-none">Unfollow</div>
 			{% endif %}
-		</a>
+		</div>
 	</div>
 	{% include 'post.html' %}
 	<div class="post-footer">

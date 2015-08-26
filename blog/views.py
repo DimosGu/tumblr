@@ -6,16 +6,14 @@ from user_accounts.models import User
 from django.core.files import File
 from .models import Blog, Post, Follow
 from .forms import TextPostForm, PhotoPostForm
-from django.contrib.sites.shortcuts import get_current_site
 from django.views.decorators.csrf import csrf_exempt
 
 @login_required
 def blog_edit(request, username):
-	current_site = get_current_site(request)
-	print(current_site)
-	
+
 	if username != request.user.username:
-		return HttpResponseRedirect(request.user.username)	
+		domain = request.META['HTTP_HOST']
+		return HttpResponseRedirect('http://%s.%s' % (username, domain))	
 
 	blog = Blog.objects.get(user=request.user)
 	posts = Post.objects.filter(blog=blog)
@@ -29,18 +27,20 @@ def blog_edit(request, username):
 
 @csrf_exempt
 def follow(request):
-
 	if request.method == 'POST':
 		username = request.POST.get('username') 
 		user_to_follow = User.objects.get(username=username)
 		blog = Blog.objects.get(user=user_to_follow)
-		follow = Follow(user=request.user, blog=blog)
 
-		follow.save()
+		response = {}
 
-		response = {
-			'username': username,
-		}
+		try: 
+			follow = Follow.objects.get(user=request.user, blog=blog)
+			response['error'] = 'already following'
+		except:
+			follow = Follow(user=request.user, blog=blog)
+			follow.save()
+			response['username'] = username
 
 		return JsonResponse(response)
 
@@ -51,13 +51,15 @@ def unfollow(request):
 		username = request.POST.get('username') 
 		user_to_unfollow = User.objects.get(username=username)
 		blog = Blog.objects.get(user=user_to_unfollow)
-		unfollow = Follow.objects.get(user=request.user, blog=blog)
 
-		unfollow.delete()
+		response = {}
 
-		response = {
-			'username': username,
-		}
+		try:
+			unfollow = Follow.objects.get(user=request.user, blog=blog)
+			unfollow.delete()
+			response['username'] = username
+		except:
+			response['error'] = 'no following object existed'
 
 		return JsonResponse(response)
 
