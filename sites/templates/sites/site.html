@@ -15,7 +15,22 @@
 			<a href="{% url 'dashboard:dashboard' %}">
 				<img src="{% static 'images/tumblr_logo.png' %}">
 			</a>
-			<a id="dashboard-link" href="{% url 'dashboard:dashboard' %}">Dashboard</a>
+			<div id="link-wrapper" data-username="{{ current_site.username }}">
+				{% if user.is_authenticated and user != current_site %}
+					{% if follow == 'false' %}
+						<div class="follow">+ Follow</div>
+						<div class="unfollow display-none">- Unfollow</div>
+					{% else %}
+						<div class="unfollow">- Unfollow</div>
+						<div class="follow display-none">+ Follow</div>
+					{% endif %}
+					<a id="dashboard-link" href="{% url 'dashboard:dashboard' %}">Dashboard</a>
+				{% elif user == current_site %}
+					<a id="dashboard-link" href="{% url 'dashboard:dashboard' %}">Dashboard</a>
+				{% else %}
+					<a id="tumblr-link" href="{% url 'register' %}">tumblr.</a>
+				{% endif %}
+			</div>
 		</div>
 		<a id="header" href="" style="background-image: url({{ current_blog.bg_img.url }});"></a>
 		<div id="blog-info">
@@ -33,6 +48,9 @@
 		</div>
 	</div>
 	<script type="text/javascript" src="{% static 'js/jquery-1.11.3.js' %}"></script>
-	<script type="text/javascript" src="{% static 'js/post_img.js' %}"></script> 
+	<script type="text/javascript" src="{% static 'js/ajax.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/post_img.js' %}"></script>
+	<script type="text/javascript" src="{% static 'sites/js/sites.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/follow.js' %}"></script>
 </body>
 </html>

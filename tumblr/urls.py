@@ -5,7 +5,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
 	url(r'^', include('no_user.urls')),
-	url(r'^sites', include('sites.urls')),
+	url(r'^sites/', include('sites.urls')),
 	url(r'^blog/', include('blog.urls')),
 	url(r'^explore/', include('explore.urls', namespace="explore")),
 	url(r'^user_accounts/', include('user_accounts.urls')),

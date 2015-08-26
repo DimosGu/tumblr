@@ -353,8 +353,8 @@ function edit_post(type, id) {
 					title_html, text_html, tags_html;
 
 			if (blog_body) {
-				$update_this = $('#blog-posts-wrapper').children().find('.post-id:contains("' + json.id_data + '")');
-				$edit_post = $update_this.siblings('.post');
+				$update_this = $('#blog-posts-wrapper').find('.post-wrapper[data-id="' + json.id_data + '"]');
+				$edit_post = $update_this.children('.post');
 				$words_wrapper = $edit_post.find('.words-wrapper');
 
 				$edit_title = $edit_post.find('.post-title');
@@ -574,33 +574,4 @@ $('#post-photo-form').on('submit', function(event) {
 		}
 		close_post[1].click();
 	}
-});
-
-function getCookie(name) {
-  var cookieValue = null;
-  if (document.cookie && document.cookie != '') {
-    var cookies = document.cookie.split(';');
-    for (var i = 0; i < cookies.length; i++) {
-      var cookie = jQuery.trim(cookies[i]);
-      if (cookie.substring(0, name.length + 1) == (name + '=')) {
-        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-        break;
-      }
-  	}
-  }
-  return cookieValue;
-}
-
-var csrftoken = getCookie('csrftoken');
- 
-function csrfSafeMethod(method) {
-  return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-}
-
-$.ajaxSetup({
-  beforeSend: function(xhr, settings) {
-    if (!csrfSafeMethod(settings.type)) {
-       xhr.setRequestHeader("X-CSRFToken", csrftoken);
-    }
-  }
 });

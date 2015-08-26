@@ -1,6 +1,5 @@
 from django.http import HttpResponseRedirect
 from sites.models import Site
-from django.core.urlresolvers import reverse, resolve
 
 class SubdomainMiddleware:
 	def process_request(self, request):
@@ -10,13 +9,16 @@ class SubdomainMiddleware:
 
 		if len(hosts) > 3:
 			request.subdomain = ''.join(hosts[:-3])
-			
-			if request.get_full_path() != '/':
-				return HttpResponseRedirect('http://%s%s' % ('.'.join(hosts[1:]), request.get_full_path()))
-			else:
+			path_info = request.META.get('PATH_INFO')
+			dont_redirect = ['/', '/sites/get_ten_posts', '/blog/follow', '/blog/unfollow']
+
+			if path_info in dont_redirect:
 
 				try:
 					user_domain = Site.objects.get(domain=request.subdomain)
 				except: 
 					user_domain = None
 					return HttpResponseRedirect('http://%s' % '.'.join(hosts[1:]))
+			
+			else:
+				return HttpResponseRedirect('http://%s%s' % ('.'.join(hosts[1:]), path_info))

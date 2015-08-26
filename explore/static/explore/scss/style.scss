@@ -2,6 +2,8 @@
 @import '../../../../static/scss/reset';
 @import '../../../../static/scss/header';
 @import '../../../../static/scss/universal';
+@import '../../../../static/scss/mini_site';
+
 
 html {
 	font-family: helvetica, arial;
@@ -106,7 +108,7 @@ body {
 		width: 100%;
 
 		img {
-			max-width: 100%;
+			width: 100%;
 		}
 
 		.words-wrapper {

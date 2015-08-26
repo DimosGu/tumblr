@@ -1,0 +1,173 @@
+.site-no-width {
+	width: 0;
+}
+
+.site-width {
+	width: 585px;
+}
+
+#mini-site-wrapper {
+	background: rgba(54,70,93,.95);
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: 99;
+}
+
+#mini-site {
+	@include transition-property( width );
+	@include transition-duration( .1s );
+	@include transition-timing-function( linear );
+	background: #fff;
+	height: 100%;
+	position: fixed;
+	overflow: auto;
+	right: 0;
+}
+
+#mini-header-overlay {
+	@include linear-gradient(rgba(0,0,0,.4) 0, rgba(0,0,0,0), $fallback: transparent);
+	height: 64px;
+	width: 100%;
+	position: absolute;
+	top: 0;
+
+	a {
+		position: absolute;
+		top: -6px;
+	}
+
+	#mini-link-wrapper {
+		height: 30px;
+		width: 200px;
+		position: fixed;
+		top: 3px;
+		right: 3px;
+		
+		.follow,
+		.unfollow {
+			background: rgba(0,0,0,0.38);
+			border: 1px solid rgba(0,0,0,0.18);
+			border-radius: 2px;
+			cursor: pointer;
+			color: #fff;
+			font-size: 12px;
+			font-weight: bold;
+			text-decoration: none;
+			height: 20px;
+			top: 0;
+			padding-top: 2px;
+			position: absolute;
+		}
+
+		.follow {
+			width: 65px;
+			right: 93px;
+			padding-left: 6px;
+		}
+
+		.unfollow {
+			width: 77px;
+			right: 93px;
+			padding-left: 8px;
+		}
+	}
+}
+
+#mini-header {
+	display: block;
+	background-size: cover;
+	background-position: center;
+	height: 350px;
+	width: 100%;
+}
+
+#mini-blog-info {
+	margin: 0 auto 0 auto;
+	padding-top: 40px;
+	position: relative;
+
+	#mini-blog-img {
+		background: #ffffff;
+		border-radius: 8px;
+		display: block;
+		height: 104px;
+		width: 104px;
+		margin: 0 0 0 -52px;
+		left: 50%;
+		top: -76px;
+		position: absolute;
+
+		img {
+			height: 96px;
+			width: 96px;
+			margin: 4px 0 0 4px;
+		}
+	}
+
+	h1 {
+		color: #444444;
+		font-size: 42px;
+		font-weight: bold;
+		text-align: center;
+	}
+}
+
+#mini-posts-wrapper {
+	margin: 10px 0 30px 0;
+	width: 100%;
+
+	.mini-post-wrapper {
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		margin: 20px auto 0 auto;
+		width: 540px;
+
+		.mini-post-header {
+			height: 20px;
+			width: 100%;
+
+			mini-user-link {
+
+			}
+		}
+
+		.mini-post {
+			border-radius: 4px;
+
+			img {
+				margin: 0 auto;
+				width: 538px;
+			}
+
+			.mini-words-wrapper {
+				color: #444;
+				padding: 0 18px 0 18px;
+				word-wrap: break-word;
+
+				.mini-post-title {
+					display: block;
+					font-size: 36px;
+					margin: 0 0 0 0;
+				}
+
+				.mini-post-text {
+					font-size: 14px;
+					margin: 10px 0 0 0;
+				}
+
+				.mini-post-tags {
+					display: block;
+					color: #a7a7a7;
+					font-size: 13px;
+					margin: 26px 0 0 0;
+				}
+			}
+		}
+
+		.mini-post-footer {
+			height: 40px;
+			width: 100%;
+		}
+	}
+}

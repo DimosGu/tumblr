@@ -7,6 +7,7 @@ from django.core.files import File
 from .models import Blog, Post, Follow
 from .forms import TextPostForm, PhotoPostForm
 from django.contrib.sites.shortcuts import get_current_site
+from django.views.decorators.csrf import csrf_exempt
 
 @login_required
 def blog_edit(request, username):
@@ -26,6 +27,7 @@ def blog_edit(request, username):
 
 	return render(request, 'blog/blog_edit.html', context)
 
+@csrf_exempt
 def follow(request):
 
 	if request.method == 'POST':
@@ -42,13 +44,14 @@ def follow(request):
 
 		return JsonResponse(response)
 
+@csrf_exempt
 def unfollow(request):
 
 	if request.method == 'POST':
 		username = request.POST.get('username') 
 		user_to_unfollow = User.objects.get(username=username)
 		blog = Blog.objects.get(user=user_to_unfollow)
-		unfollow = Follow.objects.get(blog=blog)
+		unfollow = Follow.objects.get(user=request.user, blog=blog)
 
 		unfollow.delete()
 

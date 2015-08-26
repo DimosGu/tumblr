@@ -1,5 +1,4 @@
-<div class="post-wrapper">
-	<span class="post-id display-none">{{ post.id }}</span>
+<div class="post-wrapper" data-id="{{ post.id }}" data-username="{{ post.user.username }}">
 	<div class="post-header">
 		<a class="blog-link" title="{{ post.user.username }}"href="/">
 			<img src="{{ post.blog.img.url }}">

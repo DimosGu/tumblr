@@ -1,0 +1,22 @@
+<div id="mini-header-overlay">
+	<div id="mini-link-wrapper" data-username="{{ viewing_user.username }}">
+		{% if user.is_authenticated and user != viewing_user %}
+			{% if follow == 'false' %}
+				<div class="follow">+ Follow</div>
+				<div class="unfollow display-none">- Unfollow</div>
+			{% else %}
+				<div class="unfollow">- Unfollow</div>
+				<div class="follow display-none">+ Follow</div>
+			{% endif %}
+		{% endif %}
+	</div>
+</div>
+<a id="mini-header" href="http://{{ viewing_user.username }}.{{ domain_url }}" style="background-image: url({{ viewing_blog.bg_img.url }});"></a>
+<div id="mini-blog-info">
+	<a id="mini-blog-img" href="http://{{ viewing_user.username }}.{{ domain_url }}">
+		<img src="{{ viewing_blog.img.url }}">
+	</a>
+	<h1>{{ viewing_blog.title }}</h1>
+</div>
+<div id="mini-posts-wrapper">
+</div>

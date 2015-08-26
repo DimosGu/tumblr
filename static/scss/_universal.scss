@@ -1,4 +1,4 @@
-.img-overlay {
+#full-screen-img {
 	left: 0;
 	top: 0;
 	background: rgba(17, 17, 17, 0.921569);
@@ -19,8 +19,13 @@
 	}
 }
 
-.overflow-hidden {
+.overflow-hidden,
+.overflow-hidden2 {
 	overflow: hidden;
+}
+
+.overflow-auto {
+	overflow: auto;
 }
 
 .account-hidden {

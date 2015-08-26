@@ -1,0 +1,25 @@
+<div class="mini-post-wrapper" data-id="{{ post.id }}" data-username="{{ post.user.username }}">
+	<div class="mini-post-header"></div>
+	<div class="mini-post">
+		{% if post.file %}
+			<a class="post-click-img" href="{{ post.file.url }}">
+				<img class="post-img" src="{{ post.file.url }}">
+			</a>
+		{% endif %}
+		<div class="mini-words-wrapper">
+			{% if post.title %}
+				<span class="mini-post-title">{{ post.title }}</span>
+			{% endif %}
+			{% if post.text %}
+				<p class="mini-post-text">{{ post.text }}</p>
+			{% endif %}
+			{% if post.tags %}
+				<span class="mini-post-tags">{{ post.tags }}</span>
+			{% endif %}
+		</div>
+	</div>
+	<div class="mini-post-footer">
+		<div class="mini-footer-options">
+		</div>
+	</div>
+</div>

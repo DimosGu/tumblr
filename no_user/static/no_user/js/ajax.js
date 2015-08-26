@@ -17,6 +17,7 @@ function check_field() {
 		},
 
 		success: function(error) {
+			console.log(error);
 			if(error.email == "That's not a valid email address. Please try again.") {
 				(form_error_id.html("<p>" + error.email + "</p>")
 				.removeClass('error-invisible').addClass('error-visible'));
@@ -110,8 +111,6 @@ $('#account-form').on('submit', function(event) {
 	submit_form();
 });
 
-
-// This function gets cookie with a given name
 function getCookie(name) {
   var cookieValue = null;
   if (document.cookie && document.cookie != '') {

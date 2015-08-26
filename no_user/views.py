@@ -1,10 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, JsonResponse, HttpResponse
-from django.core.context_processors import csrf
 from user_accounts.forms import RegistrationForm, LoginForm
 from django.contrib.auth import authenticate, login
 from django.core import validators
-from blog.models import Blog, Post
+from blog.models import Blog, Post, Follow
 from sites.models import Site
 from user_accounts.models import User
 from random import randint
@@ -17,10 +16,17 @@ def site_or_register(request):
 		posts = Post.objects.all()
 		latest_posts = posts.filter(blog=blog).order_by('-pub_date')[:10]
 
+		try:
+			am_following = Follow.objects.get(user=request.user, blog=blog)
+			follow = 'true'
+		except:
+			follow = 'false'
+
 		context = {
 			'current_site': user,
 			'current_blog': blog,
 			'latest_posts': latest_posts,
+			'follow': follow,
 		}
 
 		return render(request, 'sites/site.html', context	)

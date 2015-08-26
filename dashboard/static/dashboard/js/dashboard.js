@@ -3,8 +3,7 @@ var get_post_verify, visible_posts;
 visible_posts = 10;
 get_post_verify = true;
 
-$(document).ready(function() {
-	var post_img = document.querySelectorAll('.post-img');
+$(window).load(function() {
 
 	setTimeout (function() {
 		if ($(document).height() === $(window).height()) {

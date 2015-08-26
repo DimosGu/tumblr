@@ -3,7 +3,7 @@ var visible_posts, get_post_verify, post_edit_id;
 visible_posts = 10;
 get_post_verify = true;
 
-$(document).ready(function() {
+$(window).load(function() {
 	var post_img = document.querySelectorAll('.post-img');
 
 	setTimeout (function() {
@@ -154,7 +154,7 @@ $('body').on('click', '.option-edit', function (e) {
 	$post_photo = $post_wrapper.find('.post-img');
 
 	//This sets the id of the post instance to be carried to the ajax request
-	post_edit_id = $post_wrapper.find('.post-id').html();
+	post_edit_id = $post_wrapper.attr('data-id');
 
 	if ($post_photo.length) {
 		prepare_header_photo_form($(this));
@@ -170,7 +170,7 @@ $('body').on('click', '.option-delete', function (e) {
 	e.preventDefault();
 
 	$post_wrapper = $(this).parents('.post-wrapper');
-	$post_id = $post_wrapper.find('.post-id').html()
+	$post_id = $post_wrapper.attr('data-id');
 
 	$(this).parent().addClass('display-none');
 	$post_wrapper.addClass('invisible');

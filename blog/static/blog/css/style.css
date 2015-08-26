@@ -94,7 +94,7 @@ img {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 99; }
+  z-index: 98; }
 
 #header {
   margin: 0 auto 0 auto;
@@ -519,7 +519,7 @@ img {
         height: 12px;
         width: 1px; }
 
-.img-overlay {
+#full-screen-img {
   left: 0;
   top: 0;
   background: rgba(17, 17, 17, 0.92157);
@@ -527,7 +527,7 @@ img {
   height: 100%;
   width: 100%;
   z-index: 100; }
-  .img-overlay img {
+  #full-screen-img img {
     left: 0;
     right: 0;
     top: 0;
@@ -537,8 +537,12 @@ img {
     max-height: 100%;
     max-width: 70%; }
 
-.overflow-hidden {
+.overflow-hidden,
+.overflow-hidden2 {
   overflow: hidden; }
+
+.overflow-auto {
+  overflow: auto; }
 
 .account-hidden {
   opacity: 0;
@@ -584,6 +588,142 @@ img {
 
 .visible {
   opacity: 1; }
+
+.site-no-width {
+  width: 0; }
+
+.site-width {
+  width: 585px; }
+
+#mini-site-wrapper {
+  background: rgba(54, 70, 93, 0.95);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 99; }
+
+#mini-site {
+  -webkit-transition-property: width;
+  -moz-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 0.1s;
+  -moz-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+  -webkit-transition-timing-function: linear;
+  -moz-transition-timing-function: linear;
+  transition-timing-function: linear;
+  background: #fff;
+  height: 100%;
+  position: fixed;
+  overflow: auto;
+  right: 0; }
+
+#mini-header-overlay {
+  background-color: transparent;
+  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.4) 0, transparent);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4) 0, transparent);
+  height: 64px;
+  width: 100%;
+  position: absolute;
+  top: 0; }
+  #mini-header-overlay a {
+    position: absolute;
+    top: -6px; }
+  #mini-header-overlay #mini-link-wrapper {
+    height: 30px;
+    width: 200px;
+    position: fixed;
+    top: 3px;
+    right: 3px; }
+    #mini-header-overlay #mini-link-wrapper .follow,
+    #mini-header-overlay #mini-link-wrapper .unfollow {
+      background: rgba(0, 0, 0, 0.38);
+      border: 1px solid rgba(0, 0, 0, 0.18);
+      border-radius: 2px;
+      cursor: pointer;
+      color: #fff;
+      font-size: 12px;
+      font-weight: bold;
+      text-decoration: none;
+      height: 20px;
+      top: 0;
+      padding-top: 2px;
+      position: absolute; }
+    #mini-header-overlay #mini-link-wrapper .follow {
+      width: 65px;
+      right: 93px;
+      padding-left: 6px; }
+    #mini-header-overlay #mini-link-wrapper .unfollow {
+      width: 77px;
+      right: 93px;
+      padding-left: 8px; }
+
+#mini-header {
+  display: block;
+  background-size: cover;
+  background-position: center;
+  height: 350px;
+  width: 100%; }
+
+#mini-blog-info {
+  margin: 0 auto 0 auto;
+  padding-top: 40px;
+  position: relative; }
+  #mini-blog-info #mini-blog-img {
+    background: #ffffff;
+    border-radius: 8px;
+    display: block;
+    height: 104px;
+    width: 104px;
+    margin: 0 0 0 -52px;
+    left: 50%;
+    top: -76px;
+    position: absolute; }
+    #mini-blog-info #mini-blog-img img {
+      height: 96px;
+      width: 96px;
+      margin: 4px 0 0 4px; }
+  #mini-blog-info h1 {
+    color: #444444;
+    font-size: 42px;
+    font-weight: bold;
+    text-align: center; }
+
+#mini-posts-wrapper {
+  margin: 10px 0 30px 0;
+  width: 100%; }
+  #mini-posts-wrapper .mini-post-wrapper {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 20px auto 0 auto;
+    width: 540px; }
+    #mini-posts-wrapper .mini-post-wrapper .mini-post-header {
+      height: 20px;
+      width: 100%; }
+    #mini-posts-wrapper .mini-post-wrapper .mini-post {
+      border-radius: 4px; }
+      #mini-posts-wrapper .mini-post-wrapper .mini-post img {
+        margin: 0 auto;
+        width: 538px; }
+      #mini-posts-wrapper .mini-post-wrapper .mini-post .mini-words-wrapper {
+        color: #444;
+        padding: 0 18px 0 18px;
+        word-wrap: break-word; }
+        #mini-posts-wrapper .mini-post-wrapper .mini-post .mini-words-wrapper .mini-post-title {
+          display: block;
+          font-size: 36px;
+          margin: 0 0 0 0; }
+        #mini-posts-wrapper .mini-post-wrapper .mini-post .mini-words-wrapper .mini-post-text {
+          font-size: 14px;
+          margin: 10px 0 0 0; }
+        #mini-posts-wrapper .mini-post-wrapper .mini-post .mini-words-wrapper .mini-post-tags {
+          display: block;
+          color: #a7a7a7;
+          font-size: 13px;
+          margin: 26px 0 0 0; }
+    #mini-posts-wrapper .mini-post-wrapper .mini-post-footer {
+      height: 40px;
+      width: 100%; }
 
 html {
   font-family: helvetica, arial;

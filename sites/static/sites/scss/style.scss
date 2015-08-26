@@ -28,24 +28,67 @@ body {
 		top: -6px;
 	}
 
-	#dashboard-link {
-		background: rgba(0,0,0,0.38);
-		border: 1px solid rgba(0,0,0,0.18);
-		border-radius: 2px;
-		color: #fff;
-		font-size: 12px;
-		font-weight: bold;
-		text-decoration: none;
+	#link-wrapper {
+		height: 30px;
+		width: 200px;
 		position: fixed;
 		top: 3px;
 		right: 3px;
-		height: 20px;
-		width: 90px;
-		padding: 2px 0 0 13px;
-	}
+		
+		.follow,
+		.unfollow,
+		#dashboard-link {
+			background: rgba(0,0,0,0.38);
+			border: 1px solid rgba(0,0,0,0.18);
+			border-radius: 2px;
+			cursor: pointer;
+			color: #fff;
+			font-size: 12px;
+			font-weight: bold;
+			text-decoration: none;
+			height: 20px;
+			top: 0;
+			padding-top: 2px;
+			position: absolute;
+		}
 
-	#dashboard-link:hover {
-		background: rgba(0,0,0,0.18);
+		.follow {
+			width: 65px;
+			right: 93px;
+			padding-left: 6px;
+		}
+
+		.unfollow {
+			width: 77px;
+			right: 93px;
+			padding-left: 8px;
+		}
+
+		#dashboard-link {
+			width: 90px;
+			right: 0;
+			padding-left: 13px;
+		}
+
+		.follow:hover,
+		.unfollow:hover,
+		#dashboard-link:hover {
+			background: rgba(0,0,0,0.18);
+		}
+
+		#tumblr-link {
+			background: #2D4661;
+			border-radius: 2px;
+			color: #fff;
+			font-size: 18px;
+			font-weight: bold;
+			text-decoration: none;
+			height: 25px;
+			width: 72px;
+			padding: 3px 0 0 7px;
+			top: 2px;
+			right: 4px;
+		}
 	}
 }
 
@@ -112,7 +155,7 @@ body {
 				img {
 					display: block;
 					margin: 0 auto;
-					max-width: 698px;
+					width: 698px;
 				}
 			}
 

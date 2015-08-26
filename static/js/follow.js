@@ -19,13 +19,13 @@ function unfollow(username) {
 };
 
 $('body').on('click', '.follow', function (e) {
-	var username = $(this).parents().siblings('.user-link').html();
-	e.preventDefault();
+	var username = $(this).parent().attr('data-username');
+	console.log(username);
 	follow(username);
 });
 
 $('body').on('click', '.unfollow', function (e) {
-	var username = $(this).parents().siblings('.user-link').html();
-	e.preventDefault();
+	var username = $(this).parent().attr('data-username');
+	console.log(username);
 	unfollow(username);
 });

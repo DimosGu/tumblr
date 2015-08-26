@@ -1,17 +1,14 @@
-<div class="post-wrapper invisible">
-	<span class="post-id display-none">{{ post.id }}</span>
+<div class="post-wrapper invisible" data-id="{{ post.id }}" data-username="{{ post.user.username }}">
 	<div class="post-header">
-		<a class="blog-link" title="{{ post.user.username }}"href="/">
+		<a class="blog-link" title="{{ post.user.username }}"href="">
 			<img src="{{ post.blog.img.url }}">
 		</a>
 		<a class="user-link" title="{{ post.user.username }}" href="">{{ post.user.username }}</a>
-		<a class="follow-link" href="">
+		<a class="follow-link" data-username="{{ post.user.username }}" href="">
 			{% if following == "true" %}
 				<div class="follow display-none">Follow</div>
 				<div class="unfollow">Unfollow</div>
-			{% endif %}
-
-			{% if following == "false" %}
+			{% else %}
 				<div class="follow">Follow</div>
 				<div class="unfollow display-none">Unfollow</div>
 			{% endif %}
