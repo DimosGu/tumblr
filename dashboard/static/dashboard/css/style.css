@@ -764,7 +764,7 @@ body {
   margin: 0 auto 20px auto; }
   .post-wrapper .post-header {
     height: 45px;
-    padding: 14px 0 0 20px;
+    padding: 0 0 0 20px;
     position: relative; }
     .post-wrapper .post-header .blog-link {
       background: #ffffff;
@@ -782,7 +782,9 @@ body {
       color: #444;
       font-size: 14px;
       font-weight: bold;
-      text-decoration: none; }
+      text-decoration: none;
+      position: absolute;
+      top: 13px; }
   .post-wrapper .post img {
     width: 100%; }
   .post-wrapper .post .words-wrapper {

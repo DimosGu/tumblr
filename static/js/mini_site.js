@@ -12,13 +12,22 @@ function get_site(username) {
 		},
 
 		success: function(json) {
+			var mini_site = document.getElementById('mini-site');
+
 			setTimeout (function() {
 				$mini_site.prepend(json.html);
 			}, 200);
 
 			setTimeout (function() {
 				$('#mini-posts-wrapper').prepend(json.post_html);
-			}, 1000);
+				var scrollbar_size = mini_site.offsetWidth - mini_site.clientWidth;
+
+				styles = {
+					right: scrollbar_size,
+					width: mini_site.offsetWidth - scrollbar_size
+				};
+				$('#mini-header-overlay').css(styles).removeClass('display-none');
+			}, 500);
 		},
 	});
 };
@@ -57,8 +66,8 @@ function mini_get_ten_posts(username, visible_posts) {
 		}
 	});
 };
+
 $('#mini-site').on('scroll', function() {
-	console.log(mini_visible_posts);
 	if ($(this).scrollTop() + $(this).height() > $(this)[0].scrollHeight / 1.25) {
 		var username = $('#mini-link-wrapper').attr('data-username');
 
@@ -69,7 +78,6 @@ $('#mini-site').on('scroll', function() {
 		}
 	}
 });
-
 
 $mini_site_wrapper.on('click', function (e) {
 	var mini_site = document.getElementById('mini-site');
