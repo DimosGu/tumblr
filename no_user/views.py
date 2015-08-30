@@ -9,102 +9,102 @@ from user_accounts.models import User
 from random import randint
 
 def site_or_register(request):
-	if request.subdomain:
-		site = Site.objects.get(domain=request.subdomain)
-		user = User.objects.get(username=request.subdomain)
-		blog = Blog.objects.get(user=user)
-		posts = Post.objects.all()
-		latest_posts = posts.filter(blog=blog).order_by('-pub_date')[:10]
+  if request.subdomain:
+    site = Site.objects.get_site_domain(request.subdomain)
+    user = User.objects.get_by_username(request.subdomain)
+    blog = Blog.objects.get_blog_user(user)
+    latest_posts = Post.objects.order_by_date(blog)[:10]
 
-		try:
-			am_following = Follow.objects.get(user=request.user, blog=blog)
-			follow = 'true'
-		except:
-			follow = 'false'
+    try:
+      am_following = Follow.objects.get_following(request.user, blog)
+      follow = 'true'
+    except:
+      follow = 'false'
 
-		context = {
-			'current_site': user,
-			'current_blog': blog,
-			'latest_posts': latest_posts,
-			'follow': follow,
-		}
+    context = {
+      'current_site': user,
+      'current_blog': blog,
+      'latest_posts': latest_posts,
+      'follow': follow,
+    }
 
-		return render(request, 'sites/site.html', context	)
-		
-	else:
-		if request.user.is_authenticated():
-			return HttpResponseRedirect('/dashboard')
-		elif request.method == 'POST':
-			form = RegistrationForm(request.POST)
-			user_info = authenticate(
-				email=request.POST['email'].lower(),
-				password=request.POST['password']
-			)
+    return render(request, 'sites/site.html', context	)
 
-			if user_info is not None:
-				login(request, user_info)
-				redirect_url = {'url': 'dashboard'}
-				return JsonResponse(redirect_url)
-			elif form.is_valid():
-				form.save()
-				user_info = authenticate(
-					email=form.cleaned_data['email'], 
-					password=form.cleaned_data['password'])
-				login(request, user_info)
-				redirect_url = {'url': 'dashboard'}
-				return JsonResponse(redirect_url)
-			else:
-				error = form.errors
-				return JsonResponse(error)
+  else:
 
-		else:
-			form = RegistrationForm()
+    if request.user.is_authenticated():
+      return HttpResponseRedirect('/dashboard')
+    elif request.method == 'POST':
+      form = RegistrationForm(request.POST)
+      user_info = authenticate(
+        email=request.POST['email'].lower(),
+        password=request.POST['password']
+      )
 
-		try:
-			recent_img_post = Post.objects.exclude(file='').order_by('pub_date').reverse()[randint(0,4)]
-		except:
-			recent_img_post = None
+      if user_info is not None:
+        login(request, user_info)
+        redirect_url = {'url': 'dashboard'}
+        return JsonResponse(redirect_url)
+      elif form.is_valid():
+        form.save()
+        user_info = authenticate(
+          email=form.cleaned_data['email'],
+          password=form.cleaned_data['password'])
+        login(request, user_info)
+        redirect_url = {'url': 'dashboard'}
+        return JsonResponse(redirect_url)
+      else:
+        error = form.errors
+        return JsonResponse(error)
 
-		context = {
-			'form': form,
-			'recent_img_post': recent_img_post
-		}
+    else:
+      form = RegistrationForm()
 
-		return render(request, 'no_user/register.html', context)
+    try:
+      recent_img_post = Post.objects.exclude(file='').order_by('pub_date').reverse()[randint(0,4)]
+    except:
+      recent_img_post = None
+
+    context = {
+      'form': form,
+      'recent_img_post': recent_img_post
+    }
+
+    return render(request, 'no_user/register.html', context)
 
 def check_fields(request):
 
-	if request.method == 'POST':
-		form = RegistrationForm(request.POST)
-		error = form.errors
-		return JsonResponse(error)
+  if request.method == 'POST':
+    form = RegistrationForm(request.POST)
+    error = form.errors
+    return JsonResponse(error)
 
 def user_login(request):
-		
-	if request.user.is_authenticated():
-		return HttpResponseRedirect('/dashboard')
-	elif request.method == 'POST':
-		form = LoginForm(request.POST)
-		
-		if form.is_valid():
-			user_info = authenticate(
-				email=form.cleaned_data['email'],
-				password=form.cleaned_data['password']
-			)
-			login(request, user_info)
-			return HttpResponseRedirect('/dashboard')
 
-	else:
-		form = LoginForm()
-		
-	try:
-		recent_img_post = Post.objects.exclude(file='').order_by('pub_date').reverse()[randint(0,4)]
-	except: 
-		recent_img_post = None
+  if request.user.is_authenticated():
+    return HttpResponseRedirect('/dashboard')
+  elif request.method == 'POST':
+    form = LoginForm(request.POST)
 
-	context = {
-		'form': form,
-		'recent_img_post': recent_img_post
-	}
+    if form.is_valid():
+      user_info = authenticate(
+        email=form.cleaned_data['email'],
+        password=form.cleaned_data['password']
+      )
+      login(request, user_info)
+      return HttpResponseRedirect('/dashboard')
 
-	return render(request, 'no_user/login.html', context)
+  else:
+    form = LoginForm()
+
+  try:
+    recent_img_post = Post.objects.exclude(file='').order_by('pub_date').reverse()[randint(0,4)]
+  except:
+    recent_img_post = None
+
+  context = {
+    'form': form,
+    'recent_img_post': recent_img_post
+  }
+
+  return render(request, 'no_user/login.html', context)
