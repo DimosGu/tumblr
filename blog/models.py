@@ -18,64 +18,88 @@ class BlogManager(BaseManager):
 
 class PostManager(BaseManager):
 
-	def get_by_user_pk(self, user, pk):
-		return self.get(user=user, pk=pk)
+  def get_by_user_pk(self, user, pk):
+    return self.get(user=user, pk=pk)
 
-	def filter_blog(self, blog):
-		return self.filter(blog=blog)
+  def filter_blog(self, blog):
+    return self.filter(blog=blog)
 
-	def ten_more_posts(self, post_count, user=False, ajax_user=False, blog=False, return_fields=False):
+  def ten_more_posts(self, post_count, user=False, ajax_user=False, blog=False, return_fields=False, explore=False):
+    end_count = post_count + 10
 
-		if ajax_user:
-			get_user = User.objects.get(username=ajax_user)
-		elif user:
-			get_user = user
-		else:
-			get_user = False
+    if ajax_user:
+      get_user = User.objects.get(username=ajax_user).pk
+    elif user:
+      get_user = user.pk
+    else:
+      get_user = False
 
-		end_count = post_count + 10
-		blog = Blog.objects.get(user=get_user)
+    if not explore:
+      blog = Blog.objects.get(pk=get_user)
 
-		if return_fields:
-			fields = {}
-			fields['filtered_posts'] = self.filter(blog=blog).order_by('-pub_date')[post_count:end_count]
-			fields['blog'] = blog
+    if return_fields:
+      fields = {}
+      fields['filtered_posts'] = self.filter(blog=blog).order_by('-pub_date')[post_count:end_count]
+      fields['blog'] = blog
 
-			return fields
-		else:
-			return self.filter(blog=blog).order_by('-pub_date')[post_count:end_count]
+      return fields
+    elif explore:
+      return self.exclude(user=user).order_by('-pub_date')[post_count:end_count]
+    else:
+      return self.filter(blog=blog).order_by('-pub_date')[post_count:end_count]
 
-	def loop_posts(self, ordered_posts, template):
-		
-		post_html = []
+  def loop_posts(self, ordered_posts, template, explore=False):
 
-		for post in ordered_posts:
-			post_html.append(render_to_string(
-				template,
-				{
-					'post': post
-				}
-			))
+    post_html = []
 
-		return post_html
+    if explore:
 
-	def sort_following_posts(self, user, post_count):
+      for post in ordered_posts:
+        blog = Blog.objects.get(user=post.user)
 
-		post_list = []
-		end_count = post_count + 10
-		following = Follow.objects.filter(user=user)
+        try:
+          follow = Follow.objects.get(user=request.user, blog=blog)
+          follow = 'true'
+        except:
+          follow = 'false'
 
-		for user_blog in following:
-			user = User.objects.get(username=user_blog)
-			blog = Blog.objects.get(user=user)
-			posts = self.filter(blog=blog)
+        post_html.append(render_to_string(
+          template,
+          {
+            'post': post,
+            'following': follow,
+          }
+        ))
 
-			for post in posts:
-				post_list.append(post.id)
+    else:
 
-		latest_posts = Post.objects.filter(pk__in=post_list).order_by('-pub_date')[post_count:end_count]
+      for post in ordered_posts:
+        post_html.append(render_to_string(
+          template,
+          {
+            'post': post
+          }
+        ))
 
-		return latest_posts
+    return post_html
+
+  def sort_following_posts(self, user, post_count):
+
+    post_list = []
+    end_count = post_count + 10
+    following = Follow.objects.filter(user=user)
+
+    for user_blog in following:
+      user = User.objects.get(username=user_blog)
+      blog = Blog.objects.get(user=user)
+      posts = self.filter(blog=blog)
+
+      for post in posts:
+        post_list.append(post.id)
+
+    latest_posts = Post.objects.filter(pk__in=post_list).order_by('-pub_date')[post_count:end_count]
+
+    return latest_posts
 
 class FollowManager(BaseManager):
 
@@ -83,7 +107,7 @@ class FollowManager(BaseManager):
     return self.filter(user=user)
 
   def get_following(self, user, blog):
-  	return self.get(user=user, blog=blog)
+    return self.get(user=user, blog=blog)
 
 
 class Blog(BaseModel):
@@ -125,3 +149,4 @@ class Follow(BaseModel):
 
   def __str__(self):
     return self.blog.user.username
+
