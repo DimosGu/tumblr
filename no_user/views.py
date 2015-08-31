@@ -13,7 +13,7 @@ def site_or_register(request):
     site = Site.objects.get_site_domain(request.subdomain)
     user = User.objects.get_by_username(request.subdomain)
     blog = Blog.objects.get_blog_user(user)
-    latest_posts = Post.objects.order_by_date(blog)[:10]
+    latest_posts = Post.objects.order_by_date(blog=blog)[:10]
 
     try:
       am_following = Follow.objects.get_following(request.user, blog)

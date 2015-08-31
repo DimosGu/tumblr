@@ -8,7 +8,7 @@ def mini_site(request):
   selected_user = request.GET['clicked_user']
   user = User.objects.get_by_username(selected_user)
   blog = Blog.objects.get_blog_user(user)
-  latest_posts = Post.objects.order_by_date(blog)[:10]
+  latest_posts = Post.objects.order_by_date(blog=blog)[:10]
   domain_url = request.META['HTTP_HOST']
 
   response = {

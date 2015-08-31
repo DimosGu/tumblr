@@ -15,10 +15,10 @@ class SubdomainMiddleware:
 			if path_info in dont_redirect:
 
 				try:
-					user_domain = Site.objects.get(domain=request.subdomain)
-				except: 
+					user_domain = Site.objects.get_site_domain(request.subdomain)
+				except:
 					user_domain = None
 					return HttpResponseRedirect('http://%s' % '.'.join(hosts[1:]))
-			
+
 			else:
 				return HttpResponseRedirect('http://%s%s' % ('.'.join(hosts[1:]), path_info))

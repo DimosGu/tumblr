@@ -47,7 +47,7 @@ def unfollow(request):
 
   if request.method == 'POST':
     username = request.POST.get('username')
-    user_to_unfollow = User.objects.user_username(username)
+    user_to_unfollow = User.objects.get_by_username(username)
     blog = Blog.objects.get_blog_user(user_to_unfollow)
 
     response = {}

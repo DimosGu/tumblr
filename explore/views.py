@@ -1,59 +1,42 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.http import  HttpResponseRedirect, JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.template.loader import render_to_string
 from blog.models import Blog, Post, Follow
 
 @login_required
 def explore(request):
-	return HttpResponseRedirect('recent')
+  return HttpResponseRedirect('recent')
 
-@login_required	
+@login_required
 def recent(request):
-	posts = Post.objects.all()
-	latest_posts = posts.exclude(user=request.user).order_by('-pub_date')[:10]
+  latest_posts = Post.objects.ten_more_posts(0, user=request.user, explore=True)
 
-	context = {
-		'latest_posts': [],
-	}
+  context = {
+    'latest_posts': [],
+  }
 
-	for post in latest_posts:
-		blog = Blog.objects.get(user=post.user)
-		
-		try:
-			follow = Follow.objects.get(user=request.user, blog=blog)
-			context['latest_posts'].append((post, 'true'))
-		except: 
-			follow = None
-			context['latest_posts'].append((post, 'false'))
+  for post in latest_posts:
+    blog = Blog.objects.get_blog_user(post.user)
 
-	return render(request, 'explore/explore.html', context)
+    try:
+      follow = Follow.objects.get_following(request.user, blog)
+      context['latest_posts'].append((post, 'true'))
+    except:
+      context['latest_posts'].append((post, 'false'))
+
+  return render(request, 'explore/explore.html', context)
 
 def get_ten_posts(request):
-	post_count = int(request.GET['post_count'])
-	end_count = post_count + 10
-	posts = Post.objects.all()
-	latest_posts = posts.exclude(user=request.user).order_by('-pub_date')[post_count:end_count]
+  post_count = int(request.GET['post_count'])
+  latest_posts = Post.objects.ten_more_posts(post_count, user=request.user, explore=True)
 
-	response = {
-		'html': [],
-	}
+  response = {}
 
-	for post in latest_posts:
-		blog = Blog.objects.get(user=post.user)
-		
-		try:
-			follow = Follow.objects.get(user=request.user, blog=blog)
-			follow = 'true'
-		except: 
-			follow = 'false'
+  appended_posts = Post.objects.loop_posts(
+    latest_posts, 'explore/explore_post.html', explore=True
+  )
 
-		response['html'].append(render_to_string(
-			'explore/explore_post.html',
-			{
-				'post': post,
-				'following': follow,
-			}
-		))
+  response['html'] = appended_posts
 
-	return JsonResponse(response)
+  return JsonResponse(response)
