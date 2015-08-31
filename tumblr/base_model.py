@@ -3,8 +3,12 @@ from django.utils import timezone
 
 class BaseManager(models.Manager):
 
-  def order_by_date(self, blog):
-    return self.filter(blog=blog).order_by('-pub_date')
+  def order_by_date(self, blog=False, user=False):
+
+    if user:
+      return self.exclude(user=user).order_by('-pub_date')
+    else:
+      return self.filter(blog=blog).order_by('-pub_date')
 
 class BaseModel(models.Model):
 
