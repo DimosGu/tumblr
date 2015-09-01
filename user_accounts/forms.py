@@ -1,7 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from user_accounts.models import User
-from django.core import validators
 from django.contrib.auth import authenticate
 from blog.models import Blog
 
@@ -32,7 +31,7 @@ class LoginForm(forms.Form):
 			'required': 'You forgot to enter your password!'
 		}
 	)
-	
+
 	def clean_email(self):
 		email = self.cleaned_data["email"].lower()
 		return email
@@ -115,7 +114,7 @@ class RegistrationForm(forms.ModelForm):
 				self.fields['password'].error_messages['length']
 			)
 
-		return password     
+		return password
 
 	def clean_username(self):
 		username = self.cleaned_data["username"].lower()
