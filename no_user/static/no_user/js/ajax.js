@@ -10,14 +10,13 @@ function check_field() {
 	$.ajax({
 		url: "/check_fields",
 		type: "POST",
-		data: { 
+		data: {
 			email: email_val,
 			password: password_val,
 			username: username_val,
 		},
 
 		success: function(error) {
-			console.log(error);
 			if(error.email == "That's not a valid email address. Please try again.") {
 				(form_error_id.html("<p>" + error.email + "</p>")
 				.removeClass('error-invisible').addClass('error-visible'));
@@ -41,7 +40,7 @@ function check_field() {
 				(error.email === undefined && error.password === undefined && username_val === "") ||
 				(error.email === undefined && error.username === undefined && password_val === "") ||
 				(error.password === undefined && error.username === undefined && email_val === "") ||
-				(error.email === undefined && error.password === undefined && 
+				(error.email === undefined && error.password === undefined &&
 					error.username === undefined) ||
 				(email_val === "" && password_val === "" && username_val === "")) {
 					form_error_id.removeClass('error-visible').addClass('error-invisible');
@@ -54,7 +53,7 @@ function check_field() {
 	});
 };
 
-$('#email-signup, #password-signup, #username-signup').blur(function() {	
+$('#email-signup, #password-signup, #username-signup').blur(function() {
 	check_field();
 });
 
@@ -68,7 +67,7 @@ function submit_form() {
 	$.ajax({
 		url: "/",
 		type: "POST",
-		data: { 
+		data: {
 			email: email_val,
 			password: password_val,
 			username: username_val,
@@ -86,7 +85,7 @@ function submit_form() {
 				(form_error_id.html("<p>" + json.password + "</p>")
 				.removeClass('error-invisible').addClass('error-visible'));
 			}
-			else if(json.username != undefined && 
+			else if(json.username != undefined &&
 				json.username != 'Someone has already claimed the username') {
 					(form_error_id.html("<p>" + json.username + "</p>")
 					.removeClass('error-invisible').addClass('error-visible'));
@@ -127,11 +126,11 @@ function getCookie(name) {
   return cookieValue;
 }
 var csrftoken = getCookie('csrftoken');
- 
+
 /*
 The functions below will create a header with csrftoken
 */
- 
+
 function csrfSafeMethod(method) {
   // these HTTP methods do not require CSRF protection
   return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
