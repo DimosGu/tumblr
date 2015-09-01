@@ -27,8 +27,18 @@ $(window).load(function() {
 });
 
 function get_ten_posts(post_count) {
+  var $body_attr, url;
+
+  $body_attr = $('body').attr('data');
+
+  if ($body_attr) {
+    url = "/search/get_ten_posts/" + $body_attr;
+  } else {
+    url = "/explore/get_ten_posts";
+  }
+
   $.ajax({
-    url: "/explore/get_ten_posts",
+    url: url,
     type: "GET",
     data: {
       'post_count': post_count
