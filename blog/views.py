@@ -117,25 +117,10 @@ def edit_post(request):
     current_tags = Tags.objects.filter_by_post(post)
 
     for tag in current_tags:
-      tag.post.clear()
+      tag.post.remove(post)
 
     new_tags = request.POST['tags']
-    stripped_tags = new_tags.replace('#', '').strip()
-    split_tags = stripped_tags.split(' ')
-
-    for tag in split_tags:
-
-      if tag == '':
-        pass
-      else:
-
-        try:
-          tags = Tags.objects.get_tag(tag)
-          tags.post.add(post)
-        except:
-          tags = Tags(tags=tag)
-          tags.save()
-          tags.post.add(post)
+    Tags.objects.create_tags(new_tags, post)
 
     created_tags = Tags.objects.filter_by_post(post)
 
