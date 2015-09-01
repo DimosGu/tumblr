@@ -42,7 +42,7 @@
 			</a>
 		</div>
 		<div id="posts-wrapper">
-			{% for post in latest_posts %}
+			{% for post, tags in latest_posts %}
 				{% include 'sites/sites_post.html' %}
 			{% endfor %}
 		</div>

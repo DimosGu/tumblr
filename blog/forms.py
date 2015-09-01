@@ -3,61 +3,62 @@ from .models import Post
 
 class TextPostForm(forms.ModelForm):
 
-	title = forms.CharField(required=False,
-		widget=forms.Textarea(attrs = {
-			'id': 'text-title-field',
-			'class': 'title-field',
-			'placeholder': 'Title',
-		}),
-	)
+  title = forms.CharField(required=False,
+    widget=forms.Textarea(attrs = {
+      'id': 'text-title-field',
+      'class': 'title-field',
+      'placeholder': 'Title',
+    }),
+  )
 
-	text = forms.CharField(required=False,
-		widget=forms.Textarea(attrs = {
-			'id': 'text-text-field',
-			'class': 'text-field',
-			'placeholder': 'Your text here',
-		}),
-	)
+  text = forms.CharField(required=False,
+    widget=forms.Textarea(attrs = {
+      'id': 'text-text-field',
+      'class': 'text-field',
+      'placeholder': 'Your text here',
+    }),
+  )
 
-	tags = forms.CharField(required=False,
-		widget=forms.Textarea(attrs = {
-			'class': 'tags-field',
-			'placeholder': '#tags',
-			'maxlength': '200',
-		}),
-	)
+  tags = forms.CharField(required=False,
+    widget=forms.Textarea(attrs = {
+      'class': 'tags-field',
+      'placeholder': '#tags',
+      'maxlength': '200',
+    }),
+  )
 
-	class Meta:
-		model = Post
-		fields = ('title', 'text', 'tags')
+  class Meta:
+    model = Post
+    fields = ('title', 'text')
+
 
 class PhotoPostForm(forms.ModelForm):
-	
-	file = forms.FileField(
-		widget=forms.ClearableFileInput(attrs = {
-			'id': 'photo-file',
-			'class': 'file-field',
-			'accept': 'image/*',
-		}),
-	)
 
-	text = forms.CharField(required=False,
-		widget=forms.Textarea(attrs = {
-			'id': 'photo-text',
-			'class': 'text-field',
-			'placeholder': 'Add a caption, if you like',
-		}),
-	)
+  file = forms.FileField(
+    widget=forms.ClearableFileInput(attrs = {
+      'id': 'photo-file',
+      'class': 'file-field',
+      'accept': 'image/*',
+    }),
+  )
 
-	tags = forms.CharField(required=False,
-		widget=forms.Textarea(attrs = {
-			'id': 'photo-tags',
-			'class': 'tags-field',
-			'placeholder': '#tags',
-			'maxlength': '200',
-		}),
-	)
+  text = forms.CharField(required=False,
+    widget=forms.Textarea(attrs = {
+      'id': 'photo-text',
+      'class': 'text-field',
+      'placeholder': 'Add a caption, if you like',
+    }),
+  )
 
-	class Meta:
-		model = Post
-		fields = ('file', 'text', 'tags')
+  tags = forms.CharField(required=False,
+    widget=forms.Textarea(attrs = {
+      'id': 'photo-tags',
+      'class': 'tags-field',
+      'placeholder': '#tags',
+      'maxlength': '200',
+    }),
+  )
+
+  class Meta:
+    model = Post
+    fields = ('file', 'text')

@@ -5,8 +5,10 @@ from django.template.loader import render_to_string
 from user_accounts.models import User
 from django.core.files import File
 from .models import Blog, Post, Follow
+from search.models import Tags
 from .forms import TextPostForm, PhotoPostForm
 from django.views.decorators.csrf import csrf_exempt
+
 
 @login_required
 def blog_edit(request, username):
@@ -16,12 +18,9 @@ def blog_edit(request, username):
     return HttpResponseRedirect('http://%s.%s' % (username, domain))
 
   latest_posts = Post.objects.ten_more_posts(0, user=request.user)
+  tagged_posts = Post.objects.combine_tags_posts(latest_posts)
 
-  context = {
-    'latest_posts': latest_posts
-  }
-
-  return render(request, 'blog/blog_edit.html', context)
+  return render(request, 'blog/blog_edit.html', tagged_posts)
 
 @csrf_exempt
 def follow(request):
@@ -85,17 +84,16 @@ def get_more_posts(request):
 def delete_post(request):
 
   if request.method == 'POST':
-    post = Post.objects.get_by_user_pk(request.user, request.POST['post_id']).delete()
+    post = Post.objects.get_pk(request.POST['post_id']).delete()
 
     return HttpResponse('delete success')
 
 def edit_post(request):
 
   if request.method == 'POST':
-    post_edit = Post.objects.get_by_user_pk(request.user, request.POST['post_edit_id'])
+    post_edit = Post.objects.get_pk(request.POST['post_edit_id'])
 
     post_edit.text = request.POST['text']
-    post_edit.tags = request.POST['tags']
 
     if request.POST.get('title'):
       post_edit.title = request.POST['title']
@@ -107,14 +105,42 @@ def edit_post(request):
 
     post_edit.save()
 
-    post = Post.objects.get_by_user_pk(request.user, request.POST['post_edit_id'])
+    post = Post.objects.get_pk(request.POST['post_edit_id'])
 
     json_data = {
       'id_data': post.id,
       'text_data': post.text,
-      'tags_data': post.tags,
+      'tags_data': [],
       'title_data': post.title
     }
+
+    current_tags = Tags.objects.filter_by_post(post)
+
+    for tag in current_tags:
+      tag.post.clear()
+
+    new_tags = request.POST['tags']
+    stripped_tags = new_tags.replace('#', '').strip()
+    split_tags = stripped_tags.split(' ')
+
+    for tag in split_tags:
+
+      if tag == '':
+        pass
+      else:
+
+        try:
+          tags = Tags.objects.get_tag(tag)
+          tags.post.add(post)
+        except:
+          tags = Tags(tags=tag)
+          tags.save()
+          tags.post.add(post)
+
+    created_tags = Tags.objects.filter_by_post(post)
+
+    for tag in created_tags:
+      json_data['tags_data'].append(tag.tags)
 
     if post.file:
       json_data['file_data'] = post.file.url
@@ -125,27 +151,7 @@ def post_text(request):
 
   if request.method == 'POST':
     text_form = TextPostForm(request.POST)
-
-    if text_form.is_valid():
-      text_form.instance.user = request.user
-      text_form.instance.blog = Blog.objects.get_blog_user(request.user)
-      form_instance = text_form.save()
-
-      post = Post.objects.get_by_user_pk(request.user, form_instance.pk)
-      blog = Blog.objects.get_blog_user(request.user)
-
-      response = {
-        'html': [],
-      }
-
-      response['html'].append(render_to_string(
-        'blog/blog_post.html',
-        {
-          'post': post,
-          'user': request.user,
-          'blog': blog,
-        }
-      ))
+    response = Post.objects.render_new_post(request.user, text_form)
 
     return JsonResponse(response)
 
@@ -153,26 +159,6 @@ def post_photo(request):
 
   if request.method == 'POST':
     photo_form = PhotoPostForm(request.POST, request.FILES)
+    response = Post.objects.render_new_post(request.user, photo_form)
 
-    if photo_form.is_valid():
-      photo_form.instance.user = request.user
-      photo_form.instance.blog = Blog.objects.get_blog_user(request.user)
-      form_instance = photo_form.save()
-
-      post = Post.objects.get_by_user_pk(request.user, form_instance.pk)
-      blog = Blog.objects.get_blog_user(request.user)
-
-      response = {
-        'html': [],
-      }
-
-      response['html'].append(render_to_string(
-        'blog/blog_post.html',
-        {
-          'post': post,
-          'user': request.user,
-          'blog': blog,
-        }
-      ))
-
-      return JsonResponse(response)
+    return JsonResponse(response)

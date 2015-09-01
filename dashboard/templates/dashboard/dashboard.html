@@ -17,7 +17,7 @@
 	<div id="wrapper" class="display-none">
 		{% include "header.html" %}
 		<div id="posts-wrapper">
-		{% for post in latest_posts %}
+		{% for post, tags in latest_posts %}
 			{% include 'dashboard/dashboard_post.html' %}
 		{% endfor %}
 		</div>

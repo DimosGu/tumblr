@@ -13,8 +13,8 @@
 			{% if post.text %}
 				<p class="mini-post-text">{{ post.text }}</p>
 			{% endif %}
-			{% if post.tags %}
-				<span class="mini-post-tags">{{ post.tags }}</span>
+			{% if tags %}
+				<span class="mini-post-tags">{% for tag in tags %} #{{ tag }}{% endfor %}</span>
 			{% endif %}
 		</div>
 	</div>

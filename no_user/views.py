@@ -10,10 +10,11 @@ from random import randint
 
 def site_or_register(request):
   if request.subdomain:
-    site = Site.objects.get_site_domain(request.subdomain)
     user = User.objects.get_by_username(request.subdomain)
     blog = Blog.objects.get_blog_user(user)
+    print(blog)
     latest_posts = Post.objects.order_by_date(blog=blog)[:10]
+    tagged_posts = Post.objects.combine_tags_posts(latest_posts)
 
     try:
       am_following = Follow.objects.get_following(request.user, blog)
@@ -24,7 +25,7 @@ def site_or_register(request):
     context = {
       'current_site': user,
       'current_blog': blog,
-      'latest_posts': latest_posts,
+      'latest_posts': tagged_posts['latest_posts'],
       'follow': follow,
     }
 

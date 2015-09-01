@@ -18,7 +18,7 @@
 		{% include "header.html" %}
 		<div id="blog-content">
 			<div id="blog-posts-wrapper">
-				{% for post in latest_posts %}
+				{% for post, tags in latest_posts %}
 					{% include "blog/blog_post.html" %}
 				{% endfor %}
 			</div>

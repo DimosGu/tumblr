@@ -10,12 +10,9 @@ from user_accounts.models import User
 def dashboard(request):
 
   latest_posts = Post.objects.sort_following_posts(request.user, 0)
+  tagged_posts = Post.objects.combine_tags_posts(latest_posts)
 
-  context = {
-    'latest_posts': latest_posts
-  }
-
-  return render(request, 'dashboard/dashboard.html', context)
+  return render(request, 'dashboard/dashboard.html', tagged_posts)
 
 def get_ten_posts(request):
 
