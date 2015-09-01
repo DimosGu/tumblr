@@ -6,7 +6,7 @@
   <link rel="icon" href="{% static 'images/icon.ico' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'explore/css/style.css' %}" />
 </head>
-<body id="explore-body">
+<body id="explore-body" {% if search %}{{ search }}{% endif %}>
   <div id="full-screen-img" class="display-none">
     <img src="">
   </div>
@@ -18,7 +18,7 @@
     {% include 'explore/explore_header.html' %}
     <div id="outer-wrapper">
       <div id="post-content">
-        {% for post, following in latest_posts %}
+        {% for post, tags, following in latest_posts %}
           {% include 'explore/explore_post.html' %}
         {% endfor %}
       </div>
