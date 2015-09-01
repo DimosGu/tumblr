@@ -17,7 +17,7 @@ function check_field() {
 		},
 
 		success: function(error) {
-			if(error.email == "That's not a valid email address. Please try again.") {
+			if(error.email) {
 				(form_error_id.html("<p>" + error.email + "</p>")
 				.removeClass('error-invisible').addClass('error-visible'));
 			}
