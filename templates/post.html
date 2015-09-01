@@ -11,8 +11,9 @@
 		{% if post.text %}
 			<p class="post-text">{{ post.text }}</p>
 		{% endif %}
-		{% if post.tags %}
-			<span class="post-tags">{{ post.tags }}</span>
+
+		{% if tags %}
+			<span class="post-tags">{% for tag in tags %}#{{ tag }} {% endfor %}</span>
 		{% endif %}
 	</div>
 </div>
