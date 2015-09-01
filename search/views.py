@@ -17,9 +17,8 @@ def results(request, results):
 
 def get_ten_posts(request, results):
   post_count = int(request.GET['post_count'])
-  end_count = post_count + 10
   search_result = Tags.objects.get_tag(results)
-  posts = search_result.post.exclude(user=request.user)[post_count:end_count]
+  posts = Post.objects.ten_more_posts(post_count, user=request.user, search=search_result)
 
   appended_posts = Post.objects.loop_posts(
     posts, 'explore/explore_post.html', explore=True
