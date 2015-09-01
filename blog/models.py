@@ -52,7 +52,7 @@ class PostManager(BaseManager):
 
     return context
 
-  def ten_more_posts(self, post_count, user=False, ajax_user=False, blog=False, return_fields=False, explore=False):
+  def ten_more_posts(self, post_count, user=False, ajax_user=False, blog=False, return_fields=False, explore=False, search=False):
     end_count = post_count + 10
 
     if ajax_user:
@@ -73,6 +73,8 @@ class PostManager(BaseManager):
       return fields
     elif explore:
       return self.exclude(user=user).order_by('-pub_date')[post_count:end_count]
+    elif search:
+      return search.post.exclude(user=user)[post_count:end_count]
     else:
       return self.filter(blog=blog).order_by('-pub_date')[post_count:end_count]
 
@@ -148,27 +150,11 @@ class PostManager(BaseManager):
       form.instance.blog = Blog.objects.get(user=user)
       form_instance = form.save()
 
-      blog = Blog.objects.get(user=user)
+      post = form_instance
 
       new_tags = form.data['tags']
-      stripped_tags = new_tags.replace('#', '').strip()
-      tags_split = stripped_tags.split(' ')
+      Tags.objects.create_tags(new_tags, post)
 
-      for tag in tags_split:
-
-        if tag == '':
-          pass
-        else:
-
-          try:
-            tags = Tags.objects.get(tags=tag)
-            tags.post.add(form_instance)
-          except:
-            tags = Tags(tags=tag)
-            tags.save()
-            tags.post.add(form_instance)
-
-      post = Post.objects.get(pk=form_instance.pk)
       post_tags = []
       tags_filter = Tags.objects.filter(post=post)
 
@@ -185,7 +171,7 @@ class PostManager(BaseManager):
         {
           'post': post,
           'user': user,
-          'blog': blog,
+          'blog': form_instance.blog,
           'tags': post_tags
         }
       ))
