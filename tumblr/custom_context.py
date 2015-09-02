@@ -1,4 +1,5 @@
 from blog.forms import TextPostForm, PhotoPostForm
+from search.forms import SearchForm
 from blog.models import Blog, Follow, Post
 from sites.models import Site
 from user_accounts.models import User
@@ -29,12 +30,14 @@ def site(request):
 	return {'site': site}
 
 def header_forms(request):
+	search_form = SearchForm()
 	text_form = TextPostForm()
 	photo_form = PhotoPostForm()
 
 	post_forms = {
+		'search_form': search_form,
 		'text_form': text_form,
 		'photo_form': photo_form
 	}
-	
+
 	return post_forms
