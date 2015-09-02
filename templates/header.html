@@ -36,16 +36,16 @@
 			</div>
 		</div>
 		<div id="form-wrapper">
-			<form id="search" class="input-nofocus">
-				<input id="search-input" type="text" placeholder="Search Tumblr" tabindex="4" name="search">
+			<form id="search" class="input-nofocus" action="{% url 'search' %}">
+				{{ search_form.tags_search }}
 			</form>
 		</div>
 	</div>
 	{% block sub_header %}{% endblock sub_header %}
-</div>	
+</div>
 <div id="post-options" class="post-fade post-hidden display-none">
 	<div id="post-type-wrapper">
-		<div id="post-type">	
+		<div id="post-type">
 			<div id="text" class="type-anim type-hidden"></div>
 			<div id="photo" class="type-anim type-hidden"></div>
 			<div id="quote" class="type-anim type-hidden"></div>
@@ -53,7 +53,7 @@
 			<div id="chat" class="type-anim type-hidden"></div>
 			<div id="audio" class="type-anim type-hidden"></div>
 			<div id="video" class="type-anim type-hidden"></div>
-		</div>						
+		</div>
 		<div id="post-titles">
 			<p class="p-fade p-hidden">Text</p>
 			<p class="p-fade p-hidden">Photo</p>
