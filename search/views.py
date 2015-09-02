@@ -5,7 +5,11 @@ from blog.models import Post
 
 
 def search(request):
-  return HttpResponseRedirect('/explore/recent')
+  if request.GET['tags_search']:
+    print(request)
+    return HttpResponseRedirect('/search/%s' % request.GET['tags_search'])
+  else:
+    return HttpResponseRedirect('/explore/recent')
 
 def results(request, results):
   search_result = Tags.objects.get_tag(results)
