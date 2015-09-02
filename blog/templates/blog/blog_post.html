@@ -1,9 +1,9 @@
-<div class="post-wrapper blog-post-fade" data-id="{{ post.id }}" data-username="{{ user.username }}">
+<div class="post-wrapper blog-post-fade" data-id="{{ post.id }}" data-username="{{ post.user.username }}">
 	<div class="post-header">
-		<a class="blog-link" href="http://{{ user.username }}.local.n-ws.org:8080">
-			<img src="{{ blog.img.url }}">
+		<a class="blog-link" href="http://{{ post.user.username }}.local.n-ws.org:8080">
+			<img src="{{ post.blog.img.url }}">
 		</a>
-		<a class="user-link" href="http://{{ user.username }}.local.n-ws.org:8080">{{ user.username }}</a>
+		<a class="user-link" href="http://{{ post.user.username }}.local.n-ws.org:8080">{{ post.user.username }}</a>
 	</div>
 	{% include 'post.html' %}
 	<div class="post-footer">

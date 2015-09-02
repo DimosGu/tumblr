@@ -28,7 +28,7 @@
 				</div>
 				<button id="submit-button" type="submit" value="register">Sign up</button>
 			</form>
-			<a id="explore" href="explore.html">Explore Tumblr</a>
+			<a id="explore" href="{% url 'explore:recent' %}">Explore Tumblr</a>
 		</div>
 		{% include 'no_user/footer.html' %}
 	</div>

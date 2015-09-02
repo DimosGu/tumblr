@@ -1,0 +1,13 @@
+{% extends "no_user/header.html" %}
+
+{% block sub_header %}
+  <div id="sort-header-wrapper">
+    <div id="sort-post-header">
+      <div id="sort-posts">
+        <a id="Recent" href="{% url 'explore:recent' %}">Recent</a>
+        <a id="Text" href="">Text</a>
+        <a id="Photos" href="">Photos</a>
+      </div>
+    </div>
+  </div>
+{% endblock sub_header %}

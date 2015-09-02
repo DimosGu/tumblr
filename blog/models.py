@@ -52,7 +52,7 @@ class PostManager(BaseManager):
 
     return context
 
-  def ten_more_posts(self, post_count, user=False, ajax_user=False, blog=False, return_fields=False, explore=False, search=False):
+  def ten_more_posts(self, post_count, user=False, ajax_user=False, blog=False, explore=False, search=False):
     end_count = post_count + 10
 
     if ajax_user:
@@ -62,23 +62,19 @@ class PostManager(BaseManager):
     else:
       get_user = False
 
-    if not explore:
-      blog = Blog.objects.get(pk=get_user)
-
-    if return_fields:
-      fields = {}
-      fields['filtered_posts'] = self.filter(blog=blog).order_by('-pub_date')[post_count:end_count]
-      fields['blog'] = blog
-
-      return fields
-    elif explore:
+    if explore:
       return self.exclude(user=user).order_by('-pub_date')[post_count:end_count]
     elif search:
-      return search.post.exclude(user=user)[post_count:end_count]
+
+      if not user:
+        return search.post.all()[post_count:end_count]
+      else:
+        return search.post.exclude(user=user)[post_count:end_count]
     else:
+      blog = Blog.objects.get(pk=get_user)
       return self.filter(blog=blog).order_by('-pub_date')[post_count:end_count]
 
-  def loop_posts(self, ordered_posts, template, explore=False):
+  def loop_posts(self, ordered_posts, template, user=False, explore=False):
     from search.models import Tags
 
     post_html = []
@@ -95,7 +91,7 @@ class PostManager(BaseManager):
           tag_list.append(tag.tags)
 
         try:
-          follow = Follow.objects.get(user=request.user, blog=blog)
+          follow = Follow.objects.get(user=user, blog=blog)
           follow = 'true'
         except:
           follow = 'false'

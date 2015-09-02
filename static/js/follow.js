@@ -19,6 +19,8 @@ function unfollow(username) {
 };
 
 $('body').on('click', '.follow', function (e) {
+	e.preventDefault();
+
 	var username = $(this).parent().attr('data-username');
 	follow(username);
 
@@ -37,6 +39,8 @@ $('body').on('click', '.follow', function (e) {
 });
 
 $('body').on('click', '.unfollow', function (e) {
+	e.preventDefault();
+
 	var username = $(this).parent().attr('data-username');
 	unfollow(username);
 

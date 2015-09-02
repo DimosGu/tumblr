@@ -4,7 +4,6 @@
 @import '../../../../static/scss/universal';
 @import '../../../../static/scss/mini_site';
 
-
 html {
 	font-family: helvetica, arial;
 	height: 100%;
@@ -38,7 +37,7 @@ body {
 			font-size: 15px;
 			margin: 0 15px 0 0;
 			text-decoration: none;
-		}	
+		}
 	}
 }
 
@@ -46,6 +45,22 @@ body {
 	margin: 0 auto;
 	min-width: 620px;
 	max-width: 1600px;
+}
+
+#results {
+	width: 100%;
+	margin-top: 80px;
+	position: relative;
+
+	p {
+		color: #fff;
+		font-size: 26px;
+		text-align: center;
+		position: absolute;
+		top: 30px;
+		left: 0;
+		right: 0;
+	}
 }
 
 #post-content {
@@ -76,6 +91,7 @@ body {
 
 		.user-link {
 			color: #444;
+			cursor: pointer;
 			font-size: 14px;
 			font-weight: 600;
 			float: left;
@@ -89,10 +105,11 @@ body {
 			cursor: pointer;
 			font-size: 13px;
 			font-weight: bold;
-			float: left;	
-			height: 30px;
+			float: left;
+			height: 15px;
 			width: 55px;
 			margin: 7px 0 0 10px;
+			text-decoration: none;
 
 			.follow {
 				color: #529ecc;
@@ -103,7 +120,7 @@ body {
 			}
 		}
 	}
-	
+
 	.post {
 		width: 100%;
 

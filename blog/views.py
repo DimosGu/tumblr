@@ -62,21 +62,15 @@ def unfollow(request):
 
 def get_more_posts(request):
   post_count = int(request.GET.get('post_count'))
-  posts = Post.objects.ten_more_posts(post_count, user=request.user, return_fields=True)
+  posts = Post.objects.ten_more_posts(post_count, user=request.user)
 
-  response = {
-    'html': [],
-  }
+  response = {}
 
-  for post in posts['filtered_posts']:
-    response['html'].append(render_to_string(
-      'blog/blog_post.html',
-      {
-        'post': post,
-        'user': request.user,
-        'blog': posts['blog'],
-      }
-    ))
+  appended_posts = Post.objects.loop_posts(
+    posts, 'blog/blog_post.html'
+  )
+
+  response['html'] = appended_posts
 
   return JsonResponse(response)
 
