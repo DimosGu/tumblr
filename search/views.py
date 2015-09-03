@@ -15,16 +15,16 @@ def results(request, results):
   try:
 
     if request.user.is_authenticated():
-      search_result = Tags.objects.posts_with_tags(results, 0, user=request.user)
+      search_result = Tags.objects.posts_with_tags(results.lower(), 0, user=request.user)
     else:
-      search_result = Tags.objects.posts_with_tags(results, 0)
+      search_result = Tags.objects.posts_with_tags(results.lower(), 0)
 
     context = Post.objects.combine_tags_posts(search_result, user=request.user, follow=True)
 
     if not context['latest_posts']:
       context['search'] = 'data=%s' % 'NoResults'
     else:
-      context['search'] = 'data=%s' % results
+      context['search'] = 'data=%s' % results.lower()
 
     context['result'] = results.replace('+', ' ').upper()
     domain_url = request.META['HTTP_HOST']
@@ -54,7 +54,13 @@ def get_ten_posts(request, results):
 
     response['html'] = appended_posts
 
+    if not response['html']:
+      response['html'] = "NoResults"
+      response['result'] = results.replace('+', ' ')
+    else:
+      pass
+
   except:
-    response['html'] = []
+    response['error'] = 'no posts with those tags'
 
   return JsonResponse(response)
