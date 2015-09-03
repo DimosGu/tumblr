@@ -148,7 +148,7 @@ class PostManager(BaseManager):
 
       post = form_instance
 
-      new_tags = form.data['tags']
+      new_tags = form.data['tags'].lower()
       Tags.objects.create_tags(new_tags, post)
 
       post_tags = []
