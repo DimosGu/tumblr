@@ -13,7 +13,6 @@ def search(request):
 
 def results(request, results):
   try:
-    print(results)
 
     if request.user.is_authenticated():
       search_result = Tags.objects.posts_with_tags(results, 0, user=request.user)
@@ -51,8 +50,7 @@ def get_ten_posts(request, results):
 
     response['html'] = appended_posts
 
-    return JsonResponse(response)
   except:
     response['html'] = []
 
-    return JsonResponse(response)
+  return JsonResponse(response)
