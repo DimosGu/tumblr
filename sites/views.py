@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.http import HttpResponse, JsonResponse
 from user_accounts.models import User
-from blog.models import Blog, Post, Follow 
+from blog.models import Blog, Post, Follow
 
 def mini_site(request):
   selected_user = request.GET['clicked_user']
@@ -33,7 +33,7 @@ def mini_site(request):
     }
   ))
 
-  post_loop = Post.objects.loop_posts(latest_posts, 'sites/mini_post.html')
+  post_loop = Post.objects.render_posts(latest_posts, 'sites/mini_post.html')
   response['post_html'] = post_loop
 
   return JsonResponse(response)
@@ -47,10 +47,10 @@ def get_ten_posts(request):
 
   try:
     mini = request.GET['mini']
-    post_loop = Post.objects.loop_posts(posts, 'sites/mini_post.html')
+    post_loop = Post.objects.render_posts(posts, 'sites/mini_post.html')
   except:
-    post_loop = Post.objects.loop_posts(posts, 'sites/sites_post.html')
-   
+    post_loop = Post.objects.render_posts(posts, 'sites/sites_post.html')
+
   response['html'] = post_loop
 
   return JsonResponse(response)

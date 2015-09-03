@@ -19,7 +19,7 @@ def get_ten_posts(request):
   response = {}
   post_count = int(request.GET['post_count'])
   latest_posts = Post.objects.sort_following_posts(request.user, post_count)
-  appended_posts = Post.objects.loop_posts(latest_posts, 'dashboard/dashboard_post.html')
+  appended_posts = Post.objects.render_posts(latest_posts, 'dashboard/dashboard_post.html')
   response['html'] = appended_posts
 
   return JsonResponse(response)
