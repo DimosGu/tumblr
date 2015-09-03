@@ -14,7 +14,7 @@
 				<p class="mini-post-text">{{ post.text }}</p>
 			{% endif %}
 			{% if tags %}
-				<span class="mini-post-tags">{% for tag in tags %}<a title="{{ tag }}" href="{% url 'results' tag %}">#{{ tag }}</a>&nbsp;&nbsp;{% endfor %}</span>
+				<span class="mini-post-tags">{% for tag in tags %}<a title="{{ tag }}" href="{% url 'results' tag %}">#{{ tag }}</a>{% endfor %}</span>
 			{% endif %}
 		</div>
 	</div>
