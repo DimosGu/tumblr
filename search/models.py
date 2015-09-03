@@ -4,8 +4,32 @@ from blog.models import Post
 
 class TagsManager(BaseManager):
 
-  def get_tag(self, tag):
-    return self.get(tags=tag)
+  def posts_with_tags(self, tags, post_count, user=False):
+    end_count = post_count + 10
+
+    tag_list = []
+    split_tags = tags.replace('+', ' ').split(' ')
+
+    for tag in split_tags:
+
+      if tag == '':
+        pass
+      else:
+        tagss = self.get(tags=tag)
+        tag_list.append(tagss.pk)
+
+    if user:
+      post_with_tags = Post.objects.exclude(user=user)
+    else:
+      post_with_tags = Post.objects.all()
+
+    for tag in tag_list:
+      loop_posts = post_with_tags.filter(tags__pk=tag)
+      post_with_tags = loop_posts
+
+    ordered_posts = post_with_tags.order_by('-pub_date')[post_count:end_count]
+
+    return ordered_posts
 
   def filter_by_post(self, post):
     return self.filter(post=post)
@@ -21,7 +45,7 @@ class TagsManager(BaseManager):
       else:
 
         try:
-          tags = Tags.objects.get_tag(tag)
+          tags = Tags.objects.get(tags=tag)
           tags.post.add(post)
         except:
           tags = Tags(tags=tag)
@@ -30,7 +54,7 @@ class TagsManager(BaseManager):
 
 class Tags(BaseModel):
 
-  tags = models.CharField(max_length=20, blank=True)
+  tags = models.CharField(max_length=20, unique=True, blank=True)
   post = models.ManyToManyField(Post)
   objects = TagsManager()
 
