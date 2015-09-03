@@ -736,7 +736,9 @@ img {
         #mini-posts-wrapper .mini-post-wrapper .mini-post .mini-words-wrapper .mini-post-tags {
           display: block;
           font-size: 13px;
-          margin: 26px 0 0 0; }
+          margin: 26px 0 0 0;
+          white-space: nowrap;
+          overflow: hidden; }
           #mini-posts-wrapper .mini-post-wrapper .mini-post .mini-words-wrapper .mini-post-tags a {
             color: #a7a7a7;
             text-decoration: none;
@@ -792,11 +794,8 @@ body {
     width: 100%; }
   .post-wrapper .post .words-wrapper {
     color: #444;
-    padding: 0 10px 0 10px; }
-    .post-wrapper .post .words-wrapper .post-title,
-    .post-wrapper .post .words-wrapper .post-text,
-    .post-wrapper .post .words-wrapper .post-tags {
-      word-wrap: break-word; }
+    padding: 0 10px 0 10px;
+    word-wrap: break-word; }
     .post-wrapper .post .words-wrapper .post-title {
       font-size: 36px;
       line-height: 47px;
@@ -808,7 +807,9 @@ body {
     .post-wrapper .post .words-wrapper .post-tags {
       display: block;
       font-size: 13px;
-      margin: 18px 0 0 8px; }
+      margin: 18px 0 0 8px;
+      white-space: nowrap;
+      overflow: hidden; }
       .post-wrapper .post .words-wrapper .post-tags a {
         color: #a1a1a1;
         text-decoration: none;

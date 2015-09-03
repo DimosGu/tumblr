@@ -237,7 +237,9 @@ body {
         #posts-wrapper .post-wrapper .post .words-wrapper .post-tags {
           display: block;
           font-size: 14px;
-          margin: 26px 0 0 0; }
+          margin: 26px 0 0 0;
+          white-space: nowrap;
+          overflow: hidden; }
           #posts-wrapper .post-wrapper .post .words-wrapper .post-tags a {
             text-decoration: none;
             color: #a7a7a7;
