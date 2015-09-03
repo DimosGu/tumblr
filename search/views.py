@@ -20,7 +20,12 @@ def results(request, results):
       search_result = Tags.objects.posts_with_tags(results, 0)
 
     context = Post.objects.combine_tags_posts(search_result, user=request.user, follow=True)
-    context['search'] = 'data=%s' % results
+
+    if not context['latest_posts']:
+      context['search'] = 'data=%s' % 'NoResults'
+    else:
+      context['search'] = 'data=%s' % results
+
     context['result'] = results.replace('+', ' ').upper()
 
     domain_url = request.META['HTTP_HOST']
