@@ -23,8 +23,8 @@ class TagsManager(BaseManager):
     else:
       post_with_tags = Post.objects.all()
 
-    for tag in tag_list:
-      loop_posts = post_with_tags.filter(tags__pk=tag)
+    for pk in tag_list:
+      loop_posts = post_with_tags.filter(tags__pk=pk)
       post_with_tags = loop_posts
 
     ordered_posts = post_with_tags.order_by('-pub_date')[post_count:end_count]
