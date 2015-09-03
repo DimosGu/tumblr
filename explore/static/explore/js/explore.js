@@ -20,10 +20,12 @@ $(window).load(function() {
   }, 1);
 
   setTimeout (function() {
-    get_ten_posts(visible_posts);
-    visible_posts += 10;
-    get_post_verify = false;
-  }, 1000);
+    if ($(document).height() === $(window).height()) {
+      get_post_verify = false;
+      visible_posts += 10;
+      get_ten_posts(visible_posts);
+    }
+  }, 1000)
 });
 
 function get_ten_posts(post_count) {
@@ -45,21 +47,24 @@ function get_ten_posts(post_count) {
     },
 
     success: function(json) {
+      if (json.html.length >= 1 && json.html != "NoResults") {
+        $post_content.append(json.html);
+        $post_content.masonry('reloadItems');
 
-      $post_content.append(json.html);
-      $post_content.masonry('reloadItems');
+        setTimeout (function() {
+          $post_content.masonry('layout');
+        }, 300);
 
-      setTimeout (function() {
-        $post_content.masonry('layout');
-      }, 300);
+        setTimeout (function() {
+          var $post_wrapper = $('.post-wrapper');
+          $post_wrapper.removeClass('invisible');
+          get_post_verify = true;
+        }, 500);
 
-      setTimeout (function() {
-        var $post_wrapper = $('.post-wrapper');
-        $post_wrapper.removeClass('invisible');
-      }, 500);
-
-      if (json.html.length) {
-        get_post_verify = true;
+      } else if (json.html.length === 0) {
+        return json.html;
+      } else {
+        $post_content.after("<div id='end-results'><p>That's about it for <span>" + json.result + "</span>. Try another search?</p></div>")
       }
     }
   });
@@ -68,9 +73,9 @@ function get_ten_posts(post_count) {
 $(window).on('scroll', function() {
   if ($(window).scrollTop() + $(window).height() > $(document).height() / 1.25) {
     if (get_post_verify) {
-      get_ten_posts(visible_posts);
       get_post_verify = false;
       visible_posts += 10;
+      get_ten_posts(visible_posts);
     }
   }
 });
