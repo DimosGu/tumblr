@@ -24,15 +24,22 @@
       {% include 'explore/no_user_header.html' %}
     {% endif %}
     <div id="outer-wrapper">
-      {% if result %}
-        <div id="results">
-          <p>{{ result }}</p>
+      <div id="inner-wrapper">
+        {% if result %}
+          <div id="results">
+            <div id="result-content">
+              <h2>{{ result }}</h2>
+              {% if search == 'data=NoResults' %}
+                <p>That's about it for <span>{{ result }}</span>. Try another search?</p>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+        <div id="post-content">
+          {% for post, tags, following in latest_posts %}
+            {% include 'explore/explore_post.html' %}
+          {% endfor %}
         </div>
-      {% endif %}
-      <div id="post-content">
-        {% for post, tags, following in latest_posts %}
-          {% include 'explore/explore_post.html' %}
-        {% endfor %}
       </div>
     </div>
   </div>
