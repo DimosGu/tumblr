@@ -367,7 +367,7 @@ function edit_post(type, id) {
 
         tags_array = []
         for (var i = 0; i < json.tags_data.length; i++) {
-          tags_array.push('#' + json.tags_data[i])
+          tags_array.push("<a title=" + json.tags_data[i] + " href='http://" + json.domain_url + "/search/" + json.tags_data[i] + "'>#" + json.tags_data[i] + "</a>")
         }
         tags_join = tags_array.join(' ')
         tags_html = '<span class="post-tags">' + tags_join + '</span>';
