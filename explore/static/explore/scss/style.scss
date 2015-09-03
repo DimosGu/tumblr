@@ -150,10 +150,14 @@ body {
 			}
 
 			.post-tags {
-				color: #a1a1a1;
 				display: block;
 				font-size: 13px;
 				margin: 20px 0 0 1px;
+
+				a {
+					color: #a1a1a1;
+					text-decoration: none;
+				}
 			}
 		}
 	}

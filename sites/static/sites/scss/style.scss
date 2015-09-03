@@ -34,7 +34,7 @@ body {
 		position: fixed;
 		top: 3px;
 		right: 3px;
-		
+
 		.follow,
 		.unfollow,
 		#dashboard-link {
@@ -177,9 +177,13 @@ body {
 
 				.post-tags {
 					display: block;
-					color: #a7a7a7;
 					font-size: 14px;
 					margin: 26px 0 0 0;
+
+					a {
+						text-decoration: none;
+						color: #a7a7a7;
+					}
 				}
 			}
 		}

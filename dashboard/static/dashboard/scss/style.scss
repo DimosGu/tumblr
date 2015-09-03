@@ -89,10 +89,14 @@ body {
 			}
 
 			.post-tags {
-				color: #a1a1a1;
 				display: block;
 				font-size: 13px;
 				margin: 18px 0 0 8px;
+
+				a {
+					color: #a1a1a1;
+					text-decoration: none;
+				}
 			}
 		}
 	}

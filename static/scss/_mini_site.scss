@@ -61,7 +61,7 @@
 		position: fixed;
 		top: 10px;
 		right: 23px;
-	
+
 		.follow,
 		.unfollow {
 			background: #fff;
@@ -172,9 +172,13 @@
 
 				.mini-post-tags {
 					display: block;
-					color: #a7a7a7;
 					font-size: 13px;
 					margin: 26px 0 0 0;
+
+					a {
+						color: #a7a7a7;
+						text-decoration: none;
+					}
 				}
 			}
 		}
