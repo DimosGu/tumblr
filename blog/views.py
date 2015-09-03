@@ -66,7 +66,7 @@ def get_more_posts(request):
 
   response = {}
 
-  appended_posts = Post.objects.loop_posts(
+  appended_posts = Post.objects.render_posts(
     posts, 'blog/blog_post.html'
   )
 
@@ -101,11 +101,14 @@ def edit_post(request):
 
     post = Post.objects.get_pk(request.POST['post_edit_id'])
 
+    domain = request.META['HTTP_HOST']
+
     json_data = {
       'id_data': post.id,
       'text_data': post.text,
       'tags_data': [],
-      'title_data': post.title
+      'title_data': post.title,
+      'domain_url': domain
     }
 
     current_tags = Tags.objects.filter_by_post(post)

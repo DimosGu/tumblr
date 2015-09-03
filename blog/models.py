@@ -74,7 +74,7 @@ class PostManager(BaseManager):
       blog = Blog.objects.get(pk=get_user)
       return self.filter(blog=blog).order_by('-pub_date')[post_count:end_count]
 
-  def loop_posts(self, ordered_posts, template, user=False, explore=False):
+  def render_posts(self, ordered_posts, template, user=False, explore=False):
     from search.models import Tags
 
     post_html = []
