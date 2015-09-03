@@ -5,23 +5,24 @@ from blog.models import Post
 
 
 def search(request):
-  if request.GET['tags_search']:
-    return HttpResponseRedirect('/search/%s' % request.GET['tags_search'])
-  else:
+  try:
+    tags = request.GET['tags_search']
+    return HttpResponseRedirect('/search/%s' % tags.replace(' ', '+'))
+  except:
     return HttpResponseRedirect('/explore/recent')
 
 def results(request, results):
   try:
-    search_result = Tags.objects.get_tag(results)
+    print(results)
 
     if request.user.is_authenticated():
-      posts = search_result.post.exclude(user=request.user)[:10]
+      search_result = Tags.objects.posts_with_tags(results, 0, user=request.user)
     else:
-      posts = search_result.post.all()[:10]
+      search_result = Tags.objects.posts_with_tags(results, 0)
 
-    context = Post.objects.combine_tags_posts(posts, user=request.user, follow=True)
+    context = Post.objects.combine_tags_posts(search_result, user=request.user, follow=True)
     context['search'] = 'data=%s' % results
-    context['result'] = results.upper()
+    context['result'] = results.replace('+', ' ').upper()
 
     domain_url = request.META['HTTP_HOST']
     context['domain_url'] = domain_url
@@ -29,7 +30,7 @@ def results(request, results):
   except:
     context = {}
     context['search'] = 'data=%s' % 'NoResults'
-    context['result'] = results.upper()
+    context['result'] = results.replace('+', ' ').upper()
 
   return render(request, 'explore/explore.html', context)
 
@@ -38,15 +39,14 @@ def get_ten_posts(request, results):
   response = {}
 
   try:
-    search_result = Tags.objects.get_tag(results)
 
     if request.user.is_authenticated():
-      posts = Post.objects.ten_more_posts(post_count, user=request.user, search=search_result)
+      search_result = Tags.objects.posts_with_tags(results, post_count, user=request.user)
     else:
-      posts = Post.objects.ten_more_posts(post_count, search=search_result)
+      search_result = Tags.objects.posts_with_tags(results, post_count)
 
-    appended_posts = Post.objects.loop_posts(
-      posts, 'explore/explore_post.html', explore=True
+    appended_posts = Post.objects.render_posts(
+      search_result, 'explore/explore_post.html', explore=True
     )
 
     response['html'] = appended_posts
