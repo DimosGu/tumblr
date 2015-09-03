@@ -116,7 +116,7 @@ def edit_post(request):
     for tag in current_tags:
       tag.post.remove(post)
 
-    new_tags = request.POST['tags']
+    new_tags = request.POST['tags'].lower()
     Tags.objects.create_tags(new_tags, post)
 
     created_tags = Tags.objects.filter_by_post(post)
