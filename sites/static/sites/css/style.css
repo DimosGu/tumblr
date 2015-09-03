@@ -240,7 +240,8 @@ body {
           margin: 26px 0 0 0; }
           #posts-wrapper .post-wrapper .post .words-wrapper .post-tags a {
             text-decoration: none;
-            color: #a7a7a7; }
+            color: #a7a7a7;
+            margin-right: 10px; }
     #posts-wrapper .post-wrapper .post-footer {
       height: 50px;
       width: 100%; }

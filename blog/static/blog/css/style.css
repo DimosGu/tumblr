@@ -739,7 +739,8 @@ img {
           margin: 26px 0 0 0; }
           #mini-posts-wrapper .mini-post-wrapper .mini-post .mini-words-wrapper .mini-post-tags a {
             color: #a7a7a7;
-            text-decoration: none; }
+            text-decoration: none;
+            margin-right: 10px; }
     #mini-posts-wrapper .mini-post-wrapper .mini-post-footer {
       height: 40px;
       width: 100%; }
@@ -823,7 +824,8 @@ body {
         margin: 20px 0 0 8px; }
         #blog-content .post .words-wrapper .post-tags a {
           color: #a1a1a1;
-          text-decoration: none; }
+          text-decoration: none;
+          margin-right: 10px; }
   #blog-content .post-footer {
     background: #ffffff;
     border-radius: 0 0 2px 2px;
