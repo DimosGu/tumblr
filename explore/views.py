@@ -31,7 +31,7 @@ def get_ten_posts(request):
 
   response = {}
 
-  appended_posts = Post.objects.loop_posts(
+  appended_posts = Post.objects.render_posts(
     latest_posts, 'explore/explore_post.html', explore=True, user=request.user
   )
 
