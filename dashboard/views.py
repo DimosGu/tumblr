@@ -10,16 +10,17 @@ from user_accounts.models import User
 def dashboard(request):
 
   latest_posts = Post.objects.sort_following_posts(request.user, 0)
-  tagged_posts = Post.objects.combine_tags_posts(latest_posts)
+  context = Post.objects.combine_tags_posts(latest_posts)
+  context['dashboard'] = True
 
-  return render(request, 'dashboard/dashboard.html', tagged_posts)
+  return render(request, 'dashboard/dashboard.html', context)
 
 def get_ten_posts(request):
 
   response = {}
   post_count = int(request.GET['post_count'])
   latest_posts = Post.objects.sort_following_posts(request.user, post_count)
-  appended_posts = Post.objects.render_posts(latest_posts, 'dashboard/dashboard_post.html')
+  appended_posts = Post.objects.render_posts(latest_posts, 'post.html')
   response['html'] = appended_posts
 
   return JsonResponse(response)

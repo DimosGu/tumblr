@@ -1,19 +1,63 @@
-<div class="post">
-	{% if post.file %}
-		<a class="post-click-img" href="{{ post.file.url }}">
-			<img class="post-img" src="{{ post.file.url }}">
-		</a>
+<div class="post-wrapper" data-id="{{ post.id }}" data-username="{{ post.user.username }}">
+	{% if not request.subdomain %}
+		<div class="post-header">
+			{% if not mini_site %}
+				{% if not blog %}
+					<a class="blog-link" title="{{ post.user.username }}"href="">
+				{% else %}
+					<a class="blog-link" href="http://{{ post.user.username }}.local.n-ws.org:8080">
+				{% endif %}
+					<img src="{{ post.blog.img.url }}">
+				</a>
+			{% endif %}
+			{% if explore %}
+				<a class="user-link" title="{{ post.user.username }}" {% if user.is_anonymous %}href="http://{{ post.user.username }}.{{ domain_url }}"{% endif %}>
+			{% elif dashboard %}
+				<a class="user-link" title="{{ post.user.username }}" href="">
+			{% else %}
+				<a class="user-link" href="http://{{ post.user.username }}.local.n-ws.org:8080">
+			{% endif %}
+			{{ post.user.username }}</a>
+			{% if explore %}
+				<a class="follow-link" data-username="{{ post.user.username }}" {% if user.is_anonymous %}href="{% url 'register' %}"{% endif %}>
+					{% if following == "true" %}
+						<div title="Follow" class="follow display-none">Follow</div>
+						<div title="Unfollow" class="unfollow">Unfollow</div>
+					{% else %}
+						<div title="Follow" class="follow">Follow</div>
+						<div title="Unfollow" class="unfollow display-none">Unfollow</div>
+					{% endif %}
+				</a>
+			{% endif %}
+		</div>
 	{% endif %}
-	<div class="words-wrapper">
-		{% if post.title %}
-			<span class="post-title">{{ post.title }}</span>
+	<div class="post">
+		{% if post.file %}
+			<a class="post-click-img" href="{{ post.file.url }}">
+				<img class="post-img" src="{{ post.file.url }}">
+			</a>
 		{% endif %}
-		{% if post.text %}
-			<p class="post-text">{{ post.text }}</p>
-		{% endif %}
+		<div class="words-wrapper">
+			{% if post.title %}
+				<span class="post-title">{{ post.title }}</span>
+			{% endif %}
+			{% if post.text %}
+				<p class="post-text">{{ post.text }}</p>
+			{% endif %}
 
-		{% if tags %}
-			<span class="post-tags">{% for tag in tags %}<a title="{{ tag }}" href="{% url 'results' tag %}">#{{ tag }}</a>{% endfor %}</span>
-		{% endif %}
+			{% if tags %}
+				<span class="post-tags">{% for tag in tags %}<a title="{{ tag }}" href="{% url 'results' tag %}">#{{ tag }}</a>{% endfor %}</span>
+			{% endif %}
+		</div>
+	</div>
+	<div class="post-footer">
+		<div class="footer-options">
+			{% if blog %}
+				<div class="options-popup display-none">
+					<a href="" class="option-edit">Edit</a>
+					<a href="" class="option-delete">Delete</a>
+				</div>
+			{% endif %}
+		</div>
 	</div>
 </div>

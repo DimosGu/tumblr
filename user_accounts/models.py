@@ -38,6 +38,8 @@ class User(AbstractBaseUser):
   REQUIRED_FIELDS = ['username']
   objects = CustomUserManager()
 
+  class Meta:
+    app_label = 'user_accounts'
 
   def get_full_name(self):
     return self.email

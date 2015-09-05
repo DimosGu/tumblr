@@ -58,6 +58,9 @@ class Tags(BaseModel):
   post = models.ManyToManyField(Post)
   objects = TagsManager()
 
+  class Meta:
+    app_label = 'search'
+
   def __str__(self):
     return self.tags
 

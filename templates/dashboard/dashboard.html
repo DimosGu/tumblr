@@ -1,0 +1,22 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tumblr</title>
+	<link rel="icon" href="{% static 'images/icon.ico' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+</head>
+<body id="dashboard-body">
+	{% include 'mini_and_img.html' %}
+	<div id="wrapper" class="display-none">
+		{% include "header.html" %}
+		<div id="dashboard-posts-wrapper">
+			{% for post, tags in latest_posts %}
+				{% include 'post.html' %}
+			{% endfor %}
+		</div>
+	</div>
+	{% include "js_modules.html" %}
+	<script type="text/javascript" src="{% static 'js/dashboard.js'%}"></script>
+</body>
+</html>

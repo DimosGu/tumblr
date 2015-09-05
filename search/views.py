@@ -29,6 +29,7 @@ def results(request, results):
     context['result'] = results.replace('+', ' ').upper()
     domain_url = request.META['HTTP_HOST']
     context['domain_url'] = domain_url
+    context['explore'] = True
 
   except:
     context = {}

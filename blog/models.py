@@ -191,6 +191,9 @@ class Blog(BaseModel):
   bg_img = models.ImageField(upload_to=upload_path, default='/media/default_blog_bg.png')
   objects = BlogManager()
 
+  class Meta:
+    app_label = 'blog'
+
   def __str__(self):
     return '%s-%s' % (self.user.username, self.title)
 
@@ -203,6 +206,9 @@ class Post(BaseModel):
   text = models.TextField(blank=True)
   file = models.FileField(upload_to=upload_path, blank=True)
   objects = PostManager()
+
+  class Meta:
+    app_label = 'blog'
 
   def __str__(self):
     if self.title != "":
@@ -218,6 +224,9 @@ class Follow(BaseModel):
   user = models.ForeignKey(User)
   blog = models.ForeignKey(Blog)
   objects = FollowManager()
+
+  class Meta:
+    app_label = 'blog'
 
   def __str__(self):
     return self.blog.user.username

@@ -141,13 +141,9 @@
 		.mini-post-header {
 			height: 20px;
 			width: 100%;
-
-			mini-user-link {
-
-			}
 		}
 
-		.mini-post {
+		.post {
 			border-radius: 4px;
 
 			img {
@@ -155,23 +151,23 @@
 				width: 538px;
 			}
 
-			.mini-words-wrapper {
+			.words-wrapper {
 				color: #444;
 				padding: 0 18px 0 18px;
 				word-wrap: break-word;
 
-				.mini-post-title {
+				.post-title {
 					display: block;
 					font-size: 36px;
 					margin: 0 0 0 0;
 				}
 
-				.mini-post-text {
+				.post-text {
 					font-size: 14px;
 					margin: 10px 0 0 0;
 				}
 
-				.mini-post-tags {
+				.post-tags {
 					display: block;
 					font-size: 13px;
 					margin: 26px 0 0 0;

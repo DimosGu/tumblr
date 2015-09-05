@@ -27,6 +27,7 @@ def site_or_register(request):
       'current_blog': blog,
       'latest_posts': tagged_posts['latest_posts'],
       'follow': follow,
+      'site': True,
     }
 
     return render(request, 'sites/site.html', context	)

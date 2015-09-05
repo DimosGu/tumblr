@@ -31,27 +31,26 @@
 #header-wrapper {
 	background: #36465d;
 	border-bottom: 1px solid #505e72;
-	overflow: none;
 	position: fixed;
-	top: 0;
 	width: 100%;
 	z-index: 98;
+
+	#header {
+		margin: 0 auto 0 auto;
+		max-width: 1620px;
+		min-width: 64px;
+		overflow: hidden;
+		padding-bottom: 5px;
+	}
+
+	#h-logo {
+		float: left;
+		height: 55px;
+		margin-top: -6px;
+		outline: 0;
+	}
 }
 
-#header {
-	margin: 0 auto 0 auto;
-	max-width: 1620px;
-	min-width: 64px;
-	overflow: hidden;
-	padding-bottom: 5px;
-}
-
-#h-logo {
-	float: left;
-	height: 55px;
-	margin-top: -6px;
-	outline: 0;
-}
 
 #form-wrapper {
 	margin: 18px 0 0 68px;

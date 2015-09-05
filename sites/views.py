@@ -30,10 +30,11 @@ def mini_site(request):
       'site_posts': latest_posts,
       'domain_url': domain_url,
       'follow': follow,
+      'mini_site': True,
     }
   ))
 
-  post_loop = Post.objects.render_posts(latest_posts, 'sites/mini_post.html')
+  post_loop = Post.objects.render_posts(latest_posts, 'post.html')
   response['post_html'] = post_loop
 
   return JsonResponse(response)
@@ -47,9 +48,9 @@ def get_ten_posts(request):
 
   try:
     mini = request.GET['mini']
-    post_loop = Post.objects.render_posts(posts, 'sites/mini_post.html')
+    post_loop = Post.objects.render_posts(posts, 'post.html')
   except:
-    post_loop = Post.objects.render_posts(posts, 'sites/sites_post.html')
+    post_loop = Post.objects.render_posts(posts, 'post.html')
 
   response['html'] = post_loop
 

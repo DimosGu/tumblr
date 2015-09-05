@@ -18,9 +18,10 @@ def blog_edit(request, username):
     return HttpResponseRedirect('http://%s.%s' % (username, domain))
 
   latest_posts = Post.objects.ten_more_posts(0, user=request.user)
-  tagged_posts = Post.objects.combine_tags_posts(latest_posts)
+  context = Post.objects.combine_tags_posts(latest_posts)
+  context['blog'] = True
 
-  return render(request, 'blog/blog_edit.html', tagged_posts)
+  return render(request, 'blog/blog_edit.html', context)
 
 @csrf_exempt
 def follow(request):

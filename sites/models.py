@@ -15,5 +15,8 @@ class Site(BaseModel):
   domain = models.CharField(max_length=255, default=None)
   objects = SiteManager()
 
+  class Meta:
+    app_label = 'sites'
+
   def __str__(self):
     return self.domain

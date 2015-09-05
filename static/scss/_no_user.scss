@@ -1,0 +1,253 @@
+#register-body,
+#login-body {
+	background: #36465d;
+	height: 100%;
+	overflow: hidden;
+
+	#img-container {
+		background-size: cover;
+		background-position: center;
+		height: 100%;
+		width: 100%;
+		opacity: .9;
+		position: absolute;
+		z-index: 1;
+	}
+
+	#wrapper {
+		height: 100%;
+		width: 100%;
+		position: absolute;
+		z-index: 100;
+	}
+
+	.invisible {
+		opacity: 0;
+	}
+
+	.fade {
+		opacity: 0.5;
+	}
+
+	.visible {
+		opacity: 1;
+	}
+
+	.fade-in {
+		@include transition( opacity .7s ease-in );
+	}
+
+	#center {
+		height: 350px;
+		left:50%;
+		margin: -221px 0 0 -157px;
+		position: absolute;
+		top: 50%;
+		width: 315px;
+
+		h1 {
+			height: 50px;
+			margin: 0 0 0 41px;
+			width: 232px;
+			z-index: 2;
+		}
+	}
+
+	.center-slide {
+		@include animation-duration( .5s );
+		@include animation-name( slideup );
+	}
+
+	@include keyframes( slideup ) {
+		from {
+			margin-top: -180px;
+		}
+
+		to {
+			margin-top: -221px;
+		}
+	}
+
+	.center-padding {
+		margin-top: 51px;
+		margin-bottom: -2px;
+	}
+
+	h2 {
+		color: #fff;
+		font-size: 16px;
+		font-weight: 500;
+		line-height: 22px;
+		margin: 10px 0 0 0;
+		text-align: center;
+		z-index: 2;
+	}
+
+	#account-form {
+		margin: 16px 0 0 6px;
+		width: 300px;
+
+		input {
+			border: none;
+			color: #000;
+			font-size: 16px;
+			height: 45px;
+			outline: none;
+			width: 300px;
+		}
+
+		#email-signup,
+		#email-login {
+			border-bottom: 1px solid #e3e3e3;
+			border-right: 1px solid #fff;
+			border-radius: 2px 2px 0 0;
+			height: 45px;
+			padding: 0 0 0 13px;
+		}
+
+		#password-signup,
+		#password-login {
+			padding: 0 0 0 13px;
+			height: 44px;
+		}
+
+		#password-login {
+			border-radius: 0 0 2px 2px;
+		}
+
+		#username-signup {
+			border-radius: 0 0 2px 2px;
+			border-right: 1px solid #fff;
+			border-top: 1px solid #e3e3e3;
+			padding: 2px 0 2px 13px;
+		}
+	}
+
+	#form-errors {
+		background-color: rgba(0,0,0,0.33);
+		border-radius: 2px 2px 2px 2px;
+		overflow: hidden;
+		width: 300px;
+
+		ul {
+			list-style: none;
+		}
+
+		p, li {
+			color: #ffffff;
+			font-size: 14px;
+			padding: 14px 15px;
+			position: relative;
+			text-align: center;
+		}
+	}
+
+	.error-slide {
+		@include transition-property( max-height opacity );
+		@include transition-duration( .5s );
+		@include transition-timing-function( ease );
+		@include transition-delay( .5s );
+	}
+
+	.error-visible {
+		max-height: 60px;
+		margin: 15px 0 3px 0;
+		opacity: 1;
+	}
+
+	.error-invisible {
+		max-height: 0;
+		opacity: 0;
+	}
+
+	#submit-button {
+		background: #529ecc;
+		border: none;
+		border-radius: 2px;
+		color: #fff;
+		cursor: pointer;
+		font-size: 16px;
+		font-weight: bold;
+		height: 45px;
+		margin-top: 10px;
+		width: 300px;
+	}
+
+	#explore {
+		color: #fff;
+		display: block;
+		font-size: 16px;
+		font-weight: bold;
+		margin: 22px auto 0 auto;
+		text-decoration: none;
+		width: 120px;
+	}
+
+	#forgot-password {
+		color: #fff;
+		display: block;
+		font-size: 14px;
+		margin: 23px auto 0 auto;
+		text-align: center;
+		text-decoration: none;
+		width: 150px;
+	}
+
+	#footer {
+		bottom: 0;
+		left: 0;
+		margin-bottom: 15px;
+		position: absolute;
+		width: 100%;
+		min-width: 540px;
+	}
+
+	#footer-links {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		margin: 0 0 0 10px;
+		width: 270px;
+
+		a {
+			color: #fff;
+			font-size: 14px;
+			margin-left: 11px;
+			pointer-events: none;
+			text-decoration: none;
+		}
+	}
+
+	#footer-right {
+		color: #fff;
+		right: 0;
+		bottom: 0;
+		position: absolute;
+		font-size: 14px;
+		padding-right: 10px;
+
+		p {
+			width: 100%;
+			position: relative;
+			margin-right: 35px;
+		}
+
+		span {
+			font-weight: bold;
+		}
+
+		a {
+			height: 24px;
+			width: 24px;
+			margin: 0 0 0 3px;
+			top: -4px;
+			right: 0;
+			position: absolute;
+
+			img {
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+}

@@ -17,6 +17,7 @@ def recent(request):
     context = Post.objects.combine_tags_posts(latest_posts, follow=True)
     domain_url = request.META['HTTP_HOST']
     context['domain_url'] = domain_url
+    context['explore'] = True
 
 
   return render(request, 'explore/explore.html', context)
