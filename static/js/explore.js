@@ -69,13 +69,3 @@ function get_ten_posts(post_count) {
     }
   });
 };
-
-$(window).on('scroll', function() {
-  if ($(window).scrollTop() + $(window).height() > $(document).height() / 1.25) {
-    if (get_post_verify) {
-      get_post_verify = false;
-      visible_posts += 10;
-      get_ten_posts(visible_posts);
-    }
-  }
-});

@@ -72,7 +72,7 @@ $('#mini-site').on('scroll', function() {
 		var username = $('#mini-link-wrapper').attr('data-username');
 
 		if (mini_get_post_verify) {
-			mini_get_ten_posts(username, mini_visible_posts);		
+			mini_get_ten_posts(username, mini_visible_posts);
 			mini_get_post_verify = false;
 			mini_visible_posts += 10;
 		}
@@ -85,7 +85,7 @@ $mini_site_wrapper.on('click', function (e) {
 
 	if (e.target === mini_site || $(e.target).parents('#mini-site').length) {
 		return e.target;
-	} else {	
+	} else {
 		mini_get_post_verify = false;
 		$('body').removeClass('overflow-hidden2');
 		$mini_site.addClass('site-no-width').removeClass('site-width');
@@ -101,9 +101,6 @@ $mini_site_wrapper.on('click', function (e) {
 		}, 1000);
 	}
 });
-
-/*These functions are bound to the body because the elements 
-don't exist when the dom is initially loaded.*/
 
 $('body').on('click', '#mini-follow', function() {
 	$(this).addClass('display-none');
