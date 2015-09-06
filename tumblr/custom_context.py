@@ -1,8 +1,8 @@
-from blog.forms import TextPostForm, PhotoPostForm
-from search.forms import SearchForm
-from blog.models import Blog, Follow, Post
-from sites.models import Site
-from user_accounts.models import User
+from apps.blog.forms import TextPostForm, PhotoPostForm
+from apps.search.forms import SearchForm
+from apps.blog.models import Blog, Follow, Post
+from apps.sites.models import Site
+from apps.user_accounts.models import User
 
 def blog(request):
 
