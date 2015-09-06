@@ -1,33 +1,34 @@
-<div class="post-wrapper" data-id="{{ post.id }}" data-username="{{ post.user.username }}">
+{% if section == 'blog' %}
+	<div class="post-wrapper blog-post-fade" data-id="{{ post.id }}" data-username="{{ post.user.username }}">
+{% else %}
+	<div class="post-wrapper" data-id="{{ post.id }}" data-username="{{ post.user.username }}">
+{% endif %}
 	{% if not request.subdomain %}
 		<div class="post-header">
-			{% if not mini_site %}
-				{% if not blog %}
-					<a class="blog-link" title="{{ post.user.username }}"href="">
+			{% if mini_section != 'True' %}
+				{% if section == 'blog' %}
+					<a class="blog-link" title="{{ post.blog.title }}" href="http://{{ post.user.username }}.{{ domain_url }}">
+						<img src="{{ post.blog.img.url }}">
+					</a>
 				{% else %}
-					<a class="blog-link" href="http://{{ post.user.username }}.local.n-ws.org:8080">
+					<a class="blog-link" title="{{ post.user.username }}" href="http://{{ post.user.username }}.{{ domain_url }}">
+						<img src="{{ post.blog.img.url }}">
+					</a>
 				{% endif %}
-					<img src="{{ post.blog.img.url }}">
-				</a>
 			{% endif %}
-			{% if explore %}
-				<a class="user-link" title="{{ post.user.username }}" {% if user.is_anonymous %}href="http://{{ post.user.username }}.{{ domain_url }}"{% endif %}>
-			{% elif dashboard %}
-				<a class="user-link" title="{{ post.user.username }}" href="">
-			{% else %}
-				<a class="user-link" href="http://{{ post.user.username }}.local.n-ws.org:8080">
-			{% endif %}
-			{{ post.user.username }}</a>
-			{% if explore %}
-				<a class="follow-link" data-username="{{ post.user.username }}" {% if user.is_anonymous %}href="{% url 'register' %}"{% endif %}>
-					{% if following == "true" %}
-						<div title="Follow" class="follow display-none">Follow</div>
-						<div title="Unfollow" class="unfollow">Unfollow</div>
-					{% else %}
-						<div title="Follow" class="follow">Follow</div>
-						<div title="Unfollow" class="unfollow display-none">Unfollow</div>
-					{% endif %}
-				</a>
+			{% if mini_section != 'True' %}
+				<a class="user-link" title="{{ post.user.username }}" href="http://{{ post.user.username }}.{{ domain_url }}">{{ post.user.username }}</a>
+				{% if section == 'explore' %}
+					<a class="follow-link" data-username="{{ post.user.username }}" {% if user.is_anonymous %}href="{% url 'register' %}"{% endif %}>
+						{% if following == "true" %}
+							<div title="Follow" class="follow display-none">Follow</div>
+							<div title="Unfollow" class="unfollow">Unfollow</div>
+						{% else %}
+							<div title="Follow" class="follow">Follow</div>
+							<div title="Unfollow" class="unfollow display-none">Unfollow</div>
+						{% endif %}
+					</a>
+				{% endif %}
 			{% endif %}
 		</div>
 	{% endif %}

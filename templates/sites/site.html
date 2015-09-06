@@ -1,15 +1,7 @@
+{% extends 'base.html' %}
 {% load staticfiles %}
-<!DOCTYPE html>
-<html>
-<head>
-	<title>{{ current_blog.title }}</title>
-	<link rel="icon" href="{{ current_blog.img.url }}" />
-	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
-</head>
-<body id="sites">
-	<div id="full-screen-img" class="display-none">
-		<img src="">
-	</div>
+
+{% block content %}
 	<div id="wrapper">
 		<div id="header-overlay">
 			<a href="{% url 'dashboard:dashboard' %}">
@@ -52,5 +44,5 @@
 	<script type="text/javascript" src="{% static 'js/post_img.js' %}"></script>
 	<script type="text/javascript" src="{% static 'js/sites.js' %}"></script>
 	<script type="text/javascript" src="{% static 'js/follow.js' %}"></script>
-</body>
-</html>
+	<script type="text/javascript" src="{% static 'js/infinite_scroll.js' %}"></script>
+{% endblock content %}

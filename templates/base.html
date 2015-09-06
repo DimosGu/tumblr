@@ -1,0 +1,13 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% if page_title %}{{ page_title }}{% else %}Tumblr{% endif %}</title>
+  <link rel="icon" href="{% if section == 'sites' %}{{ blog.img.url }}{% else %}{% static 'images/icon.ico' %}{% endif %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+</head>
+<body id="{{ section }}-body" {% if search %}{{ search }}{% endif %}>
+  {% include 'mini_and_img.html' %}
+  {% block content %}{% endblock content %}
+</body>
+</html>

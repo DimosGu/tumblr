@@ -1,13 +1,7 @@
+{% extends 'base.html' %}
 {% load staticfiles %}
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Tumblr</title>
-  <link rel="icon" href="{% static 'images/icon.ico' %}" />
-  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
-</head>
-<body id="explore-body" {% if search %}{{ search }}{% endif %}>
-  {% include 'mini_and_img.html' %}
+
+{% block content %}
   <div id="wrapper" class="display-none invisible">
     {% if user.is_authenticated %}
       {% include 'explore/explore_header.html' %}
@@ -45,6 +39,6 @@
     <script type="text/javascript" src="{% static 'js/post_img.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/masonry.pkgd.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/explore.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/infinite_scroll.js' %}"></script>
   {% endif %}
-</body>
-</html>
+{% endblock content %}

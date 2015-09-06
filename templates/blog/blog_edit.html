@@ -1,13 +1,7 @@
+{% extends 'base.html' %}
 {% load staticfiles %}
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Tumblr</title>
-	<link rel="icon" href="{% static 'images/icon.ico' %}" />
-	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
-</head>
-<body id="blog-body">
-	{% include 'mini_and_img.html' %}
+
+{% block content %}
 	<div id="wrapper" class="display-none">
 		{% include "header.html" %}
 		<div id="blog-content">
@@ -20,5 +14,4 @@
 	</div>
 	{% include "js_modules.html" %}
 	<script type="text/javascript" src="{% static 'js/blog_edit.js' %}"></script>
-</body>
-</html>
+{% endblock %}
