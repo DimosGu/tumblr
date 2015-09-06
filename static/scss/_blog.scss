@@ -46,20 +46,17 @@
 		background: #ffffff;
 		width: 540px;
 
-		.words-wrapper {
+	 	.post-title {
+			margin: 0 0 0 7px;
+		}
 
-		 	.post-title {
-				margin: 0 0 0 7px;
-			}
+		.post-text {
+			margin: 0 0 0 8px;
+			padding-top: 10px;
+		}
 
-			.post-text {
-				margin: 0 0 0 8px;
-				padding-top: 10px;
-			}
-
-			.post-tags {
-				margin: 20px 0 0 8px;
-			}
+		.post-tags {
+			margin: 20px 0 0 8px;
 		}
 	}
 

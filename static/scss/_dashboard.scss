@@ -29,29 +29,24 @@
 			}
 
 			.user-link {
+				line-height: 16px;
+				margin: 13px 0 0 0;
 				position: absolute;
-				top: 13px;
 			}
 		}
 
-		.post {
+		.post-title {
+			line-height: 47px;
+			margin: 0 0 0 7px;
+		}
 
-			.words-wrapper {
+		.post-text {
+			margin: 0 0 0 8px;
+			padding-top: 10px;
+		}
 
-				.post-title {
-					line-height: 47px;
-					margin: 0 0 0 7px;
-				}
-
-				.post-text {
-					margin: 0 0 0 8px;
-					padding-top: 10px;
-				}
-
-				.post-tags {
-					margin: 18px 0 0 8px;
-				}
-			}
+		.post-tags {
+			margin: 18px 0 0 8px;
 		}
 	}
 }

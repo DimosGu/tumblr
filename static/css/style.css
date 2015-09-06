@@ -706,41 +706,29 @@ img {
 #mini-posts-wrapper {
   margin: 10px 0 30px 0;
   width: 100%; }
-  #mini-posts-wrapper .mini-post-wrapper {
+  #mini-posts-wrapper .post-wrapper {
     border: 1px solid #ccc;
     border-radius: 4px;
-    margin: 20px auto 0 auto;
-    width: 540px; }
-    #mini-posts-wrapper .mini-post-wrapper .mini-post-header {
-      height: 20px;
-      width: 100%; }
-    #mini-posts-wrapper .mini-post-wrapper .post {
+    margin: 20px auto 0 auto; }
+    #mini-posts-wrapper .post-wrapper .post-header {
+      height: 20px; }
+    #mini-posts-wrapper .post-wrapper .post {
       border-radius: 4px; }
-      #mini-posts-wrapper .mini-post-wrapper .post img {
-        margin: 0 auto;
+      #mini-posts-wrapper .post-wrapper .post img {
+        margin: 0 auto 0 auto;
         width: 538px; }
-      #mini-posts-wrapper .mini-post-wrapper .post .words-wrapper {
-        color: #444;
-        padding: 0 18px 0 18px;
-        word-wrap: break-word; }
-        #mini-posts-wrapper .mini-post-wrapper .post .words-wrapper .post-title {
+      #mini-posts-wrapper .post-wrapper .post .words-wrapper {
+        padding: 0 18px 5px 18px; }
+        #mini-posts-wrapper .post-wrapper .post .words-wrapper .post-title {
           display: block;
-          font-size: 36px;
           margin: 0 0 0 0; }
-        #mini-posts-wrapper .mini-post-wrapper .post .words-wrapper .post-text {
-          font-size: 14px;
-          margin: 10px 0 0 0; }
-        #mini-posts-wrapper .mini-post-wrapper .post .words-wrapper .post-tags {
-          display: block;
-          font-size: 13px;
-          margin: 26px 0 0 0;
-          white-space: nowrap;
-          overflow: hidden; }
-          #mini-posts-wrapper .mini-post-wrapper .post .words-wrapper .post-tags a {
-            color: #a7a7a7;
-            text-decoration: none;
-            margin-right: 10px; }
-    #mini-posts-wrapper .mini-post-wrapper .mini-post-footer {
+        #mini-posts-wrapper .post-wrapper .post .words-wrapper .post-text {
+          margin: 10px 0 3px 0; }
+        #mini-posts-wrapper .post-wrapper .post .words-wrapper .post-tags {
+          padding: 15px 0 0 0; }
+          #mini-posts-wrapper .post-wrapper .post .words-wrapper .post-tags a {
+            color: #a7a7a7; }
+    #mini-posts-wrapper .post-wrapper .post-footer {
       height: 40px;
       width: 100%; }
 
@@ -786,12 +774,12 @@ img {
   #blog-posts-wrapper .post {
     background: #ffffff;
     width: 540px; }
-    #blog-posts-wrapper .post .words-wrapper .post-title {
+    #blog-posts-wrapper .post .post-title {
       margin: 0 0 0 7px; }
-    #blog-posts-wrapper .post .words-wrapper .post-text {
+    #blog-posts-wrapper .post .post-text {
       margin: 0 0 0 8px;
       padding-top: 10px; }
-    #blog-posts-wrapper .post .words-wrapper .post-tags {
+    #blog-posts-wrapper .post .post-tags {
       margin: 20px 0 0 8px; }
   #blog-posts-wrapper .post-footer {
     background: #ffffff;
@@ -861,15 +849,16 @@ img {
           width: 62px;
           margin: 1px 0 0 1px; }
       #dashboard-posts-wrapper .post-wrapper .post-header .user-link {
-        position: absolute;
-        top: 13px; }
-    #dashboard-posts-wrapper .post-wrapper .post .words-wrapper .post-title {
+        line-height: 16px;
+        margin: 13px 0 0 0;
+        position: absolute; }
+    #dashboard-posts-wrapper .post-wrapper .post-title {
       line-height: 47px;
       margin: 0 0 0 7px; }
-    #dashboard-posts-wrapper .post-wrapper .post .words-wrapper .post-text {
+    #dashboard-posts-wrapper .post-wrapper .post-text {
       margin: 0 0 0 8px;
       padding-top: 10px; }
-    #dashboard-posts-wrapper .post-wrapper .post .words-wrapper .post-tags {
+    #dashboard-posts-wrapper .post-wrapper .post-tags {
       margin: 18px 0 0 8px; }
 
 #explore-body #no-user-header-wrapper {
@@ -973,7 +962,7 @@ img {
       #explore-posts-wrapper .post-wrapper .post .words-wrapper .post-tags {
         margin: 20px 0 0 1px; }
 
-#sites {
+#sites-body {
   background: #ffffff; }
 
 #header-overlay {
