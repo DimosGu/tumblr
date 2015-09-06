@@ -3,6 +3,7 @@
 {% else %}
 	<div class="post-wrapper" data-id="{{ post.id }}" data-username="{{ post.user.username }}">
 {% endif %}
+
 	{% if not request.subdomain %}
 		<div class="post-header">
 			{% if mini_section != 'True' %}
@@ -15,9 +16,9 @@
 						<img src="{{ post.blog.img.url }}">
 					</a>
 				{% endif %}
-			{% endif %}
-			{% if mini_section != 'True' %}
+
 				<a class="user-link" title="{{ post.user.username }}" href="http://{{ post.user.username }}.{{ domain_url }}">{{ post.user.username }}</a>
+
 				{% if section == 'explore' %}
 					<a class="follow-link" data-username="{{ post.user.username }}" {% if user.is_anonymous %}href="{% url 'register' %}"{% endif %}>
 						{% if following == "true" %}
@@ -32,6 +33,7 @@
 			{% endif %}
 		</div>
 	{% endif %}
+
 	<div class="post">
 		{% if post.file %}
 			<a class="post-click-img" href="{{ post.file.url }}">
@@ -42,6 +44,7 @@
 			{% if post.title %}
 				<span class="post-title">{{ post.title }}</span>
 			{% endif %}
+
 			{% if post.text %}
 				<p class="post-text">{{ post.text }}</p>
 			{% endif %}
