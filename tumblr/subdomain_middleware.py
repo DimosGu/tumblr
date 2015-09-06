@@ -1,5 +1,5 @@
 from django.http import HttpResponseRedirect
-from sites.models import Site
+from apps.sites.models import Site
 
 class SubdomainMiddleware:
 	def process_request(self, request):
