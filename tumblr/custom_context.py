@@ -5,6 +5,7 @@ from sites.models import Site
 from user_accounts.models import User
 
 def blog(request):
+
 	try:
 		blog = Blog.objects.get(user=request.user)
 	except Blog.DoesNotExist:
@@ -41,3 +42,8 @@ def header_forms(request):
 	}
 
 	return post_forms
+
+def domain_url(request):
+	domain_url = request.META['HTTP_HOST']
+
+	return { 'domain_url': domain_url }

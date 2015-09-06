@@ -11,7 +11,7 @@ def dashboard(request):
 
   latest_posts = Post.objects.sort_following_posts(request.user, 0)
   context = Post.objects.combine_tags_posts(latest_posts)
-  context['dashboard'] = True
+  context['section'] = 'dashboard'
 
   return render(request, 'dashboard/dashboard.html', context)
 

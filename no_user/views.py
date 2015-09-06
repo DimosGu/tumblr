@@ -9,10 +9,10 @@ from user_accounts.models import User
 from random import randint
 
 def site_or_register(request):
+
   if request.subdomain:
     user = User.objects.get_by_username(request.subdomain)
     blog = Blog.objects.get_blog_user(user)
-    print(blog)
     latest_posts = Post.objects.order_by_date(blog=blog)[:10]
     tagged_posts = Post.objects.combine_tags_posts(latest_posts)
 
@@ -27,7 +27,8 @@ def site_or_register(request):
       'current_blog': blog,
       'latest_posts': tagged_posts['latest_posts'],
       'follow': follow,
-      'site': True,
+      'section': 'sites',
+      'page_title': blog.title,
     }
 
     return render(request, 'sites/site.html', context	)
@@ -46,6 +47,7 @@ def site_or_register(request):
       if user_info is not None:
         login(request, user_info)
         redirect_url = {'url': 'dashboard'}
+
         return JsonResponse(redirect_url)
       elif form.is_valid():
         form.save()
@@ -54,6 +56,7 @@ def site_or_register(request):
           password=form.cleaned_data['password'])
         login(request, user_info)
         redirect_url = {'url': 'dashboard'}
+
         return JsonResponse(redirect_url)
       else:
         error = form.errors

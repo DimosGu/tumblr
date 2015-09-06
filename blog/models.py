@@ -74,7 +74,7 @@ class PostManager(BaseManager):
       blog = Blog.objects.get(pk=get_user)
       return self.filter(blog=blog).order_by('-pub_date')[post_count:end_count]
 
-  def render_posts(self, ordered_posts, template, user=False, explore=False):
+  def render_posts(self, ordered_posts, template, user=False, explore=False, mini=False):
     from search.models import Tags
 
     post_html = []
@@ -104,6 +104,19 @@ class PostManager(BaseManager):
             'tags': tag_list,
           }
         ))
+
+    elif mini:
+
+      for post in ordered_posts:
+        tags = Tags.objects.filter(post=post)
+
+        post_html.append(render_to_string(
+          template,
+          {
+            'post': post,
+            'tags': tags,
+            'mini_section': 'True'
+          }))
 
     else:
 
@@ -163,7 +176,7 @@ class PostManager(BaseManager):
       }
 
       response['html'].append(render_to_string(
-        'blog/blog_post.html',
+        'post.html',
         {
           'post': post,
           'user': user,

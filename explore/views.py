@@ -15,9 +15,9 @@ def recent(request):
   else:
     latest_posts = Post.objects.ten_more_posts(0, explore=True)
     context = Post.objects.combine_tags_posts(latest_posts, follow=True)
-    domain_url = request.META['HTTP_HOST']
-    context['domain_url'] = domain_url
-    context['explore'] = True
+
+  context['section'] = 'explore'
+  context['page_title'] = 'Recent | Tumblr'
 
 
   return render(request, 'explore/explore.html', context)
@@ -33,7 +33,7 @@ def get_ten_posts(request):
   response = {}
 
   appended_posts = Post.objects.render_posts(
-    latest_posts, 'explore/explore_post.html', explore=True, user=request.user
+    latest_posts, 'post.html', explore=True, user=request.user
   )
 
   response['html'] = appended_posts

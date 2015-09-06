@@ -75,6 +75,7 @@ TEMPLATES = [
                 'tumblr.custom_context.blog',
                 'tumblr.custom_context.header_forms',
                 'tumblr.custom_context.site',
+                'tumblr.custom_context.domain_url',
             ],
         },
     },

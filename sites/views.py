@@ -4,6 +4,9 @@ from django.http import HttpResponse, JsonResponse
 from user_accounts.models import User
 from blog.models import Blog, Post, Follow
 
+
+#site view is in no_user/views.py
+
 def mini_site(request):
   selected_user = request.GET['clicked_user']
   user = User.objects.get_by_username(selected_user)
@@ -30,11 +33,10 @@ def mini_site(request):
       'site_posts': latest_posts,
       'domain_url': domain_url,
       'follow': follow,
-      'mini_site': True,
     }
   ))
 
-  post_loop = Post.objects.render_posts(latest_posts, 'post.html')
+  post_loop = Post.objects.render_posts(latest_posts, 'post.html', mini=True)
   response['post_html'] = post_loop
 
   return JsonResponse(response)
@@ -48,9 +50,10 @@ def get_ten_posts(request):
 
   try:
     mini = request.GET['mini']
-    post_loop = Post.objects.render_posts(posts, 'post.html')
   except:
-    post_loop = Post.objects.render_posts(posts, 'post.html')
+    pass
+
+  post_loop = Post.objects.render_posts(posts, 'post.html', mini=True)
 
   response['html'] = post_loop
 

@@ -5,6 +5,7 @@ from blog.models import Post
 
 
 def search(request):
+
   try:
     tags = request.GET['tags_search']
     return HttpResponseRedirect('/search/%s' % tags.replace(' ', '+'))
@@ -12,6 +13,7 @@ def search(request):
     return HttpResponseRedirect('/explore/recent')
 
 def results(request, results):
+
   try:
 
     if request.user.is_authenticated():
@@ -26,15 +28,15 @@ def results(request, results):
     else:
       context['search'] = 'data=%s' % results.lower()
 
-    context['result'] = results.replace('+', ' ').upper()
-    domain_url = request.META['HTTP_HOST']
-    context['domain_url'] = domain_url
-    context['explore'] = True
-
   except:
     context = {}
     context['search'] = 'data=%s' % 'NoResults'
-    context['result'] = results.replace('+', ' ').upper()
+
+  result = results.replace('+', ' ')
+
+  context['result'] = result.upper()
+  context['section'] = 'explore'
+  context['page_title'] = '%s | Tumblr' % result
 
   return render(request, 'explore/explore.html', context)
 
@@ -50,7 +52,7 @@ def get_ten_posts(request, results):
       search_result = Tags.objects.posts_with_tags(results, post_count)
 
     appended_posts = Post.objects.render_posts(
-      search_result, 'explore/explore_post.html', explore=True
+      search_result, 'post.html', explore=True
     )
 
     response['html'] = appended_posts

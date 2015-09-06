@@ -19,12 +19,13 @@ def blog_edit(request, username):
 
   latest_posts = Post.objects.ten_more_posts(0, user=request.user)
   context = Post.objects.combine_tags_posts(latest_posts)
-  context['blog'] = True
+  context['section'] = 'blog'
 
   return render(request, 'blog/blog_edit.html', context)
 
 @csrf_exempt
 def follow(request):
+
   if request.method == 'POST':
     username = request.POST.get('username')
     user_to_follow = User.objects.get_by_username(username)
@@ -68,7 +69,7 @@ def get_more_posts(request):
   response = {}
 
   appended_posts = Post.objects.render_posts(
-    posts, 'blog/blog_post.html'
+    posts, 'post.html'
   )
 
   response['html'] = appended_posts
