@@ -1,0 +1,73 @@
+@import 'bourbon/bourbon';
+@import 'reset';
+@import 'universal';
+@import 'header';
+@import 'mini_site';
+@import 'blog';
+@import 'dashboard';
+@import 'explore';
+@import 'sites';
+@import 'no_user_header';
+@import 'no_user';
+
+html {
+  font-family: helvetica, arial;
+  height: 100%;
+}
+
+body {
+  background: #36465d;
+  height: 100%;
+}
+
+#wrapper {
+  width: 100%;
+}
+
+.post-wrapper {
+  width: 540px;
+
+  .user-link {
+    color: #444;
+    font-weight: bold;
+    font-size: 14px;
+    text-decoration: none;
+  }
+}
+
+.post {
+
+  img {
+    width: 100%
+  }
+
+  .words-wrapper {
+    color: #444;
+    padding: 0 10px 0 10px;
+    word-wrap: break-word;
+
+    .post-title {
+      font-size: 36px;
+    }
+
+    .post-text {
+      font-size: 14px;
+    }
+
+    .post-tags {
+      font-size: 13px;
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+
+      a {
+        color: #a1a1a1;
+        text-decoration: none;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+.post-footer {
+  height: 45px;
+}
