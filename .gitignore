@@ -2,4 +2,3 @@
 **/__pycache__
 *.pyc
 *.sqlite3
-media/user_media
