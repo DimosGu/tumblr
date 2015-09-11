@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, JsonResponse, HttpResponse
+from django.core.urlresolvers import reverse
 from django.contrib.auth import authenticate, login
 from django.core import validators
 from random import randint
@@ -36,7 +37,7 @@ def site_or_register(request):
   else:
 
     if request.user.is_authenticated():
-      return HttpResponseRedirect('/dashboard')
+      return HttpResponseRedirect(reverse('dashboard'))
     elif request.method == 'POST':
       form = RegistrationForm(request.POST)
       user_info = authenticate(
@@ -87,7 +88,7 @@ def check_fields(request):
 def user_login(request):
 
   if request.user.is_authenticated():
-    return HttpResponseRedirect('/dashboard')
+    return HttpResponseRedirect(reverse('dashboard'))
   elif request.method == 'POST':
     form = LoginForm(request.POST)
 
@@ -97,7 +98,7 @@ def user_login(request):
         password=form.cleaned_data['password']
       )
       login(request, user_info)
-      return HttpResponseRedirect('/dashboard')
+      return HttpResponseRedirect(reverse('dashboard'))
 
   else:
     form = LoginForm()

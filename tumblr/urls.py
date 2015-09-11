@@ -8,8 +8,8 @@ urlpatterns = [
   url(r'^search/', include('apps.search.urls')),
 	url(r'^sites/', include('apps.sites.urls')),
 	url(r'^blog/', include('apps.blog.urls')),
-	url(r'^explore/', include('apps.explore.urls', namespace="explore")),
+	url(r'^explore/', include('apps.explore.urls')),
 	url(r'^user_accounts/', include('apps.user_accounts.urls')),
 	url(r'^admin/', include(admin.site.urls)),
-	url(r'^dashboard/', include('apps.dashboard.urls', namespace='dashboard')),
+	url(r'^dashboard/', include('apps.dashboard.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
