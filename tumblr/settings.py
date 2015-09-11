@@ -1,4 +1,4 @@
-SESSION_COOKIE_DOMAIN = .'briansquashic.com'
+SESSION_COOKIE_DOMAIN = '.briansquashic.com'
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
