@@ -17,7 +17,7 @@ function check_field() {
 		},
 
 		success: function(error) {
-			if(error.email) {
+			if(error.email && email_val != "") {
 				(form_error_id.html("<p>" + error.email + "</p>")
 				.removeClass('error-invisible').addClass('error-visible'));
 			}
