@@ -1,10 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
-from django.template import RequestContext
-from django.template.loader import render_to_string
-from apps.blog.models import Blog, Post, Follow
-from apps.user_accounts.models import User
+from django.http import JsonResponse
+from apps.blog.models import Post
 
 @login_required
 def dashboard(request):
