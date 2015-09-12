@@ -4,11 +4,11 @@ from apps.sites.models import Site
 class SubdomainMiddleware:
 	def process_request(self, request):
 		request.subdomain = None
-		host = request.META.get('HTTP_HOST', '')
+		host = request.META['HTTP_HOST']
 		hosts = host.split('.')
 
-		if len(hosts) > 3:
-			request.subdomain = ''.join(hosts[:-3])
+		if len(hosts) > 2 and hosts[0] != ('local' or 'www'):
+			request.subdomain = hosts[0]
 			path_info = request.META.get('PATH_INFO')
 			dont_redirect = ['/', '/sites/get_ten_posts', '/blog/follow', '/blog/unfollow']
 

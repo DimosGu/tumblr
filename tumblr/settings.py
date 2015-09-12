@@ -4,23 +4,18 @@ SESSION_COOKIE_DOMAIN = '.briansquashic.com'
 # SESSION_COOKIE_DOMAIN = '.local.n-ws.org'
 # SESSION_COOKIE_SECURE = True
 # CSRF_COOKIE_SECURE = True
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'inpr6-d-pan0@gtsj%at1gy!=ds+xms@y2s%q&$-4q(k_s4b6e'
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = ['.briansquashic.com']
+ALLOWED_HOSTS = ['.briansquashic.com']
 
-# Application definition
 
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -101,9 +96,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.8/howto/static-files/
 SITE_ID = 1
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_root/')

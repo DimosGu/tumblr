@@ -4,7 +4,7 @@
 {% block content %}
 	<div id="wrapper">
 		<div id="header-overlay">
-			<a href="{% url 'dashboard:dashboard' %}">
+			<a href="{% url 'dashboard' %}">
 				<img src="{% static 'images/tumblr_logo.png' %}">
 			</a>
 			<div id="link-wrapper" data-username="{{ current_site.username }}">
@@ -16,9 +16,9 @@
 						<div class="unfollow">- Unfollow</div>
 						<div class="follow display-none">+ Follow</div>
 					{% endif %}
-					<a id="dashboard-link" href="{% url 'dashboard:dashboard' %}">Dashboard</a>
+					<a id="dashboard-link" href="{% url 'dashboard' %}">Dashboard</a>
 				{% elif user == current_site %}
-					<a id="dashboard-link" href="{% url 'dashboard:dashboard' %}">Dashboard</a>
+					<a id="dashboard-link" href="{% url 'dashboard' %}">Dashboard</a>
 				{% else %}
 					<a id="tumblr-link" href="{% url 'register' %}">tumblr.</a>
 				{% endif %}
