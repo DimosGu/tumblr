@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.http import  HttpResponseRedirect, JsonResponse
+from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.template.loader import render_to_string
 from apps.blog.models import Blog, Post, Follow
 
 def explore(request):
-  return HttpResponseRedirect('recent')
+  return HttpResponseRedirect(reverse('recent'))
 
 def recent(request):
 
