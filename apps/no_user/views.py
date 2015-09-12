@@ -32,7 +32,7 @@ def site_or_register(request):
       'page_title': blog.title,
     }
 
-    return render(request, 'sites/site.html', context	)
+    return render(request, 'sites/site.html', context)
 
   else:
 
