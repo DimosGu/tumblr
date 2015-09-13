@@ -7,4 +7,4 @@ urlpatterns = [
   url(r'^get_ten_posts/(?P<results>[\w\s+]+)$', views.get_ten_posts, name='get_ten_posts'),
 ]
 
-handler404 = views.error404
+handler404 = 'tumblr.views.error404'
