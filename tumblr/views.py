@@ -8,6 +8,10 @@ def error404(request):
   context = {}
   context['section'] = 'error'
   context['page_title'] = 'Not found.'
-  context['recent_img_post'] = error_images[randint(0, 4)]
+
+  try:
+    context['recent_img_post'] = error_images[randint(0, 4)]
+  except:
+    context['recent_img_post'] = None
 
   return render(request, '404.html', context)
