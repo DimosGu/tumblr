@@ -7,7 +7,11 @@ class SubdomainMiddleware:
 		host = request.META['HTTP_HOST']
 		hosts = host.split('.')
 
-		if len(hosts) > 2 and hosts[0] != ('local' or 'www'):
+		if len(hosts) > 2 and hosts[0] != 'www':
+
+			if hosts[1] == 'www':
+				hosts[1].pop()
+
 			request.subdomain = hosts[0]
 			path_info = request.META.get('PATH_INFO')
 			dont_redirect = ['/', '/sites/get_ten_posts', '/blog/follow', '/blog/unfollow']
