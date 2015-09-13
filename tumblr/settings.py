@@ -14,7 +14,7 @@ SECRET_KEY = 'inpr6-d-pan0@gtsj%at1gy!=ds+xms@y2s%q&$-4q(k_s4b6e'
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['.briansquashic.com']
+ALLOWED_HOSTS = ['.briansquashic.com', '.local.n-ws.org']
 
 
 INSTALLED_APPS = (

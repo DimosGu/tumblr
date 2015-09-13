@@ -24,6 +24,9 @@ class PostManager(BaseManager):
   def filter_blog(self, blog):
     return self.filter(blog=blog)
 
+  def filter_by_pk(self, pk_list):
+    return self.filter(pk__in=pk_list)
+
   def combine_tags_posts(self, latest_posts, user=False, follow=False):
     from apps.search.models import Tags
 

@@ -1166,33 +1166,15 @@ img {
 
 #register-body,
 #login-body {
-  background: #36465d;
-  height: 100%;
   overflow: hidden; }
-  #register-body #img-container,
-  #login-body #img-container {
-    background-size: cover;
-    background-position: center;
-    height: 100%;
-    width: 100%;
-    opacity: .9;
-    position: absolute;
-    z-index: 1; }
   #register-body #wrapper,
   #login-body #wrapper {
     height: 100%;
-    width: 100%;
     position: absolute;
     z-index: 100; }
-  #register-body .invisible,
-  #login-body .invisible {
-    opacity: 0; }
   #register-body .fade,
   #login-body .fade {
     opacity: 0.5; }
-  #register-body .visible,
-  #login-body .visible {
-    opacity: 1; }
   #register-body .fade-in,
   #login-body .fade-in {
     -webkit-transition: opacity 0.7s ease-in;
@@ -1354,56 +1336,34 @@ img {
     text-align: center;
     text-decoration: none;
     width: 150px; }
-  #register-body #footer,
-  #login-body #footer {
-    bottom: 0;
-    left: 0;
-    margin-bottom: 15px;
-    position: absolute;
-    width: 100%;
-    min-width: 540px; }
-  #register-body #footer-links,
-  #login-body #footer-links {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    margin: 0 0 0 10px;
-    width: 270px; }
-    #register-body #footer-links a,
-    #login-body #footer-links a {
-      color: #fff;
-      font-size: 14px;
-      margin-left: 11px;
-      pointer-events: none;
-      text-decoration: none; }
-  #register-body #footer-right,
-  #login-body #footer-right {
-    color: #fff;
-    right: 0;
-    bottom: 0;
-    position: absolute;
-    font-size: 14px;
-    padding-right: 10px; }
-    #register-body #footer-right p,
-    #login-body #footer-right p {
-      width: 100%;
-      position: relative;
-      margin-right: 35px; }
-    #register-body #footer-right span,
-    #login-body #footer-right span {
+
+#error-body #wrapper {
+  height: 100%;
+  position: absolute;
+  z-index: 100; }
+#error-body #footer #footer-links a {
+  font-size: 40px;
+  font-weight: bold;
+  pointer-events: auto; }
+
+#error-center {
+  color: #fff;
+  height: 200px;
+  width: 420px;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  margin: -100px 0 0 -210px; }
+  #error-center #error-message {
+    width: 400px; }
+    #error-center #error-message span {
+      font-size: 26px;
       font-weight: bold; }
-    #register-body #footer-right a,
-    #login-body #footer-right a {
-      height: 24px;
-      width: 24px;
-      margin: 0 0 0 3px;
-      top: -4px;
-      right: 0;
-      position: absolute; }
-      #register-body #footer-right a img,
-      #login-body #footer-right a img {
-        width: 100%;
-        height: 100%; }
+    #error-center #error-message p {
+      margin-top: 5px;
+      line-height: 18px;
+      font-size: 14px; }
 
 html {
   font-family: helvetica, arial;
@@ -1412,6 +1372,15 @@ html {
 body {
   background: #36465d;
   height: 100%; }
+
+#img-container {
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+  opacity: .8;
+  position: absolute;
+  z-index: 1; }
 
 #wrapper {
   width: 100%; }
@@ -1446,5 +1415,52 @@ body {
 
 .post-footer {
   height: 45px; }
+
+#footer {
+  bottom: 0;
+  left: 0;
+  margin-bottom: 15px;
+  position: absolute;
+  width: 100%;
+  min-width: 540px; }
+
+#footer-links {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin: 0 0 0 10px;
+  width: 270px; }
+  #footer-links a {
+    color: #fff;
+    font-size: 14px;
+    margin-left: 11px;
+    pointer-events: none;
+    text-decoration: none; }
+
+#footer-right {
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  font-size: 14px;
+  padding-right: 10px; }
+  #footer-right div {
+    width: 100%;
+    position: relative;
+    margin-right: 35px; }
+    #footer-right div a {
+      color: #fff;
+      text-decoration: none; }
+    #footer-right div span {
+      font-weight: bold; }
+    #footer-right div #posted-by-img {
+      height: 24px;
+      width: 24px;
+      margin: 0 0 0 3px;
+      top: -4px;
+      right: 0;
+      position: absolute; }
+      #footer-right div #posted-by-img img {
+        width: 100%;
+        height: 100%; }
 
 /*# sourceMappingURL=style.css.map */

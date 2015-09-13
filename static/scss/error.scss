@@ -1,0 +1,50 @@
+#error-body {
+
+  #wrapper {
+    height: 100%;
+    position: absolute;
+    z-index: 100;
+  }
+
+  #footer {
+
+    #footer-links {
+
+      a {
+        font-size: 40px;
+        font-weight: bold;
+        pointer-events: auto;
+      }
+    }
+  }
+}
+
+#error-center {
+  color: #fff;
+  height: 200px;
+  width: 420px;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  margin: -100px 0 0 -210px;
+
+  #error-message {
+    width: 400px;
+
+    span {
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    p {
+      margin-top: 5px;
+      line-height: 18px;
+      font-size: 14px;
+    }
+  }
+
+  #error-search {
+
+  }
+}

@@ -50,6 +50,7 @@ def site_or_register(request):
         redirect_url = {'url': 'dashboard'}
 
         return JsonResponse(redirect_url)
+
       elif form.is_valid():
         form.save()
         user_info = authenticate(
@@ -59,6 +60,7 @@ def site_or_register(request):
         redirect_url = {'url': 'dashboard'}
 
         return JsonResponse(redirect_url)
+
       else:
         error = form.errors
         return JsonResponse(error)

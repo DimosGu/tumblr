@@ -13,6 +13,7 @@ def blog_edit(request, username):
 
   if username != request.user.username:
     domain = request.META['HTTP_HOST']
+
     return HttpResponseRedirect('http://%s.%s' % (username, domain))
 
   latest_posts = Post.objects.ten_more_posts(0, user=request.user)

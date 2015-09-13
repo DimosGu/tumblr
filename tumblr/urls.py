@@ -13,3 +13,5 @@ urlpatterns = [
 	url(r'^admin/', include(admin.site.urls)),
 	url(r'^dashboard/', include('apps.dashboard.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = 'tumblr.views.error404'
