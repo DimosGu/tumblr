@@ -1,7 +1,7 @@
 import os
 
-SESSION_COOKIE_DOMAIN = '.briansquashic.com'
-# SESSION_COOKIE_DOMAIN = '.local.n-ws.org'
+# SESSION_COOKIE_DOMAIN = '.briansquashic.com'
+SESSION_COOKIE_DOMAIN = '.local.n-ws.org'
 # SESSION_COOKIE_SECURE = True
 # CSRF_COOKIE_SECURE = True
 
@@ -14,7 +14,7 @@ SECRET_KEY = 'inpr6-d-pan0@gtsj%at1gy!=ds+xms@y2s%q&$-4q(k_s4b6e'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['.briansquashic.com']
+ALLOWED_HOSTS = ['.local.n-ws.org']
 
 
 INSTALLED_APPS = (

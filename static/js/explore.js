@@ -47,7 +47,7 @@ function get_ten_posts(post_count) {
     },
 
     success: function(json) {
-      if (json.html.length >= 1 && json.html != "NoResults") {
+      if (json.html && json.html != "NoResults") {
         $explore_post_wrapper.append(json.html);
         $explore_post_wrapper.masonry('reloadItems');
 
@@ -61,7 +61,7 @@ function get_ten_posts(post_count) {
           get_post_verify = true;
         }, 500);
 
-      } else if (json.html.length === 0) {
+      } else if (json.html === undefined) {
         return json.html;
       } else {
         $explore_post_wrapper.after("<div id='end-results'><p>That's about it for <span>" + json.result + "</span>. Try another search?</p></div>")

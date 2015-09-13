@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
+from django.core.urlresolvers import reverse
 from .models import Tags
 from apps.blog.models import Post
 
@@ -10,7 +11,7 @@ def search(request):
     tags = request.GET['tags_search']
     return HttpResponseRedirect('/search/%s' % tags.replace(' ', '+'))
   except:
-    return HttpResponseRedirect('/explore/recent')
+    return HttpResponseRedirect(reverse('recent'))
 
 def results(request, results):
 
