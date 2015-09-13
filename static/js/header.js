@@ -76,6 +76,10 @@ chat = document.getElementById("chat");
 audio = document.getElementById("audio");
 video = document.getElementById("video");
 
+messages.onclick = function(e) {
+  e.preventDefault();
+}
+
 activity.onclick = function(e) {
   e.preventDefault();
 }
