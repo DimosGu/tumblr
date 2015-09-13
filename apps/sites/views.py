@@ -12,7 +12,6 @@ def mini_site(request):
   user = User.objects.get_by_username(selected_user)
   blog = Blog.objects.get_blog_user(user)
   latest_posts = Post.objects.order_by_date(blog=blog)[:10]
-  domain_url = request.META['HTTP_HOST']
 
   response = {
     'html': [],
@@ -23,6 +22,15 @@ def mini_site(request):
     follow = 'true'
   except:
     follow = 'false'
+
+  url = request.META['HTTP_HOST']
+  split_url = url.split('.')
+
+  if split_url[0] == 'www':
+    split_url.pop(0)
+    domain_url = '.'.join(split_url)
+  else:
+    domain_url = url
 
   response['html'].append(render_to_string(
     'sites/mini_site.html',
