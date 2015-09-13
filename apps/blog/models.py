@@ -56,9 +56,9 @@ class PostManager(BaseManager):
     end_count = post_count + 10
 
     if ajax_user:
-      get_user = User.objects.get(username=ajax_user).pk
+      get_user = User.objects.get(username=ajax_user)
     elif user:
-      get_user = user.pk
+      get_user = user
     else:
       get_user = False
 
@@ -71,7 +71,7 @@ class PostManager(BaseManager):
       else:
         return search.post.exclude(user=user)[post_count:end_count]
     else:
-      blog = Blog.objects.get(pk=get_user)
+      blog = Blog.objects.get(user=get_user)
       return self.filter(blog=blog).order_by('-pub_date')[post_count:end_count]
 
   def render_posts(self, ordered_posts, template, user=False, explore_domain=False, mini=False):
