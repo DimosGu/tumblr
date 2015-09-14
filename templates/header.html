@@ -35,11 +35,7 @@
 				<a id="post" title="Make a post" href=""></a>
 			</div>
 		</div>
-		<div id="form-wrapper">
-			<form id="search" class="input-nofocus" action="{% url 'search' %}">
-				{{ search_form.tags_search }}
-			</form>
-		</div>
+		{% include 'search_form.html' %}
 	</div>
 	{% block sub_header %}{% endblock sub_header %}
 </div>

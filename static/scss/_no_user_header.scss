@@ -18,37 +18,6 @@
 		outline: 0;
 	}
 
-	#form-wrapper {
-		margin: 18px 0 0 68px;
-		overflow: hidden;
-
-		form {
-			background-size: 18px 18px;
-		}
-
-		input {
-			background: transparent;
-			border: none;
-			color: #fff;
-			font-size: 15px;
-			outline: 0;
-			padding: 0 10px 0 27px;
-			width: 100%;
-
-			@include placeholder {
-				opacity: .5;
-			}
-		}
-	}
-
-	.input-nofocus {
-		background: url("/static/images/gray_search.png") no-repeat;
-	}
-
-	.input-focus {
-		background: url("/static/images/white_search.png") no-repeat;
-	}
-
 	#header-right {
 		float: right;
 		margin: 10px 0 0 0;

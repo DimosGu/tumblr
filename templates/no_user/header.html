@@ -8,11 +8,7 @@
 			<a id="login" href="{% url 'login' %}">Log in</a>
 			<a id="sign-up" href="{% url 'register' %}">Sign up</a>
 		</div>
-		<div id="form-wrapper">
-			<form id="search" class="input-nofocus" action="{% url 'search' %}">
-				{{ search_form.tags_search }}
-			</form>
-		</div>
+		{% include 'search_form.html' %}
 	</div>
 	{% block sub_header %}{% endblock sub_header %}
 </div>

@@ -75,7 +75,7 @@ def site_or_register(request):
 
     context = {
       'form': form,
-      'recent_img_post': recent_img_post,
+      'img_post': recent_img_post,
       'section': 'register',
       'page_title': 'Sign up | Tumblr',
     }
@@ -114,7 +114,7 @@ def user_login(request):
 
   context = {
     'form': form,
-    'recent_img_post': recent_img_post,
+    'img_post': recent_img_post,
     'section': 'login',
     'page_title': 'Log in | Tumblr',
   }

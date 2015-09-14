@@ -15,7 +15,7 @@
   top: 50%;
   left: 50%;
   position: absolute;
-  margin: -100px 0 0 -210px; }
+  margin: -85px 0 0 -210px; }
   #error-center #error-message {
     width: 400px; }
     #error-center #error-message span {
@@ -25,5 +25,34 @@
       margin-top: 5px;
       line-height: 18px;
       font-size: 14px; }
+  #error-center #search-form-wrapper {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 20px;
+    margin: 12px 0 0 75px;
+    padding: 0 0 0 9px;
+    height: 26px;
+    width: 250px; }
+    #error-center #search-form-wrapper form {
+      background-size: 13px 13px;
+      background-position: 0 center;
+      height: 100%; }
+    #error-center #search-form-wrapper input {
+      color: #444;
+      font-size: 13px;
+      font-weight: bold;
+      height: 100%;
+      padding: 0 0 0 20px; }
+      #error-center #search-form-wrapper input::-webkit-input-placeholder {
+        color: #444;
+        opacity: .6; }
+      #error-center #search-form-wrapper input::-moz-placeholder {
+        color: #444;
+        opacity: .6; }
+      #error-center #search-form-wrapper input:-moz-placeholder {
+        color: #444;
+        opacity: .6; }
+      #error-center #search-form-wrapper input:-ms-input-placeholder {
+        color: #444;
+        opacity: .6; }
 
 /*# sourceMappingURL=error.css.map */

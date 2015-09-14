@@ -175,34 +175,6 @@ img {
     margin-top: -6px;
     outline: 0; }
 
-#form-wrapper {
-  margin: 18px 0 0 68px;
-  overflow: hidden; }
-  #form-wrapper form {
-    background-size: 18px 18px; }
-  #form-wrapper input {
-    background: transparent;
-    border: none;
-    color: #fff;
-    font-size: 15px;
-    outline: 0;
-    padding: 0 10px 0 27px;
-    width: 100%; }
-    #form-wrapper input::-webkit-input-placeholder {
-      opacity: .5; }
-    #form-wrapper input::-moz-placeholder {
-      opacity: .5; }
-    #form-wrapper input:-moz-placeholder {
-      opacity: .5; }
-    #form-wrapper input:-ms-input-placeholder {
-      opacity: .5; }
-
-.input-nofocus {
-  background: url("/static/images/gray_search.png") no-repeat; }
-
-.input-focus {
-  background: url("/static/images/white_search.png") no-repeat; }
-
 #header-right {
   float: right; }
   #header-right #header-links {
@@ -1109,31 +1081,6 @@ img {
     height: 55px;
     margin-top: -3px;
     outline: 0; }
-  #no-user-header #form-wrapper {
-    margin: 18px 0 0 68px;
-    overflow: hidden; }
-    #no-user-header #form-wrapper form {
-      background-size: 18px 18px; }
-    #no-user-header #form-wrapper input {
-      background: transparent;
-      border: none;
-      color: #fff;
-      font-size: 15px;
-      outline: 0;
-      padding: 0 10px 0 27px;
-      width: 100%; }
-      #no-user-header #form-wrapper input::-webkit-input-placeholder {
-        opacity: .5; }
-      #no-user-header #form-wrapper input::-moz-placeholder {
-        opacity: .5; }
-      #no-user-header #form-wrapper input:-moz-placeholder {
-        opacity: .5; }
-      #no-user-header #form-wrapper input:-ms-input-placeholder {
-        opacity: .5; }
-  #no-user-header .input-nofocus {
-    background: url("/static/images/gray_search.png") no-repeat; }
-  #no-user-header .input-focus {
-    background: url("/static/images/white_search.png") no-repeat; }
   #no-user-header #header-right {
     float: right;
     margin: 10px 0 0 0;
@@ -1354,7 +1301,7 @@ img {
   top: 50%;
   left: 50%;
   position: absolute;
-  margin: -100px 0 0 -210px; }
+  margin: -85px 0 0 -210px; }
   #error-center #error-message {
     width: 400px; }
     #error-center #error-message span {
@@ -1364,6 +1311,35 @@ img {
       margin-top: 5px;
       line-height: 18px;
       font-size: 14px; }
+  #error-center #search-form-wrapper {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 20px;
+    margin: 12px 0 0 75px;
+    padding: 0 0 0 9px;
+    height: 26px;
+    width: 250px; }
+    #error-center #search-form-wrapper form {
+      background-size: 13px 13px;
+      background-position: 0 center;
+      height: 100%; }
+    #error-center #search-form-wrapper input {
+      color: #444;
+      font-size: 13px;
+      font-weight: bold;
+      height: 100%;
+      padding: 0 0 0 20px; }
+      #error-center #search-form-wrapper input::-webkit-input-placeholder {
+        color: #444;
+        opacity: .6; }
+      #error-center #search-form-wrapper input::-moz-placeholder {
+        color: #444;
+        opacity: .6; }
+      #error-center #search-form-wrapper input:-moz-placeholder {
+        color: #444;
+        opacity: .6; }
+      #error-center #search-form-wrapper input:-ms-input-placeholder {
+        color: #444;
+        opacity: .6; }
 
 html {
   font-family: helvetica, arial;
@@ -1381,6 +1357,34 @@ body {
   opacity: .8;
   position: absolute;
   z-index: 1; }
+
+#search-form-wrapper {
+  margin: 18px 0 0 68px;
+  overflow: hidden; }
+  #search-form-wrapper form {
+    background-size: 18px 18px; }
+  #search-form-wrapper input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 15px;
+    outline: 0;
+    padding: 0 10px 0 27px;
+    width: 100%; }
+    #search-form-wrapper input::-webkit-input-placeholder {
+      opacity: .5; }
+    #search-form-wrapper input::-moz-placeholder {
+      opacity: .5; }
+    #search-form-wrapper input:-moz-placeholder {
+      opacity: .5; }
+    #search-form-wrapper input:-ms-input-placeholder {
+      opacity: .5; }
+
+.input-nofocus {
+  background: url("/static/images/gray_search.png") no-repeat; }
+
+.input-focus {
+  background: url("/static/images/white_search.png") no-repeat; }
 
 #wrapper {
   width: 100%; }

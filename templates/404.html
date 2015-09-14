@@ -2,14 +2,15 @@
 {% load staticfiles %}
 
 {% block content %}
-  <div id="img-container" style="background-image: url({{ recent_img_post.file.url }});"></div>
+  <div id="img-container" style="background-image: url({{ img_post.file.url }});"></div>
   <div id="wrapper">
     <div id="error-center">
       <div id="error-message">
         <span>There's nothing here.</span>
         <p>Whatever you were looking for doesn't currently exist at this<br>address. Unless you were looking for this error page, in<br>which case: Congrats! You totally found it.</p>
       </div>
+      {% include 'search_form.html' %}
     </div>
-    {% include 'error_links.html' %}
+    {% include 'error_footer.html' %}
   </div>
 {% endblock %}
