@@ -6,14 +6,27 @@ from tumblr.base_model import BaseManager, BaseModel
 from apps.user_accounts.models import User
 
 
-def upload_path(self, filename):
-  return 'user_media/%s/%s' % (self.user.username, filename)
+class LikeManager(BaseManager):
 
+  def filter_like(self, user, post):
+    return self.filter(user=user, post=post)
+
+  def check_like(self, user, post):
+    return self.get(user=user, post=post)
 
 class BlogManager(BaseManager):
 
   def get_blog_user(self, user):
     return self.get(user=user)
+
+
+class FollowManager(BaseManager):
+
+  def follow_filter(self, user, blog):
+    return self.filter(user=user, blog=blog)
+
+  def get_following(self, user, blog):
+    return self.get(user=user, blog=blog)
 
 
 class PostManager(BaseManager):
@@ -24,7 +37,7 @@ class PostManager(BaseManager):
   def filter_blog(self, blog):
     return self.filter(blog=blog)
 
-  def combine_tags_posts(self, latest_posts, user=False, follow=False):
+  def combine_post_attributes(self, latest_posts, user=False, follow=False, like=False):
     from apps.search.models import Tags
 
     context = {
@@ -38,14 +51,26 @@ class PostManager(BaseManager):
       for tag in tags_filter:
         tags.append(tag.tags)
 
-      if follow:
-        blog = Blog.objects.get(user=post.user)
+      if like:
 
         try:
-          follow = Follow.objects.get(user=user, blog=blog)
-          context['latest_posts'].append((post, tags, 'true'))
+          like = Like.objects.get(user=user, post=post)
+          like = 'True'
         except:
-          context['latest_posts'].append((post, tags, 'false'))
+          like = 'False'
+
+        if follow:
+          blog = Blog.objects.get(user=post.user)
+
+          try:
+            following = Follow.objects.get(user=user, blog=blog)
+            follow = 'True'
+          except:
+            follow = 'False'
+
+          context['latest_posts'].append((post, tags, like, follow))
+        else:
+          context['latest_posts'].append((post, tags, like))
 
       else:
         context['latest_posts'].append((post, tags))
@@ -70,11 +95,12 @@ class PostManager(BaseManager):
         return search.post.all()[post_count:end_count]
       else:
         return search.post.exclude(user=user)[post_count:end_count]
+
     else:
       blog = Blog.objects.get(user=get_user)
       return self.filter(blog=blog).order_by('-pub_date')[post_count:end_count]
 
-  def render_posts(self, ordered_posts, template, user=False, explore_domain=False, mini=False):
+  def render_posts(self, ordered_posts, template, user=False, explore_domain=False, mini=False, blog_edit=False):
     from apps.search.models import Tags
 
     post_html = []
@@ -87,9 +113,15 @@ class PostManager(BaseManager):
 
         try:
           follow = Follow.objects.get(user=user, blog=blog)
-          follow = 'true'
+          follow = 'True'
         except:
-          follow = 'false'
+          follow = 'False'
+
+        try:
+          like = Like.objects.get(user=user, post=post)
+          like = 'True'
+        except:
+          like = 'False'
 
         post_html.append(render_to_string(
           template,
@@ -100,6 +132,7 @@ class PostManager(BaseManager):
             'post': post,
             'following': follow,
             'tags': tags,
+            'like': like,
           }
         ))
 
@@ -108,15 +141,22 @@ class PostManager(BaseManager):
       for post in ordered_posts:
         tags = Tags.objects.filter(post=post)
 
+        try:
+          like = Like.objects.get(user=user, post=post)
+          like = "True"
+        except:
+          like = "False"
+
         post_html.append(render_to_string(
           template,
           {
             'post': post,
             'tags': tags,
-            'mini_section': 'True'
-          }))
-
-    else:
+            'mini_section': 'True',
+            'like': like,
+          }
+        ))
+    elif blog_edit:
 
       for post in ordered_posts:
         tags = Tags.objects.filter(post=post)
@@ -126,6 +166,26 @@ class PostManager(BaseManager):
           {
             'post': post,
             'tags': tags,
+            'section': 'blog',
+          }
+        ))
+    else:
+
+      for post in ordered_posts:
+        tags = Tags.objects.filter(post=post)
+
+        try:
+          like = Like.objects.get(user=user, post=post)
+          like = 'True'
+        except:
+          like = 'False'
+
+        post_html.append(render_to_string(
+          template,
+          {
+            'post': post,
+            'tags': tags,
+            'like': like,
           }
         ))
 
@@ -168,7 +228,6 @@ class PostManager(BaseManager):
       for tag in tags_filter:
         post_tags.append(tag.tags)
 
-
       response = {
         'html': []
       }
@@ -185,14 +244,9 @@ class PostManager(BaseManager):
 
       return response
 
-class FollowManager(BaseManager):
 
-  def follow_filter(self, user):
-    return self.filter(user=user)
-
-  def get_following(self, user, blog):
-    return self.get(user=user, blog=blog)
-
+def upload_path(self, filename):
+  return 'user_media/%s/%s' % (self.user.username, filename)
 
 class Blog(BaseModel):
 
@@ -216,6 +270,7 @@ class Post(BaseModel):
   title = models.TextField(blank=True)
   text = models.TextField(blank=True)
   file = models.FileField(upload_to=upload_path, blank=True)
+  notes = models.IntegerField(default=0)
   objects = PostManager()
 
   class Meta:
@@ -242,3 +297,15 @@ class Follow(BaseModel):
   def __str__(self):
     return self.blog.user.username
 
+
+class Like(BaseModel):
+
+  user = models.ForeignKey(User)
+  post = models.ForeignKey(Post)
+  objects = LikeManager()
+
+  class Meta:
+    app_label = 'blog'
+
+  def __str__(self):
+    return '%s --> %s' % (self.user, self.post.user)

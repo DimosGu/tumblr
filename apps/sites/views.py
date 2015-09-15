@@ -19,9 +19,9 @@ def mini_site(request):
 
   try:
     Follow.objects.get_following(request.user, blog)
-    follow = 'true'
+    follow = 'True'
   except:
-    follow = 'false'
+    follow = 'False'
 
   url = request.META['HTTP_HOST']
   split_url = url.split('.')
@@ -44,7 +44,7 @@ def mini_site(request):
     }
   ))
 
-  post_loop = Post.objects.render_posts(latest_posts, 'post.html', mini=True)
+  post_loop = Post.objects.render_posts(latest_posts, 'post.html', user=request.user, mini=True)
   response['post_html'] = post_loop
 
   return JsonResponse(response)
@@ -58,10 +58,11 @@ def get_ten_posts(request):
 
   try:
     mini = request.GET['mini']
+    mini = True
   except:
-    pass
+    mini = False
 
-  post_loop = Post.objects.render_posts(posts, 'post.html', mini=True)
+  post_loop = Post.objects.render_posts(posts, 'post.html', user=request.user, mini=mini)
 
   response['html'] = post_loop
 

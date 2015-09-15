@@ -7,7 +7,7 @@ from apps.blog.models import Post
 def dashboard(request):
 
   latest_posts = Post.objects.sort_following_posts(request.user, 0)
-  context = Post.objects.combine_tags_posts(latest_posts)
+  context = Post.objects.combine_post_attributes(latest_posts, user=request.user, like=True)
   context['section'] = 'dashboard'
 
   return render(request, 'dashboard/dashboard.html', context)
@@ -17,7 +17,7 @@ def get_ten_posts(request):
   response = {}
   post_count = int(request.GET['post_count'])
   latest_posts = Post.objects.sort_following_posts(request.user, post_count)
-  appended_posts = Post.objects.render_posts(latest_posts, 'post.html')
+  appended_posts = Post.objects.render_posts(latest_posts, 'post.html', user=request.user)
   response['html'] = appended_posts
 
   return JsonResponse(response)

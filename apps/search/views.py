@@ -22,7 +22,7 @@ def results(request, results):
     else:
       search_result = Tags.objects.posts_with_tags(results.lower(), 0)
 
-    context = Post.objects.combine_tags_posts(search_result, user=request.user, follow=True)
+    context = Post.objects.combine_post_attributes(search_result, user=request.user, follow=True, like=True)
 
     if not context['latest_posts']:
       context['search'] = 'data=%s' % 'NoResults'

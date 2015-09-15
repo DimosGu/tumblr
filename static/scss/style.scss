@@ -2,8 +2,9 @@
 @import 'reset';
 @import 'universal';
 @import 'header';
+@import 'post';
 @import 'mini_site';
-@import 'blog';
+@import 'blog_edit';
 @import 'dashboard';
 @import 'explore';
 @import 'sites';
@@ -19,6 +20,27 @@ html {
 body {
   background: #36465d;
   height: 100%;
+}
+
+#full-screen-img {
+  left: 0;
+  top: 0;
+  background: rgba(17, 17, 17, 0.921569);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+
+  img {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: fixed;
+    margin: auto auto;
+    max-height: 100%;
+    max-width: 70%;
+  }
 }
 
 #img-container {
@@ -66,63 +88,14 @@ body {
   width: 100%;
 }
 
-.post-wrapper {
-  width: 540px;
-
-  .user-link {
-    color: #444;
-    font-weight: bold;
-    font-size: 14px;
-    text-decoration: none;
-  }
-}
-
-.post {
-
-  img {
-    width: 100%
-  }
-
-  .words-wrapper {
-    color: #444;
-    padding: 0 10px 0 10px;
-    word-wrap: break-word;
-
-    .post-title {
-      font-size: 36px;
-    }
-
-    .post-text {
-      font-size: 14px;
-    }
-
-    .post-tags {
-      font-size: 13px;
-      display: block;
-      white-space: nowrap;
-      overflow: hidden;
-
-      a {
-        color: #a1a1a1;
-        text-decoration: none;
-        margin-right: 10px;
-      }
-    }
-  }
-}
-.post-footer {
-  height: 45px;
-}
-
 //no_user/error footer
 #footer {
-    bottom: 0;
-    left: 0;
-    margin-bottom: 15px;
-    position: absolute;
-    width: 100%;
-    min-width: 540px;
-  }
+  bottom: 0;
+  left: 0;
+  margin-bottom: 15px;
+  position: absolute;
+  width: 100%;
+  min-width: 540px;
 
   #footer-links {
     position: absolute;
@@ -176,3 +149,4 @@ body {
       }
     }
   }
+}

@@ -10,10 +10,10 @@ def recent(request):
 
   if request.user.is_authenticated():
     latest_posts = Post.objects.ten_more_posts(0, user=request.user, explore=True)
-    context = Post.objects.combine_tags_posts(latest_posts, user=request.user, follow=True)
+    context = Post.objects.combine_post_attributes(latest_posts, user=request.user, follow=True, like=True)
   else:
     latest_posts = Post.objects.ten_more_posts(0, explore=True)
-    context = Post.objects.combine_tags_posts(latest_posts, follow=True)
+    context = Post.objects.combine_post_attributes(latest_posts, follow=True, like=True)
 
   context['section'] = 'explore'
   context['page_title'] = 'Recent | Tumblr'

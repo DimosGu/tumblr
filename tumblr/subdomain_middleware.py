@@ -11,7 +11,7 @@ class SubdomainMiddleware:
 
 			request.subdomain = hosts[0]
 			path_info = request.META.get('PATH_INFO')
-			dont_redirect = ['/', '/sites/get_ten_posts', '/blog/follow', '/blog/unfollow']
+			dont_redirect = ['/', '/sites/get_ten_posts', '/blog/follow', '/blog/unfollow', '/blog/like', '/blog/unlike']
 
 			if path_info in dont_redirect:
 

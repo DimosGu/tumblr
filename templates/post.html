@@ -21,7 +21,7 @@
 
 				{% if section == 'explore' %}
 					<a class="follow-link" data-username="{{ post.user.username }}" {% if user.is_anonymous %}href="{% url 'register' %}"{% endif %}>
-						{% if following == "true" %}
+						{% if follow == "True" %}
 							<div title="Follow" class="follow display-none">Follow</div>
 							<div title="Unfollow" class="unfollow">Unfollow</div>
 						{% else %}
@@ -56,10 +56,22 @@
 	</div>
 	<div class="post-footer">
 		<div class="footer-options">
-			{% if blog %}
+			{% if section == 'blog' %}
 				<div class="options-popup display-none">
 					<a href="" class="option-edit">Edit</a>
 					<a href="" class="option-delete">Delete</a>
+				</div>
+			{% else %}
+				<div class="post-options">
+					<a class="like-options"{% if user.is_anonymous %} href="{% url 'register' %}{% endif %}">
+						{% if like == "True" %}
+							<div class="like"></div>
+							<div class="no-like display-none"></div>
+						{% else %}
+							<div class="no-like"></div>
+							<div class="like display-none"></div>
+						{% endif %}
+					</a>
 				</div>
 			{% endif %}
 		</div>

@@ -34,7 +34,7 @@
 			</a>
 		</div>
 		<div id="sites-posts-wrapper">
-			{% for post, tags in latest_posts %}
+			{% for post, tags, like in latest_posts %}
 				{% include 'post.html' %}
 			{% endfor %}
 		</div>
@@ -43,6 +43,9 @@
 	<script type="text/javascript" src="{% static 'js/ajax.js' %}"></script>
 	<script type="text/javascript" src="{% static 'js/post_img.js' %}"></script>
 	<script type="text/javascript" src="{% static 'js/sites.js' %}"></script>
-	<script type="text/javascript" src="{% static 'js/follow.js' %}"></script>
 	<script type="text/javascript" src="{% static 'js/infinite_scroll.js' %}"></script>
+	{% if user.is_authenticated %}
+		<script type="text/javascript" src="{% static 'js/follow.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/like.js' %}"></script>
+	{% endif %}
 {% endblock %}

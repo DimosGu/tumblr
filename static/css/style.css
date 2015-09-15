@@ -557,6 +557,51 @@ img {
         height: 12px;
         width: 1px; }
 
+.post-wrapper {
+  width: 540px; }
+  .post-wrapper .user-link {
+    color: #444;
+    font-weight: bold;
+    font-size: 14px;
+    text-decoration: none; }
+
+.post img {
+  width: 100%; }
+.post .words-wrapper {
+  color: #444;
+  padding: 0 10px 0 10px;
+  word-wrap: break-word; }
+  .post .words-wrapper .post-title {
+    font-size: 36px; }
+  .post .words-wrapper .post-text {
+    font-size: 14px; }
+  .post .words-wrapper .post-tags {
+    font-size: 13px;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden; }
+    .post .words-wrapper .post-tags a {
+      color: #a1a1a1;
+      text-decoration: none;
+      margin-right: 10px; }
+
+.post-footer {
+  height: 45px; }
+  .post-footer .footer-options {
+    cursor: pointer;
+    float: right;
+    height: 17px;
+    margin: 14px 20px 0 0;
+    width: 19px; }
+    .post-footer .footer-options .like,
+    .post-footer .footer-options .no-like {
+      height: 17px;
+      width: 19px; }
+    .post-footer .footer-options .like {
+      background: url("/static/images/like.png"); }
+    .post-footer .footer-options .no-like {
+      background: url("/static/images/no_like.png"); }
+
 .url-fade {
   -webkit-transition-property: opacity;
   -moz-transition-property: opacity;
@@ -703,6 +748,8 @@ img {
     #mini-posts-wrapper .post-wrapper .post-footer {
       height: 40px;
       width: 100%; }
+      #mini-posts-wrapper .post-wrapper .post-footer .footer-options {
+        margin-top: 11px; }
 
 .blog-post-fade {
   -webkit-transition-property: opacity;
@@ -761,8 +808,6 @@ img {
     width: 100%; }
     #blog-posts-wrapper .post-footer .footer-options {
       background: url("/static/images/posted_options.png") no-repeat;
-      cursor: pointer;
-      float: right;
       margin: 12px 18px 0 0;
       position: relative;
       height: 25px;
@@ -1064,6 +1109,8 @@ img {
     #sites-posts-wrapper .post-wrapper .post-footer {
       height: 50px;
       width: 100%; }
+      #sites-posts-wrapper .post-wrapper .post-footer .footer-options {
+        margin-top: 16px; }
 
 #no-user-header-wrapper {
   width: 100%;
@@ -1389,37 +1436,6 @@ body {
 #wrapper {
   width: 100%; }
 
-.post-wrapper {
-  width: 540px; }
-  .post-wrapper .user-link {
-    color: #444;
-    font-weight: bold;
-    font-size: 14px;
-    text-decoration: none; }
-
-.post img {
-  width: 100%; }
-.post .words-wrapper {
-  color: #444;
-  padding: 0 10px 0 10px;
-  word-wrap: break-word; }
-  .post .words-wrapper .post-title {
-    font-size: 36px; }
-  .post .words-wrapper .post-text {
-    font-size: 14px; }
-  .post .words-wrapper .post-tags {
-    font-size: 13px;
-    display: block;
-    white-space: nowrap;
-    overflow: hidden; }
-    .post .words-wrapper .post-tags a {
-      color: #a1a1a1;
-      text-decoration: none;
-      margin-right: 10px; }
-
-.post-footer {
-  height: 45px; }
-
 #footer {
   bottom: 0;
   left: 0;
@@ -1427,44 +1443,42 @@ body {
   position: absolute;
   width: 100%;
   min-width: 540px; }
-
-#footer-links {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  margin: 0 0 0 10px;
-  width: 270px; }
-  #footer-links a {
-    color: #fff;
-    font-size: 14px;
-    margin-left: 11px;
-    pointer-events: none;
-    text-decoration: none; }
-
-#footer-right {
-  right: 0;
-  bottom: 0;
-  position: absolute;
-  font-size: 14px;
-  padding-right: 10px; }
-  #footer-right div {
-    width: 100%;
-    position: relative;
-    margin-right: 35px; }
-    #footer-right div a {
+  #footer #footer-links {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin: 0 0 0 10px;
+    width: 270px; }
+    #footer #footer-links a {
       color: #fff;
+      font-size: 14px;
+      margin-left: 11px;
+      pointer-events: none;
       text-decoration: none; }
-    #footer-right div span {
-      font-weight: bold; }
-    #footer-right div #posted-by-img {
-      height: 24px;
-      width: 24px;
-      margin: 0 0 0 3px;
-      top: -4px;
-      right: 0;
-      position: absolute; }
-      #footer-right div #posted-by-img img {
-        width: 100%;
-        height: 100%; }
+  #footer #footer-right {
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    font-size: 14px;
+    padding-right: 10px; }
+    #footer #footer-right div {
+      width: 100%;
+      position: relative;
+      margin-right: 35px; }
+      #footer #footer-right div a {
+        color: #fff;
+        text-decoration: none; }
+      #footer #footer-right div span {
+        font-weight: bold; }
+      #footer #footer-right div #posted-by-img {
+        height: 24px;
+        width: 24px;
+        margin: 0 0 0 3px;
+        top: -4px;
+        right: 0;
+        position: absolute; }
+        #footer #footer-right div #posted-by-img img {
+          width: 100%;
+          height: 100%; }
 
 /*# sourceMappingURL=style.css.map */

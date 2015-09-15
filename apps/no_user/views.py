@@ -15,7 +15,7 @@ def site_or_register(request):
     user = User.objects.get_by_username(request.subdomain)
     blog = Blog.objects.get_blog_user(user)
     latest_posts = Post.objects.order_by_date(blog=blog)[:10]
-    tagged_posts = Post.objects.combine_tags_posts(latest_posts)
+    tagged_posts = Post.objects.combine_post_attributes(latest_posts, user=request.user, like=True)
 
     try:
       am_following = Follow.objects.get_following(request.user, blog)

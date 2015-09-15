@@ -24,7 +24,7 @@ $('body').on('click', '.follow', function (e) {
 	var username = $(this).parent().attr('data-username');
 	follow(username);
 
-	if (explore_body) {
+	if (typeof explore_body !== 'undefined' && explore_body) {
 		var $post_wrapper = $('.post-wrapper');
 
 		for (var i = 0; i < $post_wrapper.length; i++) {
@@ -44,7 +44,7 @@ $('body').on('click', '.unfollow', function (e) {
 	var username = $(this).parent().attr('data-username');
 	unfollow(username);
 
-	if (explore_body) {
+	if (typeof explore_body !== 'undefined' && explore_body) {
 		var $post_wrapper = $('.post-wrapper');
 
 		for (var i = 0; i < $post_wrapper.length; i++) {

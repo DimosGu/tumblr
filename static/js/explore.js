@@ -6,8 +6,8 @@ visible_posts = 10;
 get_post_verify = true;
 
 $(window).load(function() {
-  setTimeout (function() {
 
+  setTimeout (function() {
     $explore_post_wrapper.masonry({
       itemSelector: '.post-wrapper',
       isFitWidth: true,

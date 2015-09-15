@@ -5,7 +5,7 @@
 	</a>
 	<div id="mini-link-wrapper" data-username="{{ viewing_user.username }}">
 		{% if logged_user != viewing_user %}
-			{% if follow == 'false' %}
+			{% if follow == 'False' %}
 				<div id="mini-follow" class="follow">Follow</div>
 				<div id="mini-unfollow" class="unfollow display-none">Unfollow</div>
 			{% else %}

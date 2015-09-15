@@ -97,7 +97,6 @@ function edit_post(type, id) {
           tags_array.push("<a title='" + json.tags_data[i] + "'href='http://" + json.domain_url + "/search/" + json.tags_data[i] + "'>#" + json.tags_data[i] + "</a>")
         }
         tags_join = tags_array.join('')
-        console.log(tags_join);
         tags_html = '<span class="post-tags">' + tags_join + '</span>';
 
         if (json.title_data) {
@@ -137,7 +136,6 @@ function edit_post(type, id) {
           } else if (json.text_data && json.file_data && $edit_text.length == 0) {
             $words_wrapper.prepend(text_html);
           } else if (json.text_data && json.file_data === undefined && $edit_text.length == 0 && $edit_title.length == 0) {
-            console.log($words_wrapper);
             $words_wrapper.prepend(text_html);
           } else if (json.text_data && $edit_text.length == 0 && $edit_title.length) {
             $edit_title.after(text_html);

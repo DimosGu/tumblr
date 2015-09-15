@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from .models import Blog, Post, Follow
+from .models import Blog, Post, Follow, Like
 from .forms import TextPostForm, PhotoPostForm
 from apps.user_accounts.models import User
 from apps.search.models import Tags
@@ -17,11 +17,50 @@ def blog_edit(request, username):
     return HttpResponseRedirect('http://%s.%s' % (username, domain))
 
   latest_posts = Post.objects.ten_more_posts(0, user=request.user)
-  context = Post.objects.combine_tags_posts(latest_posts)
+  context = Post.objects.combine_post_attributes(latest_posts)
   context['section'] = 'blog'
 
   return render(request, 'blog/blog_edit.html', context)
 
+@login_required
+@csrf_exempt
+def like(request):
+
+  if request.method == 'POST':
+    post_pk = request.POST['post_pk']
+    post = Post.objects.get_pk(post_pk)
+
+    response = {}
+
+    try:
+      like = Like.objects.check_like(request.user, post)
+      response['status'] = 'already liking'
+    except:
+      like = Like(user=request.user, post=post)
+      like.save()
+      response['status'] = 'now liking'
+
+
+    return JsonResponse(response)
+
+@login_required
+@csrf_exempt
+def unlike(request):
+
+  if request.method == 'POST':
+
+    post_pk = request.POST['post_pk']
+    post = Post.objects.get_pk(post_pk)
+
+    like = Like.objects.filter_like(request.user, post)
+    like.delete()
+
+    response = {}
+    response['status'] = 'no longer liking'
+
+    return JsonResponse(response)
+
+@login_required
 @csrf_exempt
 def follow(request):
 
@@ -42,6 +81,7 @@ def follow(request):
 
     return JsonResponse(response)
 
+@login_required
 @csrf_exempt
 def unfollow(request):
 
@@ -52,12 +92,9 @@ def unfollow(request):
 
     response = {}
 
-    try:
-      unfollow = Follow.objects.get_following(request.user, blog)
-      unfollow.delete()
-      response['username'] = username
-    except:
-      response['error'] = 'no following object existed'
+    unfollow = Follow.objects.follow_filter(request.user, blog)
+    unfollow.delete()
+    response['username'] = username
 
     return JsonResponse(response)
 
@@ -68,11 +105,10 @@ def get_more_posts(request):
   response = {}
 
   appended_posts = Post.objects.render_posts(
-    posts, 'post.html'
+    posts, 'post.html', blog_edit=True
   )
 
   response['html'] = appended_posts
-
   return JsonResponse(response)
 
 

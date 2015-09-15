@@ -5,7 +5,7 @@
 	<div id="wrapper" class="display-none">
 		{% include "header.html" %}
 		<div id="dashboard-posts-wrapper">
-			{% for post, tags in latest_posts %}
+			{% for post, tags, like in latest_posts %}
 				{% include 'post.html' %}
 			{% endfor %}
 		</div>
