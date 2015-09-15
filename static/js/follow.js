@@ -1,6 +1,6 @@
 function follow(username) {
 	$.ajax({
-		url: '/blog/follow',
+		url: '/following/follow',
 		type: 'POST',
 		data: {
 			'username': username
@@ -10,7 +10,7 @@ function follow(username) {
 
 function unfollow(username) {
 	$.ajax({
-		url: '/blog/unfollow',
+		url: '/following/unfollow',
 		type: 'POST',
 		data: {
 			'username': username

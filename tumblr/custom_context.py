@@ -1,6 +1,6 @@
 from apps.blog.forms import TextPostForm, PhotoPostForm
 from apps.search.forms import SearchForm
-from apps.blog.models import Blog, Follow, Post
+from apps.blog.models import Blog, Post
 from apps.sites.models import Site
 from apps.user_accounts.models import User
 

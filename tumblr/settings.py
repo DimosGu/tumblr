@@ -31,6 +31,8 @@ INSTALLED_APPS = (
     'apps.explore',
     'apps.sites',
     'apps.search',
+    'apps.following',
+    'apps.likes',
 )
 
 MIDDLEWARE_CLASSES = (

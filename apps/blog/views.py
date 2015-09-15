@@ -2,10 +2,11 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from .models import Blog, Post, Follow, Like
+from .models import Blog, Post
 from .forms import TextPostForm, PhotoPostForm
 from apps.user_accounts.models import User
 from apps.search.models import Tags
+from apps.following.models import Follow
 
 
 @login_required
@@ -21,44 +22,6 @@ def blog_edit(request, username):
   context['section'] = 'blog'
 
   return render(request, 'blog/blog_edit.html', context)
-
-@login_required
-@csrf_exempt
-def like(request):
-
-  if request.method == 'POST':
-    post_pk = request.POST['post_pk']
-    post = Post.objects.get_pk(post_pk)
-
-    response = {}
-
-    try:
-      like = Like.objects.check_like(request.user, post)
-      response['status'] = 'already liking'
-    except:
-      like = Like(user=request.user, post=post)
-      like.save()
-      response['status'] = 'now liking'
-
-
-    return JsonResponse(response)
-
-@login_required
-@csrf_exempt
-def unlike(request):
-
-  if request.method == 'POST':
-
-    post_pk = request.POST['post_pk']
-    post = Post.objects.get_pk(post_pk)
-
-    like = Like.objects.filter_like(request.user, post)
-    like.delete()
-
-    response = {}
-    response['status'] = 'no longer liking'
-
-    return JsonResponse(response)
 
 @login_required
 @csrf_exempt

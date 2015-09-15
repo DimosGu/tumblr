@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.http import HttpResponse, JsonResponse
 from apps.user_accounts.models import User
-from apps.blog.models import Blog, Post, Follow
+from apps.blog.models import Blog, Post
+from apps.following.models import Follow
 
 
 #site view is in no_user/views.py

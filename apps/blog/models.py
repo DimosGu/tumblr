@@ -6,27 +6,10 @@ from tumblr.base_model import BaseManager, BaseModel
 from apps.user_accounts.models import User
 
 
-class LikeManager(BaseManager):
-
-  def filter_like(self, user, post):
-    return self.filter(user=user, post=post)
-
-  def check_like(self, user, post):
-    return self.get(user=user, post=post)
-
 class BlogManager(BaseManager):
 
   def get_blog_user(self, user):
     return self.get(user=user)
-
-
-class FollowManager(BaseManager):
-
-  def follow_filter(self, user, blog):
-    return self.filter(user=user, blog=blog)
-
-  def get_following(self, user, blog):
-    return self.get(user=user, blog=blog)
 
 
 class PostManager(BaseManager):
@@ -38,6 +21,8 @@ class PostManager(BaseManager):
     return self.filter(blog=blog)
 
   def combine_post_attributes(self, latest_posts, user=False, follow=False, like=False):
+    from apps.following.models import Follow
+    from apps.likes.models import Like
     from apps.search.models import Tags
 
     context = {
@@ -101,6 +86,8 @@ class PostManager(BaseManager):
       return self.filter(blog=blog).order_by('-pub_date')[post_count:end_count]
 
   def render_posts(self, ordered_posts, template, user=False, explore_domain=False, mini=False, blog_edit=False):
+    from apps.following.models import Follow
+    from apps.likes.models import Like
     from apps.search.models import Tags
 
     post_html = []
@@ -192,6 +179,7 @@ class PostManager(BaseManager):
     return post_html
 
   def sort_following_posts(self, user, post_count):
+    from apps.following.models import Follow
 
     post_list = []
     end_count = post_count + 10
@@ -248,6 +236,7 @@ class PostManager(BaseManager):
 def upload_path(self, filename):
   return 'user_media/%s/%s' % (self.user.username, filename)
 
+
 class Blog(BaseModel):
 
   user = models.ForeignKey(User)
@@ -283,29 +272,3 @@ class Post(BaseModel):
       return 'File'
     else:
       return 'Untitled'
-
-
-class Follow(BaseModel):
-
-  user = models.ForeignKey(User)
-  blog = models.ForeignKey(Blog)
-  objects = FollowManager()
-
-  class Meta:
-    app_label = 'blog'
-
-  def __str__(self):
-    return self.blog.user.username
-
-
-class Like(BaseModel):
-
-  user = models.ForeignKey(User)
-  post = models.ForeignKey(Post)
-  objects = LikeManager()
-
-  class Meta:
-    app_label = 'blog'
-
-  def __str__(self):
-    return '%s --> %s' % (self.user, self.post.user)

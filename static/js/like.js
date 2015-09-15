@@ -1,6 +1,6 @@
 function like(post_pk) {
   $.ajax({
-    url: '/blog/like',
+    url: '/likes/like',
     type: 'POST',
     data: {
       'post_pk': post_pk
@@ -10,7 +10,7 @@ function like(post_pk) {
 
 function unlike(post_pk) {
   $.ajax({
-    url: '/blog/unlike',
+    url: '/likes/unlike',
     type: 'POST',
     data: {
       'post_pk': post_pk

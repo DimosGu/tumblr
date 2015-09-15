@@ -5,6 +5,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
 	url(r'^', include('apps.no_user.urls')),
+  url(r'^likes/', include('apps.likes.urls')),
+  url(r'^following/', include('apps.following.urls')),
   url(r'^search/', include('apps.search.urls')),
 	url(r'^sites/', include('apps.sites.urls')),
 	url(r'^blog/', include('apps.blog.urls')),
