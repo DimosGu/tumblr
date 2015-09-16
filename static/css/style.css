@@ -216,51 +216,70 @@ img {
         width: 240px; }
         #header-right #header-links #account #account-details ul {
           list-style: none; }
-        #header-right #header-links #account #account-details li {
-          overflow: auto; }
-          #header-right #header-links #account #account-details li strong {
-            color: #888;
-            cursor: default;
-            font-size: 11px;
-            font-weight: bold;
-            float: left;
-            margin: 7px 0 0 10px; }
-        #header-right #header-links #account #account-details a {
-          text-decoration: none; }
-      #header-right #header-links #account .li-header {
-        background: #F5F5F5;
-        border-radius: 3px 3px 0 0;
-        padding-bottom: 5px; }
-        #header-right #header-links #account .li-header a {
-          color: #7f7f7f;
-          float: right;
-          font-size: 12px;
-          margin: 6px 0 0 0;
-          padding-right: 20px; }
-      #header-right #header-links #account .blog-details {
-        margin: 15px 0 0 0;
-        width: 100%; }
-        #header-right #header-links #account .blog-details a {
-          display: block;
-          padding: 10px 0 0 15px;
-          height: 57px;
+          #header-right #header-links #account #account-details ul li {
+            overflow: auto; }
+            #header-right #header-links #account #account-details ul li strong {
+              color: #888;
+              cursor: default;
+              font-size: 11px;
+              font-weight: bold;
+              float: left;
+              margin: 7px 0 0 10px; }
+            #header-right #header-links #account #account-details ul li a {
+              text-decoration: none; }
+        #header-right #header-links #account #account-details .li-header {
+          background: #F5F5F5;
+          border-radius: 3px 3px 0 0;
+          padding-bottom: 7px; }
+          #header-right #header-links #account #account-details .li-header a {
+            color: #7f7f7f;
+            float: right;
+            font-size: 12px;
+            margin: 6px 0 0 0;
+            padding-right: 20px; }
+        #header-right #header-links #account #account-details .li-option {
           width: 100%; }
-        #header-right #header-links #account .blog-details a:hover {
-          background: #E6EFF7; }
-        #header-right #header-links #account .blog-details img {
-          float: left;
-          height: 37px;
-          width: 37px; }
-        #header-right #header-links #account .blog-details .blog-info {
-          float: left;
-          margin-left: 10px; }
-        #header-right #header-links #account .blog-details .username {
-          color: #3e5266;
-          font-size: 15px;
-          font-weight: 700; }
-        #header-right #header-links #account .blog-details .blog-title {
-          color: #7f7f7f;
-          font-size: 13px; }
+          #header-right #header-links #account #account-details .li-option a {
+            color: #3e5266;
+            display: block;
+            font-size: 15px;
+            height: 37px;
+            padding: 9px 0 0 10px;
+            width: 100%; }
+          #header-right #header-links #account #account-details .li-option a:hover {
+            background: #E6EFF7; }
+          #header-right #header-links #account #account-details .li-option img {
+            float: left;
+            margin: 1px 10px 0 0; }
+          #header-right #header-links #account #account-details .li-option span {
+            color: #7f7f7f;
+            font-size: 12px;
+            float: right;
+            margin: 2px 19px 0 0; }
+        #header-right #header-links #account #account-details .blog-details {
+          margin: 15px 0 0 0;
+          width: 100%; }
+          #header-right #header-links #account #account-details .blog-details a {
+            display: block;
+            padding: 10px 0 0 15px;
+            height: 57px;
+            width: 100%; }
+          #header-right #header-links #account #account-details .blog-details a:hover {
+            background: #E6EFF7; }
+          #header-right #header-links #account #account-details .blog-details img {
+            float: left;
+            height: 37px;
+            width: 37px; }
+          #header-right #header-links #account #account-details .blog-details .blog-info {
+            float: left;
+            margin-left: 10px; }
+          #header-right #header-links #account #account-details .blog-details .username {
+            color: #3e5266;
+            font-size: 15px;
+            font-weight: 700; }
+          #header-right #header-links #account #account-details .blog-details .blog-title {
+            color: #7f7f7f;
+            font-size: 13px; }
     #header-right #header-links #post {
       background: url("/static/images/post.png") no-repeat;
       height: 32px;

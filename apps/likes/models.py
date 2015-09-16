@@ -6,6 +6,9 @@ from apps.user_accounts.models import User
 
 class LikeManager(BaseManager):
 
+  def count_liked(self, user):
+    return self.filter(user=user).count()
+
   def filter_like(self, user, post):
     return self.filter(user=user, post=post)
 

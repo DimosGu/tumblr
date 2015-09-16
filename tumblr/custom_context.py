@@ -3,6 +3,7 @@ from apps.search.forms import SearchForm
 from apps.blog.models import Blog, Post
 from apps.sites.models import Site
 from apps.user_accounts.models import User
+from apps.likes.models import Like
 
 def blog(request):
 
@@ -54,3 +55,8 @@ def domain_url(request):
 		domain_url = url
 
 	return { 'domain_url': domain_url }
+
+def like_count(request):
+	like_count = Like.objects.count_liked(request.user)
+
+	return { 'like_count': like_count }

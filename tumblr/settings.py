@@ -66,6 +66,7 @@ TEMPLATES = [
                 'tumblr.custom_context.header_forms',
                 'tumblr.custom_context.site',
                 'tumblr.custom_context.domain_url',
+                'tumblr.custom_context.like_count',
             ],
         },
     },

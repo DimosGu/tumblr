@@ -126,75 +126,105 @@
 
 				ul {
 					list-style: none;
-				}
 
-				li {
-					overflow: auto;
+					li {
+						overflow: auto;
 
-					strong {
-						color: #888;
-						cursor: default;
-						font-size: 11px;
-						font-weight: bold;
-						float: left;
-						margin: 7px 0 0 10px;
+						strong {
+							color: #888;
+							cursor: default;
+							font-size: 11px;
+							font-weight: bold;
+							float: left;
+							margin: 7px 0 0 10px;
+						}
+
+						a {
+							text-decoration: none;
+						}
 					}
 				}
 
-				a {
-					text-decoration: none;
+
+				.li-header {
+					background: #F5F5F5;
+					border-radius: 3px 3px 0 0;
+					padding-bottom: 7px;
+
+					a {
+						color: #7f7f7f;
+						float: right;
+						font-size: 12px;
+						margin: 6px 0 0 0;
+						padding-right: 20px;
+					}
 				}
-			}
 
-			.li-header {
-				background: #F5F5F5;
-				border-radius: 3px 3px 0 0;
-				padding-bottom: 5px;
-
-				a {
-					color: #7f7f7f;
-					float: right;
-					font-size: 12px;
-					margin: 6px 0 0 0;
-					padding-right: 20px;
-				}
-			}
-
-			.blog-details {
-				margin: 15px 0 0 0;
-				width: 100%;
-
-				a {
-					display: block;
-					padding: 10px 0 0 15px;
-					height: 57px;
+				.li-option {
 					width: 100%;
+
+					a {
+						color: #3e5266;
+						display: block;
+						font-size: 15px;
+						height: 37px;
+						padding: 9px 0 0 10px;
+						width: 100%
+					}
+
+					a:hover {
+						background: #E6EFF7;
+					}
+
+					img {
+						float: left;
+						margin: 1px 10px 0 0;
+					}
+
+					span {
+						color: #7f7f7f;
+						font-size: 12px;
+						float: right;
+						margin: 2px 19px 0 0;
+					}
 				}
 
-				a:hover {
-					background: #E6EFF7;
-				}
+				.blog-details {
+					margin: 15px 0 0 0;
+					width: 100%;
 
-				img {
-					float: left;
-					height: 37px;
-					width: 37px;
-				}
+					a {
+						display: block;
+						padding: 10px 0 0 15px;
+						height: 57px;
+						width: 100%;
+					}
 
-				.blog-info {
-					float: left;
-					margin-left: 10px;
-				}
+					a:hover {
+						background: #E6EFF7;
+					}
 
-				.username {
-					color: #3e5266;
-					font-size: 15px;
-					font-weight: 700;
-				}
+					img {
+						float: left;
+						height: 37px;
+						width: 37px;
+					}
 
-				.blog-title {
-					color: #7f7f7f;
-					font-size: 13px;
+					.blog-info {
+						float: left;
+						margin-left: 10px;
+					}
+
+					.username {
+						color: #3e5266;
+						font-size: 15px;
+						font-weight: 700;
+					}
+
+					.blog-title {
+						color: #7f7f7f;
+						font-size: 13px;
+					}
 				}
 			}
 		}

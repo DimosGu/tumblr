@@ -16,7 +16,16 @@
 					<a id="account-a" href=""></a>
 					<div id="account-details" class="account-fade account-hidden display-none">
 						<ul>
-							<li class="li-header"><strong>ACCOUNT</strong><a href="{% url 'log_out' %}">Log out</a></li>
+							<li class="li-header">
+								<strong>ACCOUNT</strong>
+								<a href="{% url 'log_out' %}">Log out</a>
+							</li>
+							<li class="li-option li-likes">
+								<a href="{% url 'likes' %}">
+									<img src="{% static 'images/menu_likes.png' %}"/>
+									Likes<span>{{ like_count }}</span>
+								</a>
+							</li>
 						</ul>
 						<ul>
 							<li class="li-header"><strong>BLOGS</strong></li>
