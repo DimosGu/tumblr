@@ -3,17 +3,6 @@ var get_post_verify, visible_posts;
 visible_posts = 10;
 get_post_verify = true;
 
-$(window).load(function() {
-
-  setTimeout (function() {
-    if ($(document).height() === $(window).height()) {
-      get_ten_posts(visible_posts);
-      get_post_verify = false;
-      visible_posts += 10;
-    }
-  }, 1000)
-})
-
 function get_ten_posts(post_count) {
   $.ajax({
     url: "/dashboard/get_ten_posts",

@@ -3,18 +3,6 @@ var visible_posts, get_post_verify, post_edit_id;
 visible_posts = 10;
 get_post_verify = true;
 
-$(window).load(function() {
-	var post_img = document.querySelectorAll('.post-img');
-
-	setTimeout (function() {
-		if ($(document).height() === $(window).height()) {
-			get_ten_posts(visible_posts);
-			get_post_verify = false;
-			visible_posts += 10;
-		}
-	}, 1000)
-})
-
 function get_ten_posts(post_count) {
 	$.ajax({
 		url: "/blog/get_more_posts",

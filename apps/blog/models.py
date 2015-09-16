@@ -125,7 +125,7 @@ class PostManager(BaseManager):
             'domain_url': domain,
             'section': 'explore',
             'post': post,
-            'following': follow,
+            'follow': follow,
             'tags': tags,
             'like': like,
           }

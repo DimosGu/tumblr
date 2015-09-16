@@ -18,14 +18,6 @@ $(window).load(function() {
     $('#wrapper').removeClass('invisible');
     $post_wrapper.removeClass('invisible');
   }, 1);
-
-  setTimeout (function() {
-    if ($(document).height() === $(window).height()) {
-      get_post_verify = false;
-      visible_posts += 10;
-      get_ten_posts(visible_posts);
-    }
-  }, 1000)
 });
 
 function get_ten_posts(post_count) {
