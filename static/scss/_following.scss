@@ -1,0 +1,61 @@
+#following-wrapper {
+  padding-top: 92px;
+  width:  100%
+}
+
+#following-container {
+  background: #fff;
+  border-radius: 20px;
+  width: 900px;
+  margin: 0 auto;
+  padding: 30px 0 30px 30px;
+}
+
+.followed-blog {
+  height: 44px;
+  width: 600px;
+  overflow: auto;
+
+  img {
+    float: left;
+    height: 40px;
+    width: 40px;
+  }
+
+  .name-link {
+    color: #444;
+    font-size: 14px;
+    font-weight: bold;
+    float: left;
+    text-decoration: none;
+    margin: 4px 0 0 7px;
+  }
+
+  .follow-unfollow {
+    float: right;
+    margin: 7px 0 0 0;
+
+    div {
+      border-radius: 2px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: bold;
+      height: 30px;
+      width: 87px;
+      padding-top: 7px;
+      text-align: center;
+    }
+
+    .follow {
+      background: #529ecc;
+      color: #fff;
+    }
+
+    .unfollow {
+      color: #666;
+      border: 1px solid #bfbfbf;
+    }
+
+  }
+
+}

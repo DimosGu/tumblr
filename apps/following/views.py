@@ -10,6 +10,10 @@ from apps.blog.models import Blog, Post
 @login_required
 def following(request):
   context = {}
+
+  following = Follow.objects.get_all_following(request.user)
+
+  context['following'] = following
   context['section'] = 'following'
   context['page_title'] = 'Following | Tumblr'
 

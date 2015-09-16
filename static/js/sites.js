@@ -24,16 +24,3 @@ function get_ten_posts(post_count, site_user) {
 		},
 	});
 };
-
-$follow = $('.follow');
-$unfollow = $('.unfollow');
-
-$follow.on('click', function() {
-	$(this).addClass('display-none');
-	$unfollow.removeClass('display-none');
-});
-
-$unfollow.on('click', function() {
-	$(this).addClass('display-none');
-	$follow.removeClass('display-none');
-});

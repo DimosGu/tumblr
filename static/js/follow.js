@@ -9,6 +9,13 @@ function follow(username) {
 		},
 
 		success: function() {
+			var $following, follow_count;
+
+			$following = $('#li-following').find('span');
+			follow_count = parseInt($following.html());
+			follow_count += 1;
+
+			$following.html(follow_count);
 			follow_click_verify = true;
 		}
 	});
@@ -23,10 +30,20 @@ function unfollow(username) {
 		},
 
 		success: function() {
+			var $following, follow_count;
+
+			$following = $('#li-following').find('span');
+			follow_count = parseInt($following.html());
+			follow_count -= 1;
+
+			$following.html(follow_count);
 			follow_click_verify = true;
 		}
 	});
 };
+
+
+
 
 $('body').on('click', '.follow', function (e) {
 	var username = $(this).parent().attr('data-username');
@@ -36,6 +53,9 @@ $('body').on('click', '.follow', function (e) {
 	if (follow_click_verify) {
 		follow_click_verify = false;
 		follow(username);
+
+		$(this).addClass('display-none');
+		$(this).siblings('.unfollow').removeClass('display-none');
 
 		if ((typeof explore_body !== 'undefined' && explore_body) ||
 			(typeof likes_body !== 'undefined' && likes_body)) {
@@ -63,6 +83,9 @@ $('body').on('click', '.unfollow', function (e) {
 	if (follow_click_verify) {
 		follow_click_verify = false;
 		unfollow(username);
+
+		$(this).addClass('display-none');
+		$(this).siblings('.follow').removeClass('display-none');
 
 		if (typeof explore_body !== 'undefined' && explore_body) {
 			var $post_wrapper = $('.post-wrapper');

@@ -16,16 +16,16 @@
 	width: 1610px;
 	margin: 8px auto 0 auto;
 	padding: 0 0 0 0;
+}
 
-	#sort-posts {
-		padding-left: 13px;
+#sort-posts {
+	padding-left: 13px;
 
-		a {
-			color: rgba(255,255,255,.5);
-			font-size: 15px;
-			margin: 0 15px 0 0;
-			text-decoration: none;
-		}
+	a {
+		color: rgba(255,255,255,.5);
+		font-size: 15px;
+		margin: 0 15px 0 0;
+		text-decoration: none;
 	}
 }
 
@@ -80,67 +80,64 @@
 		border-radius: 3px;
 		margin: 0 0 20px 0;
 		width: 300px;
+	}
 
-		.post-header {
-			height: 60px;
-			padding: 14px 0 0 13px;
-			overflow: auto;
+	.post-header {
+		height: 60px;
+		padding: 14px 0 0 13px;
+		overflow: auto;
+	}
 
-			.blog-link {
-				float: left;
+	.blog-link {
+		float: left;
 
-				img {
-					height: 30px;
-					width: 30px;
-				}
-			}
-
-			.user-link {
-				cursor: pointer;
-				float: left;
-				margin: 7px 0 0 10px;
-				max-width: 160px;
-				overflow: hidden;
-			}
-
-			.follow-link {
-				cursor: pointer;
-				font-size: 13px;
-				font-weight: bold;
-				float: left;
-				height: 15px;
-				width: 55px;
-				margin: 7px 0 0 10px;
-				text-decoration: none;
-
-				.follow {
-					color: #529ecc;
-				}
-
-				.unfollow {
-					color: #c4c4c4;
-				}
-			}
+		img {
+			height: 30px;
+			width: 30px;
 		}
+	}
 
-		.post {
+	.user-link {
+		cursor: pointer;
+		float: left;
+		margin: 7px 0 0 10px;
+		max-width: 160px;
+		overflow: hidden;
+	}
 
-			.words-wrapper {
-				padding: 0 13px 0 13px;
-				width: 100%;
+	.follow-link {
+		cursor: pointer;
+		font-size: 13px;
+		font-weight: bold;
+		float: left;
+		height: 15px;
+		width: 55px;
+		margin: 8px 0 0 10px;
+		text-decoration: none;
+	}
 
-				.post-title {
-					line-height: 50px;
-				}
+	.follow {
+		color: #529ecc;
+	}
 
-				.post-text {
-					margin: 15px 0 0 0;
-				}
+	.unfollow {
+		color: #c4c4c4;
+	}
 
-				.post-tags {
-					margin: 20px 0 0 1px;
-				}
-			}
-		}
+	.words-wrapper {
+		padding: 0 13px 0 13px;
+		width: 100%;
+	}
+
+	.post-title {
+		line-height: 50px;
+	}
+
+	.post-text {
+		margin: 15px 0 0 0;
+	}
+
+	.post-tags {
+		margin: 20px 0 0 1px;
 	}
 }

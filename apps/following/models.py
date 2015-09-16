@@ -12,6 +12,12 @@ class FollowManager(BaseManager):
   def get_following(self, user, blog):
     return self.get(user=user, blog=blog)
 
+  def count_following(self, user):
+    return self.filter(user=user).count()
+
+  def get_all_following(self, user):
+    return self.filter(user=user).order_by('-pub_date')
+
 
 class Follow(BaseModel):
 

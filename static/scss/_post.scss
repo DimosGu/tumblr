@@ -14,34 +14,35 @@
   img {
     width: 100%
   }
+}
 
-  .words-wrapper {
-    color: #444;
-    padding: 0 10px 0 10px;
-    word-wrap: break-word;
+.words-wrapper {
+  color: #444;
+  padding: 0 10px 0 10px;
+  word-wrap: break-word;
+}
 
-    .post-title {
-      font-size: 36px;
-    }
+.post-title {
+  font-size: 36px;
+}
 
-    .post-text {
-      font-size: 14px;
-    }
+.post-text {
+  font-size: 14px;
+}
 
-    .post-tags {
-      font-size: 13px;
-      display: block;
-      white-space: nowrap;
-      overflow: hidden;
+.post-tags {
+  font-size: 13px;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
 
-      a {
-        color: #a1a1a1;
-        text-decoration: none;
-        margin-right: 10px;
-      }
-    }
+  a {
+    color: #a1a1a1;
+    text-decoration: none;
+    margin-right: 10px;
   }
 }
+
 .post-footer {
   height: 45px;
 

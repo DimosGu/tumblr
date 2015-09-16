@@ -1,18 +1,23 @@
 $(window).load(function() {
 
-  setTimeout (function() {
-    if ($(document).height() === $(window).height()) {
-      get_ten_posts(visible_posts);
-      get_post_verify = false;
-      visible_posts += 10;
-    }
-  }, 1000)
+  if (typeof following_body === 'undefined' || following_body === null) {
+    setTimeout (function() {
+      if ($(document).height() === $(window).height()) {
+        get_ten_posts(visible_posts);
+        get_post_verify = false;
+        visible_posts += 10;
+      }
+    }, 1000)
+  }
 })
 
 $(window).on('scroll', function() {
-  if ($(window).scrollTop() + $(window).height() > $(document).height() / 1.25) {
+  if ((typeof following_body === 'undefined' || following_body === null) &&
+    $(window).scrollTop() + $(window).height() > $(document).height() / 1.25) {
+
     if (get_post_verify) {
       get_post_verify = false;
+
       if (typeof site_username !== 'undefined') {
         get_ten_posts(visible_posts, site_username);
       } else {

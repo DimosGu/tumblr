@@ -20,7 +20,7 @@
 					<a class="follow-link" data-username="{{ post.user.username }}" {% if user.is_anonymous %}href="{% url 'register' %}"{% endif %}>
 						{% if follow == "True" %}
 							<div title="Follow" class="follow display-none">Follow</div>
-							<div title="Unfollow" class="unfollow">Unfollow</div>
+							<div title="Unfollow" class="unfollow display-none">Unfollow</div>
 						{% else %}
 							<div title="Follow" class="follow">Follow</div>
 							<div title="Unfollow" class="unfollow display-none">Unfollow</div>

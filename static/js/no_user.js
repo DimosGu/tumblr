@@ -1,12 +1,6 @@
-var search_img, wrapper, center, header, email_input, account_form,
+var wrapper, center, header, email_input, account_form,
 		form_errors, li_error,
-		register_body, login_body, h_logo, sign_up_button, login_button,
-		search_form, search_input;
-
-search_img = new Image();
-search_img.onload = function() {
-}
-search_img.src = '/static/images/white_search.png';
+		register_body, login_body, h_logo, sign_up_button, login_button;
 
 wrapper = document.getElementById("wrapper");
 header = document.getElementById("no-user-header");
@@ -59,23 +53,4 @@ login_button = document.getElementById("login");
 
 h_logo.onclick = function() {
 	return false;
-}
-
-search_form = document.getElementById("search");
-search_input = document.getElementById("search-input");
-
-search_input.onfocus = function() {
-	search_form.className = "input-focus";
-
-	if (search_input.value) {
-		search_input.className = "visible";
-	}
-}
-
-search_input.onblur = function() {
-	search_form.className = "input-nofocus";
-
-	if (search_input.value) {
-		search_input.className = "fade";
-	}
 }

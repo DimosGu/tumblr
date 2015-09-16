@@ -6,48 +6,47 @@
 		background: #ffffff;
 		border-radius: 3px;
 		margin: 0 auto 20px auto;
+	}
 
-		.post-header {
-			height: 45px;
-			padding: 0 0 0 20px;
-			position: relative;
+	.post-header {
+		height: 45px;
+		padding: 0 0 0 20px;
+		position: relative;
+	}
 
-			.blog-link {
-				background: #ffffff;
-				border-radius: 2px;
-				height: 64px;
-				width: 64px;
-				position: absolute;
-				left: -85px;
-				top: 0;
+	.blog-link {
+		background: #ffffff;
+		border-radius: 2px;
+		height: 64px;
+		width: 64px;
+		position: absolute;
+		left: -85px;
+		top: 0;
 
-				img {
-					height: 62px;
-					width: 62px;
-					margin: 1px 0 0 1px;
-				}
-			}
-
-			.user-link {
-				line-height: 16px;
-				margin: 13px 0 0 0;
-				position: absolute;
-			}
-		}
-
-		.post-title {
-			line-height: 47px;
-			margin: 0 0 0 7px;
-		}
-
-		.post-text {
-			margin: 0 0 0 8px;
-			padding-top: 10px;
-		}
-
-		.post-tags {
-			margin: 18px 0 0 8px;
+		img {
+			height: 62px;
+			width: 62px;
+			margin: 1px 0 0 1px;
 		}
 	}
-}
 
+	.user-link {
+		line-height: 16px;
+		margin: 13px 0 0 0;
+		position: absolute;
+	}
+
+	.post-title {
+		line-height: 47px;
+		margin: 0 0 0 7px;
+	}
+
+	.post-text {
+		margin: 0 0 0 8px;
+		padding-top: 10px;
+	}
+
+	.post-tags {
+		margin: 18px 0 0 8px;
+	}
+}

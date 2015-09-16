@@ -10,60 +10,60 @@
     position: relative;
     height: 42px;
     width: 100%;
+  }
 
-    .blog-link {
-      background: #ffffff;
-      border-radius: 2px;
-      left: -85px;
-      top: 0;
-      position: absolute;
-      height: 64px;
-      width: 64px;
+  .blog-link {
+    background: #ffffff;
+    border-radius: 2px;
+    left: -85px;
+    top: 0;
+    position: absolute;
+    height: 64px;
+    width: 64px;
 
-      img {
-        margin: 1px 0 0 1px;
-        height: 62px;
-        width: 62px;
-      }
+    img {
+      margin: 1px 0 0 1px;
+      height: 62px;
+      width: 62px;
     }
+  }
 
-    .user-link {
-      font-size: 13px;
-    }
+  .user-link {
+    font-size: 13px;
+  }
 
-    .follow {
-      background: #529ecc;
-      border-radius: 2px;
-      color: #fff;
-      cursor: pointer;
-      font-size: 13px;
-      font-weight: bold;
-      height: 23px;
-      padding: 3px 0 0 0;
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      width: 57px;
-      text-align: center;
-    }
+  .follow {
+    background: #529ecc;
+    border-radius: 2px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    height: 23px;
+    padding: 3px 0 0 0;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    width: 57px;
+    text-align: center;
   }
 
   .post {
     background: #ffffff;
     width: 540px;
+  }
 
-    .post-title {
-      margin: 0 0 0 7px;
-    }
+  .post-title {
+    margin: 0 0 0 7px;
+  }
 
-    .post-text {
-      margin: 0 0 0 8px;
-      padding-top: 10px;
-    }
+  .post-text {
+    margin: 0 0 0 8px;
+    padding-top: 10px;
+  }
 
-    .post-tags {
-      margin: 20px 0 0 8px;
-    }
+  .post-tags {
+    margin: 20px 0 0 8px;
   }
 
   .post-footer {

@@ -4,6 +4,7 @@ from apps.blog.models import Blog, Post
 from apps.sites.models import Site
 from apps.user_accounts.models import User
 from apps.likes.models import Like
+from apps.following.models import Follow
 
 def blog(request):
 
@@ -57,6 +58,19 @@ def domain_url(request):
 	return { 'domain_url': domain_url }
 
 def like_count(request):
-	like_count = Like.objects.count_liked(request.user)
+
+	if request.user.is_authenticated():
+		like_count = Like.objects.count_liked(request.user)
+	else:
+		like_count = None
 
 	return { 'like_count': like_count }
+
+def following_count(request):
+
+	if request.user.is_authenticated():
+		following_count = Follow.objects.count_following(request.user)
+	else:
+		following_count = None
+
+	return { 'following_count': following_count }

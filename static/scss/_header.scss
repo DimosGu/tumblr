@@ -53,186 +53,195 @@
 
 #header-right {
 	float: right;
+}
 
-	#header-links {
-		margin: 11px 20px 0 0;
+#header-links {
+	margin: 11px 20px 0 0;
+	overflow: visible;
+	height: 100%;
+	width: 100%;
+
+	#dashboard,
+	#explore,
+	#messages,
+	#activity,
+	#account-a,
+	#post {
+		color: transparent;
+		display: block;
+		float: left;
+		margin-left: 32px;
+	}
+
+	#dashboard {
+		background: url('/static/images/home.png') no-repeat;
+		margin-top: 5px;
+		height: 20px;
+		width: 20px;
+	}
+
+	#explore {
+		background: url('/static/images/explore.png') no-repeat;
+		margin-top: 4px;
+		height: 22px;
+		width: 22px;
+	}
+
+	#messages {
+		background: url('/static/images/messages.png') no-repeat;
+		margin-top: 7px;
+		height: 17px;
+		width: 23px;
+	}
+
+	#activity {
+		background: url('/static/images/activity.png') no-repeat;
+		margin-top: 5px;
+		height: 20px;
+		width: 14px;
+	}
+
+	#account {
+		float: left;
+		margin: 0 5px 0 30px;
 		overflow: visible;
-		height: 100%;
+		height: 19px;
+		width: 15px;
+	}
+
+	#account-a {
+		background: url('/static/images/account.png') no-repeat;
+		cursor: pointer;
+		float: none;
+		margin: 6px 0 0 0;
+		height: 19px;
+		width: 15px;
+	}
+
+	#post {
+		background: url('/static/images/post.png') no-repeat;
+		cursor: pointer;
+		height: 32px;
+		width: 45px;
+	}
+}
+
+
+
+#account-details {
+	background: #f5f5f5;
+	border-radius: 3px;
+	margin-left: -132px;
+	position: absolute;
+	height: 381px;
+	width: 240px;
+
+	ul {
+		list-style: none;
+
+		li {
+			overflow: auto;
+
+			strong {
+				color: #888;
+				cursor: default;
+				font-size: 11px;
+				font-weight: bold;
+				float: left;
+				margin: 7px 0 0 10px;
+			}
+
+			a {
+				text-decoration: none;
+			}
+		}
+	}
+}
+
+.li-header {
+	background: #F5F5F5;
+	border-radius: 3px 3px 0 0;
+	padding-bottom: 7px;
+
+	a {
+		color: #7f7f7f;
+		float: right;
+		font-size: 12px;
+		margin: 6px 0 0 0;
+		padding-right: 20px;
+	}
+}
+
+#li-following {
+
+	img {
+		margin-left: 2px;
+	}
+}
+
+.li-option {
+	width: 100%;
+
+	a {
+		color: #3e5266;
+		display: block;
+		font-size: 15px;
+		height: 37px;
+		padding: 9px 0 0 10px;
+		width: 100%
+	}
+
+	a:hover {
+		background: #E6EFF7;
+	}
+
+	img {
+		float: left;
+		margin: 1px 10px 0 0;
+	}
+
+	span {
+		color: #7f7f7f;
+		font-size: 12px;
+		float: right;
+		margin: 2px 19px 0 0;
+	}
+}
+
+.blog-details {
+	margin: 15px 0 0 0;
+	width: 100%;
+
+	a {
+		display: block;
+		padding: 10px 0 0 15px;
+		height: 57px;
 		width: 100%;
+	}
 
-		#dashboard,
-		#explore,
-		#messages,
-		#activity,
-		#account-a,
-		#post {
-			background: #000000;
-			color: transparent;
-			display: block;
-			float: left;
-			margin-left: 32px;
-		}
+	a:hover {
+		background: #E6EFF7;
+	}
 
-		#dashboard {
-			background: url('/static/images/home.png') no-repeat;
-			margin-top: 5px;
-			height: 20px;
-			width: 20px;
-		}
+	img {
+		float: left;
+		height: 37px;
+		width: 37px;
+	}
 
-		#explore {
-			background: url('/static/images/explore.png') no-repeat;
-			margin-top: 4px;
-			height: 22px;
-			width: 22px;
-		}
+	.blog-info {
+		float: left;
+		margin-left: 10px;
+	}
 
-		#messages {
-			background: url('/static/images/messages.png') no-repeat;
-			margin-top: 7px;
-			height: 17px;
-			width: 23px;
-		}
+	.username {
+		color: #3e5266;
+		font-size: 15px;
+		font-weight: 700;
+	}
 
-		#activity {
-			background: url('/static/images/activity.png') no-repeat;
-			margin-top: 5px;
-			height: 20px;
-			width: 14px;
-		}
-
-		#account {
-			float: left;
-			margin: 0 5px 0 30px;
-			overflow: visible;
-			height: 19px;
-			width: 15px;
-
-			#account-a {
-				background: url('/static/images/account.png') no-repeat;
-				float: none;
-				margin: 6px 0 0 0;
-				height: 19px;
-				width: 15px;
-			}
-
-			#account-details {
-				background: #f5f5f5;
-				border-radius: 3px;
-				margin-left: -132px;
-				position: absolute;
-				height: 381px;
-				width: 240px;
-
-				ul {
-					list-style: none;
-
-					li {
-						overflow: auto;
-
-						strong {
-							color: #888;
-							cursor: default;
-							font-size: 11px;
-							font-weight: bold;
-							float: left;
-							margin: 7px 0 0 10px;
-						}
-
-						a {
-							text-decoration: none;
-						}
-					}
-				}
-
-
-				.li-header {
-					background: #F5F5F5;
-					border-radius: 3px 3px 0 0;
-					padding-bottom: 7px;
-
-					a {
-						color: #7f7f7f;
-						float: right;
-						font-size: 12px;
-						margin: 6px 0 0 0;
-						padding-right: 20px;
-					}
-				}
-
-				.li-option {
-					width: 100%;
-
-					a {
-						color: #3e5266;
-						display: block;
-						font-size: 15px;
-						height: 37px;
-						padding: 9px 0 0 10px;
-						width: 100%
-					}
-
-					a:hover {
-						background: #E6EFF7;
-					}
-
-					img {
-						float: left;
-						margin: 1px 10px 0 0;
-					}
-
-					span {
-						color: #7f7f7f;
-						font-size: 12px;
-						float: right;
-						margin: 2px 19px 0 0;
-					}
-				}
-
-				.blog-details {
-					margin: 15px 0 0 0;
-					width: 100%;
-
-					a {
-						display: block;
-						padding: 10px 0 0 15px;
-						height: 57px;
-						width: 100%;
-					}
-
-					a:hover {
-						background: #E6EFF7;
-					}
-
-					img {
-						float: left;
-						height: 37px;
-						width: 37px;
-					}
-
-					.blog-info {
-						float: left;
-						margin-left: 10px;
-					}
-
-					.username {
-						color: #3e5266;
-						font-size: 15px;
-						font-weight: 700;
-					}
-
-					.blog-title {
-						color: #7f7f7f;
-						font-size: 13px;
-					}
-				}
-			}
-		}
-
-		#post {
-			background: url('/static/images/post.png') no-repeat;
-			height: 32px;
-			width: 45px;
-		}
+	.blog-title {
+		color: #7f7f7f;
+		font-size: 13px;
 	}
 }

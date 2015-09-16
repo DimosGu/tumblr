@@ -102,16 +102,6 @@ $mini_site_wrapper.on('click', function (e) {
 	}
 });
 
-$('body').on('click', '#mini-follow', function() {
-	$(this).addClass('display-none');
-	$('#mini-unfollow').removeClass('display-none');
-});
-
-$('body').on('click', '#mini-unfollow', function() {
-	$(this).addClass('display-none');
-	$('#mini-follow').removeClass('display-none');
-});
-
 $('body').on('mouseenter', '#mini-site-link', function() {
 	$(this).children('span').removeClass('invisible').addClass('visible');
 });

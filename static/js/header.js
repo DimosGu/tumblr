@@ -1,16 +1,10 @@
-var search_img, search_form, search_input,
-    dashboard_body, explore_body, messages_body, likes_body, dashboard, explore, messages,
+var dashboard_body, explore_body, messages_body, likes_body, dashboard, explore, messages,
     $wrappepr, activity, account_a, account_details,
     post, post_options, post_type, post_types, post_titles, title,
     text, photo, quote, link, chat, audio, video, post_type_wrapper,
     post_text, post_photo, post_quote, post_link, post_chat, post_audio, post_video,
     close_post, post_selection,
     img_hover_timer, $photo_content, file_field;
-
-search_img = new Image();
-search_img.onload = function() {
-}
-search_img.src = '/static/images/white_search.png';
 
 dashboard = document.getElementById("dashboard");
 explore = document.getElementById("explore");
@@ -21,6 +15,7 @@ explore_body = document.getElementById("explore-body");
 messages_body = document.getElementById("messages-body");
 blog_body = document.getElementById("blog-body");
 likes_body = document.getElementById('likes-body');
+following_body = document.getElementById('following-body');
 
 $wrapper = $('#wrapper');
 post_edit_id = null;
@@ -33,30 +28,13 @@ window.onload = function() {
     explore.style.backgroundImage = "url('/static/images/explore_active.png')";
   } else if (messages_body) {
     messages.style.backgroundImage = "url('/static/images/messages_active.png)";
-  } else if (blog_body || likes_body) {
+  } else if (blog_body || likes_body || following_body) {
     account_a.style.backgroundImage = "url('/static/images/account_active.png')";
   }
 
   setTimeout (function() {
     $wrapper.removeClass('display-none');
   }, 1);
-}
-
-search_form = document.getElementById("search");
-search_input = document.getElementById("search-input");
-
-search_input.onfocus = function() {
-  search_form.className = "input-focus";
-  if (search_input.value) {
-    search_input.className = "visible";
-  }
-}
-
-search_input.onblur = function() {
-  search_form.className = "input-nofocus";
-  if (search_input.value) {
-    search_input.className = "fade";
-  }
 }
 
 activity = document.getElementById("activity");

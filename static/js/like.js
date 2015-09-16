@@ -11,9 +11,9 @@ function like(post_pk) {
     success: function() {
       var $likes, like_count, like_increase;
 
-      $likes = $('.li-likes').find('span');
+      $likes = $('#li-likes').find('span');
       like_count = parseInt($likes.html());
-      like_increase = like_count += 1;
+      like_count += 1;
 
       $likes.html(like_count);
       like_click_verify = true;
@@ -32,9 +32,9 @@ function unlike(post_pk) {
     success: function() {
       var $likes, like_count, like_increase;
 
-      $likes = $('.li-likes').find('span');
+      $likes = $('#li-likes').find('span');
       like_count = parseInt($likes.html());
-      like_increase = like_count -= 1;
+      like_count -= 1;
 
       $likes.html(like_count);
       like_click_verify = true;
