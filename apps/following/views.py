@@ -9,9 +9,12 @@ from apps.blog.models import Blog, Post
 
 @login_required
 def following(request):
-  response = {}
+  context = {}
+  context['section'] = 'following'
+  context['page_title'] = 'Following | Tumblr'
 
-  return JsonResponse(response)
+  return render(request, 'following.html', context)
+
 
 @login_required
 @csrf_exempt
@@ -33,6 +36,7 @@ def follow(request):
       response['username'] = username
 
     return JsonResponse(response)
+
 
 @login_required
 @csrf_exempt

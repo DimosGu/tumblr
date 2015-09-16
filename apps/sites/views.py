@@ -45,7 +45,7 @@ def mini_site(request):
     }
   ))
 
-  post_loop = Post.objects.render_posts(latest_posts, 'post.html', user=request.user, mini=True)
+  post_loop = Post.objects.render_posts(latest_posts, 'post.html', user=request.user, section='mini')
   response['post_html'] = post_loop
 
   return JsonResponse(response)
@@ -59,11 +59,11 @@ def get_ten_posts(request):
 
   try:
     mini = request.GET['mini']
-    mini = True
+    mini = 'mini'
   except:
     mini = False
 
-  post_loop = Post.objects.render_posts(posts, 'post.html', user=request.user, mini=mini)
+  post_loop = Post.objects.render_posts(posts, 'post.html', user=request.user, section=mini)
 
   response['html'] = post_loop
 

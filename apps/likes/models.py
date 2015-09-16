@@ -12,6 +12,10 @@ class LikeManager(BaseManager):
   def check_like(self, user, post):
     return self.get(user=user, post=post)
 
+  def filter_order_all_liked(self, user, post_count):
+    end_count = post_count + 10
+    return self.filter(user=user).order_by('-pub_date')[post_count:end_count]
+
 
 class Like(BaseModel):
 

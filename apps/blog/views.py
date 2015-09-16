@@ -23,43 +23,6 @@ def blog_edit(request, username):
 
   return render(request, 'blog/blog_edit.html', context)
 
-@login_required
-@csrf_exempt
-def follow(request):
-
-  if request.method == 'POST':
-    username = request.POST.get('username')
-    user_to_follow = User.objects.get_by_username(username)
-    blog = Blog.objects.get_blog_user(user_to_follow)
-
-    response = {}
-
-    try:
-      follow = Follow.objects.get_following(request.user, blog)
-      response['error'] = 'already following'
-    except:
-      follow = Follow(user=request.user, blog=blog)
-      follow.save()
-      response['username'] = username
-
-    return JsonResponse(response)
-
-@login_required
-@csrf_exempt
-def unfollow(request):
-
-  if request.method == 'POST':
-    username = request.POST.get('username')
-    user_to_unfollow = User.objects.get_by_username(username)
-    blog = Blog.objects.get_blog_user(user_to_unfollow)
-
-    response = {}
-
-    unfollow = Follow.objects.follow_filter(request.user, blog)
-    unfollow.delete()
-    response['username'] = username
-
-    return JsonResponse(response)
 
 def get_more_posts(request):
   post_count = int(request.GET.get('post_count'))
@@ -68,7 +31,7 @@ def get_more_posts(request):
   response = {}
 
   appended_posts = Post.objects.render_posts(
-    posts, 'post.html', blog_edit=True
+    posts, 'post.html', section='blog_edit'
   )
 
   response['html'] = appended_posts
@@ -81,6 +44,7 @@ def delete_post(request):
     post = Post.objects.get_pk(request.POST['post_id']).delete()
 
     return HttpResponse('delete success')
+
 
 def edit_post(request):
 
@@ -129,6 +93,7 @@ def edit_post(request):
 
     return JsonResponse(json_data)
 
+
 def post_text(request):
 
   if request.method == 'POST':
@@ -136,6 +101,7 @@ def post_text(request):
     response = Post.objects.render_new_post(request.user, text_form)
 
     return JsonResponse(response)
+
 
 def post_photo(request):
 

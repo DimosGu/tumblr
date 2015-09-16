@@ -33,7 +33,7 @@ def get_ten_posts(request):
   response = {}
 
   appended_posts = Post.objects.render_posts(
-    latest_posts, 'post.html', explore_domain=url_domain, user=request.user
+    latest_posts, 'post.html', section='explore', domain=url_domain, user=request.user
   )
 
   response['html'] = appended_posts

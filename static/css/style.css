@@ -32,24 +32,6 @@ html {
 img {
   box-sizing: content-box; }
 
-#full-screen-img {
-  left: 0;
-  top: 0;
-  background: rgba(17, 17, 17, 0.92157);
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  z-index: 100; }
-  #full-screen-img img {
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    position: fixed;
-    margin: auto auto;
-    max-height: 100%;
-    max-width: 70%; }
-
 .overflow-hidden,
 .overflow-hidden2 {
   overflow: hidden; }
@@ -1388,6 +1370,62 @@ img {
         color: #444;
         opacity: .6; }
 
+#likes-posts-wrapper {
+  margin: 0 auto 0 auto;
+  padding: 93px 0 0 0;
+  width: 540px; }
+  #likes-posts-wrapper .post-header {
+    background: #ffffff;
+    border-radius: 2px 2px 0 0;
+    padding: 10px 0 0 20px;
+    position: relative;
+    height: 42px;
+    width: 100%; }
+    #likes-posts-wrapper .post-header .blog-link {
+      background: #ffffff;
+      border-radius: 2px;
+      left: -85px;
+      top: 0;
+      position: absolute;
+      height: 64px;
+      width: 64px; }
+      #likes-posts-wrapper .post-header .blog-link img {
+        margin: 1px 0 0 1px;
+        height: 62px;
+        width: 62px; }
+    #likes-posts-wrapper .post-header .user-link {
+      font-size: 13px; }
+    #likes-posts-wrapper .post-header .follow {
+      background: #529ecc;
+      border-radius: 2px;
+      color: #fff;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: bold;
+      height: 23px;
+      padding: 3px 0 0 0;
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      width: 57px;
+      text-align: center; }
+  #likes-posts-wrapper .post {
+    background: #ffffff;
+    width: 540px; }
+    #likes-posts-wrapper .post .post-title {
+      margin: 0 0 0 7px; }
+    #likes-posts-wrapper .post .post-text {
+      margin: 0 0 0 8px;
+      padding-top: 10px; }
+    #likes-posts-wrapper .post .post-tags {
+      margin: 20px 0 0 8px; }
+  #likes-posts-wrapper .post-footer {
+    background: #ffffff;
+    border-radius: 0 0 2px 2px;
+    margin: 0 0 20px 0;
+    height: 42px;
+    width: 100%; }
+
 html {
   font-family: helvetica, arial;
   height: 100%; }
@@ -1395,6 +1433,24 @@ html {
 body {
   background: #36465d;
   height: 100%; }
+
+#full-screen-img {
+  left: 0;
+  top: 0;
+  background: rgba(17, 17, 17, 0.92157);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 100; }
+  #full-screen-img img {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: fixed;
+    margin: auto auto;
+    max-height: 100%;
+    max-width: 70%; }
 
 #img-container {
   background-size: cover;

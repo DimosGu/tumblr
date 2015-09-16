@@ -1,5 +1,5 @@
 var search_img, search_form, search_input,
-    dashboard_body, explore_body, messages_body, dashboard, explore, messages,
+    dashboard_body, explore_body, messages_body, likes_body, dashboard, explore, messages,
     $wrappepr, activity, account_a, account_details,
     post, post_options, post_type, post_types, post_titles, title,
     text, photo, quote, link, chat, audio, video, post_type_wrapper,
@@ -12,13 +12,15 @@ search_img.onload = function() {
 }
 search_img.src = '/static/images/white_search.png';
 
-dashboard_body = document.getElementById("dashboard-body");
 dashboard = document.getElementById("dashboard");
-explore_body = document.getElementById("explore-body");
 explore = document.getElementById("explore");
-messages_body = document.getElementById("messages-body");
 messages = document.getElementById("messages");
+
+dashboard_body = document.getElementById("dashboard-body");
+explore_body = document.getElementById("explore-body");
+messages_body = document.getElementById("messages-body");
 blog_body = document.getElementById("blog-body");
+likes_body = document.getElementById('likes-body');
 
 $wrapper = $('#wrapper');
 post_edit_id = null;
@@ -31,7 +33,7 @@ window.onload = function() {
     explore.style.backgroundImage = "url('/static/images/explore_active.png')";
   } else if (messages_body) {
     messages.style.backgroundImage = "url('/static/images/messages_active.png)";
-  } else if (blog_body) {
+  } else if (blog_body || likes_body) {
     account_a.style.backgroundImage = "url('/static/images/account_active.png')";
   }
 

@@ -24,15 +24,18 @@ $('body').on('click', '.follow', function (e) {
 	var username = $(this).parent().attr('data-username');
 	follow(username);
 
-	if (typeof explore_body !== 'undefined' && explore_body) {
+	if ((typeof explore_body !== 'undefined' && explore_body) ||
+		(typeof likes_body !== 'undefined' && likes_body)) {
 		var $post_wrapper = $('.post-wrapper');
 
 		for (var i = 0; i < $post_wrapper.length; i++) {
 			var same_user = $post_wrapper.eq(i).find('.user-link').html();
 
-			if (username === same_user) {
+			if (explore_body && username === same_user) {
 				$post_wrapper.eq(i).find('.follow').addClass('display-none');
 				$post_wrapper.eq(i).find('.unfollow').removeClass('display-none');
+			} else if (likes_body && username == same_user) {
+				$post_wrapper.eq(i).find('.follow').remove()
 			}
 		}
 	}

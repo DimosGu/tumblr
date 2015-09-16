@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+  <div id="wrapper" class="display-none">
+    {% include 'header.html' %}
+    <div id="likes-posts-wrapper">
+      {% for post, tags, like, follow in latest_posts %}
+        {% include 'post.html' %}
+      {% endfor %}
+    </div>
+  </div>
+  {% include 'js_modules.html' %}
+  <script type="text/javascript" src="{% static 'js/likes_page.js' %}"></script>
+{% endblock %}

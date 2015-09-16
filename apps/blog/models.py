@@ -20,6 +20,14 @@ class PostManager(BaseManager):
   def filter_blog(self, blog):
     return self.filter(blog=blog)
 
+  def convert_liked_to_post(self, liked_posts):
+    converted_posts = []
+
+    for post in liked_posts:
+      converted_posts.append(post.post)
+
+    return converted_posts
+
   def combine_post_attributes(self, latest_posts, user=False, follow=False, like=False):
     from apps.following.models import Follow
     from apps.likes.models import Like
@@ -85,14 +93,14 @@ class PostManager(BaseManager):
       blog = Blog.objects.get(user=get_user)
       return self.filter(blog=blog).order_by('-pub_date')[post_count:end_count]
 
-  def render_posts(self, ordered_posts, template, user=False, explore_domain=False, mini=False, blog_edit=False):
+  def render_posts(self, ordered_posts, template, user=False, section=False, domain=False):
     from apps.following.models import Follow
     from apps.likes.models import Like
     from apps.search.models import Tags
 
     post_html = []
 
-    if explore_domain:
+    if section == 'explore':
 
       for post in ordered_posts:
         blog = Blog.objects.get(user=post.user)
@@ -114,7 +122,7 @@ class PostManager(BaseManager):
           template,
           {
             'user': user,
-            'domain_url': explore_domain,
+            'domain_url': domain,
             'section': 'explore',
             'post': post,
             'following': follow,
@@ -123,7 +131,7 @@ class PostManager(BaseManager):
           }
         ))
 
-    elif mini:
+    elif section == 'mini':
 
       for post in ordered_posts:
         tags = Tags.objects.filter(post=post)
@@ -143,7 +151,7 @@ class PostManager(BaseManager):
             'like': like,
           }
         ))
-    elif blog_edit:
+    elif section == 'blog_edit':
 
       for post in ordered_posts:
         tags = Tags.objects.filter(post=post)
@@ -154,6 +162,34 @@ class PostManager(BaseManager):
             'post': post,
             'tags': tags,
             'section': 'blog',
+          }
+        ))
+    elif section == 'likes':
+
+      for post in ordered_posts:
+        blog = Blog.objects.get(user=post.user)
+        tags = Tags.objects.filter(post=post)
+
+        try:
+          follow = Follow.objects.get(user=user, blog=blog)
+          follow = 'True'
+        except:
+          follow = 'False'
+
+        try:
+          like = Like.objects.get(user=user, post=post)
+          like = 'True'
+        except:
+          like = 'False'
+
+        post_html.append(render_to_string(
+          template,
+          {
+            'post': post,
+            'tags': tags,
+            'like': like,
+            'follow': follow,
+            'section': 'likes',
           }
         ))
     else:
@@ -217,7 +253,7 @@ class PostManager(BaseManager):
         post_tags.append(tag.tags)
 
       response = {
-        'html': []
+        'html': [],
       }
 
       response['html'].append(render_to_string(
@@ -226,7 +262,8 @@ class PostManager(BaseManager):
           'post': post,
           'user': user,
           'blog': form_instance.blog,
-          'tags': post_tags
+          'tags': post_tags,
+          'section': 'blog',
         }
       ))
 

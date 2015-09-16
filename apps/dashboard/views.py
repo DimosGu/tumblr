@@ -13,9 +13,9 @@ def dashboard(request):
   return render(request, 'dashboard/dashboard.html', context)
 
 def get_ten_posts(request):
-
-  response = {}
   post_count = int(request.GET['post_count'])
+  response = {}
+
   latest_posts = Post.objects.sort_following_posts(request.user, post_count)
   appended_posts = Post.objects.render_posts(latest_posts, 'post.html', user=request.user)
   response['html'] = appended_posts

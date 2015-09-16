@@ -7,19 +7,16 @@
 	{% if not request.subdomain %}
 		<div class="post-header">
 			{% if mini_section != 'True' %}
-				{% if section == 'blog' %}
-					<a class="blog-link" title="{{ post.blog.title }}" href="http://{{ post.user.username }}.{{ domain_url }}">
-						<img src="{{ post.blog.img.url }}">
-					</a>
-				{% else %}
-					<a class="blog-link" title="{{ post.user.username }}" href="http://{{ post.user.username }}.{{ domain_url }}">
-						<img src="{{ post.blog.img.url }}">
-					</a>
-				{% endif %}
-
+				<a class="blog-link" {% if section == 'blog' or section == 'likes' %}title="{{ post.blog.title }}"{% else %}title="{{ post.user.username }}"{% endif %} href="http://{{ post.user.username }}.{{ domain_url }}">
+					<img src="{{ post.blog.img.url }}">
+				</a>
 				<a class="user-link" title="{{ post.user.username }}" href="http://{{ post.user.username }}.{{ domain_url }}">{{ post.user.username }}</a>
 
-				{% if section == 'explore' %}
+				{% if section == 'likes' and follow == 'False' and post.user != request.user %}
+					<div class="follow-wrapper" data-username="{{ post.user.username }}">
+						<div class="follow">Follow</div>
+					</div>
+				{% elif section == 'explore' %}
 					<a class="follow-link" data-username="{{ post.user.username }}" {% if user.is_anonymous %}href="{% url 'register' %}"{% endif %}>
 						{% if follow == "True" %}
 							<div title="Follow" class="follow display-none">Follow</div>
@@ -30,6 +27,7 @@
 						{% endif %}
 					</a>
 				{% endif %}
+
 			{% endif %}
 		</div>
 	{% endif %}
