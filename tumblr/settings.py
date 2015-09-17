@@ -64,7 +64,6 @@ TEMPLATES = [
                 'django.core.context_processors.media',
                 'tumblr.custom_context.blog',
                 'tumblr.custom_context.header_forms',
-                'tumblr.custom_context.site',
                 'tumblr.custom_context.domain_url',
                 'tumblr.custom_context.like_count',
                 'tumblr.custom_context.following_count',

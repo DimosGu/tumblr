@@ -6,6 +6,10 @@ from tumblr.base_model import BaseManager, BaseModel
 from apps.user_accounts.models import User
 
 
+def upload_path(self, filename):
+  return 'user_media/%s/%s' % (self.user.username, filename)
+
+
 class BlogManager(BaseManager):
 
   def get_blog_user(self, user):
@@ -268,10 +272,6 @@ class PostManager(BaseManager):
       ))
 
       return response
-
-
-def upload_path(self, filename):
-  return 'user_media/%s/%s' % (self.user.username, filename)
 
 
 class Blog(BaseModel):

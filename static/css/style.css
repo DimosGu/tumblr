@@ -475,32 +475,33 @@ img {
     position: absolute;
     right: -7px;
     top: -7px; }
-#post-photo .post-header {
+
+.post-selection .post-header {
   height: 45px;
   width: 540px;
   position: relative; }
-  #post-photo .post-header a {
+  .post-selection .post-header a {
     background: #ffffff;
     border-radius: 2px;
     height: 64px;
     width: 64px;
     position: absolute;
     left: -84px; }
-  #post-photo .post-header img {
+  .post-selection .post-header img {
     height: 62px;
     width: 62px;
     margin: 1px 0 0 1px; }
-  #post-photo .post-header p {
+  .post-selection .post-header p {
     color: #444;
     font-size: 13px;
     font-weight: 700;
     margin: 15px 0 0 20px;
     position: absolute; }
-#post-photo .post-content {
+.post-selection .post-content {
   background: #ffffff; }
-  #post-photo .post-content .title-field,
-  #post-photo .post-content .text-field,
-  #post-photo .post-content .tags-field {
+  .post-selection .post-content .title-field,
+  .post-selection .post-content .text-field,
+  .post-selection .post-content .tags-field {
     border: none;
     font-family: helvetica, arial;
     margin-left: 17px;
@@ -509,28 +510,28 @@ img {
     position: relative;
     resize: none;
     width: 510px; }
-  #post-photo .post-content .title-field {
+  .post-selection .post-content .title-field {
     font-size: 36px;
     height: 46px;
     min-height: 46px; }
-  #post-photo .post-content .text-field {
+  .post-selection .post-content .text-field {
     font-size: 14px;
     margin-top: 2px;
     height: 63px;
     min-height: 63px; }
-  #post-photo .post-content .tags-field {
+  .post-selection .post-content .tags-field {
     font-size: 13px;
     margin-top: 28px;
     margin-bottom: 12px;
     height: 19px;
     min-height: 19px; }
-  #post-photo .post-content .submit-input {
+  .post-selection .post-content .submit-input {
     display: none; }
-#post-photo .post-footer {
+.post-selection .post-footer {
   padding-top: 15px;
   height: 60px;
   width: 540px; }
-  #post-photo .post-footer .close-post {
+  .post-selection .post-footer .close-post {
     background-color: #9DA6AF;
     border: 1px solid #9da6af;
     border-radius: 2px;
@@ -544,13 +545,13 @@ img {
     position: absolute;
     height: 30px;
     width: 51px; }
-  #post-photo .post-footer .post-submit {
+  .post-selection .post-footer .post-submit {
     float: right;
     margin: 0 22px 0 0;
     overflow: auto;
     height: 30px;
     width: 71px; }
-    #post-photo .post-footer .post-submit .submit-button {
+    .post-selection .post-footer .post-submit .submit-button {
       background: #529ECC;
       border: 1px solid #529ECC;
       border-radius: 2px 0 0 2px;
@@ -562,9 +563,9 @@ img {
       padding: 0 0 2px 1px;
       height: 30px;
       width: 44px; }
-    #post-photo .post-footer .post-submit .button-color {
+    .post-selection .post-footer .post-submit .button-color {
       color: #fff; }
-    #post-photo .post-footer .post-submit div {
+    .post-selection .post-footer .post-submit div {
       background: #529ECC url("/static/images/arrow.png") no-repeat center;
       border: 1px solid #529ECC;
       border-radius: 0 2px 2px 0;
@@ -574,7 +575,7 @@ img {
       padding-right: 1px;
       height: 30px;
       width: 27px; }
-    #post-photo .post-footer .post-submit div::before {
+    .post-selection .post-footer .post-submit div::before {
       border-left: 1px solid #85BBDB;
       content: "";
       margin-top: 8px;

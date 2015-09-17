@@ -1,5 +1,5 @@
 from django.http import HttpResponseRedirect
-from apps.sites.models import Site
+from apps.user_accounts.models import User
 
 class SubdomainMiddleware:
 	def process_request(self, request):
@@ -16,7 +16,7 @@ class SubdomainMiddleware:
 			if path_info in dont_redirect:
 
 				try:
-					user_domain = Site.objects.get_site_domain(request.subdomain)
+					user_domain = User.objects.get_by_username(request.subdomain)
 				except:
 					user_domain = None
 					return HttpResponseRedirect('http://%s' % '.'.join(hosts[1:]))

@@ -147,6 +147,8 @@ $bg-size: 52%;
   margin: 50px auto 50px auto;
   position: relative;
   width: 540px;
+
+
 }
 
 #post-text {
@@ -233,6 +235,9 @@ $bg-size: 52%;
       top: -7px;
     }
   }
+}
+
+.post-selection {
 
   .post-header {
     height: 45px;
@@ -262,6 +267,7 @@ $bg-size: 52%;
       position: absolute;
     }
   }
+
   .post-content {
     background: #ffffff;
 
@@ -373,4 +379,3 @@ $bg-size: 52%;
     }
   }
 }
-

@@ -1,7 +1,6 @@
 from apps.blog.forms import TextPostForm, PhotoPostForm
 from apps.search.forms import SearchForm
 from apps.blog.models import Blog, Post
-from apps.sites.models import Site
 from apps.user_accounts.models import User
 from apps.likes.models import Like
 from apps.following.models import Follow
@@ -18,19 +17,6 @@ def blog(request):
 		blog = None
 
 	return {'blog': blog}
-
-def site(request):
-
-	try:
-		site = Site.objects.get(user=request.user)
-	except Site.DoesNotExist:
-		create_site = Site(user=request.user, domain=request.user.username)
-		create_site.save()
-		site = Site.objects.get(user=request.user)
-	except:
-		site = None
-
-	return {'site': site}
 
 def header_forms(request):
 	search_form = SearchForm()

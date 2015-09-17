@@ -7,7 +7,6 @@ from random import randint
 from apps.user_accounts.forms import RegistrationForm, LoginForm
 from apps.blog.models import Blog, Post
 from apps.following.models import Follow
-from apps.sites.models import Site
 from apps.user_accounts.models import User
 
 def site_or_register(request):
