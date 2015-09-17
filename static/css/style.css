@@ -1483,10 +1483,17 @@ img {
   border-radius: 20px;
   width: 900px;
   margin: 0 auto;
-  padding: 30px 0 30px 30px; }
+  padding: 30px 0 30px 20px; }
+
+#blogs-wrapper {
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 10px 0 0 0;
+  width: 600px; }
 
 .followed-blog {
-  height: 44px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  margin: 0 0 10px 0;
+  padding: 0 10px 10px 10px;
   width: 600px;
   overflow: auto; }
   .followed-blog img {
@@ -1509,6 +1516,7 @@ img {
       font-size: 13px;
       font-weight: bold;
       height: 30px;
+      line-height: 15px;
       width: 87px;
       padding-top: 7px;
       text-align: center; }

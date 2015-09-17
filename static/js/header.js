@@ -146,7 +146,7 @@ $(document).on('click', function (e) {
   } else if (post_options.className === "post-fade visible") {
 
     /*post options disappear animation(s)*/
-    if (e.target === post_type_wrapper) {
+    if (e.target === post_type_wrapper || e.target === post_type || e.target == post_titles) {
       link.className = "slide-up margin-top";
       title[3].className = "slide-up margin-top";
 
