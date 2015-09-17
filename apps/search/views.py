@@ -25,13 +25,13 @@ def results(request, results):
     context = Post.objects.combine_post_attributes(search_result, user=request.user, follow=True, like=True)
 
     if not context['latest_posts']:
-      context['search'] = 'data=%s' % 'NoResults'
+      context['search'] = 'NoResults'
     else:
-      context['search'] = 'data=%s' % results.lower()
+      context['search'] = results.lower()
 
   except:
     context = {}
-    context['search'] = 'data=%s' % 'NoResults'
+    context['search'] = 'NoResults'
 
   result = results.replace('+', ' ')
 
@@ -41,9 +41,10 @@ def results(request, results):
 
   return render(request, 'explore/explore.html', context)
 
-def get_ten_posts(request, results):
+def get_ten_posts(request):
   post_count = int(request.GET['post_count'])
   url_domain = request.META['HTTP_HOST']
+  results = request.GET['results']
   response = {}
 
   try:
@@ -54,7 +55,7 @@ def get_ten_posts(request, results):
       search_result = Tags.objects.posts_with_tags(results, post_count)
 
     appended_posts = Post.objects.render_posts(
-      search_result, 'post.html', explore_domain=url_domain, user=request.user
+      search_result, 'post.html', section='explore', domain=url_domain, user=request.user
     )
 
     response['html'] = appended_posts
@@ -67,5 +68,6 @@ def get_ten_posts(request, results):
 
   except:
     response['error'] = 'no posts with those tags'
+    response['result'] = results.replace('+', ' ')
 
   return JsonResponse(response)

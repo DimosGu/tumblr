@@ -21,25 +21,34 @@ $(window).load(function() {
 });
 
 function get_ten_posts(post_count) {
-  var $body_attr, url;
+  var $wrapper_data, $wrapper_sub_section, url;
 
-  $body_attr = $('body').attr('data');
+  $wrapper_data = $('#wrapper').attr('data');
+  $wrapper_sub_section = $('#wrapper').attr('data-sub-section');
 
-  if ($body_attr) {
-    url = "/search/get_ten_posts/" + $body_attr;
+  data = {
+    'post_count': post_count,
+  }
+
+  if ($wrapper_data) {
+    url = "/search/get_ten_posts"
+    data['results'] = $wrapper_data;
   } else {
     url = "/explore/get_ten_posts";
+
+    if ($wrapper_sub_section) {
+      data['sub_section'] = $wrapper_sub_section;
+    }
   }
 
   $.ajax({
     url: url,
     type: "GET",
-    data: {
-      'post_count': post_count
-    },
+    data: data,
 
     success: function(json) {
-      if (json.html && json.html != "NoResults") {
+
+      if (typeof json.html != 'undefined' && json.html.length && json.html != "NoResults") {
         $explore_post_wrapper.append(json.html);
         $explore_post_wrapper.masonry('reloadItems');
 
@@ -52,11 +61,10 @@ function get_ten_posts(post_count) {
           $post_wrapper.removeClass('invisible');
           get_post_verify = true;
         }, 500);
-
-      } else if (json.html === undefined) {
-        return json.html;
-      } else {
+      } else if ($wrapper_data && $wrapper_data != 'NoResults') {
         $explore_post_wrapper.after("<div id='end-results'><p>That's about it for <span>" + json.result + "</span>. Try another search?</p></div>")
+      } else {
+        return 'nothing';
       }
     }
   });

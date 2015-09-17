@@ -85,7 +85,14 @@ class PostManager(BaseManager):
       get_user = False
 
     if explore:
-      return self.exclude(user=user).order_by('-pub_date')[post_count:end_count]
+
+      if explore == 'text':
+        return self.exclude(user=user).filter(file='').order_by('-pub_date')[post_count:end_count]
+      elif explore == 'photo':
+        return self.exclude(user=user).exclude(file='').order_by('-pub_date')[post_count:end_count]
+      else:
+        return self.exclude(user=user).order_by('-pub_date')[post_count:end_count]
+
     elif search:
 
       if not user:

@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block content %}
-  <div id="wrapper" class="display-none invisible">
+  <div id="wrapper" class="display-none invisible"{% if search %} data="{{ search }}"{% elif sub_section %} data-sub-section="{{ sub_section }}"{% endif %}>
     {% if user.is_authenticated %}
       {% include 'explore/explore_header.html' %}
     {% else %}
@@ -14,7 +14,7 @@
           <div id="results">
             <div id="result-content">
               <h2>{{ result }}</h2>
-              {% if search == 'data=NoResults' %}
+              {% if search == 'NoResults' %}
                 <p>That's about it for <span>{{ result }}</span>. Try another search?</p>
               {% endif %}
             </div>
