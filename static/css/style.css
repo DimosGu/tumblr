@@ -1418,8 +1418,33 @@ img {
       color: #444;
       opacity: .6; }
 
+#no-posts-wrapper {
+  padding-top: 93px;
+  width: 100%; }
+
+#no-posts {
+  background: rgba(255, 255, 255, 0.05) url("../images/no_posts.png") no-repeat center;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  border-radius: 6px;
+  height: 800px;
+  margin: 0 auto;
+  position: relative;
+  width: 625px; }
+  #no-posts span {
+    color: rgba(255, 255, 255, 0.46);
+    display: block;
+    font-size: 23px;
+    font-weight: bold;
+    text-align: center;
+    height: 23px;
+    width: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: 60px 0 0 -150px; }
+
 #likes-posts-wrapper {
-  margin: 0 auto 0 auto;
+  margin: 0 auto;
   padding: 93px 0 0 0;
   width: 540px; }
   #likes-posts-wrapper .post-header {
@@ -1481,19 +1506,25 @@ img {
 #following-container {
   background: #fff;
   border-radius: 20px;
-  width: 900px;
+  width: 640px;
   margin: 0 auto;
   padding: 30px 0 30px 20px; }
 
 #blogs-wrapper {
   border-top: 1px solid rgba(0, 0, 0, 0.06);
-  padding: 10px 0 0 0;
   width: 600px; }
+
+.followed-blog:nth-child(1) {
+  padding-top: 10px; }
+
+.followed-blog:nth-last-child(1) {
+  margin: 0 0 0 0; }
 
 .followed-blog {
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  color: #444;
   margin: 0 0 10px 0;
-  padding: 0 10px 10px 10px;
+  padding: 0 15px 10px 15px;
   width: 600px;
   overflow: auto; }
   .followed-blog img {

@@ -6,21 +6,30 @@
 #following-container {
   background: #fff;
   border-radius: 20px;
-  width: 900px;
+  width: 640px;
   margin: 0 auto;
   padding: 30px 0 30px 20px;
 }
 
 #blogs-wrapper {
   border-top: 1px solid rgba(0,0,0,0.06);
-  padding: 10px 0 0 0;
   width: 600px;
+
+}
+
+.followed-blog:nth-child(1) {
+  padding-top: 10px;
+}
+
+.followed-blog:nth-last-child(1) {
+  margin: 0 0 0 0;
 }
 
 .followed-blog {
   border-bottom: 1px solid rgba(0,0,0,0.06);
+  color: #444;
   margin: 0 0 10px 0;
-  padding: 0 10px 10px 10px;
+  padding: 0 15px 10px 15px;
   width: 600px;
   overflow: auto;
 

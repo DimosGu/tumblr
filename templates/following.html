@@ -7,6 +7,9 @@
     <div id="following-wrapper">
       <div id="following-container">
         <div id="blogs-wrapper">
+          {% if not following %}
+            <div class="followed-blog">Not following any blogs.</div>
+          {% endif %}
           {% for follow in following %}
             <div class="followed-blog" data-blog-id="{{ follow.blog.pk }}">
               <a href="http://{{ follow.blog.user.username }}.{{ domain_url }}">
