@@ -68,6 +68,5 @@ def get_ten_posts(request):
 
   except:
     response['error'] = 'no posts with those tags'
-    response['result'] = results.replace('+', ' ')
 
   return JsonResponse(response)
