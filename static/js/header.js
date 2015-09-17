@@ -16,6 +16,7 @@ messages_body = document.getElementById("messages-body");
 blog_body = document.getElementById("blog-body");
 likes_body = document.getElementById('likes-body');
 following_body = document.getElementById('following-body');
+settings_body = document.getElementById('blog-appearance-body');
 
 $wrapper = $('#wrapper');
 post_edit_id = null;
@@ -28,7 +29,7 @@ window.onload = function() {
     explore.style.backgroundImage = "url('/static/images/explore_active.png')";
   } else if (messages_body) {
     messages.style.backgroundImage = "url('/static/images/messages_active.png)";
-  } else if (blog_body || likes_body || following_body) {
+  } else if (blog_body || likes_body || following_body || settings_body) {
     account_a.style.backgroundImage = "url('/static/images/account_active.png')";
   }
 

@@ -15,7 +15,7 @@ def following(request):
 
   context['following'] = following
   context['section'] = 'following'
-  context['page_title'] = 'Following | Tumblr'
+  context['page_title'] = 'Following'
 
   return render(request, 'following.html', context)
 

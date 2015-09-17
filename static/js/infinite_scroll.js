@@ -1,3 +1,7 @@
+if (typeof get_post_verify === 'undefined') {
+  get_post_verify = false;
+}
+
 $(window).load(function() {
 
   if (typeof following_body === 'undefined' || following_body === null) {

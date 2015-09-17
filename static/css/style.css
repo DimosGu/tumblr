@@ -144,7 +144,8 @@ img {
   border-bottom: 1px solid #505e72;
   position: fixed;
   width: 100%;
-  z-index: 98; }
+  z-index: 98;
+  top: 0; }
   #header-wrapper #header {
     margin: 0 auto 0 auto;
     max-width: 1620px;
@@ -215,7 +216,7 @@ img {
     width: 45px; }
 
 #account-details {
-  background: #f5f5f5;
+  background: #fff;
   border-radius: 3px;
   margin-left: -132px;
   position: absolute;
@@ -236,7 +237,7 @@ img {
         text-decoration: none; }
 
 .li-header {
-  background: #F5F5F5;
+  background: #f5f5f5;
   border-radius: 3px 3px 0 0;
   padding-bottom: 7px; }
   .li-header a {
@@ -293,6 +294,17 @@ img {
   .blog-details .blog-title {
     color: #7f7f7f;
     font-size: 13px; }
+
+.blog-options a {
+  color: #3e5266;
+  display: block;
+  font-size: 15px;
+  height: 26px;
+  width: 170px;
+  margin: 0 0 0 57px;
+  padding: 4px 0 0 4px; }
+.blog-options a:hover {
+  background: #E6EFF7; }
 
 #post-options {
   left: 0;
@@ -1557,6 +1569,15 @@ img {
     .followed-blog .follow-unfollow .unfollow {
       color: #666;
       border: 1px solid #bfbfbf; }
+
+#blog-appearance-wrapper {
+  background: #fff;
+  margin: 92px auto 0 auto;
+  padding-bottom: 20px;
+  position: relative;
+  width: 585px; }
+  #blog-appearance-wrapper #mini-header-overlay {
+    position: absolute; }
 
 html {
   font-family: helvetica, arial;

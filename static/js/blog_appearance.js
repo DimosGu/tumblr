@@ -1,0 +1,1 @@
+$('#mini-header-overlay').removeClass('display-none');

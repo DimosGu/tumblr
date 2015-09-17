@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+  <div id="wrapper" class="display-none">
+    {% include 'header.html' %}
+    <div id="blog-appearance-wrapper">
+      {% include 'sites/mini_site.html' %}
+    </div>
+  </div>
+  {% include 'js_modules.html' %}
+  <script type="text/javascript" src="{% static 'js/blog_appearance.js' %}"></script>
+{% endblock %}

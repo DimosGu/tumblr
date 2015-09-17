@@ -14,7 +14,7 @@ def likes(request):
 
   context = Post.objects.combine_post_attributes(converted_posts, user=request.user, follow=True, like=True)
   context['section'] = 'likes'
-  context['page_title'] = 'Likes | Tumblr'
+  context['page_title'] = 'Likes'
 
   return render(request, 'likes.html', context)
 

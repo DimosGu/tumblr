@@ -77,7 +77,7 @@ def site_or_register(request):
       'form': form,
       'img_post': recent_img_post,
       'section': 'register',
-      'page_title': 'Sign up | Tumblr',
+      'page_title': 'Sign up',
     }
 
     return render(request, 'no_user/register.html', context)
@@ -116,7 +116,7 @@ def user_login(request):
     'form': form,
     'img_post': recent_img_post,
     'section': 'login',
-    'page_title': 'Log in | Tumblr',
+    'page_title': 'Log in',
   }
 
   return render(request, 'no_user/login.html', context)

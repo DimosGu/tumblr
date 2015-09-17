@@ -16,7 +16,7 @@ def recent(request):
     context = Post.objects.combine_post_attributes(latest_posts, follow=True, like=True)
 
   context['section'] = 'explore'
-  context['page_title'] = 'Recent | Tumblr'
+  context['page_title'] = 'Recent'
 
 
   return render(request, 'explore/explore.html', context)
@@ -32,7 +32,7 @@ def text(request):
 
   context['section'] = 'explore'
   context['sub_section'] = 'text'
-  context['page_title'] = 'Text | Tumblr'
+  context['page_title'] = 'Text'
 
 
   return render(request, 'explore/explore.html', context)
@@ -48,7 +48,7 @@ def photo(request):
 
   context['section'] = 'explore'
   context['sub_section'] = 'photo'
-  context['page_title'] = 'Photo | Tumblr'
+  context['page_title'] = 'Photo'
 
 
   return render(request, 'explore/explore.html', context)
