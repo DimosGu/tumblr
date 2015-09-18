@@ -1,5 +1,29 @@
 .post-wrapper {
+  margin: 0 0 20px 0;
   width: 540px;
+
+  .post-header {
+    background: #fff;
+    width: 100%;
+    border-radius: 3px 3px 0 0;
+    padding: 1px;
+  }
+
+  .blog-link {
+    background: #fff;
+    border-radius: 2px;
+    left: -85px;
+    top: 0;
+    position: absolute;
+    height: 64px;
+    width: 64px;
+
+    img {
+      margin: 1px 0 0 1px;
+      height: 62px;
+      width: 62px;
+    }
+  }
 
   .user-link {
     color: #444;
@@ -10,6 +34,8 @@
 }
 
 .post {
+  background: #fff;
+  width: 100%;
 
   img {
     width: 100%
@@ -44,17 +70,25 @@
 }
 
 .post-footer {
+  background: #fff;
+  border-radius: 0 0 3px 3px;
   height: 45px;
+  padding: 1px;
+  width: 100%;
 
   .footer-options {
-    cursor: pointer;
     float: right;
     height: 17px;
     margin: 14px 20px 0 0;
     width: 19px;
 
+    .like-options {
+      display: block;
+    }
+
     .like,
     .no-like {
+      cursor: pointer;
       height: 17px;
       width: 19px;
     }

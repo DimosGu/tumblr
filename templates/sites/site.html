@@ -10,11 +10,11 @@
 			<div id="link-wrapper" data-username="{{ current_site.username }}">
 				{% if user.is_authenticated and user != current_site %}
 					{% if follow == 'false' %}
-						<div class="follow">+ Follow</div>
-						<div class="unfollow display-none">- Unfollow</div>
+						<button class="follow">+ Follow</button>
+						<button class="unfollow display-none">- Unfollow</button>
 					{% else %}
-						<div class="unfollow">- Unfollow</div>
-						<div class="follow display-none">+ Follow</div>
+						<button class="unfollow">- Unfollow</button>
+						<button class="follow display-none">+ Follow</button>
 					{% endif %}
 					<a id="dashboard-link" href="http://www.briansquashic.com/dashboard">Dashboard</a>
 				{% elif user == current_site %}

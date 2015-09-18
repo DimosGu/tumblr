@@ -33,7 +33,7 @@
 }
 
 #mini-header-overlay {
-	@include linear-gradient(rgba(0,0,0,.7) 0, rgba(0,0,0,0), $fallback: transparent);
+	@include linear-gradient(rgba(0,0,0,.3) 0, rgba(0,0,0,0), $fallback: transparent);
 	height: 64px;
 	width: 100%;
 	position: fixed;
@@ -59,28 +59,23 @@
 	top: 10px;
 	right: 23px;
 
-	.follow,
-	.unfollow {
+	button {
 		background: #fff;
-		border: 1px solid #9da6af;
+		border: 0;
 		border-radius: 3px;
-		cursor: pointer;
 		color: #444;
+		cursor: pointer;
 		font-size: 13px;
 		font-weight: bold;
 		height: 30px;
-		width: 69px;
 		top: 0;
 		right: 0;
 		position: absolute;
 	}
 
-	.follow {
-		padding: 6px 0 0 12px;
-	}
-
+	.follow,
 	.unfollow {
-		padding: 6px 0 0 6px;
+		width: 69px;
 	}
 }
 
@@ -130,6 +125,7 @@
 	.post-wrapper {
 		border: 1px solid #ccc;
 		border-radius: 4px;
+		padding: 1px;
 		margin: 20px auto 0 auto;
 
 		.post-header {
@@ -141,7 +137,7 @@
 		border-radius: 4px;
 
 		img {
-			margin: 0 auto 0 auto;
+			margin: 0 0 0 -1px;
 			width: 538px;
 		}
 	}
@@ -168,6 +164,7 @@
 	}
 
 	.post-footer {
+		border-radius: 0;
 		height: 40px;
 		width: 100%;
 	}

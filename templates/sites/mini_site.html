@@ -1,23 +1,23 @@
 <div id="mini-header-overlay" class="display-none">
 	<p>{{ mini_section }}</p>
-	<a id="mini-site-link" href="http://{{ viewing_user.username }}.{{ domain_url }}">
-		{{ viewing_user.username }}<span class="url-fade invisible">.{{ domain_url }}</span>
+	<a id="mini-site-link" href="http://{{ blog_im_viewing_user.username }}.{{ domain_url }}">
+		{{ blog_im_viewing_user.username }}<span class="url-fade invisible">.{{ domain_url }}</span>
 	</a>
-	<div id="mini-link-wrapper" data-username="{{ viewing_user.username }}">
-		{% if logged_user != viewing_user %}
+	<div id="mini-link-wrapper" data-username="{{ blog_im_viewing_user.username }}">
+		{% if current_user != blog_im_viewing_user %}
 			{% if follow == 'False' %}
-				<div id="mini-follow" class="follow">Follow</div>
-				<div id="mini-unfollow" class="unfollow display-none">Unfollow</div>
+				<button id="mini-follow" class="follow">Follow</button>
+				<button id="mini-unfollow" class="unfollow display-none">Unfollow</button>
 			{% else %}
-				<div id="mini-unfollow" class="unfollow">Unfollow</div>
-				<div id="mini-follow" class="follow display-none">Follow</div>
+				<button id="mini-unfollow" class="unfollow">Unfollow</button>
+				<button id="mini-follow" class="follow display-none">Follow</button>
 			{% endif %}
 		{% endif %}
 	</div>
 </div>
-<a id="mini-header" href="http://{{ viewing_user.username }}.{{ domain_url }}" style="background-image: url({{ viewing_blog.bg_img.url }});"></a>
+<a id="mini-header" href="http://{{ blog_im_viewing_user.username }}.{{ domain_url }}" style="background-image: url({{ viewing_blog.bg_img.url }});"></a>
 <div id="mini-blog-info">
-	<a id="mini-blog-img" href="http://{{ viewing_user.username }}.{{ domain_url }}">
+	<a id="mini-blog-img" href="http://{{ blog_im_viewing_user.username }}.{{ domain_url }}">
 		<img src="{{ viewing_blog.img.url }}">
 	</a>
 	<h1>{{ viewing_blog.title }}</h1>

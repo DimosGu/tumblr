@@ -21,6 +21,7 @@ settings_body = document.getElementById('blog-appearance-body');
 $wrapper = $('#wrapper');
 post_edit_id = null;
 explore_body_attr = $('body').attr('data');
+account = document.getElementById('account');
 
 window.onload = function() {
   if (dashboard_body) {
@@ -30,7 +31,7 @@ window.onload = function() {
   } else if (messages_body) {
     messages.style.backgroundImage = "url('/static/images/messages_active.png)";
   } else if (blog_body || likes_body || following_body || settings_body) {
-    account_a.style.backgroundImage = "url('/static/images/account_active.png')";
+    account.style.backgroundImage = "url('/static/images/account_active.png')";
   }
 
   setTimeout (function() {
@@ -39,7 +40,6 @@ window.onload = function() {
 }
 
 activity = document.getElementById("activity");
-account_a = document.getElementById('account-a');
 account_details = document.getElementById("account-details");
 
 post = document.getElementById("post");
@@ -65,12 +65,12 @@ activity.onclick = function(e) {
   e.preventDefault();
 }
 
-account_a.onclick = function(e) {
+account.onclick = function(e) {
   e.preventDefault();
 
   if (account_details.className === "account-fade account-hidden display-none") {
     account_details.className = "account-fade account-hidden";
-    account_a.style.backgroundImage = "url('/static/images/account_active.png')";
+    account.style.backgroundImage = "url('/static/images/account_active.png')";
 
     setTimeout (function() {
       account_details.className = "account-fade account-visible";
@@ -137,7 +137,7 @@ $(document).on('click', function (e) {
       account_details.className = "account-fade account-hidden";
 
       if (blog_body === null) {
-        account_a.style.backgroundImage = "";
+        account.style.backgroundImage = "";
       }
 
       setTimeout (function() {

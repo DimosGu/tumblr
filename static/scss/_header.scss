@@ -103,24 +103,21 @@
 	}
 
 	#account {
-		float: left;
-		margin: 0 5px 0 30px;
-		overflow: visible;
-		height: 19px;
-		width: 15px;
-	}
-
-	#account-a {
+		border: 0;
 		background: url('/static/images/account.png') no-repeat;
 		cursor: pointer;
-		float: none;
-		margin: 6px 0 0 0;
+		float: left;
+		overflow: visible;
+		outline: 0;
+		margin: 6px 5px 0 30px;
 		height: 19px;
 		width: 15px;
 	}
 
 	#post {
 		background: url('/static/images/post.png') no-repeat;
+		border: 0;
+		outline: 0;
 		cursor: pointer;
 		height: 32px;
 		width: 45px;
@@ -130,10 +127,12 @@
 #account-details {
 	background: #fff;
 	border-radius: 3px;
-	margin-left: -132px;
+	top: 38px;
+	right: 8px;
 	position: absolute;
 	height: 381px;
 	width: 240px;
+	z-index: 100;
 
 	ul {
 		list-style: none;

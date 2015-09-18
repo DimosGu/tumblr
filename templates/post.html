@@ -14,7 +14,7 @@
 
 				{% if section == 'likes' and follow == 'False' and post.user != request.user %}
 					<div class="follow-wrapper" data-username="{{ post.user.username }}">
-						<div class="follow">Follow</div>
+						<button class="follow">Follow</button>
 					</div>
 				{% elif section == 'explore' %}
 					<a class="follow-link" data-username="{{ post.user.username }}" {% if user.is_anonymous %}href="{% url 'register' %}"{% endif %}>
@@ -55,6 +55,7 @@
 	<div class="post-footer">
 		<div class="footer-options">
 			{% if section == 'blog' %}
+				<button class="post-edit"></button>
 				<div class="options-popup display-none">
 					<a href="" class="option-edit">Edit</a>
 					<a href="" class="option-delete">Delete</a>

@@ -8,23 +8,21 @@
     {% else %}
       {% include 'explore/no_user_header.html' %}
     {% endif %}
-    <div id="outer-wrapper">
-      <div id="inner-wrapper">
-        {% if result %}
-          <div id="results">
-            <div id="result-content">
-              <h2>{{ result }}</h2>
-              {% if search == 'NoResults' %}
-                <p>That's about it for <span>{{ result }}</span>. Try another search?</p>
-              {% endif %}
-            </div>
+    <div id="inner-wrapper">
+      {% if result %}
+        <div id="results">
+          <div id="result-content">
+            <h2>{{ result }}</h2>
+            {% if search == 'NoResults' %}
+              <p>That's about it for <span>{{ result }}</span>. Try another search?</p>
+            {% endif %}
           </div>
-        {% endif %}
-        <div id="explore-posts-wrapper">
-          {% for post, tags, like, follow in latest_posts %}
-            {% include 'post.html' %}
-          {% endfor %}
         </div>
+      {% endif %}
+      <div id="explore-posts-wrapper">
+        {% for post, tags, like, follow in latest_posts %}
+          {% include 'post.html' %}
+        {% endfor %}
       </div>
     </div>
   </div>

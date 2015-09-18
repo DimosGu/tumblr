@@ -197,20 +197,19 @@ img {
     height: 20px;
     width: 14px; }
   #header-links #account {
-    float: left;
-    margin: 0 5px 0 30px;
-    overflow: visible;
-    height: 19px;
-    width: 15px; }
-  #header-links #account-a {
+    border: 0;
     background: url("/static/images/account.png") no-repeat;
     cursor: pointer;
-    float: none;
-    margin: 6px 0 0 0;
+    float: left;
+    overflow: visible;
+    outline: 0;
+    margin: 6px 5px 0 30px;
     height: 19px;
     width: 15px; }
   #header-links #post {
     background: url("/static/images/post.png") no-repeat;
+    border: 0;
+    outline: 0;
     cursor: pointer;
     height: 32px;
     width: 45px; }
@@ -218,10 +217,12 @@ img {
 #account-details {
   background: #fff;
   border-radius: 3px;
-  margin-left: -132px;
+  top: 38px;
+  right: 8px;
   position: absolute;
   height: 381px;
-  width: 240px; }
+  width: 240px;
+  z-index: 100; }
   #account-details ul {
     list-style: none; }
     #account-details ul li {
@@ -596,15 +597,36 @@ img {
       width: 1px; }
 
 .post-wrapper {
+  margin: 0 0 20px 0;
   width: 540px; }
+  .post-wrapper .post-header {
+    background: #fff;
+    width: 100%;
+    border-radius: 3px 3px 0 0;
+    padding: 1px; }
+  .post-wrapper .blog-link {
+    background: #fff;
+    border-radius: 2px;
+    left: -85px;
+    top: 0;
+    position: absolute;
+    height: 64px;
+    width: 64px; }
+    .post-wrapper .blog-link img {
+      margin: 1px 0 0 1px;
+      height: 62px;
+      width: 62px; }
   .post-wrapper .user-link {
     color: #444;
     font-weight: bold;
     font-size: 14px;
     text-decoration: none; }
 
-.post img {
+.post {
+  background: #fff;
   width: 100%; }
+  .post img {
+    width: 100%; }
 
 .words-wrapper {
   color: #444;
@@ -628,15 +650,21 @@ img {
     margin-right: 10px; }
 
 .post-footer {
-  height: 45px; }
+  background: #fff;
+  border-radius: 0 0 3px 3px;
+  height: 45px;
+  padding: 1px;
+  width: 100%; }
   .post-footer .footer-options {
-    cursor: pointer;
     float: right;
     height: 17px;
     margin: 14px 20px 0 0;
     width: 19px; }
+    .post-footer .footer-options .like-options {
+      display: block; }
     .post-footer .footer-options .like,
     .post-footer .footer-options .no-like {
+      cursor: pointer;
       height: 17px;
       width: 19px; }
     .post-footer .footer-options .like {
@@ -687,8 +715,8 @@ img {
 
 #mini-header-overlay {
   background-color: transparent;
-  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.7) 0, transparent);
-  background-image: linear-gradient(rgba(0, 0, 0, 0.7) 0, transparent);
+  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.3) 0, transparent);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3) 0, transparent);
   height: 64px;
   width: 100%;
   position: fixed;
@@ -711,24 +739,21 @@ img {
   position: fixed;
   top: 10px;
   right: 23px; }
-  #mini-link-wrapper .follow,
-  #mini-link-wrapper .unfollow {
+  #mini-link-wrapper button {
     background: #fff;
-    border: 1px solid #9da6af;
+    border: 0;
     border-radius: 3px;
-    cursor: pointer;
     color: #444;
+    cursor: pointer;
     font-size: 13px;
     font-weight: bold;
     height: 30px;
-    width: 69px;
     top: 0;
     right: 0;
     position: absolute; }
-  #mini-link-wrapper .follow {
-    padding: 6px 0 0 12px; }
+  #mini-link-wrapper .follow,
   #mini-link-wrapper .unfollow {
-    padding: 6px 0 0 6px; }
+    width: 69px; }
 
 #mini-header {
   display: block;
@@ -768,13 +793,14 @@ img {
   #mini-posts-wrapper .post-wrapper {
     border: 1px solid #ccc;
     border-radius: 4px;
+    padding: 1px;
     margin: 20px auto 0 auto; }
     #mini-posts-wrapper .post-wrapper .post-header {
       height: 20px; }
   #mini-posts-wrapper .post {
     border-radius: 4px; }
     #mini-posts-wrapper .post img {
-      margin: 0 auto 0 auto;
+      margin: 0 0 0 -1px;
       width: 538px; }
   #mini-posts-wrapper .words-wrapper {
     padding: 0 18px 5px 18px; }
@@ -788,6 +814,7 @@ img {
     #mini-posts-wrapper .post-tags a {
       color: #a7a7a7; }
   #mini-posts-wrapper .post-footer {
+    border-radius: 0;
     height: 40px;
     width: 100%; }
   #mini-posts-wrapper .footer-options {
@@ -804,37 +831,15 @@ img {
   -moz-transition-timing-function: ease-out;
   transition-timing-function: ease-out; }
 
-#blog-content {
-  padding: 93px 0 0 0;
-  width: 100%; }
-
 #blog-posts-wrapper {
   margin: 0 auto 0 auto;
   width: 540px; }
   #blog-posts-wrapper .post-header {
-    background: #ffffff;
-    border-radius: 2px 2px 0 0;
-    padding: 10px 0 0 20px;
     position: relative;
     height: 42px;
-    width: 100%; }
-  #blog-posts-wrapper .blog-link {
-    background: #ffffff;
-    border-radius: 2px;
-    left: -85px;
-    top: 0;
-    position: absolute;
-    height: 64px;
-    width: 64px; }
-    #blog-posts-wrapper .blog-link img {
-      margin: 1px 0 0 1px;
-      height: 62px;
-      width: 62px; }
+    padding: 10px 0 0 20px; }
   #blog-posts-wrapper .user-link {
     font-size: 13px; }
-  #blog-posts-wrapper .post {
-    background: #ffffff;
-    width: 540px; }
   #blog-posts-wrapper .post-title {
     margin: 0 0 0 7px; }
   #blog-posts-wrapper .post-text {
@@ -843,28 +848,30 @@ img {
   #blog-posts-wrapper .post-tags {
     margin: 20px 0 0 8px; }
   #blog-posts-wrapper .post-footer {
-    background: #ffffff;
-    border-radius: 0 0 2px 2px;
-    margin: 0 0 20px 0;
-    height: 42px;
-    width: 100%; }
+    height: 42px; }
   #blog-posts-wrapper .footer-options {
-    background: url("/static/images/posted_options.png") no-repeat;
-    margin: 12px 18px 0 0;
-    position: relative;
+    margin: 8px 18px 0 0;
+    height: 25px;
+    width: 25px;
+    position: relative; }
+  #blog-posts-wrapper .post-edit {
+    background: url("/static/images/posted_options.png") no-repeat center;
+    border: 0;
+    cursor: pointer;
+    outline: 0;
     height: 25px;
     width: 25px; }
   #blog-posts-wrapper .popup-high {
-    top: -80px; }
+    top: -78px; }
   #blog-posts-wrapper .popup-low {
-    top: 20px; }
+    top: 28px; }
   #blog-posts-wrapper .options-popup {
     background: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 2px;
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
     cursor: default;
-    left: -60px;
+    left: -57px;
     position: absolute;
     padding: 5px 0 0 0;
     height: 76px;
@@ -885,28 +892,12 @@ img {
     background: #E6EFF7; }
 
 #dashboard-posts-wrapper {
-  padding: 92px 0 0 0;
-  width: 100%; }
-  #dashboard-posts-wrapper .post-wrapper {
-    background: #ffffff;
-    border-radius: 3px;
-    margin: 0 auto 20px auto; }
+  width: 540px;
+  margin: auto auto; }
   #dashboard-posts-wrapper .post-header {
     height: 45px;
     padding: 0 0 0 20px;
     position: relative; }
-  #dashboard-posts-wrapper .blog-link {
-    background: #ffffff;
-    border-radius: 2px;
-    height: 64px;
-    width: 64px;
-    position: absolute;
-    left: -85px;
-    top: 0; }
-    #dashboard-posts-wrapper .blog-link img {
-      height: 62px;
-      width: 62px;
-      margin: 1px 0 0 1px; }
   #dashboard-posts-wrapper .user-link {
     line-height: 16px;
     margin: 13px 0 0 0;
@@ -942,13 +933,10 @@ img {
     margin: 0 15px 0 0;
     text-decoration: none; }
 
-#outer-wrapper {
+#inner-wrapper {
   margin: 0 auto;
   min-width: 620px;
   max-width: 1600px; }
-
-#inner-wrapper {
-  padding-top: 92px; }
 
 #results,
 #end-results {
@@ -980,17 +968,20 @@ img {
   width: 100%;
   margin-top: 27px; }
   #explore-posts-wrapper .post-wrapper {
-    background: #fff;
-    border-radius: 3px;
-    margin: 0 0 20px 0;
     width: 300px; }
   #explore-posts-wrapper .post-header {
     height: 60px;
     padding: 14px 0 0 13px;
     overflow: auto; }
   #explore-posts-wrapper .blog-link {
-    float: left; }
+    background: none;
+    border-radius: 0;
+    float: left;
+    height: 30px;
+    width: 30px;
+    position: static; }
     #explore-posts-wrapper .blog-link img {
+      margin: 0;
       height: 30px;
       width: 30px; }
   #explore-posts-wrapper .user-link {
@@ -1055,20 +1046,17 @@ img {
     text-decoration: none;
     height: 20px;
     top: 0;
-    padding-top: 2px;
     position: absolute; }
   #header-overlay .follow {
     width: 65px;
-    right: 93px;
-    padding-left: 6px; }
+    right: 93px; }
   #header-overlay .unfollow {
     width: 77px;
-    right: 93px;
-    padding-left: 8px; }
+    right: 93px; }
   #header-overlay #dashboard-link {
     width: 90px;
     right: 0;
-    padding-left: 13px; }
+    padding: 2px 0 0 13px; }
   #header-overlay .follow:hover,
   #header-overlay .unfollow:hover,
   #header-overlay #dashboard-link:hover {
@@ -1126,15 +1114,19 @@ img {
   margin: 10px 0 30px 0;
   width: 100%; }
   #sites-posts-wrapper .post-wrapper {
+    border-radius: 4px;
     border: 1px solid #ccc;
     margin: 20px auto 0 auto;
     width: 700px; }
   #sites-posts-wrapper .post {
+    background: #fff;
     border-radius: 4px; }
-  #sites-posts-wrapper .post-click-img img {
-    display: block;
+  #sites-posts-wrapper .post-click-img {
     margin: 0 auto;
     width: 698px; }
+    #sites-posts-wrapper .post-click-img img {
+      border-radius: 3px 3px 0 0;
+      width: 100%; }
   #sites-posts-wrapper .words-wrapper {
     padding: 0 18px 0 18px; }
   #sites-posts-wrapper .post-title {
@@ -1457,46 +1449,27 @@ img {
 
 #likes-posts-wrapper {
   margin: 0 auto;
-  padding: 93px 0 0 0;
   width: 540px; }
   #likes-posts-wrapper .post-header {
-    background: #ffffff;
-    border-radius: 2px 2px 0 0;
     padding: 10px 0 0 20px;
     position: relative;
-    height: 42px;
-    width: 100%; }
-  #likes-posts-wrapper .blog-link {
-    background: #ffffff;
-    border-radius: 2px;
-    left: -85px;
-    top: 0;
-    position: absolute;
-    height: 64px;
-    width: 64px; }
-    #likes-posts-wrapper .blog-link img {
-      margin: 1px 0 0 1px;
-      height: 62px;
-      width: 62px; }
+    height: 42px; }
   #likes-posts-wrapper .user-link {
     font-size: 13px; }
   #likes-posts-wrapper .follow {
     background: #529ecc;
+    border: 0;
     border-radius: 2px;
     color: #fff;
     cursor: pointer;
     font-size: 13px;
     font-weight: bold;
     height: 23px;
-    padding: 3px 0 0 0;
     position: absolute;
     top: 10px;
     right: 20px;
     width: 57px;
     text-align: center; }
-  #likes-posts-wrapper .post {
-    background: #ffffff;
-    width: 540px; }
   #likes-posts-wrapper .post-title {
     margin: 0 0 0 7px; }
   #likes-posts-wrapper .post-text {
@@ -1505,11 +1478,8 @@ img {
   #likes-posts-wrapper .post-tags {
     margin: 20px 0 0 8px; }
   #likes-posts-wrapper .post-footer {
-    background: #ffffff;
-    border-radius: 0 0 2px 2px;
     margin: 0 0 20px 0;
-    height: 42px;
-    width: 100%; }
+    height: 42px; }
 
 #following-wrapper {
   padding-top: 92px;
@@ -1553,26 +1523,27 @@ img {
   .followed-blog .follow-unfollow {
     float: right;
     margin: 7px 0 0 0; }
-    .followed-blog .follow-unfollow div {
+    .followed-blog .follow-unfollow button {
       border-radius: 2px;
+      border: 0;
       cursor: pointer;
       font-size: 13px;
       font-weight: bold;
       height: 30px;
       line-height: 15px;
       width: 87px;
-      padding-top: 7px;
       text-align: center; }
     .followed-blog .follow-unfollow .follow {
       background: #529ecc;
       color: #fff; }
     .followed-blog .follow-unfollow .unfollow {
+      background: #fff;
       color: #666;
       border: 1px solid #bfbfbf; }
 
 #blog-appearance-wrapper {
   background: #fff;
-  margin: 92px auto 0 auto;
+  margin: 0 auto;
   padding-bottom: 20px;
   position: relative;
   width: 585px; }
@@ -1586,6 +1557,10 @@ html {
 body {
   background: #36465d;
   height: 100%; }
+
+#wrapper {
+  padding-top: 92px;
+  width: 100%; }
 
 #full-screen-img {
   left: 0;

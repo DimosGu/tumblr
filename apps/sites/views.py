@@ -36,8 +36,8 @@ def mini_site(request):
   response['html'].append(render_to_string(
     'sites/mini_site.html',
     {
-      'logged_user': request.user,
-      'viewing_user': user,
+      'current_user': request.user,
+      'blog_im_viewing_user': user,
       'viewing_blog': blog,
       'site_posts': latest_posts,
       'domain_url': domain_url,

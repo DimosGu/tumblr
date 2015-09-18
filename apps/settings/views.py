@@ -18,8 +18,8 @@ def blog_appearance(request, username):
   context = {
     'section': 'blog-appearance',
     'page_title': 'Blog Settings',
-    'logged_user': request.user,
-    'viewing_user': request.user,
+    'current_user': request.user,
+    'blog_im_viewing_user': request.user,
     'viewing_blog': blog,
   }
 

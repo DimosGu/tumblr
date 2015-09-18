@@ -4,19 +4,16 @@
 	@include transition-timing-function( ease-out );
 }
 
-#blog-content {
-	padding: 93px 0 0 0;
-	width: 100%;
-}
-
 #blog-posts-wrapper {
 	margin: 0 auto 0 auto;
 	width: 540px;
 
+	.post-wrapper {
+		margin: 0 0 20px 0;
+	}
+
 	.post-header {
-		background: #ffffff;
-		border-radius: 2px 2px 0 0;
-		padding: 10px 0 0 20px;
+		padding: 0 0 0 0;
 		position: relative;
 		height: 42px;
 		width: 100%;
@@ -61,11 +58,7 @@
 	}
 
 	.post-footer {
-		background: #ffffff;
-		border-radius: 0 0 2px 2px;
-		margin: 0 0 20px 0;
 		height: 42px;
-		width: 100%;
 
 		.footer-options {
 			background: url('/static/images/posted_options.png') no-repeat;

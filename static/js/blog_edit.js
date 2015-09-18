@@ -22,8 +22,8 @@ function get_ten_posts(post_count) {
 	});
 };
 
-$('body').on('click', '.footer-options', function() {
-	var $footer_options = $(this).find('.options-popup');
+$('body').on('click', '.post-edit', function() {
+	var $footer_options = $(this).siblings('.options-popup');
 
 	if ($footer_options.hasClass('display-none')) {
 
@@ -31,7 +31,7 @@ $('body').on('click', '.footer-options', function() {
 			$footer_options.removeClass('display-none');
 
 			if($footer_options.offset().top - $(window).scrollTop() >=
-				window.innerHeight - $footer_options.height() - 22) {
+				window.innerHeight - $footer_options.height() - 10) {
 				$footer_options.addClass('popup-high');
 			} else {
 				$footer_options.addClass('popup-low');

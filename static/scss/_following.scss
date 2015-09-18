@@ -52,15 +52,15 @@
     float: right;
     margin: 7px 0 0 0;
 
-    div {
+    button {
       border-radius: 2px;
+      border: 0;
       cursor: pointer;
       font-size: 13px;
       font-weight: bold;
       height: 30px;
       line-height: 15px;
       width: 87px;
-      padding-top: 7px;
       text-align: center;
     }
 
@@ -70,6 +70,7 @@
     }
 
     .unfollow {
+      background: #fff;
       color: #666;
       border: 1px solid #bfbfbf;
     }

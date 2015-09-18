@@ -29,32 +29,12 @@
 
 #likes-posts-wrapper {
   margin: 0 auto;
-  padding: 93px 0 0 0;
   width: 540px;
 
   .post-header {
-    background: #ffffff;
-    border-radius: 2px 2px 0 0;
     padding: 10px 0 0 20px;
     position: relative;
     height: 42px;
-    width: 100%;
-  }
-
-  .blog-link {
-    background: #ffffff;
-    border-radius: 2px;
-    left: -85px;
-    top: 0;
-    position: absolute;
-    height: 64px;
-    width: 64px;
-
-    img {
-      margin: 1px 0 0 1px;
-      height: 62px;
-      width: 62px;
-    }
   }
 
   .user-link {
@@ -63,23 +43,18 @@
 
   .follow {
     background: #529ecc;
+    border: 0;
     border-radius: 2px;
     color: #fff;
     cursor: pointer;
     font-size: 13px;
     font-weight: bold;
     height: 23px;
-    padding: 3px 0 0 0;
     position: absolute;
     top: 10px;
     right: 20px;
     width: 57px;
     text-align: center;
-  }
-
-  .post {
-    background: #ffffff;
-    width: 540px;
   }
 
   .post-title {
@@ -96,10 +71,7 @@
   }
 
   .post-footer {
-    background: #ffffff;
-    border-radius: 0 0 2px 2px;
     margin: 0 0 20px 0;
     height: 42px;
-    width: 100%;
   }
 }

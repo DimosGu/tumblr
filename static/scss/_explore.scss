@@ -29,14 +29,10 @@
 	}
 }
 
-#outer-wrapper {
+#inner-wrapper {
 	margin: 0 auto;
 	min-width: 620px;
 	max-width: 1600px;
-}
-
-#inner-wrapper {
-	padding-top: 92px;
 }
 
 #results,
@@ -76,9 +72,6 @@
 	margin-top: 27px;
 
 	.post-wrapper {
-		background: #fff;
-		border-radius: 3px;
-		margin: 0 0 20px 0;
 		width: 300px;
 	}
 
@@ -89,9 +82,15 @@
 	}
 
 	.blog-link {
+		background: none;
+		border-radius: 0;
 		float: left;
+		height: 30px;
+		width: 30px;
+		position: static;
 
 		img {
+			margin: 0;
 			height: 30px;
 			width: 30px;
 		}
