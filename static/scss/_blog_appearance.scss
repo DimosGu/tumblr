@@ -1,3 +1,52 @@
+@import 'bourbon/bourbon';
+
+@include keyframes (waiting-anim) {
+  0%, 100% {
+    opacity: 1;
+    height: 16px;
+    margin-top: 2px;
+  }
+  50% {
+    opacity: .7;
+    height: 20px;
+    margin-top: 0;
+  }
+}
+
+#loading-anim-container {
+  position: absolute;
+  top: 14px;
+  right: 43px;
+  height: 20px;
+  width: 52px;
+  padding: 0 1px 0 1px;
+  height: 20px;
+  overflow: auto;
+  z-index: 97;
+}
+
+.loading-rect {
+  animation: waiting-anim 500ms infinite;
+  background: #8F8F75;
+  border-radius: 2px;
+  float: left;
+  width: 12px;
+  height: 16px;
+}
+
+.loading-rect:nth-child(1),
+.loading-rect:nth-child(2) {
+  margin-right: 7px;
+}
+
+.loading-rect:nth-child(2) {
+  animation-delay: 166ms;
+}
+
+.loading-rect:nth-child(3) {
+  animation-delay: 332ms;
+}
+
 #blog-appearance-body {
 
   h1 {
