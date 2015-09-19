@@ -19,16 +19,16 @@
 							<strong>ACCOUNT</strong>
 							<a href="{% url 'log_out' %}">Log out</a>
 						</li>
-						<li id="li-likes" class="li-option{% if like_count == 0 %} display-none{% endif %}">
+						<li id="li-likes" class="li-option">
 							<a href="{% url 'likes' %}">
 								<img src="{% static 'images/menu_likes.png' %}"/>
-								Likes<span>{{ like_count }}</span>
+								Likes<span>{% if like_count != 0 %}{{ like_count }}{% endif %}</span>
 							</a>
 						</li>
 						<li id="li-following" class="li-option{% if following_count == 0 %} display-none{% endif %}">
 							<a href="{% url 'following' %}">
 								<img src="{% static 'images/menu_following.png' %}"/>
-								Following<span>{{ following_count }}</span>
+								Following<span>{% if like_count != 0 %}{{ following_count }}{% endif %}</span>
 							</a>
 						</li>
 					</ul>
