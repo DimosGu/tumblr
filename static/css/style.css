@@ -1424,27 +1424,6 @@ img {
       color: #444;
       opacity: .6; }
 
-#no-posts {
-  background: rgba(255, 255, 255, 0.05) url("../images/no_posts.png") no-repeat center;
-  border: 1px solid rgba(0, 0, 0, 0.18);
-  border-radius: 6px;
-  height: 800px;
-  margin: 0 auto 40px auto;
-  position: relative;
-  width: 625px; }
-  #no-posts span {
-    color: rgba(255, 255, 255, 0.46);
-    display: block;
-    font-size: 23px;
-    font-weight: bold;
-    text-align: center;
-    height: 23px;
-    width: 300px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin: 60px 0 0 -150px; }
-
 #likes-posts-wrapper {
   margin: 0 auto;
   width: 540px; }
@@ -1709,6 +1688,27 @@ body {
     margin: auto auto;
     max-height: 100%;
     max-width: 70%; }
+
+#no-posts {
+  background: rgba(255, 255, 255, 0.05) url("../images/no_posts.png") no-repeat center;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  border-radius: 6px;
+  height: 800px;
+  margin: 0 auto 40px auto;
+  position: relative;
+  width: 625px; }
+  #no-posts span {
+    color: rgba(255, 255, 255, 0.46);
+    display: block;
+    font-size: 23px;
+    font-weight: bold;
+    text-align: center;
+    height: 23px;
+    width: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: 60px 0 0 -150px; }
 
 #img-container {
   background-size: cover;
