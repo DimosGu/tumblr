@@ -8,10 +8,17 @@ from random import randint
 
 
 def upload_path(self, filename):
-  random_number = randint(0, 10000000000000000)
+
+  path_list = []
+
+  for x in range(0, 6):
+    random_number = randint(0, 1000)
+    path_list.append(str(random_number))
+
+  file_path = int(''.join(path_list))
   file_extension = filename.split('.')[1]
 
-  return 'user_media/%s/tumblr_%s.%s' % (self.user.username, random_number, file_extension)
+  return 'user_media/%s/tumblr_%s.%s' % (self.user.username, file_path, file_extension)
 
 
 class BlogManager(BaseManager):
