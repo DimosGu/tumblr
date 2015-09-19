@@ -7,6 +7,11 @@ edit_verify = true;
 save_verify = false;
 $save = $('#save');
 
+animation_html = '<div id="loading-anim-container"><div class="loading-rect"></div>' +
+  '<div class="loading-rect"></div><div class="loading-rect"></div></div>'
+
+$blog_appearance_wrapper = $('#blog-appearance-wrapper');
+
 $mini_header = $('#mini-header');
 $mini_header_original_image = $mini_header.attr('style');
 $avatar_img = $('#mini-blog-img').children('img');
@@ -20,7 +25,9 @@ $title_span = $blog_title.children('span');
 $original_title = $title_span.html();
 
 $edit_appearance = $('#edit-appearance');
+$edit_appearance_html = $edit_appearance.html();
 $edit_appearance_text = $('#edit-appearance-text');
+
 $mini_site_link = $('#mini-site-link');
 $edit_options_wrapper = $('#edit-options-wrapper');
 $edit_options_cover = $('#edit-options-cover');
@@ -80,6 +87,10 @@ function edit_blog(blog_pk) {
 
     success: function(json) {
       edit_verify = true;
+
+      $('#loading-anim-container').remove();
+      $edit_appearance.html($edit_appearance_html);
+
       $header_img_input.val('');
       $avatar_img_input.val('');
 
@@ -96,13 +107,17 @@ $save.on('click', function() {
     edit_verify = false;
 
     $save.addClass('save-font-color');
+
     $title_span.removeAttr('contentEditable');
     $title_span.removeClass('title-border');
     $title_span.removeAttr('data-placeholder');
 
     $edit_options_wrapper.addClass('display-none');
     $edit_options_cover.addClass('display-none');
+
+    $edit_appearance.html('');
     $edit_appearance.removeClass('display-none');
+
     $mini_site_link.removeClass('display-none');
 
     if ($title_span.html() === '') {
@@ -110,6 +125,7 @@ $save.on('click', function() {
     }
 
     edit_blog($blog_pk);
+    $blog_appearance_wrapper.prepend(animation_html);
   }
 });
 
