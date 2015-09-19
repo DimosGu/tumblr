@@ -5,9 +5,7 @@
   <div id="wrapper" class="display-none">
     {% include 'header.html' %}
     {% if not latest_posts %}
-      <div id="no-posts">
-        <span>No posts to display.</span>
-      </div>
+      {% include 'no_post_msg.html %}
     {% endif %}
     <div id="likes-posts-wrapper">
       {% for post, tags, like, follow in latest_posts %}

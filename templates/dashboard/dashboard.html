@@ -4,6 +4,9 @@
 {% block content %}
 	<div id="wrapper" class="display-none">
 		{% include "header.html" %}
+		{% if not latest_posts %}
+      {% include 'no_post_msg.html %}
+    {% endif %}
 		<div id="dashboard-posts-wrapper">
 			{% for post, tags, like in latest_posts %}
 				{% include 'post.html' %}
