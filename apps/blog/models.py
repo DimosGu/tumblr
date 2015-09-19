@@ -4,16 +4,23 @@ from django.utils import timezone
 from django.template.loader import render_to_string
 from tumblr.base_model import BaseManager, BaseModel
 from apps.user_accounts.models import User
+from random import randint
 
 
 def upload_path(self, filename):
-  return 'user_media/%s/%s' % (self.user.username, filename)
+  random_number = randint(0, 10000000000000000)
+  file_extension = filename.split('.')[1]
+
+  return 'user_media/%s/tumblr_%s.%s' % (self.user.username, random_number, file_extension)
 
 
 class BlogManager(BaseManager):
 
   def get_blog_user(self, user):
     return self.get(user=user)
+
+  def get_blog_pk(self, pk):
+    return self.get(pk=pk)
 
 
 class PostManager(BaseManager):

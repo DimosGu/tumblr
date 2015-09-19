@@ -1,3 +1,25 @@
+#blog-appearance-body {
+
+  h1 {
+
+    span {
+      display: inline-block;
+      min-width: 10px;
+      min-height: 48px;
+      outline: 0;
+    }
+
+    span:before {
+      content: attr(data-placeholder);
+      opacity: .3;
+    }
+  }
+
+  .h1-focus {
+    background: rgba(0,0,0,0.05);
+  }
+}
+
 #blog-appearance-wrapper {
   background: #fff;
   margin: 0 auto;
@@ -8,4 +30,92 @@
   #mini-header-overlay {
     position: absolute;
   }
+
+  button {
+    border: 0;
+    border-radius: 2px;
+    color: #444;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    height: 30px;
+    outline: 0;
+    padding-bottom: 2px;
+  }
+}
+
+#edit-appearance {
+  background: #fff;
+  width: 120px;
+  top: 9px;
+  right: 10px;
+  position: absolute;
+  z-index: 90;
+}
+
+#edit-options-wrapper {
+  padding: 1;
+  height: 100%;
+  z-index: 90;
+  position: relative;
+}
+
+#edit-options-cover {
+  opacity: 0;
+  background: #fff;
+  position: absolute;
+  height: 380px;
+  width: 100%;
+  z-index: 89;
+}
+
+#button-wrapper {
+  top: 9px;
+  right: 10px;
+  position: absolute;
+}
+
+#save-cancel-wrapper {
+  overflow: auto;
+
+  button {
+    width: 69px;
+  }
+
+  #save {
+    background: #fff;
+    margin-left: 6px;
+  }
+
+  .save-font-color {
+    color: rgba(68,68,68,0.5);
+  }
+
+  #cancel {
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+  }
+}
+
+#edit-header-img,
+#edit-avatar {
+  background: rgba(0,0,0,0.5) url('../images/edit_blog.png')no-repeat center;
+  height: 30px;
+  width: 30px;
+  position: absolute;
+}
+
+#edit-header-img {
+  right: 10px;
+  top: 60px;
+}
+
+#edit-avatar {
+  right: 276px;
+  top: 313px;
+}
+
+.title-border {
+  border-bottom: 2px dotted #529ECC;
+  outline: 0;
 }

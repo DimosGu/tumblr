@@ -2,9 +2,28 @@
 {% load staticfiles %}
 
 {% block content %}
-  <div id="wrapper" class="display-none">
+  <div id="wrapper" class="display-none" data-blog-pk="{{ blog.pk }}">
     {% include 'header.html' %}
     <div id="blog-appearance-wrapper">
+    <div id="edit-options-cover" class="display-none"></div>
+      <button id="edit-appearance">Edit appearance</button>
+      <div id="edit-options-wrapper" class="display-none">
+        <span id="edit-appearance-text" class="header-text">Edit appearance</span>
+        <div id="button-wrapper">
+          <div id="save-cancel-wrapper">
+            <button id="cancel">Cancel</button>
+            <button id="save" class="save-font-color">Save</button>
+          </div>
+        </div>
+        <form id="blog-change-form" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ blog_form.header_img }}
+          {{ blog_form.avatar_img }}
+        </form>
+        <button id="edit-header-img" title="Edit header image"
+        ></button>
+        <button id="edit-avatar" title="Edit avatar image"></button>
+      </div>
       {% include 'sites/mini_site.html' %}
     </div>
   </div>

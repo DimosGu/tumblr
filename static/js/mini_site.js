@@ -26,7 +26,6 @@ function get_site(username) {
 					right: scrollbar_size,
 					width: mini_site.offsetWidth - scrollbar_size
 				};
-				$('#mini-header-overlay').css(styles).removeClass('display-none');
 			}, 500);
 		},
 	});

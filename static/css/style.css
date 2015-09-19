@@ -605,17 +605,15 @@ img {
     border-radius: 3px 3px 0 0;
     padding: 1px; }
   .post-wrapper .blog-link {
-    background: #fff;
+    background-color: #fff;
+    background-position: center;
+    background-size: 100%;
     border-radius: 2px;
     left: -85px;
     top: 0;
     position: absolute;
     height: 64px;
     width: 64px; }
-    .post-wrapper .blog-link img {
-      margin: 1px 0 0 1px;
-      height: 62px;
-      width: 62px; }
   .post-wrapper .user-link {
     color: #444;
     font-weight: bold;
@@ -722,14 +720,16 @@ img {
   position: fixed;
   top: 0; }
 
-#mini-site-link {
+.header-text {
   color: #fff;
   font-size: 14px;
   font-weight: bold;
   position: absolute;
   left: 20px;
   top: 18px;
-  height: 30px;
+  height: 30px; }
+
+#mini-site-link {
   max-width: 350px;
   text-decoration: none; }
 
@@ -770,7 +770,9 @@ img {
     color: #444444;
     font-size: 42px;
     font-weight: bold;
-    text-align: center; }
+    text-align: center;
+    margin: 0 auto;
+    width: 526px; }
 
 #mini-blog-img {
   background: #ffffff;
@@ -974,16 +976,11 @@ img {
     padding: 14px 0 0 13px;
     overflow: auto; }
   #explore-posts-wrapper .blog-link {
-    background: none;
     border-radius: 0;
     float: left;
     height: 30px;
     width: 30px;
     position: static; }
-    #explore-posts-wrapper .blog-link img {
-      margin: 0;
-      height: 30px;
-      width: 30px; }
   #explore-posts-wrapper .user-link {
     cursor: pointer;
     float: left;
@@ -1015,6 +1012,8 @@ img {
 
 #sites-body {
   background: #ffffff; }
+  #sites-body #wrapper {
+    padding: 0; }
 
 #header-overlay {
   background-color: transparent;
@@ -1150,6 +1149,7 @@ img {
 #no-user-header-wrapper {
   width: 100%;
   position: fixed;
+  top: 0;
   z-index: 98; }
 
 #no-user-header {
@@ -1541,6 +1541,17 @@ img {
       color: #666;
       border: 1px solid #bfbfbf; }
 
+#blog-appearance-body h1 span {
+  display: inline-block;
+  min-width: 10px;
+  min-height: 48px;
+  outline: 0; }
+#blog-appearance-body h1 span:before {
+  content: attr(data-placeholder);
+  opacity: .3; }
+#blog-appearance-body .h1-focus {
+  background: rgba(0, 0, 0, 0.05); }
+
 #blog-appearance-wrapper {
   background: #fff;
   margin: 0 auto;
@@ -1549,6 +1560,75 @@ img {
   width: 585px; }
   #blog-appearance-wrapper #mini-header-overlay {
     position: absolute; }
+  #blog-appearance-wrapper button {
+    border: 0;
+    border-radius: 2px;
+    color: #444;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    height: 30px;
+    outline: 0;
+    padding-bottom: 2px; }
+
+#edit-appearance {
+  background: #fff;
+  width: 120px;
+  top: 9px;
+  right: 10px;
+  position: absolute;
+  z-index: 90; }
+
+#edit-options-wrapper {
+  padding: 1;
+  height: 100%;
+  z-index: 90;
+  position: relative; }
+
+#edit-options-cover {
+  opacity: 0;
+  background: #fff;
+  position: absolute;
+  height: 380px;
+  width: 100%;
+  z-index: 89; }
+
+#button-wrapper {
+  top: 9px;
+  right: 10px;
+  position: absolute; }
+
+#save-cancel-wrapper {
+  overflow: auto; }
+  #save-cancel-wrapper button {
+    width: 69px; }
+  #save-cancel-wrapper #save {
+    background: #fff;
+    margin-left: 6px; }
+  #save-cancel-wrapper .save-font-color {
+    color: rgba(68, 68, 68, 0.5); }
+  #save-cancel-wrapper #cancel {
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff; }
+
+#edit-header-img,
+#edit-avatar {
+  background: rgba(0, 0, 0, 0.5) url("../images/edit_blog.png") no-repeat center;
+  height: 30px;
+  width: 30px;
+  position: absolute; }
+
+#edit-header-img {
+  right: 10px;
+  top: 60px; }
+
+#edit-avatar {
+  right: 276px;
+  top: 313px; }
+
+.title-border {
+  border-bottom: 2px dotted #529ECC;
+  outline: 0; }
 
 html {
   font-family: helvetica, arial;

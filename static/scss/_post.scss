@@ -10,19 +10,15 @@
   }
 
   .blog-link {
-    background: #fff;
+    background-color: #fff;
+    background-position: center;
+    background-size: 100%;
     border-radius: 2px;
     left: -85px;
     top: 0;
     position: absolute;
     height: 64px;
     width: 64px;
-
-    img {
-      margin: 1px 0 0 1px;
-      height: 62px;
-      width: 62px;
-    }
   }
 
   .user-link {

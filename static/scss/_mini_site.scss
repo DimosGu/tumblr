@@ -40,7 +40,7 @@
 	top: 0;
 }
 
-#mini-site-link {
+.header-text {
 	color: #fff;
 	font-size: 14px;
 	font-weight: bold;
@@ -48,6 +48,9 @@
 	left: 20px;
 	top: 18px;
 	height: 30px;
+}
+
+#mini-site-link {
 	max-width: 350px;
 	text-decoration: none;
 }
@@ -97,6 +100,8 @@
 		font-size: 42px;
 		font-weight: bold;
 		text-align: center;
+		margin: 0 auto;
+		width: 526px;
 	}
 }
 

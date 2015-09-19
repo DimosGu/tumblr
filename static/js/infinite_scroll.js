@@ -6,7 +6,7 @@ $(window).load(function() {
 
   if (typeof following_body === 'undefined' || following_body === null) {
     setTimeout (function() {
-      if ($(document).height() === $(window).height()) {
+      if ($(document).height() === $(window).height() && get_post_verify) {
         get_ten_posts(visible_posts);
         get_post_verify = false;
         visible_posts += 10;

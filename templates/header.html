@@ -36,7 +36,7 @@
 						<li class="li-header"><strong>BLOGS</strong></li>
 						<li class="blog-details">
 							<a class="account-blog-link" href="{% url 'blog_edit' user.username %}">
-								<img src="{{ blog.img }}">
+								<img src="{{ blog.img.url }}">
 								<div class="blog-info">
 									<span class="username">{{ user.username }}</span>
 									<br>

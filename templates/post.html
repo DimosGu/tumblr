@@ -7,9 +7,7 @@
 	{% if not request.subdomain %}
 		<div class="post-header">
 			{% if mini_section != 'True' %}
-				<a class="blog-link" {% if section == 'blog' or section == 'likes' %}title="{{ post.blog.title }}"{% else %}title="{{ post.user.username }}"{% endif %} href="http://{{ post.user.username }}.{{ domain_url }}">
-					<img src="{{ post.blog.img.url }}">
-				</a>
+				<a class="blog-link" {% if section == 'blog' or section == 'likes' %}title="{{ post.blog.title }}"{% else %}title="{{ post.user.username }}"{% endif %} href="http://{{ post.user.username }}.{{ domain_url }}" style="background-image: url({{ post.blog.img.url }});"></a>
 				<a class="user-link" title="{{ post.user.username }}" href="http://{{ post.user.username }}.{{ domain_url }}">{{ post.user.username }}</a>
 
 				{% if section == 'likes' and follow == 'False' and post.user != request.user %}
