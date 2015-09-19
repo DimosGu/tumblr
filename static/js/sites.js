@@ -4,6 +4,10 @@ visible_posts = 10;
 get_post_verify = true;
 site_username = $('#link-wrapper').attr('data-username');
 
+$(window).load(function() {
+	$('#wrapper').removeClass('display-none');
+});
+
 function get_ten_posts(post_count, site_user) {
 
 	$.ajax({
