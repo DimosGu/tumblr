@@ -22,13 +22,13 @@
 						<li id="li-likes" class="li-option">
 							<a href="{% url 'likes' %}">
 								<img src="{% static 'images/menu_likes.png' %}"/>
-								Likes<span>{% if like_count != 0 %}{{ like_count }}{% endif %}</span>
+								Likes<span>{{ like_count }}</span>
 							</a>
 						</li>
 						<li id="li-following" class="li-option">
 							<a href="{% url 'following' %}">
 								<img src="{% static 'images/menu_following.png' %}"/>
-								Following<span>{% if like_count != 0 %}{{ following_count }}{% endif %}</span>
+								Following<span>{{ following_count }}</span>
 							</a>
 						</li>
 					</ul>
