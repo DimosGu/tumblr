@@ -16,7 +16,6 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['.briansquashic.com']
 
-
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',

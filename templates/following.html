@@ -4,27 +4,25 @@
 {% block content %}
   <div id="wrapper" class="display-none">
     {% include 'header.html' %}
-    <div id="following-wrapper">
-      <div id="following-container">
-        <div id="blogs-wrapper">
-          {% if not following %}
-            <div class="followed-blog">Not following any blogs.</div>
-          {% endif %}
-          {% for follow in following %}
-            <div class="followed-blog" data-blog-id="{{ follow.blog.pk }}">
-              <a href="http://{{ follow.blog.user.username }}.{{ domain_url }}">
-                <img src="{{ follow.blog.img }}"/>
-              </a>
-              <a class="name-link" href="http://{{ follow.blog.user.username }}.{{ domain_url }}">
-                {{ follow.blog.user.username }}
-              </a>
-              <div class="follow-unfollow" data-username="{{ follow.blog.user.username }}">
-                <button class="unfollow">Unfollow</button>
-                <button class="follow display-none">Follow</button>
-              </div>
+    <div id="following-container">
+      <div id="blogs-wrapper">
+        {% if not following %}
+          <div class="followed-blog">Not following any blogs.</div>
+        {% endif %}
+        {% for follow in following %}
+          <div class="followed-blog" data-blog-id="{{ follow.blog.pk }}">
+            <a href="http://{{ follow.blog.user.username }}.{{ domain_url }}">
+              <img src="{{ follow.blog.img }}"/>
+            </a>
+            <a class="name-link" href="http://{{ follow.blog.user.username }}.{{ domain_url }}">
+              {{ follow.blog.user.username }}
+            </a>
+            <div class="follow-unfollow" data-username="{{ follow.blog.user.username }}">
+              <button class="unfollow">Unfollow</button>
+              <button class="follow display-none">Follow</button>
             </div>
-          {% endfor %}
-        </div>
+          </div>
+        {% endfor %}
       </div>
     </div>
   </div>
