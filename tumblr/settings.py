@@ -1,7 +1,7 @@
 import os
 
-# SESSION_COOKIE_DOMAIN = '.briansquashic.com'
-SESSION_COOKIE_DOMAIN = '.local.n-ws.org'
+SESSION_COOKIE_DOMAIN = '.briansquashic.com'
+# SESSION_COOKIE_DOMAIN = '.local.n-ws.org'
 # SESSION_COOKIE_SECURE = True
 # CSRF_COOKIE_SECURE = True
 
@@ -12,9 +12,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'inpr6-d-pan0@gtsj%at1gy!=ds+xms@y2s%q&$-4q(k_s4b6e'
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['.local.n-ws.org']
+ALLOWED_HOSTS = ['.briansquashic.com']
 
 
 INSTALLED_APPS = (

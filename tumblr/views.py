@@ -3,7 +3,7 @@ from apps.blog.models import Post
 from random import randint
 
 def error404(request):
-  chosen_posts = [1, 8, 9, 12, 15, 18]
+  chosen_posts = [1, 2, 3, 4, 5, 6]
   rand_post = chosen_posts[randint(0, 5)]
 
   context = {}
