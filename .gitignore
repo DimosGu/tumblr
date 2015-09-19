@@ -3,3 +3,4 @@
 *.pyc
 media/user_media
 *.sqlite3
+/static_root
