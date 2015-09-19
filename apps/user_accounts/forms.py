@@ -117,7 +117,7 @@ class RegistrationForm(forms.ModelForm):
 		return password
 
 	def clean_username(self):
-		username = self.cleaned_data["username"].lower()
+		username = self.cleaned_data["username"]
 		return username
 
 
