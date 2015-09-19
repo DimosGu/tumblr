@@ -12,7 +12,7 @@
         {% for follow in following %}
           <div class="followed-blog" data-blog-id="{{ follow.blog.pk }}">
             <a href="http://{{ follow.blog.user.username }}.{{ domain_url }}">
-              <img src="{{ follow.blog.img }}"/>
+              <img src="{{ follow.blog.img.url }}"/>
             </a>
             <a class="name-link" href="http://{{ follow.blog.user.username }}.{{ domain_url }}">
               {{ follow.blog.user.username }}
