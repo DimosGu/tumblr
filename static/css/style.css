@@ -1083,7 +1083,7 @@ img {
 #blog-info {
   margin: 0 auto 0 auto;
   padding-top: 40px;
-  width: 300px;
+  width: 526px;
   position: relative; }
   #blog-info #blog-img {
     background: #ffffff;
@@ -1102,12 +1102,14 @@ img {
   #blog-info #blog-title {
     display: block;
     text-decoration: none;
-    margin: 0 0 0 0; }
+    margin: 0 0 0 0;
+    width: 526px; }
     #blog-info #blog-title h1 {
       color: #444444;
       font-size: 56px;
       font-weight: bold;
-      text-align: center; }
+      text-align: center;
+      width: 526px; }
 
 #sites-posts-wrapper {
   margin: 10px 0 30px 0;
