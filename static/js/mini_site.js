@@ -22,7 +22,10 @@ function get_blog(username) {
 				$('#mini-posts-wrapper').prepend(json.post_html);
 				var scrollbar_size = mini_site.offsetWidth - mini_site.clientWidth;
 
-				$('#mini-header-overlay').css('right', scrollbar_size);
+				$('#mini-header-overlay').css({
+																		'right': scrollbar_size,
+																		'width': mini_site.clientWidth
+																	});
 			}, 500);
 		},
 	});
