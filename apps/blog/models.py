@@ -194,7 +194,7 @@ class PostManager(BaseManager):
             'post': post,
             'tags': tags,
             'like': like,
-            'request.subdomain': True,
+            'section': 'sites',
           }
         ))
 

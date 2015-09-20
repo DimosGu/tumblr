@@ -4,7 +4,7 @@
 	<div class="post-wrapper" data-id="{{ post.id }}" data-username="{{ post.user.username }}">
 {% endif %}
 
-	{% if not request.subdomain %}
+	{% if section != 'sites' %}
 		<div class="post-header">
 			{% if mini_section != 'True' %}
 				<a class="blog-link" {% if section == 'blog' or section == 'likes' %}title="{{ post.blog.title }}"{% else %}title="{{ post.user.username }}"{% endif %} href="http://{{ post.user.username }}.{{ domain_url }}" style="background-image: url({{ post.blog.img.url }});"></a>
