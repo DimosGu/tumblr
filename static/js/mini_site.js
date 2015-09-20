@@ -57,6 +57,7 @@ function mini_get_ten_posts(username, visible_posts) {
 		},
 
 		success: function(json) {
+			$('#loading-anim-container').remove();
 			$('#mini-posts-wrapper').append(json.html);
 
 			if (json.html.length) {
@@ -71,6 +72,8 @@ $('#mini-site').on('scroll', function() {
 		var username = $('#mini-link-wrapper').attr('data-username');
 
 		if (mini_get_post_verify) {
+			var mini = true;
+			append_loading_anim(mini);
 			mini_get_ten_posts(username, mini_visible_posts);
 			mini_get_post_verify = false;
 			mini_visible_posts += 10;

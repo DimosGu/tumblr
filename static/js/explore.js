@@ -47,6 +47,7 @@ function get_ten_posts(post_count) {
     data: data,
 
     success: function(json) {
+      $('#loading-anim-container').remove();
 
       if (typeof json.html != 'undefined' && json.html.length && json.html != "NoResults") {
         $explore_post_wrapper.append(json.html);

@@ -14,6 +14,8 @@ function get_ten_posts(post_count) {
 		success: function(json) {
 			var $post_wrapper = $('#blog-posts-wrapper');
 
+			$('#loading-anim-container').remove();
+
 			$post_wrapper.append(json.html);
 			if (json.html.length) {
 				get_post_verify = true;

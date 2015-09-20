@@ -7,8 +7,8 @@ edit_verify = true;
 save_verify = false;
 $save = $('#save');
 
-animation_html = '<div id="loading-anim-container"><div class="loading-rect"></div>' +
-  '<div class="loading-rect"></div><div class="loading-rect"></div></div>'
+animation_html = '<div id="waiting-anim-container"><div class="waiting-rect"></div>' +
+  '<div class="waiting-rect"></div><div class="waiting-rect"></div></div>'
 
 $blog_appearance_wrapper = $('#blog-appearance-wrapper');
 
@@ -88,7 +88,7 @@ function edit_blog(blog_pk) {
     success: function(json) {
       edit_verify = true;
 
-      $('#loading-anim-container').remove();
+      $('#waiting-anim-container').remove();
       $edit_appearance.html($edit_appearance_html);
 
       $header_img_input.val('');

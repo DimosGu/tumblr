@@ -2,7 +2,24 @@ if (typeof get_post_verify === 'undefined') {
   get_post_verify = false;
 }
 
+function append_loading_anim(mini) {
+  console.log(mini);
+  animation_html = '<div id="loading-anim-container"><div class="loading-rect"></div>' +
+  '<div class="loading-rect"></div><div class="loading-rect"></div></div>';
+
+  if (mini) {
+    $('#mini-posts-wrapper').append(animation_html);
+  } else{
+    $('#wrapper').append(animation_html);
+  }
+}
+
 $(window).load(function() {
+  var $no_post_div = $('#no-posts');
+
+  if ($no_post_div.length) {
+    get_post_verify = false;
+  }
 
   if (typeof following_body === 'undefined' || following_body === null) {
     setTimeout (function() {
@@ -28,6 +45,7 @@ $(window).on('scroll', function() {
         get_ten_posts(visible_posts);
       }
       visible_posts += 10;
+      append_loading_anim();
     }
   }
 });
