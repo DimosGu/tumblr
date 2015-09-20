@@ -132,7 +132,7 @@
 					<form id="post-photo-form" action="" method="POST" enctype="multipart/form-data">
 						{% csrf_token %}
 						{{ photo_form.file }}
-						<div id="img-container">
+						<div id="img-preview-container">
 							<img id="img-preview" src="" class="display-none">
 							<span id="erase-img" class="display-none">x</span>
 						</div>

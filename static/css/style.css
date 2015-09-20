@@ -522,13 +522,13 @@ img {
     width: 1px; }
 #post-photo #photo-file {
   display: none; }
-#post-photo #img-container {
+#post-photo #img-preview-container {
   margin: 0 0 10px 0;
   width: 100%;
   position: relative; }
-  #post-photo #img-container #img-preview {
+  #post-photo #img-preview-container #img-preview {
     width: 100%; }
-  #post-photo #img-container #erase-img {
+  #post-photo #img-preview-container #erase-img {
     background: #D95E40;
     border-radius: 50%;
     color: #fff;
