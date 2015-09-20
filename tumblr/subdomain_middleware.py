@@ -24,5 +24,5 @@ class SubdomainMiddleware:
 			else:
 				return HttpResponseRedirect('http://%s%s' % ('.'.join(hosts[1:]), path_info))
 
-		elif hosts[0] != 'www':
+		elif len(hosts) == 2:
 			return HttpResponseRedirect('http://www.%s' % host)

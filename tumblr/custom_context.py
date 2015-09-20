@@ -35,11 +35,8 @@ def domain_url(request):
 	url = request.META['HTTP_HOST']
 	split_url = url.split('.')
 
-	if split_url[0] == 'www':
-		split_url.pop(0)
-		domain_url = '.'.join(split_url)
-	else:
-		domain_url = url
+	split_url.pop(0)
+	domain_url = '.'.join(split_url)
 
 	return { 'domain_url': domain_url }
 

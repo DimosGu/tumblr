@@ -4,7 +4,7 @@
 {% block content %}
 	<div id="wrapper" class="display-none">
 		<div id="header-overlay">
-			<a href="http://www.briansquashic.com/dashboard">
+			<a href="http://{{ domain_url }}">
 				<img src="{% static 'images/tumblr_logo.png' %}">
 			</a>
 			<div id="link-wrapper" data-username="{{ current_site.username }}">
@@ -16,11 +16,11 @@
 						<button class="unfollow">- Unfollow</button>
 						<button class="follow display-none">+ Follow</button>
 					{% endif %}
-					<a id="dashboard-link" href="http://www.briansquashic.com/dashboard">Dashboard</a>
+					<a id="dashboard-link" href="http://{{ domain_url }}">Dashboard</a>
 				{% elif user == current_site %}
-					<a id="dashboard-link" href="http://www.briansquashic.com/dashboard">Dashboard</a>
+					<a id="dashboard-link" href="http://{{ domain_url }}">Dashboard</a>
 				{% else %}
-					<a id="tumblr-link" href="http://www.briansquashic.com">tumblr.</a>
+					<a id="tumblr-link" href="http://{{ domain_url }}">tumblr.</a>
 				{% endif %}
 			</div>
 		</div>
