@@ -155,6 +155,14 @@ function edit_post(type, id) {
   });
 };
 
+function check_nopost_msg() {
+  var $no_post_msg = $('#no-posts');
+
+  if ($no_post_msg.length) {
+    $no_post_msg.remove();
+  }
+}
+
 function new_text_post() {
 
   $.ajax({
@@ -170,6 +178,7 @@ function new_text_post() {
       var $post_wrapper = $('#blog-posts-wrapper');
 
       if (blog_body) {
+        check_nopost_msg();
         $post_wrapper.prepend(json.html);
         visible_posts += 1;
       }
@@ -272,6 +281,7 @@ function new_photo_post() {
       var $post_wrapper = $('#blog-posts-wrapper');
 
       if (blog_body) {
+        check_nopost_msg();
         $post_wrapper.prepend(json.html);
         visible_posts += 1;
       }

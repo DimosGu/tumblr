@@ -1,3 +1,5 @@
-<div id="no-posts">
-  <span>No posts to display.</span>
-</div>
+{% if not latest_posts %}
+  <div id="no-posts">
+    <span>No posts to display.</span>
+  </div>
+{% endif %}
