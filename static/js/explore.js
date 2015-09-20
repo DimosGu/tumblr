@@ -52,15 +52,13 @@ function get_ten_posts(post_count) {
         $explore_post_wrapper.append(json.html);
         $explore_post_wrapper.masonry('reloadItems');
 
-        setTimeout (function() {
-          $explore_post_wrapper.masonry('layout');
-        }, 300);
-
-        setTimeout (function() {
+        $explore_post_wrapper.imagesLoaded( function() {
           var $post_wrapper = $('.post-wrapper');
+
+          $explore_post_wrapper.masonry('layout');
           $post_wrapper.removeClass('invisible');
           get_post_verify = true;
-        }, 500);
+        });
       } else if ($wrapper_data && $wrapper_data != 'NoResults') {
         $explore_post_wrapper.after("<div id='end-results'><p>That's about it for <span>" + json.result + "</span>. Try another search?</p></div>")
       } else {
