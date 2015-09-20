@@ -55,7 +55,11 @@ def photo(request):
 
 def get_ten_posts(request):
   post_count = int(request.GET['post_count'])
-  url_domain = request.META['HTTP_HOST']
+
+  url = request.META['HTTP_HOST']
+  split_url = url.split('.')
+  split_url.pop(0)
+  domain_url = '.'.join(split_url)
 
   try:
     sub_section = request.GET['sub_section']
@@ -77,7 +81,7 @@ def get_ten_posts(request):
   response = {}
 
   appended_posts = Post.objects.render_posts(
-    latest_posts, 'post.html', section='explore', domain=url_domain, user=request.user
+    latest_posts, 'post.html', section='explore', domain=domain_url, user=request.user
   )
 
   response['html'] = appended_posts
