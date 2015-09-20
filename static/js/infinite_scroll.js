@@ -3,7 +3,6 @@ if (typeof get_post_verify === 'undefined') {
 }
 
 function append_loading_anim(mini) {
-  console.log(mini);
   animation_html = '<div id="loading-anim-container"><div class="loading-rect"></div>' +
   '<div class="loading-rect"></div><div class="loading-rect"></div></div>';
 
