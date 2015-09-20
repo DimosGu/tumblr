@@ -3,7 +3,7 @@ var $mini_site_wrapper, $mini_site, mini_visible_posts, mini_get_post_verify;
 $mini_site_wrapper = $('#mini-site-wrapper');
 $mini_site = $('#mini-site');
 
-function get_site(username) {
+function get_blog(username) {
 	$.ajax({
 		url: '/sites/mini_site',
 		type: 'GET',
@@ -22,10 +22,7 @@ function get_site(username) {
 				$('#mini-posts-wrapper').prepend(json.post_html);
 				var scrollbar_size = mini_site.offsetWidth - mini_site.clientWidth;
 
-				styles = {
-					right: scrollbar_size,
-					width: mini_site.offsetWidth - scrollbar_size
-				};
+				$('#mini-header-overlay').css('right', scrollbar_size);
 			}, 500);
 		},
 	});
@@ -36,7 +33,7 @@ $('body').on('click', '.blog-link, .user-link', function (e) {
 	e.preventDefault();
 	$('body').addClass('overflow-hidden2');
 	$mini_site_wrapper.removeClass('display-none');
-	get_site(username);
+	get_blog(username);
 
 	setTimeout (function() {
 		$mini_site.removeClass('site-no-width').addClass('site-width');
