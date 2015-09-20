@@ -59,11 +59,11 @@ def get_ten_posts(request):
 
   try:
     mini = request.GET['mini']
-    mini = 'mini'
+    section = 'mini'
   except:
-    mini = False
+    section = 'site'
 
-  post_loop = Post.objects.render_posts(posts, 'post.html', user=request.user, section=mini)
+  post_loop = Post.objects.render_posts(posts, 'post.html', user=request.user, section=section)
 
   response['html'] = post_loop
 

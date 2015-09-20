@@ -3,7 +3,7 @@
 <html>
 <head>
   <title>{% if section == 'sites' %}{{ page_title }}{% elif page_title %}{{ page_title }} | Tumblr{% else %}Tumblr{% endif %}</title>
-  <link rel="icon" href="{% if section == 'sites' %}{{ blog.img.url }}{% else %}{% static 'images/icon.ico' %}{% endif %}" />
+  <link rel="icon" href="{% if section == 'sites' %}{{ current_blog.img.url }}{% else %}{% static 'images/icon.ico' %}{% endif %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
 </head>
 <body id="{{ section }}-body">

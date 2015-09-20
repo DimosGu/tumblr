@@ -176,6 +176,28 @@ class PostManager(BaseManager):
             'like': like,
           }
         ))
+
+    elif section == 'site':
+
+      for post in ordered_posts:
+        tags = Tags.objects.filter(post=post)
+
+        try:
+          like = Like.objects.get(user=user, post=post)
+          like = 'True'
+        except:
+          like = 'False'
+
+        post_html.append(render_to_string(
+          template,
+          {
+            'post': post,
+            'tags': tags,
+            'like': like,
+            'request.subdomain': True,
+          }
+        ))
+
     elif section == 'blog_edit':
 
       for post in ordered_posts:
@@ -189,6 +211,7 @@ class PostManager(BaseManager):
             'section': 'blog',
           }
         ))
+
     elif section == 'likes':
 
       for post in ordered_posts:

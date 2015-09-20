@@ -3,7 +3,7 @@ from apps.user_accounts.models import User
 
 class SubdomainMiddleware:
 	def process_request(self, request):
-		request.subdomain = None
+		request.subdomain = False
 		host = request.META['HTTP_HOST']
 		hosts = host.split('.')
 
@@ -23,3 +23,6 @@ class SubdomainMiddleware:
 
 			else:
 				return HttpResponseRedirect('http://%s%s' % ('.'.join(hosts[1:]), path_info))
+
+		elif hosts[0] != 'www':
+			return HttpResponseRedirect('http://www.%s' % path_info)
