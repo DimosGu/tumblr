@@ -17,7 +17,7 @@ $(window).load(function() {
 
     $('#wrapper').removeClass('invisible');
     $post_wrapper.removeClass('invisible');
-  }, 1);
+  }, 100);
 });
 
 function get_ten_posts(post_count) {
