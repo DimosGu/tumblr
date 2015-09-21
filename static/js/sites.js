@@ -21,9 +21,9 @@ function get_ten_posts(post_count, site_user) {
 		success: function(json) {
 			var $posts_wrapper = $('#sites-posts-wrapper');
 
+			$posts_wrapper.append(json.html);
 			$('#loading-anim-container').remove();
 
-			$posts_wrapper.append(json.html);
 			if (json.html.length) {
 				get_post_verify = true;
 			}

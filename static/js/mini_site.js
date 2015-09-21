@@ -57,8 +57,8 @@ function mini_get_ten_posts(username, visible_posts) {
 		},
 
 		success: function(json) {
-			$('#loading-anim-container').remove();
 			$('#mini-posts-wrapper').append(json.html);
+			$('#loading-anim-container').remove();
 
 			if (json.html.length) {
 				mini_get_post_verify = true;
