@@ -1227,7 +1227,8 @@ img {
     width: 169px; }
     #no-user-header #header-right a {
       font-size: 13px;
-      padding: 7px 0 0 0;
+      padding: 9px 0 0 0;
+      line-height: 13px;
       text-decoration: none;
       text-align: center; }
   #no-user-header #login {
