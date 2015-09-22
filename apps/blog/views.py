@@ -21,7 +21,7 @@ def blog_edit(request, username):
   context = Post.objects.combine_post_attributes(latest_posts)
   context['section'] = 'blog'
 
-  return render(request, 'blog/blog_edit.html', context)
+  return render(request, 'blog_edit.html', context)
 
 
 def get_more_posts(request):
