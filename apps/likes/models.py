@@ -30,4 +30,4 @@ class Like(BaseModel):
     app_label = 'likes'
 
   def __str__(self):
-    return '%s --> %s' % (self.user, self.post.user)
+    return '%s --> %s' % (self.user, self.post.pk)
