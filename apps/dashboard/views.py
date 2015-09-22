@@ -10,7 +10,7 @@ def dashboard(request):
   context = Post.objects.combine_post_attributes(latest_posts, user=request.user, like=True)
   context['section'] = 'dashboard'
 
-  return render(request, 'dashboard/dashboard.html', context)
+  return render(request, 'dashboard.html', context)
 
 def get_ten_posts(request):
   post_count = int(request.GET['post_count'])

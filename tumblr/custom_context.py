@@ -35,7 +35,11 @@ def domain_url(request):
 	url = request.META['HTTP_HOST']
 	split_url = url.split('.')
 
-	split_url.pop(0)
+	if split_url[0] != 'local':
+		split_url.pop(0)
+	else:
+		pass
+
 	domain_url = '.'.join(split_url)
 
 	return { 'domain_url': domain_url }
