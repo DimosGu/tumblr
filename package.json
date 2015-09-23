@@ -1,0 +1,21 @@
+{
+  "name": "tumblr",
+  "version": "0.0.0",
+  "description": "practice tumblr clone django",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/punkcow/tumblr.git"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/punkcow/tumblr/issues"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0"
+  }
+}

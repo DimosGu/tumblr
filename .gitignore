@@ -5,5 +5,4 @@ media/user_media
 *.sqlite3
 /static_root
 tumblr/settings.py
-package.json
 node_modules/
