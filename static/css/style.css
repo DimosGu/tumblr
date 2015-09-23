@@ -93,7 +93,6 @@ img {
     opacity: .7;
     height: 30px;
     margin-top: 0; } }
-
 @-moz-keyframes loading_anim {
   0%, 100% {
     opacity: 1;
@@ -103,7 +102,6 @@ img {
     opacity: .7;
     height: 30px;
     margin-top: 0; } }
-
 @keyframes loading_anim {
   0%, 100% {
     opacity: 1;
@@ -113,7 +111,6 @@ img {
     opacity: .7;
     height: 30px;
     margin-top: 0; } }
-
 #loading-anim-container {
   height: 20px;
   width: 76px;
@@ -361,7 +358,6 @@ img {
   width: 170px;
   margin: 0 0 0 57px;
   padding: 4px 0 0 4px; }
-
 .blog-options a:hover {
   background: #E6EFF7; }
 
@@ -524,10 +520,8 @@ img {
     position: absolute;
     height: 150px;
     width: 1px; }
-
 #post-photo #photo-file {
   display: none; }
-
 #post-photo #img-preview-container {
   margin: 0 0 10px 0;
   width: 100%;
@@ -570,7 +564,6 @@ img {
     font-weight: 700;
     margin: 15px 0 0 20px;
     position: absolute; }
-
 .post-selection .post-content {
   background: #ffffff; }
   .post-selection .post-content .title-field,
@@ -601,7 +594,6 @@ img {
     min-height: 19px; }
   .post-selection .post-content .submit-input {
     display: none; }
-
 .post-selection .post-footer {
   padding-top: 15px;
   height: 60px;
@@ -774,7 +766,7 @@ img {
 #mini-header-overlay {
   background-color: transparent;
   background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.3) 0, transparent);
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3) 0, transparent, , , , , , , , );
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3) 0, transparent);
   height: 64px;
   width: 100%;
   position: fixed;
@@ -1077,7 +1069,7 @@ img {
 #header-overlay {
   background-color: transparent;
   background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.4) 0, transparent);
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4) 0, transparent, , , , , , , , );
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4) 0, transparent);
   height: 64px;
   width: 100%;
   position: absolute;
@@ -1294,19 +1286,16 @@ img {
     -webkit-animation-name: slideup;
     -moz-animation-name: slideup;
     animation-name: slideup; }
-
 @-webkit-keyframes slideup {
   from {
     margin-top: -180px; }
   to {
     margin-top: -221px; } }
-
 @-moz-keyframes slideup {
   from {
     margin-top: -180px; }
   to {
     margin-top: -221px; } }
-
 @keyframes slideup {
   from {
     margin-top: -180px; }
@@ -1370,9 +1359,9 @@ img {
     #register-body #form-errors ul,
     #login-body #form-errors ul {
       list-style: none; }
-    #register-body #form-errors p,
-    #register-body #form-errors li,
-    #login-body #form-errors p, #login-body #form-errors li {
+    #register-body #form-errors p, #register-body #form-errors li,
+    #login-body #form-errors p,
+    #login-body #form-errors li {
       color: #ffffff;
       font-size: 14px;
       padding: 14px 15px;
@@ -1436,12 +1425,10 @@ img {
   height: 100%;
   position: absolute;
   z-index: 100; }
-
 #error-body #footer-links a {
   font-size: 40px;
   font-weight: bold;
   pointer-events: auto; }
-
 #error-body #error-center {
   color: #fff;
   height: 200px;
@@ -1451,7 +1438,6 @@ img {
   left: 50%;
   position: absolute;
   margin: -85px 0 0 -210px; }
-
 #error-body #error-message {
   width: 400px; }
   #error-body #error-message span {
@@ -1461,7 +1447,6 @@ img {
     margin-top: 5px;
     line-height: 18px;
     font-size: 14px; }
-
 #error-body #search-form-wrapper {
   background: rgba(255, 255, 255, 0.85);
   border-radius: 20px;
@@ -1591,7 +1576,6 @@ img {
     opacity: .4;
     height: 20px;
     margin-top: 0; } }
-
 @-moz-keyframes waiting-anim {
   0%, 100% {
     opacity: 1;
@@ -1601,7 +1585,6 @@ img {
     opacity: .4;
     height: 20px;
     margin-top: 0; } }
-
 @keyframes waiting-anim {
   0%, 100% {
     opacity: 1;
@@ -1611,7 +1594,6 @@ img {
     opacity: .4;
     height: 20px;
     margin-top: 0; } }
-
 #waiting-anim-container {
   position: absolute;
   top: 14px;
@@ -1646,11 +1628,9 @@ img {
   min-width: 10px;
   min-height: 48px;
   outline: 0; }
-
 #blog-appearance-body h1 span:before {
   content: attr(data-placeholder);
   opacity: .3; }
-
 #blog-appearance-body .h1-focus {
   background: rgba(0, 0, 0, 0.05); }
 
@@ -1747,7 +1727,7 @@ body {
 #full-screen-img {
   left: 0;
   top: 0;
-  background: rgba(17, 17, 17, 0.921569);
+  background: rgba(17, 17, 17, 0.92157);
   position: fixed;
   height: 100%;
   width: 100%;
@@ -1870,3 +1850,5 @@ body {
   #posted-by-img img {
     width: 100%;
     height: 100%; }
+
+/*# sourceMappingURL=style.css.map */
