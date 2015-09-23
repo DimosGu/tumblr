@@ -49,7 +49,7 @@ gulp.task('minify-css', function() {
 
 
 gulp.task('watch', function() {
-  gulp.watch(['./static/styles/scss/*.scss', './static/styles/scss/**/*.scss'], ['build-sass']);
+  gulp.watch(['./static/scss/*.scss', './static/scss/**/*.scss'], ['build-sass']);
   // gulp.watch(['./static/js/**/*.js', '!./static/js/bundle/*.js'], ['build-js']);
 });
 

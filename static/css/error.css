@@ -2,10 +2,12 @@
   height: 100%;
   position: absolute;
   z-index: 100; }
+
 #error-body #footer-links a {
   font-size: 40px;
   font-weight: bold;
   pointer-events: auto; }
+
 #error-body #error-center {
   color: #fff;
   height: 200px;
@@ -15,6 +17,7 @@
   left: 50%;
   position: absolute;
   margin: -85px 0 0 -210px; }
+
 #error-body #error-message {
   width: 400px; }
   #error-body #error-message span {
@@ -24,6 +27,7 @@
     margin-top: 5px;
     line-height: 18px;
     font-size: 14px; }
+
 #error-body #search-form-wrapper {
   background: rgba(255, 255, 255, 0.85);
   border-radius: 20px;
@@ -53,5 +57,3 @@
     #error-body #search-form-wrapper input:-ms-input-placeholder {
       color: #444;
       opacity: .6; }
-
-/*# sourceMappingURL=error.css.map */
