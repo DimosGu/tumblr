@@ -80,14 +80,9 @@
 	<div class="post-selection display-none">
 		<div class="table-cell">
 			<div id="post-text">
-				<div class="post-header">
-					<a href="">
-						<img src="{{ blog.img.url }}">
-					</a>
-					<p>{{ user.username }}</p>
-				</div>
+				{% include 'post_form_header.html' %}
 				<div class="post-content">
-					<form id="post-text-form" action="" method="POST">
+					<form id="post-text-form" method="POST">
 						{% csrf_token %}
 						{{ text_form.title }}
 						{{ text_form.text }}
@@ -95,25 +90,14 @@
 						<input class="submit-input" type="submit">
 					</form>
 				</div>
-				<div class="post-footer">
-					<button class="close-post">Close</button>
-					<div class="post-submit">
-						<button class="submit-button">Post</button>
-						<div></div>
-					</div>
-				</div>
+				{% include 'post_form_footer.html' %}
 			</div>
 		</div>
 	</div>
 	<div class="post-selection display-none">
 		<div class="table-cell">
 			<div id="post-photo">
-				<div class="post-header">
-					<a href="">
-						<img src="{{ blog.img.url }}">
-					</a>
-					<p>{{ user.username }}</p>
-				</div>
+				{% include 'post_form_header.html' %}
 				<div id="image-option">
 					<div id="upload-img">
 						<div class="option-container">
@@ -129,7 +113,7 @@
 					</div>
 				</div>
 				<div class="post-content display-none">
-					<form id="post-photo-form" action="" method="POST" enctype="multipart/form-data">
+					<form id="post-photo-form" method="POST" enctype="multipart/form-data">
 						{% csrf_token %}
 						{{ photo_form.file }}
 						<div id="img-preview-container">
@@ -141,134 +125,73 @@
 						<input class="submit-input" type="submit">
 					</form>
 				</div>
-				<div class="post-footer">
-					<button class="close-post">Close</button>
-					<div class="post-submit">
-						<button class="submit-button">Post</button>
-						<div></div>
-					</div>
-				</div>
+				{% include 'post_form_footer.html' %}
 			</div>
 		</div>
 	</div>
 	<div class="post-selection display-none">
-		<div class="table-cell">
+  	<div class="table-cell">
 			<div id="post-quote">
-				<div class="post-header">
-					<a href="">
-						<img src="{{ blog.img.url }}">
-					</a>
-					<p>{{ user.username }}</p>
-				</div>
+  			{% include 'post_form_header.html' %}
 				<div class="post-content">
-					<form action="posts/post_text" method="POST">
-						<input class="submit-input" type="submit">
-					</form>
+				  <form action="posts/post_text" method="POST">
+				    <input class="submit-input" type="submit">
+				  </form>
 				</div>
-				<div class="post-footer">
-					<button class="close-post">Close</button>
-					<div class="post-submit">
-						<button class="submit-button">Post</button>
-						<div></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+  			{% include 'post_form_footer.html' %}
+  		</div>
+  	</div>
+  </div>
 	<div class="post-selection display-none">
-		<div class="table-cell">
+  	<div class="table-cell">
 			<div id="post-link">
-				<div class="post-header">
-					<a href="">
-						<img src="{{ blog.img.url }}">
-					</a>
-					<p>{{ user.username }}</p>
-				</div>
+  			{% include 'post_form_header.html' %}
 				<div class="post-content">
-					<form action="posts/post_text" method="POST">
-						<input class="submit-input" type="submit">
-					</form>
+				  <form action="posts/post_text" method="POST">
+				    <input class="submit-input" type="submit">
+				  </form>
 				</div>
-				<div class="post-footer">
-					<button class="close-post">Close</button>
-					<div class="post-submit">
-						<button class="submit-button">Post</button>
-						<div></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="post-selection display-none">
-		<div class="table-cell">
+  			{% include 'post_form_footer.html' %}
+  		</div>
+  	</div>
+  </div>
+  <div class="post-selection display-none">
+  	<div class="table-cell">
 			<div id="post-chat">
-				<div class="post-header">
-					<a href="">
-						<img src="{{ blog.img.url }}">
-					</a>
-					<p>{{ user.username }}</p>
-				</div>
+  			{% include 'post_form_header.html' %}
 				<div class="post-content">
-					<form action="posts/post_text" method="POST">
-						<input class="submit-input" type="submit">
-					</form>
+				  <form action="posts/post_text" method="POST">
+				    <input class="submit-input" type="submit">
+				  </form>
 				</div>
-				<div class="post-footer">
-					<button class="close-post">Close</button>
-					<div class="post-submit">
-						<button class="submit-button">Post</button>
-						<div></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="post-selection display-none">
-		<div class="table-cell">
+  			{% include 'post_form_footer.html' %}
+  		</div>
+  	</div>
+  </div>
+  <div class="post-selection display-none">
+  	<div class="table-cell">
 			<div id="post-audio">
-				<div class="post-header">
-					<a href="">
-						<img src="{{ blog.img.url }}">
-					</a>
-					<p>{{ user.username }}</p>
-				</div>
+  			{% include 'post_form_header.html' %}
 				<div class="post-content">
-					<form action="posts/post_text" method="POST">
-						<input class="submit-input" type="submit">
-					</form>
+				  <form action="posts/post_text" method="POST">
+				    <input class="submit-input" type="submit">
+				  </form>
 				</div>
-				<div class="post-footer">
-					<button class="close-post">Close</button>
-					<div class="post-submit">
-						<button class="submit-button">Post</button>
-						<div></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+  			{% include 'post_form_footer.html' %}
+  		</div>
+  	</div>
+  </div>
 	<div class="post-selection display-none">
-		<div class="table-cell">
+  	<div class="table-cell">
 			<div id="post-video">
-				<div class="post-header">
-					<a href="">
-						<img src="{{ blog.img.url }}">
-					</a>
-					<p>{{ user.username }}</p>
-				</div>
+  			{% include 'post_form_header.html' %}
 				<div class="post-content">
-					<form action="posts/post_text" method="POST">
-						<input class="submit-input" type="submit">
-					</form>
+				  <form action="posts/post_text" method="POST">
+				    <input class="submit-input" type="submit">
+				  </form>
 				</div>
-				<div class="post-footer">
-					<button class="close-post">Close</button>
-					<div class="post-submit">
-						<button class="submit-button">Post</button>
-						<div></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	 			{% include 'post_form_footer.html' %}
+  		</div>
+  	</div>
+  </div>
 </div>
