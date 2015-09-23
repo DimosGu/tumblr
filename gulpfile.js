@@ -29,7 +29,7 @@ gulp.task('build-sass', function () {
 gulp.task('minify-css', function() {
   return gulp.src('./static/css/*.css')
     .pipe(minifyCss())
-    .pipe(gulp.dest('static/styles/css/'));
+    .pipe(gulp.dest('static/css/'));
 });
 
 
