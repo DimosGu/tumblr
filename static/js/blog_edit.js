@@ -46,7 +46,7 @@ $(document).click(function() {
 	$('.options-popup').addClass('display-none').removeClass('popup-high popup-low');
 });
 
-$('body').on('click', '.options-popup', function (e) {
+$('body').on('click', '.options-popup', function(e) {
 	e.stopPropagation();
 })
 
@@ -159,7 +159,7 @@ function prepare_header_photo_form(target) {
 
 post_edit_id = null;
 
-$('body').on('click', '.option-edit', function (e) {
+$('body').on('click', '.option-edit', function(e) {
 	var $post_wrapper, $post_photo, post_id;
 
 	e.preventDefault();
@@ -179,7 +179,7 @@ $('body').on('click', '.option-edit', function (e) {
 });
 
 
-$('body').on('click', '.option-delete', function (e) {
+$('body').on('click', '.option-delete', function(e) {
 	var $post_wrapper, $post_id;
 
 	e.preventDefault();

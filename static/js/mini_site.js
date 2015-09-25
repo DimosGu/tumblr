@@ -31,7 +31,7 @@ function get_blog(username) {
 	});
 };
 
-$('body').on('click', '.blog-link, .user-link', function (e) {
+$('body').on('click', '.blog-link, .user-link', function(e) {
 	var username = $(this).parents('.post-wrapper').attr('data-username');
 	e.preventDefault();
 	$('body').addClass('overflow-hidden2');
@@ -81,7 +81,7 @@ $('#mini-site').on('scroll', function() {
 	}
 });
 
-$mini_site_wrapper.on('click', function (e) {
+$mini_site_wrapper.on('click', function(e) {
 	var mini_site = document.getElementById('mini-site');
 	var full_img = document.getElementById('full-screen-img');
 

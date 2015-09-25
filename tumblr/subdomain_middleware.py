@@ -2,6 +2,7 @@ from django.http import HttpResponseRedirect
 from apps.user_accounts.models import User
 
 class SubdomainMiddleware:
+
 	def process_request(self, request):
 		request.subdomain = False
 		host = request.META['HTTP_HOST']

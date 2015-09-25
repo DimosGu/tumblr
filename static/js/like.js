@@ -42,7 +42,7 @@ function unlike(post_pk) {
   });
 };
 
-$(document).on('click', '.like', function (e) {
+$(document).on('click', '.like', function(e) {
   var post_id = $(this).parents('.post-wrapper').attr('data-id');
 
   if (like_click_verify) {
@@ -60,7 +60,7 @@ $(document).on('click', '.like', function (e) {
   }
 });
 
-$(document).on('click', '.no-like', function (e) {
+$(document).on('click', '.no-like', function(e) {
   var post_id = $(this).parents('.post-wrapper').attr('data-id');
 
   if (like_click_verify) {

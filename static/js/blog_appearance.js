@@ -33,7 +33,6 @@ $edit_options_wrapper = $('#edit-options-wrapper');
 $edit_options_cover = $('#edit-options-cover');
 
 $edit_appearance.on('click', function() {
-
   if (edit_verify) {
     $(this).addClass('display-none');
     $mini_site_link.addClass('display-none');
@@ -133,7 +132,7 @@ $('#edit-header-img').on('click', function() {
   $header_img_input.click()
 });
 
-$header_img_input.change(function () {
+$header_img_input.change(function() {
 
   save_verify = true;
   $save.removeClass('save-font-color');
@@ -141,7 +140,7 @@ $header_img_input.change(function () {
   if (this.files && this.files[0]) {
     var reader = new FileReader();
 
-    reader.onload = function (e) {
+    reader.onload = function(e) {
       $mini_header.attr('style', "background-image: url(" + e.target.result + ")");
     }
   }
@@ -149,11 +148,11 @@ $header_img_input.change(function () {
   reader.readAsDataURL(this.files[0]);
 });
 
-$('#edit-avatar').on('click', function () {
+$('#edit-avatar').on('click', function() {
   $avatar_img_input.click();
 });
 
-$avatar_img_input.change(function () {
+$avatar_img_input.change(function() {
 
   save_verify = true;
   $save.removeClass('save-font-color');
@@ -161,7 +160,7 @@ $avatar_img_input.change(function () {
   if (this.files && this.files[0]) {
     var reader = new FileReader();
 
-    reader.onload = function (e) {
+    reader.onload = function(e) {
       $avatar_img.attr('src', e.target.result);
     }
   }
@@ -169,17 +168,17 @@ $avatar_img_input.change(function () {
   reader.readAsDataURL(this.files[0]);
 });
 
-$title_span.on('focus', function () {
+$title_span.on('focus', function() {
   $title_span.removeClass('title-border');
   $blog_title.addClass('h1-focus');
 });
 
-$title_span.on('blur', function () {
+$title_span.on('blur', function() {
   $title_span.addClass('title-border');
   $blog_title.removeClass('h1-focus')
 });
 
-$title_span.on('keyup keydown', function () {
+$title_span.on('keyup keydown', function() {
 
   if (save_verify == false) {
     save_verify = true;
