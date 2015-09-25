@@ -63,8 +63,3 @@ class Tags(BaseModel):
 
   def __str__(self):
     return self.tags
-
-  def clean(self):
-    print('cleaning')
-    self.tags = self.tags.strip('', '#')
-
