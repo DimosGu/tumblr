@@ -51,7 +51,7 @@ $('body').on('click', '.options-popup', function(e) {
 })
 
 function prepare_header_text_form(target) {
-	var $post_wrapper, $blog_title, $blog_text, $blog_tags, tags_array, tags_join;
+	var $post_wrapper, $blog_title, $post_text, $post_tags, tags_array, tags_join;
 
 	post_types[0].click();
 
@@ -69,29 +69,29 @@ function prepare_header_text_form(target) {
 		title_field[0].value = $blog_title;
 	}
 
-	$blog_text = $post_wrapper.find('.post-text').html();
+	$post_text = $post_wrapper.find('.post-text').html();
 
-	if ($blog_text === undefined) {
+	if ($post_text === undefined) {
 		text_field[0].value = "";
 	} else {
-		text_field[0].value = $blog_text;
+		text_field[0].value = $post_text;
 	}
 
-	$blog_tags = $post_wrapper.find('.post-tags').children();
+	$post_tags = $post_wrapper.find('.post-tags').children();
 
-	if ($blog_tags.length) {
+	if ($post_tags.length) {
 
 		tags_array = [];
-		tags_array.push($blog_tags.eq(0).text())
+		tags_array.push($post_tags.eq(0).text())
 
-		for (var i = 1; i < $blog_tags.length; i++) {
-			tags_array.push('' + $blog_tags.eq(i).text());
+		for (var i = 1; i < $post_tags.length; i++) {
+			tags_array.push('' + $post_tags.eq(i).text());
 		}
 
 		tags_join = tags_array.join(' ');
 	}
 
-	if ($blog_tags.length === 0) {
+	if ($post_tags.length === 0) {
 		tags_field[0].value = "";
 	} else {
 		tags_field[0].value = tags_join;
@@ -104,7 +104,7 @@ function prepare_header_text_form(target) {
 }
 
 function prepare_header_photo_form(target) {
-	var $img_preview, $post_wrapper, $post_photo, $blog_text, $blog_tags,
+	var $img_preview, $post_wrapper, $post_photo, $post_text, $post_tags,
 			tags_array, tags_join;
 
 	post_types[1].click();
@@ -123,30 +123,29 @@ function prepare_header_photo_form(target) {
 
 	file_field[0].value = "";
 
-	$blog_text = $post_wrapper.find('.post-text').html()
+	$post_text = $post_wrapper.find('.post-text').html()
 
-	if ($blog_text === undefined) {
+	if ($post_text === undefined) {
 		text_field[1].value = "";
 	} else {
-		text_field[1].value = $blog_text;
+		text_field[1].value = $post_text;
 	}
 
-	$blog_tags = $post_wrapper.find('.post-tags').children();
+	$post_tags = $post_wrapper.find('.post-tags').children();
 
-	if ($blog_tags.length) {
+	if ($post_tags.length) {
 
 		tags_array = [];
-		tags_array.push($blog_tags.eq(0).text())
+		tags_array.push($post_tags.eq(0).text())
 
-		for (var i = 1; i < $blog_tags.length; i++) {
-			tags_array.push('' + $blog_tags.eq(i).text());
+		for (var i = 1; i < $post_tags.length; i++) {
+			tags_array.push('' + $post_tags.eq(i).text());
 		}
 
 		tags_join = tags_array.join(' ');
 	}
 
-
-	if ($blog_tags.length === 0) {
+	if ($post_tags.length === 0) {
 		tags_field[1].value = "";
 	} else {
 		tags_field[1].value = tags_join;
@@ -160,7 +159,7 @@ function prepare_header_photo_form(target) {
 post_edit_id = null;
 
 $('body').on('click', '.option-edit', function(e) {
-	var $post_wrapper, $post_photo, post_id;
+	var $post_wrapper, $post_photo;
 
 	e.preventDefault();
 	$(this).parent().addClass('display-none');
@@ -168,7 +167,7 @@ $('body').on('click', '.option-edit', function(e) {
 	$post_wrapper = $(this).parents('.post-wrapper');
 	$post_photo = $post_wrapper.find('.post-img');
 
-	//This sets the id of the post instance to be carried to the ajax request
+	//This sets the id of the post instance to be used in post.js
 	post_edit_id = $post_wrapper.attr('data-id');
 
 	if ($post_photo.length) {
@@ -194,14 +193,12 @@ $('body').on('click', '.option-delete', function(e) {
 		$post_wrapper.remove();
 		visible_posts -= 1;
 
-		(function delete_post_db() {
-			$.ajax({
-				url: "/blog/delete_post",
-				type: "POST",
-				data: {
-					'post_id': $post_id
-				},
-			});
-		}());
+		$.ajax({
+			url: "/blog/delete_post",
+			type: "POST",
+			data: {
+				'post_id': $post_id
+			},
+		});
 	}, 700);
 });

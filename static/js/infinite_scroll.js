@@ -20,7 +20,7 @@ $(window).load(function() {
     get_post_verify = false;
   }
 
-  if (typeof following_body === 'undefined' || following_body === null) {
+  if (typeof following_body === 'undefined') {
     setTimeout (function() {
       if ($(document).height() === $(window).height() && get_post_verify) {
         get_ten_posts(visible_posts);
@@ -32,7 +32,7 @@ $(window).load(function() {
 })
 
 $(window).on('scroll', function() {
-  if ((typeof following_body === 'undefined' || following_body === null) &&
+  if ((typeof following_body === 'undefined') &&
     $(window).scrollTop() + $(window).height() > $(document).height() / 1.25) {
 
     if (get_post_verify) {
