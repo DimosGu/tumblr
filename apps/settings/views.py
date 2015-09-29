@@ -37,21 +37,21 @@ def edit_blog(request):
       header_img = request.FILES['header_img']
       blog.bg_img = header_img
     except:
-      pass
+      header_img = False
 
     try:
       avatar_img = request.FILES['avatar_img']
       blog.img = avatar_img
     except:
-      pass
+      avatar_img = False
 
     try:
       blog_title = request.POST['blog_title']
       blog.title = blog_title
     except:
-      pass
+      blog_title = False
 
-    blog.save()
+    Blog.change_attributes(blog, new_title=blog_title, new_img=avatar_img, new_bg_img=header_img)
 
   response = {}
 

@@ -329,6 +329,17 @@ class Blog(BaseModel):
   class Meta:
     app_label = 'blog'
 
+  def change_attributes(self, new_title=False, new_img=False, new_bg_img=False):
+
+    if new_title:
+      self.title = new_title
+    if new_img:
+      self.img = new_img
+    if new_bg_img:
+      self.bg_img = new_bg_img
+
+    self.save()
+
   def __str__(self):
     return '%s-%s' % (self.user.username, self.title)
 

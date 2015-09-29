@@ -4,7 +4,7 @@ title_field = document.querySelectorAll(".title-field");
 text_field = document.querySelectorAll(".text-field");
 tags_field = document.querySelectorAll(".tags-field");
 
-function check_title_field(e) {
+function check_title_field(input) {
 
   if (this.value != "" || text_field[0].value != "") {
     post_submit_button[0].className = "submit-button button-color";
@@ -21,11 +21,11 @@ function check_title_field(e) {
     }
   }
   catch (error) {
-    var $invis_title = $(e).siblings('.invis-title');
-    $invis_title.html(e.value);
+    var $invis_title = $(input).siblings('.invis-title');
+    $invis_title.html(input.value);
 
-    if (e.style.height !== $invis_title.height()) {
-      e.style.height = $invis_title.height() + 'px';
+    if (input.style.height !== $invis_title.height()) {
+      input.style.height = $invis_title.height() + 'px';
     }
   }
 }
@@ -35,7 +35,7 @@ for (var i = 0; i < title_field.length; i++) {
   title_field[i].addEventListener("keydown", check_title_field);
 }
 
-function check_text_field(e) {
+function check_text_field(input) {
 
   if (title_field[0].value != "" || text_field[0].value != "") {
     post_submit_button[0].className = "submit-button button-color";
@@ -52,11 +52,11 @@ function check_text_field(e) {
     }
   }
   catch (error) {
-    var $invis_text = $(e).siblings('.invis-text');
-    $invis_text.html(e.value);
+    var $invis_text = $(input).siblings('.invis-text');
+    $invis_text.html(input.value);
 
-    if (e.style.height !== $invis_text.height()) {
-      e.style.height = $invis_text.height() + 'px';
+    if (input.style.height !== $invis_text.height()) {
+      input.style.height = $invis_text.height() + 'px';
     }
   }
 }
@@ -66,7 +66,7 @@ for (var i = 0; i < text_field.length; i++) {
   text_field[i].addEventListener("keydown", check_text_field);
 }
 
-function check_tag_field(e) {
+function check_tag_field(input) {
 
   try {
     var $invis_tags = $(this).siblings('.invis-tags');
@@ -77,11 +77,11 @@ function check_tag_field(e) {
     }
   }
   catch (error) {
-    var $invis_tags = $(e).siblings('.invis-tags');
-    $invis_tags.html(e.value);
+    var $invis_tags = $(input).siblings('.invis-tags');
+    $invis_tags.html(input.value);
 
-    if (e.style.height !== $invis_tags.height()) {
-      e.style.height = $invis_tags.height() + 'px';
+    if (input.style.height !== $invis_tags.height()) {
+      input.style.height = $invis_tags.height() + 'px';
     }
   }
 }
