@@ -98,9 +98,9 @@ function prepare_header_text_form(target) {
 	}
 
 	//Adjusts field's height after inserting text
-	check_title_field();
-	check_text_field();
-	check_tag_field();
+	check_title_field(title_field[0]);
+	check_text_field(text_field[0]);
+	check_tag_field(tags_field[0]);
 }
 
 function prepare_header_photo_form(target) {
@@ -152,8 +152,8 @@ function prepare_header_photo_form(target) {
 	}
 
 	//Adjusts field's height after inserting text
-	check_text_field();
-	check_tag_field();
+	check_text_field(text_field[1]);
+	check_tag_field(tags_field[1]);
 }
 
 post_edit_id = null;

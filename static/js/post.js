@@ -4,17 +4,29 @@ title_field = document.querySelectorAll(".title-field");
 text_field = document.querySelectorAll(".text-field");
 tags_field = document.querySelectorAll(".tags-field");
 
-function check_title_field() {
-  if (title_field[0].value != "" || text_field[0].value != "") {
+function check_title_field(e) {
+
+  if (this.value != "" || text_field[0].value != "") {
     post_submit_button[0].className = "submit-button button-color";
   } else {
     post_submit_button[0].className = "submit-button";
   }
 
-  for (var i = 0; i < title_field.length; i++) {
-    title_field[i].style.height = 46 + 'px';
-    var title_height = title_field[i].scrollHeight;
-    title_field[i].style.height = title_height + 'px';
+  try {
+    var $invis_title = $(this).siblings('.invis-title');
+    $invis_title.html(this.value);
+
+    if (this.style.height !== $invis_title.height()) {
+      this.style.height = $invis_title.height() + 'px';
+    }
+  }
+  catch (error) {
+    var $invis_title = $(e).siblings('.invis-title');
+    $invis_title.html(e.value);
+
+    if (e.style.height !== $invis_title.height()) {
+      e.style.height = $invis_title.height() + 'px';
+    }
   }
 }
 
@@ -23,17 +35,29 @@ for (var i = 0; i < title_field.length; i++) {
   title_field[i].addEventListener("keydown", check_title_field);
 }
 
-function check_text_field() {
+function check_text_field(e) {
+
   if (title_field[0].value != "" || text_field[0].value != "") {
     post_submit_button[0].className = "submit-button button-color";
   } else {
     post_submit_button[0].className = "submit-button";
   }
 
-  for (var i = 0; i < text_field.length; i++) {
-    text_field[i].style.height = 63 + 'px';
-    var text_height = text_field[i].scrollHeight;
-    text_field[i].style.height = text_height + 'px';
+  try {
+    var $invis_text = $(this).siblings('.invis-text');
+    $invis_text.html(this.value);
+
+    if (this.style.height !== $invis_text.height()) {
+      this.style.height = $invis_text.height() + 'px';
+    }
+  }
+  catch (error) {
+    var $invis_text = $(e).siblings('.invis-text');
+    $invis_text.html(e.value);
+
+    if (e.style.height !== $invis_text.height()) {
+      e.style.height = $invis_text.height() + 'px';
+    }
   }
 }
 
@@ -42,11 +66,23 @@ for (var i = 0; i < text_field.length; i++) {
   text_field[i].addEventListener("keydown", check_text_field);
 }
 
-function check_tag_field() {
-  for (var i = 0; i < tags_field.length; i++) {
-    tags_field[i].style.height = 19 + 'px';
-    var tags_height = tags_field[i].scrollHeight;
-    tags_field[i].style.height = tags_height + 'px';
+function check_tag_field(e) {
+
+  try {
+    var $invis_tags = $(this).siblings('.invis-tags');
+    $invis_tags.html(this.value);
+
+    if (this.style.height !== $invis_tags.height()) {
+      this.style.height = $invis_tags.height() + 'px';
+    }
+  }
+  catch (error) {
+    var $invis_tags = $(e).siblings('.invis-tags');
+    $invis_tags.html(e.value);
+
+    if (e.style.height !== $invis_tags.height()) {
+      e.style.height = $invis_tags.height() + 'px';
+    }
   }
 }
 

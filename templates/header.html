@@ -85,8 +85,11 @@
 					<form id="post-text-form" method="POST">
 						{% csrf_token %}
 						{{ text_form.title }}
+						<p class="invis-title"></p>
 						{{ text_form.text }}
+						<p class="invis-text"></p>
 						{{ text_form.tags }}
+						<p class="invis-tags"></p>
 						<input class="submit-input" type="submit">
 					</form>
 				</div>
@@ -121,7 +124,9 @@
 							<span id="erase-img" class="display-none">x</span>
 						</div>
 						{{ photo_form.text }}
+						<p class="invis-text"></p>
 						{{ photo_form.tags }}
+						<p class="invis-tags"></p>
 						<input class="submit-input" type="submit">
 					</form>
 				</div>

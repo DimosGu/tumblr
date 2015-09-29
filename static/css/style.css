@@ -577,20 +577,34 @@ img {
     position: relative;
     resize: none;
     width: 510px; }
+  .post-selection .post-content .invis-title,
+  .post-selection .post-content .invis-text,
+  .post-selection .post-content .invis-tags {
+    display: none;
+    margin-left: 18px;
+    padding: 0 2px 0 2px;
+    width: 510px;
+    word-wrap: break-word; }
   .post-selection .post-content .title-field {
-    font-size: 36px;
-    height: 46px;
-    min-height: 46px; }
+    height: 46px; }
   .post-selection .post-content .text-field {
+    height: 63px; }
+  .post-selection .post-content .tags-field {
+    height: 19px; }
+  .post-selection .post-content .title-field,
+  .post-selection .post-content .invis-title {
+    font-size: 36px;
+    min-height: 46px; }
+  .post-selection .post-content .text-field,
+  .post-selection .post-content .invis-text {
     font-size: 14px;
     margin-top: 2px;
-    height: 63px;
     min-height: 63px; }
-  .post-selection .post-content .tags-field {
+  .post-selection .post-content .tags-field,
+  .post-selection .post-content .invis-tags {
     font-size: 13px;
     margin-top: 28px;
     margin-bottom: 12px;
-    height: 19px;
     min-height: 19px; }
   .post-selection .post-content .submit-input {
     display: none; }
