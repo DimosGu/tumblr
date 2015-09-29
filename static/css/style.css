@@ -779,7 +779,7 @@ img {
   position: absolute;
   left: 20px;
   top: 18px;
-  height: 30px; }
+  height: 20px; }
 
 #mini-site-link {
   max-width: 350px;
@@ -1091,6 +1091,7 @@ img {
     border-radius: 2px;
     cursor: pointer;
     color: #fff;
+    font-family: helvetica;
     font-size: 12px;
     font-weight: bold;
     text-decoration: none;
