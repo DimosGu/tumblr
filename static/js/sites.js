@@ -25,7 +25,9 @@ function get_ten_posts(post_count, site_user) {
 			$('#loading-anim-container').remove();
 
 			if (json.html.length) {
-				get_post_verify = true;
+				setTimeout (function() {
+					get_post_verify = true;
+				}, 100);
 			}
 		},
 	});

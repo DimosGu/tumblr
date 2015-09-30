@@ -23,9 +23,9 @@ function get_blog(username) {
 				var scrollbar_size = mini_site.offsetWidth - mini_site.clientWidth;
 
 				$('#mini-header-overlay').css({
-																		'right': scrollbar_size,
-																		'width': mini_site.clientWidth
-																	});
+					'right': scrollbar_size,
+					'width': mini_site.clientWidth
+				});
 			}, 500);
 		},
 	});
@@ -61,7 +61,9 @@ function mini_get_ten_posts(username, visible_posts) {
 			$('#loading-anim-container').remove();
 
 			if (json.html.length) {
-				mini_get_post_verify = true;
+				setTimeout (function() {
+					mini_get_post_verify = true;
+				}, 100);
 			}
 		}
 	});
