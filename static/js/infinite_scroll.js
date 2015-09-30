@@ -1,7 +1,3 @@
-if (typeof get_post_verify === 'undefined') {
-  get_post_verify = false;
-}
-
 function append_loading_anim(mini) {
   animation_html = '<div id="loading-anim-container"><div class="loading-rect"></div>' +
   '<div class="loading-rect"></div><div class="loading-rect"></div></div>';
@@ -16,11 +12,11 @@ function append_loading_anim(mini) {
 $(window).load(function() {
   var $no_post_div = $('#no-posts');
 
-  if ($no_post_div.length) {
+  if ($no_post_div.length || typeof get_post_verify === 'undefined') {
     get_post_verify = false;
   }
 
-  if (typeof following_body === 'undefined') {
+  if (following_body === null) {
     setTimeout (function() {
       if ($(document).height() === $(window).height() && get_post_verify) {
         get_ten_posts(visible_posts);
@@ -32,7 +28,7 @@ $(window).load(function() {
 })
 
 $(window).on('scroll', function() {
-  if ((typeof following_body === 'undefined') &&
+  if ((following_body === null) &&
     $(window).scrollTop() + $(window).height() > $(document).height() / 1.25) {
 
     if (get_post_verify) {
