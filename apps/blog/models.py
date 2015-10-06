@@ -18,7 +18,7 @@ def upload_path(self, filename):
   file_path = int(''.join(path_list))
   file_extension = filename.split('.')[1]
 
-  return 'user_media/%s/tumblr_%s.%s' % (self.user.username, file_path, file_extension)
+  return 'user_media/{0}/tumblr_{1}.{2}'.format(self.user.username, file_path, file_extension)
 
 
 class BlogManager(BaseManager):
